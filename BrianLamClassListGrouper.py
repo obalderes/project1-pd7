@@ -1,3 +1,6 @@
+#import random for random list shuffling
+import random
+
 #Create lists for period 6 and 7
 list6 = list()
 list7 = list()
@@ -10,12 +13,20 @@ for text in open("ml7-student-names", "r").readlines():
     else:
         list7.append(first+ " "+ last)
 
-print "Period 6"
-for element in list6:
-    print element
 
-print " "
+print "Period 6"
+random.shuffle(list6)
+for element in range(len(list6)):
+    if(element%4 ==0):
+        print " "
+    print list6[element]
+    
+
+print " "+"\n"+"---------"+"\n"+" "
 
 print "Period 7"
-for element in list7:
-    print element
+random.shuffle(list7)
+for element in range(len(list7)):
+    if(element%4 ==0):
+        print " "
+    print list7[element]
