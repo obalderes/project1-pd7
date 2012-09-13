@@ -1,7 +1,8 @@
 
+print "added stuff"
 
 for i in range(10):
-    print i
+    print "HELLO",i
 
 print "world"
 
