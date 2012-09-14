@@ -19,21 +19,23 @@ random.shuffle(p6)
 random.shuffle(p7)
 
 #print in groups of 4
+print "\nPERIOD 6:\n"
 x = 0
 for name in p6:
     if x == 4:
         print ""
         x = 0
-    else:
-        print name
-        x = x+1
+    print name
+    x = x+1
 
+print "\nPERIOD 7:\n"
 x = 0
 for name in p7:
     if x == 4:
         print ""
         x = 0
-    else:
-        print name
-        x = x+1
+    print name
+    x = x+1
+ 
+
 
