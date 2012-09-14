@@ -17,3 +17,6 @@ for string in l:
 #print(seven)
 #print(len(seven))
 
+#sixth period names are in the list 'six' and seventh period names are in the list 'seven'
+
+import random
