@@ -1,0 +1,14 @@
+#I find my lack of header disturbing
+
+periodSix = []
+periodSeven = []
+
+nameList = file( 'ml7-student-names.txt' , 'r' )
+line = nameList.readline()
+while line != "" :
+    if line.endswith('6'):
+        periodSix.append(line)
+    else:
+        periodSeven.append(line)
+    line = nameList.readLine()
+print periodSix
