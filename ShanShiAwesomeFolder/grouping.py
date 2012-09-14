@@ -12,9 +12,10 @@ shuffle(pd6students)
 shuffle(pd7students)
 counter = 1
 out = "Period 6\n"
-while len(pd6students) > 0:
+while len(pd6students) >0:
     counter += 1
     out += pd6students.pop()
+    out += "\t"
     if counter == 4:
         out += "\n"
         counter = 1
