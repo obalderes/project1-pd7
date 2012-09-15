@@ -1,3 +1,4 @@
+import random
 L = []
 names6 = []
 names7 = []
@@ -22,15 +23,35 @@ for item in L:
     else:
         names6.append(item)
 
-print "Period 6"
+
+def randomizer(period):
+    a = []
+    random.shuffle(period)
+    group = 0
+    num = 0
+    for item in period:
+        if num < 4:
+            item = item + ", "
+            a.append("%s%d"%(item,group))
+            num = num + 1
+        else:
+            group = group + 1
+            num = 0
+    return a
+        
+
+
+ 
+
+names6 = randomizer(names6)
+names7 = randomizer(names7)
+
+print "Period 6 Groups"
+print "last, first, period, group #"
 for item in names6:
     print item
-
 print
-
-print "Period 7"
+print "Period 7 Groups"
+print "last, first, period, group #"
 for item in names7:
     print item
-
-
-
