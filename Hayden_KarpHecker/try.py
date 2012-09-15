@@ -17,7 +17,6 @@ shuffle(pd6)            ## used to make sure that
 #print ""               ## shuffle actually shuffled
 #print pd6
 
-#print ""
 #print pd7
 shuffle(pd7)
 #print ""
