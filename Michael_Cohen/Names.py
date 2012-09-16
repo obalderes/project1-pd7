@@ -2,53 +2,52 @@ import random
 
 def genList(filename):
     f = open(filename).read()
-    f.strip(",6")
-    f.strip(",7")
+    f = f.replace("*REDO*", "")
+    f = f.replace("\n", ",")
+    print f
     s = process(f)
     return s
 
 def process(f):
-    fnames, lnames = [], []
-    s = ""
-    for last in f:
-        if last != ",":
-            s += last
+    fname, lname, period = "", "", ""
+    routine = [lname, fname, period]
+    index = 0
+    names6, names7 = [],[]
+    for c in f:
+        f.replace(c, "", 1)
+        if c != ",":
+            routine[index] += c
         else:
-            f = f[(f.index(last) + 1):]
-            lnames += s
-            s = ""
-            for first in f:
-                if first != "\n":
-                    s += first
-                else:
-                    f = f[(f.index(first) + 1):]
-                    fnames += s
-                    s = ""
-                    break
-    names = []
-    for n in fnames:
-        name = n + " " + lnames[0]
-        lnames.pop(0)
-        names += name
-    return names
+            if routine[index] == "6":
+                names6.append(routine[1] + ' ' + routine[0])
+                routine = ["", "", ""]
+                index = 0
+            elif routine[index] == "7":
+                names7.append(routine[1] + ' ' + routine[0])
+                routine = ["", "", ""]
+                index = 0
+            else:
+                index += 1
+    return [names6, names7]
 
 def getRandomGroups(names, members):
     groups = []
     groupsnum = len(names)/members
     for n in range(groupsnum):
-        indeces = random.randrange(0, len(names))
         s = ""
-        for index in indeces:
+        for i in range(members):
+            index = random.randrange(0, len(names))
             s += names[index] + ", "
-        groups += s
-        for index in indeces:
             names.pop(index)
+        groups.append(s)
     if names != []:
         s = ""
         for name in names:
             s += name + ", "
-        groups += s
+        groups.append(s)
     return groups
 
-print getRandomGroups(genList("ml7-student-names"), 4)
-            
+names = genList("ml7-student-names")
+print "Period 6: ", getRandomGroups(names[0], 4)
+print "Period 7: ", getRandomGroups(names[1], 4)
+

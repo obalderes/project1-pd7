@@ -1,4 +1,3 @@
-#import random for random list shuffling
 import random
 
 #Create lists for period 6 and 7
