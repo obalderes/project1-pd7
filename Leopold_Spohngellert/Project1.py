@@ -13,6 +13,9 @@ l =  len(st)
 print l
 #print st[random.randint(0,l-1)]
 
+#def whichPeriod():
+ #   find(st, [, start[,end]])
+
 
 def classList():
     i = 0
