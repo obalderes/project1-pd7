@@ -11,7 +11,7 @@ print "batya added this stuff which is cool"
 
 s = ""
 for x in xrange(7,10)
-    s += "there are " + str(x) + " sheep in a farm, until 1 is born, then "
+    s += "there are " + str(x) + " sheep in new york, until 1 is born, then there are more"
 
 
 print s
