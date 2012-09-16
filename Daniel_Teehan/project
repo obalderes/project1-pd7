@@ -1,17 +1,19 @@
 import random
 sixth = []
 seventh = []
-
+group = 1
 for line in open("ml7-student-names").readlines():
     compiled = line.strip()
     a,b,c = compiled.split(",")
     if str(6) == str(c):
-        sixth+=[compiled]
+        sixth+=[b + " " + a]
     else:
-        seventh+=[compiled]
+        seventh+=[b + " " + a]
+  
 
 length = len(sixth)
 counter = 0
+print "Group 1"
 while counter < length:
     counter+=1
     new = int(random.random()*len(sixth))
@@ -19,6 +21,8 @@ while counter < length:
     sixth.remove(sixth[new])
     if counter % 4 == 0:
         print "\n"
+        group += 1
+        print "Group " + str(group)
 
 print "\n"
 print "\n"
@@ -30,5 +34,7 @@ while c < l:
     n = int(random.random()*len(seventh))
     print seventh[n]
     seventh.remove(seventh[n])
-    if c % 4 == 0:
+    if c % 4 == 0 and c != l:
         print "\n"
+        group +=1
+        print "Group " + str(group)

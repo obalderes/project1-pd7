@@ -18,30 +18,29 @@ shuffle(pd6students)
 shuffle(pd7students)
 
 ##split the periods into groups and put everything in a string
-counter = 0 
-
+counter = 0
 out = "Period 6\n"
-while len(pd6students) >0:
+while len(pd6students) > 0:
     counter += 1
     out += pd6students.pop()
     out += "\t"
-    if counter == 3:
+    if counter == 4:
         out += "\n"
         counter = 0
 
-out += "Period 7\n\n"
+out += "\n\nPeriod 7\n"
 while len(pd7students) > 0:
     counter += 1
     out += pd7students.pop()
     out += "\t"
-    if counter == 3:
+    if counter == 4:
         out += "\n"
         counter = 0
 
 ##output the string into a tsv file
-#text_file = open("groups.csv", "w")
-#text_file.write(out)
-#text_file.close()
+text_file = open("groups.tsv", "w")
+text_file.write(out)
+text_file.close()
 
 #print out the string
 print out
