@@ -12,6 +12,18 @@ st = file.readlines()
 l =  len(st)
 #print st[random.randint(0,l-1)]
 
+def counter():
+    c = 0
+    total = 0
+    while c < l:
+        if (st[c].find("6") > 0):
+            total = total + 1
+        c = c + 1
+    print "The total number of students in Period 6 is: " + repr(total)
+    print "The total number of students in Period 7 is: " + repr(l - total)
+
+counter()
+        
 
 
 def classList():
@@ -38,6 +50,6 @@ def classList():
                 i = i + 1
            
 
-print "\nThe following are randomized groups of four:\n \n"
+print "\nThe following are randomized groups of four:\n"
 classList() 
 
