@@ -17,7 +17,9 @@ print zachary
 
 batya = ""
 for x in xrange(7,10):
-    batya += "there are " + str(x) + " sheep in new york, until 1 is born, then there are more"
+    batya += "there are " + str(x) + " sheep in new york, until 1 is born"
+
+batya += "sheep are really awesome because they are fuzzy and covered in woll"
 
 print batya
 
