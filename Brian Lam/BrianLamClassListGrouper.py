@@ -5,6 +5,7 @@ import random
 list6 = list()
 list7 = list()
 
+#Sort the text file into lists based on period
 for text in open("ml7-student-names", "r").readlines():
     text = text.strip()
     last,first,period = text.split(",")
@@ -13,7 +14,7 @@ for text in open("ml7-student-names", "r").readlines():
     else:
         list7.append(first+ " "+ last)
 
-
+#shuffle lists and print them out in groups of four people
 print "Period 6"
 random.shuffle(list6)
 for element in range(len(list6)):
@@ -21,7 +22,6 @@ for element in range(len(list6)):
         print " "
     print list6[element]
     
-
 print " "+"\n"+"---------"+"\n"+" "
 
 print "Period 7"
