@@ -1,0 +1,17 @@
+import random
+
+f = open("ml7-student-names")
+a = ""
+b = []
+for str in f:
+	a = str
+	a = a.strip()
+	b.append(a)
+
+c = []
+d = len(b)
+while len(c) < d:
+	r = random.randint(0,len(b)-1)
+	c.append(b[r])
+	b.pop(r)	
+print c
