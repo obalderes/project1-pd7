@@ -27,7 +27,7 @@ while len(pd6students) >0:
     out += "\t"
     if counter == 3:
         out += "\n"
-        counter = 1
+        counter = 0
 
 out += "Period 7\n\n"
 while len(pd7students) > 0:
@@ -36,7 +36,7 @@ while len(pd7students) > 0:
     out += "\t"
     if counter == 3:
         out += "\n"
-        counter = 1
+        counter = 0
 
 ##output the string into a tsv file
 #text_file = open("groups.csv", "w")
