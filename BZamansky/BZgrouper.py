@@ -12,10 +12,8 @@ def reader(data):
 L = reader("ml7-student-names")
 n = len(L)
 
-#for item in L:
-#    item = item.strip()
-#    print item
 
+#this sorts the items into their individual periods
 for item in L:
     item = item.strip()
     if (item[-1] == "7"):
@@ -25,6 +23,9 @@ for item in L:
 
 
 def randomizer(period):
+    """
+    shuffles the items in the list and gives each person a group number
+    """
     a = []
     random.shuffle(period)
     group = 0
