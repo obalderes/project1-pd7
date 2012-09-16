@@ -6,7 +6,7 @@ print "Hello World.", "What's up?"
 
 a = []
 
-for i in range(5,15):
+for i in range(8,3000):
     if (i*i)%2 == 1:
         a.append(i)
         print "Odd number alert!"
