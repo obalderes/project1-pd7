@@ -10,33 +10,34 @@ file = open("ml7-student-names", "r+");
 st = file.readlines()
 
 l =  len(st)
-print l
 #print st[random.randint(0,l-1)]
 
-#def whichPeriod():
- #   find(st, [, start[,end]])
 
 
 def classList():
     i = 0
     b = 1
-    while i < 68:
+    currentPeriod = 0
+    whichP = 0
+    while i < l:
         z = random.randint(0, l-1)
+        if (st[z].find("7") == -1):
+            whichP = 6
+        else:
+            whichP = 7
+       
         if st[z] != "empty":
             if (i % 4 == 0):
+                currentPeriod = whichP
                 print "Group" + " " + repr(b) + " consists of:\n"
                 b = b + 1
-            print st[z]
-            st[z] = "empty"
-            i = i + 1
+                
+            if (currentPeriod == whichP):
+                print st[z]
+                st[z] = "empty"
+                i = i + 1
            
 
-
-classList()
-
-
-        
-        
-        
-    
+print "\nThe following are randomized groups of four:\n \n"
+classList() 
 
