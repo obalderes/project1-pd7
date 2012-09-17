@@ -17,17 +17,15 @@ random.shuffle(period6)
 random.shuffle(period7)
 
 #Print them out
-group6 = ""
-group7 = ""
 index6 = 0
 index7 = 0
-print "Period 6"
+group6 = "\n"+"Period 6"
+group7 = "\n"+"Period 7"
 while len(period6) > index6:
     if index6 % 4 == 0:
         group6 = group6 + "\n"
     group6 = group6+"\n"+period6[index6]
     index6 = index6 + 1
-print "Period 7"
 while len(period7) > index7:
     if index7 % 4 == 0:
         group7 = group7 + "\n"
