@@ -32,4 +32,5 @@ while len(period7) > index7:
     group7 = group7+"\n"+period7[index7]
     index7 = index7 + 1
 print group6
+print "\n"+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 print group7
