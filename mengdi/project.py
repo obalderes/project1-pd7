@@ -5,7 +5,7 @@ f = open("ml7-student-names",'r')
 nameList = f.readlines()
 nameList.append('None,None,6.')
 
-# get items from nameList with "string" into a list and shuffle the list
+# get items from nameList that contains the argument into a list and shuffle the list
 def ShuffleList(string):
     l=[]
     for index in range(len(nameList)):
