@@ -2,7 +2,7 @@ l=[]
 f = open("ml7-student-names", 'r')
 
 for line in f:
-	line = line.strip() #removes '/n' from the lines in the files
+	line = line.strip() #removes '\n' from the lines in the files
 	l.append(line) #adds each line to list 'l'
 
 six = [] 
@@ -16,11 +16,28 @@ for string in l:
 
 import random
 
-def randomizeL(L):
-	random.shuffle(L) #shuffles the items in the list randomly
+random.shuffle(six) #randomizes the order of the strings in the list
+random.shuffle(seven)
 
-randomizeL(six)
-randomizeL(seven)
+def printG(L, n):
+	"""
+	printG takes list, L, and separates the names into groups of n.
+	It prints each string in list L line by line. After n names, it prints an empty line to differentiate between the groups. 
+	Example: 
+	printG(L,2) >>
+		A,B,6
+		C,D,6
+		
+		E,F,6
+		G,H,6 (and so on...)
+	"""
+	for string in L:
+		print string
+		if ((L.index(string)+1) % n) ==0:
+			print "\n"
+	
+print "***6th Period***"
+printG(six, 4)
 
-
-# TODO: print four names together; then a space
+print "\n***7th Period***\n"
+printG(seven, 4)
