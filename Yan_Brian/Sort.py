@@ -1,7 +1,7 @@
 import random
 period6 = list()
 period7 = list()
-
+#Sort the classes
 for text in open("ml7-student-names","r").readlines():
     firstname = " "
     lastname = " "
@@ -12,10 +12,11 @@ for text in open("ml7-student-names","r").readlines():
         period6.append(firstname + " " + lastname)
     else:
         period7.append(firstname + " " + lastname)
-
+#Randomize Classes
 random.shuffle(period6)
 random.shuffle(period7)
 
+#Print them out
 group6 = ""
 group7 = ""
 index6 = 0
