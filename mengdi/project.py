@@ -27,10 +27,13 @@ def GroupPull(l):
     return f
 
 def main(string):
-    print GroupPull(ShuffleList(string))
+    return GroupPull(ShuffleList(string))
 
-main('6')
-main('7')
+for item in main('6'):
+    print item
+print("\r\n")
+for item in main('7'):
+    print item
 
 
 
