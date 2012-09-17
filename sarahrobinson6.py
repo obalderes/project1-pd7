@@ -30,7 +30,7 @@ groups7 = []
 
 while len(pd6) > 0: #for all people in pd 6 
     group = []
-    while len(group) < 4: #make groups of 4 people each
+    while len(group) < 4 and len(pd6) > 0: #make groups of 4 people each while there are still people to add
         name = pd6[randrange(0,len(pd6))] #get a random person from this period
         group.append(name) #add them to the group 
         pd6.remove(name) #remove them from the list (no repeats)
@@ -38,7 +38,7 @@ while len(pd6) > 0: #for all people in pd 6
 
 while len(pd7) > 0: #same as above but for pd 7
     group = []
-    while len(group) < 4:
+    while len(group) < 4 and len(pd7) > 0:
         name = pd7[randrange(0,len(pd7))]
         group.append(name)
         pd7.remove(name)
