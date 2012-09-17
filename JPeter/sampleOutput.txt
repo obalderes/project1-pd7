@@ -1,38 +1,4 @@
-STUDENTS IN PERIOD 7
-Cameron Abma
-Ellie Abrams
-Olivia Balderes
-Sarah Duncan
-John Haggerty
-Steven Huang
-Benjamin Huber
-Shreya Kalva
-Hayden Karp-Hecker
-David Kurkovskiy
-Brian Lam
-Mengdi Lin
-Eli Nass
-Ian Outhwaite
-Jason Peng
-Jasko Peter
-Tiffany Phan
-Denis Plotkin
-Zuzanna Rybicka
-Daryl Sew
-Shan Shi
-Ivan Smirnov
-Leopold Spohngellert
-Jack Stevenson
-Dexter Tong
-Zambeta Tsapos
-Allen Wu
-Brian Yan
-Batya Zamansky
-Raymond Zeng
-Zachary Zimmerman
-james decker
-peter@ubuntu:~/Documents/exploring-git/JPeter$ emacs -nw sort.py
-peter@ubuntu:~/Documents/exploring-git/JPeter$ python sort.py 
+
 STUDENTS IN PERIOD 6
 Sarah Babski
 Nathaniel Biggs
