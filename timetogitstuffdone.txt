@@ -1,5 +1,10 @@
-HI SARA THIS
+HI SARAH THIS
 IS A TEST
 WOOOOOOOOOOOOO
 
+<<<<<<< HEAD
 this is to work with merging things. I hope i can git this to work. 
+=======
+hm edit edit edit let's see what happens 
+edit edit edit more
+>>>>>>> bfb9dae48df35cb4d88288ee785b13f88910a2c6
