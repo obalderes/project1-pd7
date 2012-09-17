@@ -1,7 +1,7 @@
 #!/user/bin/python
 
 import random
-groupNumber = 4
+from random import randrange
 
 #period lists
 p6 = []
@@ -24,6 +24,20 @@ random.shuffle(p7)
 
 
 
+#makes lists for the periods and corresponding headers for them
+listPeriods = [p6, p7]
+headers = ["Period 6 groups", "Period 7 groups"]
+
+#distributes into groups
+for name in listPeriods:
+    print "\n" + headers.pop(0)
+    for num in range(1, len(name) / 4 + 1): #iterate as many times as there are groups
+        print "\tGROUP " + str(num) + ":"  #print group number
+        for num in range(0, 4):
+            if not name:
+                break
+            else:
+                print "\t" + str(name.pop(0))
 
 
 
