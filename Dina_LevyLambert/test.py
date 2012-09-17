@@ -18,7 +18,11 @@ for line in open("ml7-student-names", "r").readlines():
     else:
         p6.append(betterLine)
 
-print p7, p6
+#randomize order in both periods
+random.shuffle(p6)
+random.shuffle(p7)
+
+
 
 
 
