@@ -23,12 +23,12 @@ group6 = "\n"+"Period 6"
 group7 = "\n"+"Period 7"
 while len(period6) > index6:
     if index6 % 4 == 0:
-        group6 = group6 + "\n"
+        group6 = group6 + "\n"+"\n"+"Group "+str(index6/4+1) + "\n"
     group6 = group6+"\n"+period6[index6]
     index6 = index6 + 1
 while len(period7) > index7:
     if index7 % 4 == 0:
-        group7 = group7 + "\n"
+        group7 = group7 + "\n"+"\n"+"Group "+str(index7/4+1) + "\n"
     group7 = group7+"\n"+period7[index7]
     index7 = index7 + 1
 print group6
