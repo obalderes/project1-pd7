@@ -1,5 +1,0 @@
-import random
-
-file = open(./ml7-student-names.txt)
-
-print "hello, world"

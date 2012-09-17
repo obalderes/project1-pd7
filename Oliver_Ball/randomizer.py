@@ -15,3 +15,9 @@ for line in file:
 
 print nameList[0]
 
+for name in nameList:
+    if name[-2:-1] == '6':
+        period6.append(name[:-2])
+    elif name[
+
+print nameList[0]
