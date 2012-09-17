@@ -37,4 +37,4 @@ while len(period7) > index7:
 #Actually Print
 print group6
 print "\n"+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-print group7
+print group7+"\n"
