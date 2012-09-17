@@ -5,7 +5,7 @@ f = open("ml7-student-names",'r')
 nameList = f.readlines()
 nameList.append('None,None,6.')
 
-# get items from nameList that contain the fuction's argument into a list and shuffle the list
+# get items from nameList that contain the function's argument into a list and shuffle the list
 def ShuffleList(string):
     l=[]
     for index in range(len(nameList)):
@@ -28,6 +28,7 @@ def GroupPull(l):
             f.append(s)
             s=[]
     return f
+
 
 def main(string):
     return GroupPull(ShuffleList(string))
