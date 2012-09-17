@@ -20,7 +20,8 @@ random.shuffle(period7)
 #Make Strings to Print
 group6 = "\n"+"Period 6"
 group7 = "\n"+"Period 7"
-
+index6 = 0
+index7 = 0
 while len(period6) > index6:
     if index6 % 4 == 0:
         group6 = group6 + "\n"+"\n"+"Group "+str(index6/4+1) + "\n"
