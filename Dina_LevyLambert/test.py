@@ -8,7 +8,6 @@ p6 = []
 p7 = []
 
 #reformat line and divide the list of names into their periods
-
 for line in open("ml7-student-names", "r").readlines():
     newLine = line.strip()
     goodLine = newLine.split(',')
@@ -30,14 +29,15 @@ headers = ["Period 6 groups", "Period 7 groups"]
 
 #distributes into groups
 for name in listPeriods:
-    print "\n" + headers.pop(0)
+    print "\n", headers.pop(0)
     for num in range(1, len(name) / 4 + 1): #iterate as many times as there are groups
-        print "\tGROUP " + str(num) + ":"  #print group number
+        print "\n\tGROUP " + str(num) + ":"  #print group number
         for num in range(0, 4):
-            if not name:
+            if not name: #if no name is left the loop breaks
+                print "\n"
                 break
             else:
-                print "\t" + str(name.pop(0))
+                print "\t" + str(name.pop(0)) #prints next name
 
 
 
