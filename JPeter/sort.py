@@ -12,7 +12,7 @@ for x in a:
 
 for student in b:
     for data in student:
-        print data
+
         if data == '6':
             period6.append(student)
         if data == '7':
