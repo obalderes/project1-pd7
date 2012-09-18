@@ -21,15 +21,15 @@ def makeGroups(period):
     numOfGroup = 1
     temp = 0
     s = "\nGroup "
-    s2 ="%s%d"%(s,numOfGroup)
     for student in period:
         print student
         temp = temp + 1
         if temp % 4 == 0:
             numOfGroup = numOfGroup + 1
+            s2 ="%s%d"%(s,numOfGroup)
             print s2
+       
         
-
 #Shuffle students within each period
 random.shuffle(pd6)
 random.shuffle(pd7)
