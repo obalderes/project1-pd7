@@ -13,10 +13,10 @@ def organize():
     numOfStudents = len(names)
     counter  = 0
     while counter  < numOfStudents:
-        if(names[counter].find("6") != 0):
-            pd6.append(names[counter].rstrip('6')
+        if names[counter].find("6") != 0:
+            pd6.append(((names[counter]).rstrip('6')))
         else:
-            pd7.append(names[counter].rstrip('7')
+            pd7.append(((names[counter]).rstrip('7')))
 
 #Method to make the groups of 4 within each period
 def makeGroups(period):
@@ -24,12 +24,12 @@ def makeGroups(period):
     s = "Group "
     n = 1
     s2 = "%s%d"%(s,n)
-    print s2 "\n"
+    print s2 + "\n"
     while len(period) > a
-        print period[a] "\n"
+        print period[a] + "\n"
         if a % 4 == 0
             s2++
-            print "\n"  s2 "\n"
+            print "\n" + s2 + "\n"
 
 #Run organize to put students into respective periods            
 organize()
