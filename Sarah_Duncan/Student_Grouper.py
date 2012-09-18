@@ -46,7 +46,7 @@ def formGroups():
         counter = counter + 1
     while(counter7 <= size7):
         if((counter7 - 1) % 4 == 0):
-            randomized_groups_7 += ("Group #" + str(((counter - 1) / 4) + 1) + "\n")
+            randomized_groups_7 += ("Group #" + str(((counter - 1) / 4) + 2) + "\n")
         randomized_groups_7 += names_list_7.pop(0)
         if(counter7 % 4 == 0):
             randomized_groups_7 += "-------------------------- \n"
