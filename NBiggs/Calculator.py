@@ -169,6 +169,25 @@ def but9():
 			showing = 9
 	display = Label(window,text=showing)
 	display.grid(row=0,column = 3)
+def but10():
+	global showing
+	global ans
+	if ans == 0:
+		showing = 0
+		ans = 0
+	else:
+		if showing > 0:
+			showing = (showing*10)
+		else:
+			showing = 0
+	display = Label(window,text=showing)
+	display.grid(row=0,column = 3)
+def but11():
+	global showing
+	if type(showing) is not float:
+		showing = showing * 1.0
+	display = Label(window,text=showing)
+	display.grid(row=0,column = 3)
 def but12():
 	global showing
 	global ans
@@ -234,6 +253,8 @@ b6.configure(command=but6)
 b7.configure(command=but7)
 b8.configure(command=but8)
 b9.configure(command=but9)
+b10.configure(command=but10)
+b11.configure(command=but11)
 b12.configure(command=but12)
 b13.configure(command=but13)
 b14.configure(command=but14)
