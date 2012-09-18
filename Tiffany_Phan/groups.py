@@ -24,9 +24,9 @@ def makeGroups(period):
     s2 ="%s%d"%(s,numOfGroup)
     for student in period:
         print student
-        temp + 1
+        temp = temp + 1
         if temp % 4 == 0:
-            numOfGroup + 1
+            numOfGroup = numOfGroup + 1
             print s2
         
 
