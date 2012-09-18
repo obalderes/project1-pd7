@@ -32,16 +32,15 @@ for name in nameList:
         period7.append(name[:-3])
 
 
-#Reverse names to First Last
-for name in period6:
-    tmp = name.split(',')
-    name = tmp[1] + ' '  +  tmp[0]
-    
-for name in period7:
-    tmp = name.split(',')
-    name = tmp[1] + ' '  +  tmp[0]
-    
 
+#Reverse names to First Last
+for i,name in enumerate(period6):
+    tmp = name.split(',')
+    period6[i] = tmp[1] + ' '  +  tmp[0]
+    
+for i,name in enumerate(period7):
+    tmp = name.split(',')
+    period7[i] = tmp[1] + ' '  +  tmp[0]
 
 
 #Break periods into groups
@@ -59,7 +58,7 @@ while (i < period7.__len__()):
         period7[i] = ''.join((period7[i],'\n'))
     i = i+1
 
-"""
+
 #Print final groups
 print 'PERIOD 6 GROUPS:\n'
 for name in period6:
@@ -71,4 +70,3 @@ print 'PERIOD 7 GROUPS:\n'
 for name in period7:
     print name
 
-"""
