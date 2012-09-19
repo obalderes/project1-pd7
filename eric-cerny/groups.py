@@ -5,9 +5,9 @@ per7_info = []
 
 for line in open("ml7-student-names", "r").readlines():
     if (line.find("6") != -1):
-        per6_info.append(line.strip())
+        per6_info.append(line[0:-3])
     else:
-        per7_info.append(line.strip())
+        per7_info.append(line[0:-3])
 
 random.shuffle(per6_info)
 random.shuffle(per7_info)
