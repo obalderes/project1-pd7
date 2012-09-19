@@ -1,37 +1,36 @@
 import random
 
-Pd6 = list()
-Pd7 = list()
-allnames = list()
+Pd6 = []
+Pd7 = []
+allnames = []
 
-for line in open("ml7-student-names", "r").readlines():
+temp = open("ml7-student-names", "r")
+
+for line in temp:
+    line = line.strip()
     allnames.append(line)
 
 for string in allnames:
-    if string[-1] == '6':
-        string = string[:-2]
+    if '6' in string:
         Pd6.append(string)
-    elif string[-1] == '7':
-        string = string[:-2]
+    else:
         Pd7.append(string)
 
-Pd6 = random.shuffle(Pd6)
-Pd7 = random.shuffle(Pd7)
+random.shuffle(Pd6)
+random.shuffle(Pd7)
 
-Pd6counter = 36
-Pd7counter = 32
+def printGroups(l):
+    for string in l:
+        print string
+        if ((l.index(string)+1) % 4) == 0:
+             print "\n"
 
-print "Pd 6 Groups:"
-while Pd6counter > 0:
-    print Pd6(Pd6counter)
-    Pd6counter-= 1
-    if Pd6counter % 4 == 0:
-        print ""
-print "Pd 7 Groups:"
-while Pd7counter > 0:
-    print Pd7(Pd7counter)
-    Pd7counter-= 1
-    if Pd7counter % 4 == 0:
-        print ""
+print "6th Period Groups:"
+printGroups(Pd6)
+print "7th Period Groups:"
+printGroups(Pd7)
 
-raw_input("Press<enter>")
+
+    
+
+
