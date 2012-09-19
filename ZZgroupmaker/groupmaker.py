@@ -1,31 +1,34 @@
+#####################################
+#####################################
+####                             ####
+####      ZACHARY ZIMMERMAN      ####
+####    SOFTWARE  DEVELOPMENT    ####
+####     SEPTEMBER 15,  2012     ####
+####                             ####
+#####################################
+#####################################
+
 def loadnames(path):
     """
     loadnames(path)
-    
-    Loads the names from the given file into a namelist and returns that list.
-    The namelist contains an entry for every person.
-    Each person's entry is a list with three entries: Lastname, Firstname, Period
-    
-    The format of the text file should be one line for each entry:
-    Lastname,Firstname,Period
-
+    Makes a list with an entry for each person
     Returns a namelist: [ [last,first,pd],...,[smith,john,7] ]
     """
-    namelist = open(path, mode="r").readlines()
+    # make a list with one entry for each line
+    namelist = open(path).readlines()
+    # make each line into a list with values for last, first, and pd
     namelist[:] = [line.strip().split(",") for line in namelist]
     return namelist
 
 def splitperiods(namelist,x,y):
     """
     splitperiods(namelist,x,y)
-    
-    Returns a periodlist with two entries, one for each period, x and y.
-    The entry for each period is a namelist with an entry for each person in that period.
-    Each person's entry is a list with three entries: Lastname, Firstname, Period
-
+    Makes two namelists, one for each period.
     Returns a periodlist: [ [namelist for period x],[namelist for period y] ]
     """
     periodlist = [[],[]]
+    # for each person, check which period they are in
+    # and put them in the right list.
     for person in namelist:
         if int(person[2]) == x:
             periodlist[0].append(person)
@@ -37,33 +40,31 @@ def splitperiods(namelist,x,y):
 
 def makegroups(periodlist,groupsize):
     """
-    magegroups(periodlist,groupsize)
-    
-    Takes in a scrambled periodlist and returns a grouplist.
-    Each entry in the grouplist is for a different period.
-    Each period has an entry for every group.
-    The list for the group contains 'groupsize' entries, one for each person in the group.
-    Each person's entry is a list with three entries: Lastname, Firstname, Period
-
+    makegroups(periodlist,groupsize)
+    Split the people up into groups of the given size.
     Returns a grouplist: [ [[g1 in p6],...,[g8 in p6]], [[g1 in p7],...,[g8 in p7]] ]
     """
     grouplist = [[],[]]
+    
+    # find the number of groups to be made
     for x in xrange(len(periodlist[0])/groupsize):
         group = []
+        # put the right number of people in the group
         for y in xrange(groupsize):
             group.append(periodlist[0][x*groupsize+y])
         grouplist[0].append(group)
+        
     for x in xrange(len(periodlist[1])/groupsize):
         group = []
         for y in xrange(groupsize):
             group.append(periodlist[1][x*groupsize+y])
         grouplist[1].append(group)
+        
     return grouplist
 
 def printgroups(grouplist):
     """
     printgroups(grouplist)
-    
     Prints a grouplist in an organized fashion.
     """
     print ""
@@ -81,5 +82,6 @@ def printgroups(grouplist):
 import random
 allnames = loadnames("ml7-student-names")
 random.shuffle(allnames)
+# I first split the people by period, then make the groups, and then print it all out.
 printgroups(makegroups(splitperiods(allnames,6,7),4))
 
