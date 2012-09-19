@@ -2,41 +2,37 @@
 
 import random
 
-list  = open('ml7-student-names')
-names = list.readlines()
-
 pd6 = []
 pd7 = []
+masterlist = []
 
-#Method to organize period 6 and 7 students into their respective lists
-def organize():
-    numOfStudents = len(names)
-    counter  = 0
-    while counter  < numOfStudents:
-        if names[counter].find("6") != 0:
-            pd6.append(((names[counter]).rstrip('6')))
-        else:
-            pd7.append(((names[counter]).rstrip('7')))
+for line in open("ml7-student-names", "r").readlines():
+    masterlist.append(line)
+
+for student in masterlist: 
+    for period in student:
+        if period == '6':
+            pd6.append(student.strip())
+        if period == '7': 
+            pd7.append(student.strip())
 
 #Method to make the groups of 4 within each period
 def makeGroups(period):
-    a = 0
-    s = "Group "
-    n = 1
-    s2 = "%s%d"%(s,n)
-    print s2 + "\n"
-    while len(period) > a
-        print period[a] + "\n"
-        if a % 4 == 0
-            s2++
-            print "\n" + s2 + "\n"
-
-#Run organize to put students into respective periods            
-organize()
-
+    numOfGroup = 1
+    temp = 0
+    s = "\nGroup "
+    for student in period:
+        print student
+        temp = temp + 1
+        if temp % 4 == 0:
+            numOfGroup = numOfGroup + 1
+            s2 ="%s%d"%(s,numOfGroup)
+            print s2
+       
+        
 #Shuffle students within each period
-shuffle(pd6)
-shuffle(pd7)
+random.shuffle(pd6)
+random.shuffle(pd7)
 
 #Make and print out groups
 print "GROUPS FOR PERIOD 6\n"
