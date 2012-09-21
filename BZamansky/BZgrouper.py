@@ -12,15 +12,15 @@ def reader(data):
 L = reader("ml7-student-names")
 n = len(L)
 
-
 #this sorts the items into their individual periods
 for item in L:
     item = item.strip()
     if (item[-1] == "7"):
         names7.append(item)
-    else:
+    elif item[-1]=="6":
         names6.append(item)
-
+    else:
+        print "ZZZ",item
 
 def randomizer(period):
     """
@@ -29,15 +29,17 @@ def randomizer(period):
     a = []
     random.shuffle(period)
     group = 0
-    num = 0
+    num = -1
     for item in period:
-        if num < 4:
+        if num < 3:
             item = item + ", "
             a.append("%s%d"%(item,group))
             num = num + 1
         else:
             group = group + 1
             num = 0
+            item = item + ", "
+            a.append("%s%d"%(item,group))
     return a
         
 
@@ -46,6 +48,9 @@ def randomizer(period):
 
 names6 = randomizer(names6)
 names7 = randomizer(names7)
+
+print len(names6)
+print len(names7)
 
 print "Period 6 Groups"
 print "last, first, period, group #"
