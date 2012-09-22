@@ -4,8 +4,8 @@ aka the awesome group
 Batya Zamansky: What I did/tried this weekend:
 <p>
 <ul>
-	<li>sat around and did not much </li>
-	<li>watched my dad sit around and do not much </li>
+	<li>sat around and didn't do much</li>
+	<li>watched my dad sit around </li>
 	<li>made a test template to mess around with</li>
 </ul>
 
