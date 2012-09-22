@@ -1,5 +1,5 @@
 project1-pd7
 ============
-*Mengdi Lin
-*James Decker
-*Brian Lam
+<p>Mengdi Lin</p>
+James Decker
+Brian Lam
