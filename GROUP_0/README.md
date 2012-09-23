@@ -2,7 +2,12 @@ GROUP_0
 
 Hayden Karp-Hecker - visual group  
 Steven Huang  
-Shreya Kalva  
+Shreya Kalva - visual group  
 Jack Stevenson  
 
-Hayden: 
+Hayden:  
+I explored CSS as a whole, and HTML Kickstart. I think HTML Kickstart's "Vertical Left Menu"  
+would be ideal for this type of project. Shreya and I also spent some time brainstorming  
+the overall design of the webpage. We discussed all the different pages and how we hope to  
+layout each page.  
+Total Time Spent: ~90 Minutes
