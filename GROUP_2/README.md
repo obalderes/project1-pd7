@@ -8,5 +8,5 @@ Eli Nass
 
 Ivan Smirnov
 
-<b>David Kurkovskiy</b>
+<b>David Kurkovskiy</b><BR>
 Installed virtual environment! 9/23 6:35 p.m.
