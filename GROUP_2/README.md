@@ -12,6 +12,9 @@ I am willing to do either job, and as of right now have no preference
 
 
 Ivan Smirnov
+ivansmirnov13@gmail.com
+
+Gonna install Flask and Virtual Env right now, was busy before. Also will do whatever is needed.
 
 <b>David Kurkovskiy</b><BR>
 Installed virtual environment! 9/23 6:35 p.m. Took a min.
