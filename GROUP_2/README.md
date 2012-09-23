@@ -9,4 +9,5 @@ Eli Nass
 Ivan Smirnov
 
 <b>David Kurkovskiy</b><BR>
-Installed virtual environment! 9/23 6:35 p.m.
+Installed virtual environment! 9/23 6:35 p.m. Took a min.
+Installed flask! 9/23 6:48 p.m. Took 5 mins.
