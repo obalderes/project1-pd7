@@ -14,6 +14,15 @@ Sarah Duncan
 
 <p>
 Daryl Sew
+<ul>
+	<li>copied batya's unordered list</li>
+	<li>obtained group members' contact information</li>
+	<li>called program design position</li>
+	<li>wrote some statistics stuff</li>
+	<li>planning on playing around with flask and jinja soon</li>
+	<li>I guess we can discuss program design later.</li>
+</ul>
+	
 
 <p>
 Jason Peng
