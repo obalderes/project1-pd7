@@ -1,6 +1,11 @@
 Period 7 Group 6
 ================
-<p>Brian Yan</p>
+Front-end
+---------
 <p>Ellie Abrams</p>
-<p>Shan Shi</p>
 <p>Zuzanna Rybicka</p>
+
+Back-end
+--------
+<p>Brian Yan</p>
+<p>Shan Shi</p>
