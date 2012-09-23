@@ -10,7 +10,16 @@ Batya Zamansky: What I did/tried this weekend:
 </ul>
 
 <p>
-Sarah Duncan
+Sarah Duncan:
+Stuff of the Weekend Variety:
+<ul>
+	<li>took forever (a.k.a. an hour) to install stuff</li>
+	<li>finally got everything working and opened this file</li>
+	<li>laughed at Batya's description (love you, Batya!)</li>
+	<li>I discovered my Dad has books on git and CSS/html and I stole them hehe. I don't know much at all about CSS/html but if you guys need me in the visual group, I have resources!</li>
+</ul>
+
+</p>
 
 <p>
 Daryl Sew
