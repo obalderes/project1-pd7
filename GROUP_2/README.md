@@ -1,6 +1,12 @@
 GROUP 2
 
+Hey guys. We should all exchange e-mails! Mine is brainmonkey95@gmail.com - DK
+
 Tiffany Phan
+
 Eli Nass
+
 Ivan Smirnov
-David Kurkovskiy
+
+<b>David Kurkovskiy</b>
+Installed virtual environment! 9/23 6:35 p.m.
