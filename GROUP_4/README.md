@@ -35,3 +35,10 @@ Daryl Sew
 
 <p>
 Jason Peng
+<ul>
+	<li>I have no idea what I am doing</li>
+	<li>attempted to get familiar with html and this stuffs</li>
+	<li>examined other's code</li>
+	<li>Slept</li>
+</ul>
+		
