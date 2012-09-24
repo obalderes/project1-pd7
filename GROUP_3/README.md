@@ -1,5 +1,5 @@
 Group 3
-Members: Peter Jasko	| Leopold Spohngellert | Denis Plotkin | John Haggerty
+Members: Peter Jasko	| Leopold Spohngellert | Denis Plotkin | John HaggertyL
 
 What we each did this weekend of 9/22-9/23:
 
@@ -9,3 +9,7 @@ is is not christmas.I spent an hour skimming the flask doccumentation on a car r
 
 John Haggerty
 I set up/installed virtualenv and flask. I took a look at the flask documentation as well as the jinja page. I spent about a half an hour looking through the documentation. 
+
+Leopold Spohngellert
+I set up flask and read some of the documentation. I'm working on fully understanding the direct relation between templating and coding. Our group decided that half of us will be coding
+while the other half works on templating. 
