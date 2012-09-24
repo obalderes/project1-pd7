@@ -4,11 +4,11 @@ Hey guys. We should all exchange e-mails! Mine is brainmonkey95@gmail.com - DK
 
 Tiffany Phan
 
-Eli Nass
+<b>Eli Nass</b>
 eliftw@gmail.com
 
 Installed both Flask and Virtual Env, made a few sample pages , read through quick start and wrote down a bunch of the stuff we'll need for the website!
-I am willing to do either job, and as of right now have no preference 
+Will work on programming.
 
 
 Ivan Smirnov
