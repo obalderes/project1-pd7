@@ -1,0 +1,55 @@
+/home/tiffanyphan/Templates was removed, reassigning TEMPLATES to homedir
+Backend     : gconf
+Integration : true
+Profile     : unity
+Adding plugins
+Initializing core options...done
+Initializing composite options...done
+nvfx_screen_get_param:95 -  Warning: unknown PIPE_CAP 30
+nvfx_screen_get_param:95 -  Warning: unknown PIPE_CAP 30
+nvfx_screen_get_param:95 -  Warning: unknown PIPE_CAP 55
+nvfx_screen_get_param:95 -  Warning: unknown PIPE_CAP 56
+nvfx_screen_get_param:95 -  Warning: unknown PIPE_CAP 59
+nvfx_screen_get_param:95 -  Warning: unknown PIPE_CAP 58
+nvfx_screen_get_param:95 -  Warning: unknown PIPE_CAP 30
+Initializing opengl options...done
+Initializing decor options...done
+Initializing vpswitch options...done
+Initializing snap options...done
+Initializing mousepoll options...done
+Initializing resize options...done
+Initializing place options...done
+Initializing move options...** Message: applet now removed from the notification area
+done
+Initializing wall options...done
+** Message: using fallback from indicator to GtkStatusIcon
+Initializing grid options...done
+I/O warning : failed to load external entity "/home/tiffanyphan/.compiz/session/108a1980016f17c22e134845498228871500000016740033"
+Initializing session options...done
+Initializing gnomecompat options...done
+Initializing animation options...done
+Initializing fade options...done
+Initializing unitymtgrabhandles options...done
+Initializing workarounds options...done
+Initializing scale options...done
+compiz (expo) - Warn: failed to bind image to texture
+Initializing expo options...done
+Initializing ezoom options...done
+
+(compiz:1741): GConf-CRITICAL **: gconf_client_add_dir: assertion `gconf_valid_key (dirname, NULL)' failed
+Initializing unityshell options...done
+Setting Update "main_menu_key"
+Setting Update "run_key"
+** Message: moving back from GtkStatusIcon to indicator
+Nautilus-Share-Message: Called "net usershare info" but it failed: 'net usershare' returned error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No such file or directory
+Please ask your system administrator to enable user sharing.
+
+Nautilus-Share-Message: Called "net usershare info" but it failed: 'net usershare' returned error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No such file or directory
+Please ask your system administrator to enable user sharing.
+
+Nautilus-Share-Message: Called "net usershare info" but it failed: 'net usershare' returned error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No such file or directory
+Please ask your system administrator to enable user sharing.
+
+Nautilus-Share-Message: Called "net usershare info" but it failed: 'net usershare' returned error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No such file or directory
+Please ask your system administrator to enable user sharing.
+
