@@ -19,3 +19,4 @@ Gonna install Flask and Virtual Env right now, was busy before. Also will do wha
 <b>David Kurkovskiy</b><BR>
 Installed virtual environment! 9/23 6:35 p.m. Took a min.
 Installed flask! 9/23 6:48 p.m. Took 5 mins.
+Wow, I took a long break! I tried to read through the flask quickstart, but struggled for an hour or two with implementing some of the more complex stuff like url_get and requests...maybe looking at it with fresh eyes tomorrow will help. I did play around with the templates and get a url with a variable to work. I will be working on the design side and will try to google search some of the mentioned tools. 11:26 p.m.
