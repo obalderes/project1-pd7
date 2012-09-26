@@ -17,8 +17,8 @@ Outline for Project
 
 Login Page -->
 Your Profile
-* Your Data
-* Your total points and average points
+1. Your Data
+2. Your total points and average points
 **Your Average Points per question and in Total 
 **See comments (anonymously) with each comment's respective  rating
 *Your Groups
