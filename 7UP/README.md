@@ -1,6 +1,8 @@
 Group 7UP
 =========
 
+* * *
+
 ## Members: ##
 
 * Benjamin Huber
