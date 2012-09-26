@@ -20,9 +20,9 @@ Your Profile
 
 *1. Your Data
     2. Your total points and average points
-**Your Average Points per question and in Total 
-**See comments (anonymously) with each comment's respective  rating
-*Your Groups
+    Your Average Points per question and in Total 
+    See comments (anonymously) with each comment's respective  rating
+*2. Your Groups
 **Current Group
 ***give points to other members per question
 ***give comments per question
