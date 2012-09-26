@@ -16,7 +16,7 @@ Group 7UP
 * Started some basic styling -ZZ
 
 
-## Outline ##
+## Outline: ##
 
 Login Page & Profile Page
 
