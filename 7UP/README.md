@@ -25,6 +25,7 @@ Login Page & Profile Page
     * Your average Points per question and in total 
     * See comments (anonymously) with each comment's respective rating
 
+
 2. Your Groups
     * Current Group
         * Give points to other members per question
@@ -32,6 +33,7 @@ Login Page & Profile Page
     * Past Groups
         * Give points to other members per question
         * Give comments per question
+
 
 3. Ranking/Points
     * Top 10 Overall from both classes
