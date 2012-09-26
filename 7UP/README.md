@@ -15,7 +15,6 @@ Group 7UP
 * Wrote Outline for general project design, looked at more Python stuff for the program including some of the shelf implementation -IO
 * Started some basic styling -ZZ
 
-
 ## Outline: ##
 
 Login Page & Profile Page
