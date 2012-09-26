@@ -12,7 +12,10 @@ Group 7UP
 
 * Made test file that loads content into a layout
 * Spent ~80 minutes reading through the Flask quickstart and experimenting with the examples. Briefly looked at Jinja and HTML documentation as well. - RZ
-  
+* Wrote Outline for general project design, looked at more Python stuff for the program including some of the shelf implementation
+
+
+
 Outline for Project
 
 Login Page -->
