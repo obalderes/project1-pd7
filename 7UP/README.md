@@ -16,8 +16,8 @@ Group 7UP
 Outline for Project
 
 Login Page -->
-*Your Profile
-*a)Your Data
+Your Profile
+*Your Data
 *     -Your total points and average points
 *     -Your Average Points per question and in Total 
 *     -See comments (anonymously) with each comment's respective  rating
