@@ -1,7 +1,7 @@
-Batya Zamansky
-Sarah Duncan
-Jason Peng
-Daryl Sew
+Batya Zamansky<br>
+Sarah Duncan<br>
+Jason Peng<br>
+Daryl Sew<br>
 
 
 Design:
