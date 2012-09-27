@@ -1,8 +1,9 @@
 from flask import Flask
-from flask import  url_for, redirect, flask, request
+from flask import url_for, redirect, request, flash
 from flask import render_template
 
 app = Flask(__name__)
+app.secret_key = "Group 2 rules!"
 
 @app.route("/", methods = ['GET', 'POST'])
 def home():
@@ -10,10 +11,10 @@ def home():
 		return render_template("form.html")
 	else:
 		button = request.form['button']
-		name = request.form['username']
-		assert name != ""
-		flash("Name: %s" % (name))
-		return redirect(url_for('home/' + name)
+		username = request.form['username']
+		assert username != ""
+		flash("Name: " + username)
+		return redirect(url_for("hello/<username>"))
 	#return "This is David's really cool test page. It's in the works."
 	#return url_for('hello')
 	#return redirect(url_for('hello'))
