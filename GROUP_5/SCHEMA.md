@@ -1,9 +1,13 @@
 <p>Our group wants to use 6 dictionaries to store the data.</p>
 <ul>
-<li>key                      info</li>
-<li>[name, project #]        group emails</li>
-<li>name                     email</li>
-<li>ID                       [name, period]</li>
-<li>project #                ratings received for that project</li>
-<li>name                     overall rating</li>
+<li>key: [name, project #]</li>
+<li>info: group emails</li>
+<li>key: name</li>
+<li>info: email</li>
+<li>key: ID</li>
+<li>info: [name, period]</li>
+<li>key: project #</li>
+<li>info: ratings received for that project</li>
+<li>key: name</li>
+<li>info: overall rating</li>
 </ul>
