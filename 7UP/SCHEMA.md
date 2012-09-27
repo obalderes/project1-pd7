@@ -3,25 +3,22 @@ Group 7UP
 
 * * *
 
-## Members: ##
+## SCHEMA ##
 
-* Benjamin Huber
-* Ian Outhwaite
-* Raymond Zeng
-* Zachary Zimmerman
+Shelf containing a dictionary of "projects" and a dictionary of "people"
 
-## Progress: ##
+PROJECTS
+each project contains a dictionary of "groups"
+each group contains a dictionary of "members" 
+each member has a name(first,last), and an email adress, and a dictionary of feedback
+each entry in feedback is a list of length 4, with room for the period,group,score,and comments.
 
-* Made test file that loads content into a layout -ZZ
-* Spent ~80 minutes reading through the Flask quickstart and experimenting with the examples. Briefly looked at Jinja and HTML documentation as well. - RZ
-* Wrote Outline for general project design, looked at more Python stuff for the program including some of the shelf implementation -IO
-* Started some basic styling -ZZ
+PEOPLE
+each person has a name(first,last) an email adress, and a dictionary of "projects1"
+Projects1 is a dictionary that contains a list of groups
+each group contains a dictionary of "groupmems"
+each groupmem has a name(first,last), an email adress, and list of questions. (It refers to the member within projects)
+each question is a list of length 4, with room for one score and one comment (project# and group# are automatically added)
 
-## Outline: ##
+The basic idea is that in our program a user will search themselves up to get their own scores through "PROJECTS," and they will give feedback to to others through the "PEOPLE" dictionary.
 
-Login Page & Profile Page
-
-1. Your Data
-    * Your total points and average points
-    * Your average Points per question and in total 
-    * See comments (anonymously) with each comment's respective rating
