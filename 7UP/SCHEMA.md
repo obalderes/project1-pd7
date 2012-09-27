@@ -13,7 +13,7 @@ PROJECTS
 1. each member has a name(first,last), and an email adress, and a dictionary of feedback
 1. each entry in feedback is a list of length 4, with room for the period,group,score,and comments.
 
-PEOPLE </n>
+PEOPLE
 1. each person has a name(first,last) an email adress, and a dictionary of "projects1"
 1. Projects1 is a dictionary that contains a list of groups
 1. each group contains a dictionary of "groupmems"
