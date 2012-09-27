@@ -14,7 +14,7 @@ def home():
 		username = request.form['username']
 		assert username != ""
 		flash("Name: " + username)
-		return redirect(url_for("hello/<username>"))
+		return redirect(url_for('hello', name = username))
 	#return "This is David's really cool test page. It's in the works."
 	#return url_for('hello')
 	#return redirect(url_for('hello'))
