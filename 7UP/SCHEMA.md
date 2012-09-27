@@ -7,13 +7,13 @@ Group 7UP
 
 Shelf containing a dictionary of "projects" and a dictionary of "people"
 
-PROJECTS
+## PROJECTS ##
 * each project contains a dictionary of "groups"
 * each group contains a dictionary of "members" 
 * each member has a name(first,last), and an email adress, and a dictionary of feedback
 * each entry in feedback is a list of length 4, with room for the period,group,score,and comments.
 
-PEOPLE
+## PEOPLE ##
 * each person has a name(first,last) an email adress, and a dictionary of "projects1"
 * Projects1 is a dictionary that contains a list of groups
 * each group contains a dictionary of "groupmems"
