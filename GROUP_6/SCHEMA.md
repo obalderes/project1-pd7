@@ -25,11 +25,10 @@
 	-leaveComment(idofreceiver, id,rating,title,comment) check the IDs and store the comment into the shelve with a timestamp
 	-changeGroup(group) changes the currentgroup
 
-##Designs
-![Homepage](Design-sketches/Homepage.png)
-<p>Project name subject to change</p>
-![Dashboard](Design-sketches/Dashboard.png)
-![Group](Design-sketches/Group.png)
-![Browse](Design-sketches/Browse.png)
-![Search](Design-sketches/Search.png)
-![Account](Design-sketches/Account.png)
+##Design sketches
+![Homepage](Design-sketches/Homepage.png)Project name subject to change<br />
+![Dashboard](Design-sketches/Dashboard.png)<br />
+![Group](Design-sketches/Group.png)<br />
+![Browse](Design-sketches/Browse.png)<br />
+![Search](Design-sketches/Search.png)<br />
+![Account](Design-sketches/Account.png)<br />
