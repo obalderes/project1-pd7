@@ -12,6 +12,7 @@
 			-name
 			-email
 			-currentgroup
+			(profile picture is stored in profilepictures/[id#].png)
 		-Comments(list of list)
 			-id[] (id of the commenter is not displayed, but kept to allow editing)
 			-ratings[] (0 to 5 stars)
@@ -22,6 +23,7 @@
 	-avg() average of all ratings
 	-getComments(id) returns the entire comments list for the specified 
 	-leaveComment(idofreceiver, id,rating,title,comment) check the IDs and store the comment into the shelve with a timestamp
+	-changeGroup(group) changes the currentgroup
 
 ##Designs
 ![Homepage](Design-sketches/Homepage.png)
