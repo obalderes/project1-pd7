@@ -30,5 +30,4 @@
 ![Dashboard](Design-sketches/Dashboard.png)<br />
 ![Group](Design-sketches/Group.png)<br />
 ![Browse](Design-sketches/Browse.png)<br />
-![Search](Design-sketches/Search.png)<br />
 ![Account](Design-sketches/Account.png)<br />
