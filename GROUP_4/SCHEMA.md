@@ -15,7 +15,6 @@ Functions:
      <li>getStudent(email)</li>
      <li>seeRatings(email)</li>
      <li>saveRating(name)</li>
-     <li> </li>
 </ul>
 
 Page Design: <br>
