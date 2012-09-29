@@ -3,6 +3,7 @@ from flask import Flask
 import shelve
 
 
+
 def fixNames(data):
     """
     Changes the datafile recieved into a string of first,last,email
@@ -13,25 +14,21 @@ def fixNames(data):
 def createGroups(data):
     """
     Makes the Groups shelve
+
+    Entire group is referenced by the key -- so when we do the list to show who is in the group, just make sure to take out the email that is the key.
     """
     groups = shelve.open("groups")
     f = open(data).readlines()
+    for item in f:
+        item = item.strip()
     num = 0
     for item in f:
         a,b = item.split(",",1)
         c = b.split(",")
-        #print c
         for item in c:
             groups[item] = c
-            print "key then item"
-            print item
-            print groups[item]
-            num = num + 1
-    # print f
-    print num
-    groups.close()
 
-      
+    groups.close()
     pass
 
 def createQuestions(data):
@@ -41,7 +38,18 @@ def createQuestions(data):
 
     pass
 
+
+def testing():
+    gr = shelve.open("groups")
+    print gr.keys()
+
+
+#testing()
+
+
 createGroups("p1.txt")
 f = shelve.open("groups")
 print len(f)
 print f.keys()
+f.close()
+
