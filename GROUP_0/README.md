@@ -1,9 +1,9 @@
 GROUP_0
 
 Hayden Karp-Hecker - visual group  
-Steven Huang  
+Steven Huang - programming group
 Shreya Kalva - visual group  
-Jack Stevenson  
+Jack Stevenson -programming group
 
 Hayden:  
 I explored CSS as a whole, and HTML Kickstart. I think HTML Kickstart's "Vertical Left Menu"  
@@ -15,3 +15,6 @@ Total Time Spent: ~90 Minutes
 Shreya:  
 Once I was able to download Flask, I read over the documentation and quickstart and played around with it. I also created a test template to try out that documentation as well. I explored how html and CSS work, and looked into HTML Kickstart and Twitter Bootstrap. Hayden and I also discussed the overall layout of the page and possible design blueprints for each individual page.  
 Time Spent: Most of Sunday afternoon.
+
+Jack: Were we supposed to do some kind of log here? I'm STILL NOT IN THE GOOGLE GROUP
+Anyway, I got Flask going and fooled around with localhost html stuff.
