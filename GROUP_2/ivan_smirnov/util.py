@@ -5,18 +5,19 @@ for n in QuestionsList:
 
 StudentsList = open("students.txt", "r").readlines()
 
-for n in StudentsList:
-    n = str(n)
-
-def verifylogin(idnum):
+def verifylogin(email, idnum):
     for n in StudentsList:
-        if ("idnum" in n):
+        if (email in n and idnum in n):
             print "true"
         else:
             print "false"
+        #if (idnum in n):
+            #print "true"
+        #else:
+            #print "false"
 
          
-verifylogin(8231)
+verifylogin("ivansmirnov13@gmail.com","8231")
 
 
 
