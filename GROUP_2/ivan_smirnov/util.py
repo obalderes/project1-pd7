@@ -21,8 +21,29 @@ def get_group(email):
 
 get_group("ivansmirnov13@gmail.com")
 
+GroupsList = open("students.txt", "r").readlines()
 
+g = []
 
+for n in GroupsList:
+    n.split(",")
+    g.append(n)
+
+#for n in g:
+    #print n
+
+for n in g:
+    n.split(",")
+
+#for n in g:
+    #print n
+
+def get_groupMembers(x):
+    for n in g:
+        if(x in n):
+            print n[1] + n[2]
+
+get_groupMembers("2")
 
 
 
