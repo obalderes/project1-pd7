@@ -14,8 +14,23 @@ def createGroups(data):
     """
     Makes the Groups shelve
     """
+    groups = shelve.open("groups")
     f = open(data).readlines()
-    print f
+    num = 0
+    for item in f:
+        a,b = item.split(",",1)
+        c = b.split(",")
+        #print c
+        for item in c:
+            groups[item] = c
+            print "key then item"
+            print item
+            print groups[item]
+            num = num + 1
+    # print f
+    print num
+    groups.close()
+
       
     pass
 
@@ -27,3 +42,6 @@ def createQuestions(data):
     pass
 
 createGroups("p1.txt")
+f = shelve.open("groups")
+print len(f)
+print f.keys()
