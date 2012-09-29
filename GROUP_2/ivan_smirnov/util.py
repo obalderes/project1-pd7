@@ -11,13 +11,18 @@ def verifylogin(email, idnum):
             print "true"
         else:
             print "false"
-        #if (idnum in n):
-            #print "true"
-        #else:
-            #print "false"
-
          
 verifylogin("ivansmirnov13@gmail.com","8231")
+
+def get_group(email):
+    for n in StudentsList:
+        if (email in n):
+            print str(n)[(len(str(n))-2):]
+
+get_group("ivansmirnov13@gmail.com")
+
+
+
 
 
 
