@@ -6,10 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def print_page():
-    text = '<font size="20"><b>Ratebook<b></font>'
-    text += "<br>"
-    text += "Please log in using your email."
-    return text
+    return render_template("index.html")
 
 @app.route("/login")
 def login_page():
