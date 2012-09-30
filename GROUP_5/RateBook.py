@@ -6,9 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def print_page():
-    text = "<b>Ratebook<b>"
-    text 
-    return text
+    return render_template("index.html")
 
 @app.route("/login")
 def login_page():
