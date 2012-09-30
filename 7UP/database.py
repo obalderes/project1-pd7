@@ -8,8 +8,8 @@ def createProj(data):
     """
 
 projects = {}
-projects['1'] = createProj('p1.txt')
 database['Projects'] = projects
+projects['1'] = createProj('p1.txt')
 
 print database
 database.close()
