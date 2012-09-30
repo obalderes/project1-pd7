@@ -7,10 +7,14 @@ that pertains to user login. The codes included request.form() method which I am
 Also, I still don't understand what is a request object. For our first project, I am still shaky about 
 storing data on a website and getting user's feedback.</p>
 
+<<<<<<< HEAD
+<p>James Decker: I'm sorry that I didn't update this earlier, but I installed Ubuntu yesterday and I didn't figure out how to do everything until today (I know, it's pathetic). I installed everything and will be working with it through the week. </p>
+=======
 <p>James Decker: I installed Ubuntu Sunday afternoon/evening and had a hard time getting everything 
 together, and I still haven't got everything working yet (posting from Windows, since somehow my 
 commits and pushes did not work). I do however have everything installed, and it seems like it will
 be working when I really dive into it this week.</p>
+>>>>>>> eb508245dd7b0e13e12e6acd70e170e7c14c43a3
 
 <p>Brian Lam: Over the weekend, I did some research on how to install Python virtual environments
 on Windows. I sent out an email to the group to help the other people who are using Windows 

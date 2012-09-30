@@ -26,8 +26,8 @@ def createProj(data):
     return p
 
 projects = {}
-projects['1'] = createProj('p1.txt')
 database['Projects'] = projects
+projects['1'] = createProj('p1.txt')
 
 print database['Projects']['1'][0]
 database.close()
