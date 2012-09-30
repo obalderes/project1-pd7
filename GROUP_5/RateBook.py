@@ -8,10 +8,9 @@ app = Flask(__name__)
 def print_page():
     return render_template("index.html")
 
-@app.route("/login")
-def login_page():
-    text = "Login page"
-    return text
+@app.route("/rate")
+def rate_page():
+    return render_template("rate.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
