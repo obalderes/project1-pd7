@@ -31,8 +31,12 @@ Daryl Sew
 	<li>planning on playing around with flask and jinja soon</li>
 	<li>I guess we can discuss program design later.</li>
 </ul>
-	
+<br />
 
+<ul>
+	<li>Set up laptop with Git and a Python editor and interpreter in preparation for tomorrow- not enough time to install Ubuntu on it though.</li>
+</ul>
+</p>
 <p>
 Jason Peng
 <ul>
