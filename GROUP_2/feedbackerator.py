@@ -11,7 +11,7 @@ def rate_page():
     else:
         button = request.form['button']
     
-    name = request.form['']
+    name = request.form['student_rated']
     rating = request.form['rating']
     assert name != ""
 

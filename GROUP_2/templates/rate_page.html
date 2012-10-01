@@ -6,10 +6,10 @@
 
   <p>
    Please rate this person on their overall group performance.
-
+   <p>
    {% for number in range(10) %}
-   <input type=radio name=rating value={{number}}>{{number}}</input>
-   {% end for %}
+   <input type=radio name=rating value={{number + 1}}>{{number + 1}}</input>
+   {% endfor %}
 
   <p>
 
