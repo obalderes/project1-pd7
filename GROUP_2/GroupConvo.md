@@ -8,5 +8,9 @@ stuff will be). There will need to be a txt file with all the questions and
 code that parses through it, but for the time being, I hard-coded one
 question.
 
+So far, I have a page under the branch /rate that has a place to type in some
+info about who's being rated (I called this username) and a sample question 
+and set of radio buttons. Nothing happens when you click rate, yet.
+
 ---DK--10.1--12:30am---(I'm thinking we can sign like this and keep adding on
 to this file, so there's a way to keep all our thoughts together)
