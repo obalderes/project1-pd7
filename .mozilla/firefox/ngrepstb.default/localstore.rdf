@@ -9,22 +9,18 @@
   <RDF:Description RDF:about="chrome://browser/content/browser.xul#main-window"
                    width="994"
                    height="838"
-                   screenX="159"
-                   screenY="104"
+                   screenX="65"
+                   screenY="59"
                    sizemode="maximized" />
-  <RDF:Description RDF:about="chrome://mozapps/content/downloads/unknownContentType.xul#unknownContentType"
-                   screenX="247"
-                   screenY="247" />
-  <RDF:Description RDF:about="chrome://mozapps/content/downloads/downloads.xul">
-    <NC:persist RDF:resource="chrome://mozapps/content/downloads/downloads.xul#downloadManager"/>
-  </RDF:Description>
-  <RDF:Description RDF:about="chrome://browser/content/browser.xul#sidebar-box"
-                   sidebarcommand=""
-                   width=""
-                   src="" />
   <RDF:Description RDF:about="chrome://mozapps/content/downloads/unknownContentType.xul">
     <NC:persist RDF:resource="chrome://mozapps/content/downloads/unknownContentType.xul#unknownContentType"/>
   </RDF:Description>
+  <RDF:Description RDF:about="chrome://mozapps/content/downloads/downloads.xul">
+    <NC:persist RDF:resource="chrome://mozapps/content/downloads/downloads.xul#downloadManager"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="chrome://mozapps/content/downloads/unknownContentType.xul#unknownContentType"
+                   screenX="247"
+                   screenY="247" />
   <RDF:Description RDF:about="chrome://mozapps/content/downloads/downloads.xul#downloadManager"
                    screenY="24"
                    width="485"

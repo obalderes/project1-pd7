@@ -15,6 +15,18 @@ def rate_page():
     rating = request.form['rating']
     assert name != ""
 
+def view_results():
+    if request.method == "GET":
+        return render_template("results.html")
+    else:
+        button = request.form['button']
+    
+    name=request.form['student_rated']
+    rating = request.form['rating']
+    assert name != ""
+    flash("Name:%s Rating:%s"%(name,rating))
+                        
+
 if __name__ == "__main__":
     app.debug = True
     app.run()

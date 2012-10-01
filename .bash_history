@@ -162,3 +162,43 @@ git add .
 git commit -a -m "update"
 git pull https://github.com/stuycs-ml7/project1-pd7.git
 git push https://github.com/stuycs-ml7/project1-pd7.git
+git push https://github.com/stuycs-ml7/project1-pd7.git
+cd ~/period7
+git pull https://github.com/stuycs-ml7/project1-pd7.git
+git push https://github.com/stuycs-ml7/project1-pd7.git
+cd 
+git push https://github.com/stuycs-ml7/project1-pd7.git
+git -rm Tiffany_Phan
+git rm Tiffany_Phan
+git -r rm Tiffany_Phan
+git rm -r Tiffany_Phan
+git push https://github.com/stuycs-ml7/project1-pd7.git
+git commit -a -m "update"
+git push https://github.com/stuycs-ml7/project1-pd7.git
+git rm groups.py
+cd ~/ml7
+git pull https://github.com/stuycs-ml7/project1-pd7.git
+git rm .gitignore
+git rm groups.py
+git rm .DS_Store
+rm .#helloWorld.py
+git rm .helloWorld.py
+git commit -a -m "update"
+git push https://github.com/stuycs-ml7/project1-pd7.git
+git rm groups.py
+git pull https://github.com/stuycs-ml7/project1-pd7.git
+git rm groups.py
+git pull https://github.com/stuycs-ml7/project1-pd7.git
+git rm groups.py
+git commit -a -m "update"
+git push https://github.com/stuycs-ml7/project1-pd7.git
+git rm groups.py
+git commit -a -m "update"
+git add
+git add .
+git commit -a -m "update"
+git rm groups.py
+git push https://github.com/stuycs-ml7/project1-pd7.git
+cd ~/GROUP_2
+emacs form.html
+emacs results.html

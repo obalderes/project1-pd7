@@ -24,6 +24,21 @@ def home():
 def hello(name = None):
 	return render_template("hello.html", name = name)
 
+def view_results():
+    if request.method == "GET":
+        return render_template("results.html")
+    else:
+        button = request.form['button']
+    	username = request.form['username']
+	assert username != ""
+	flash("Name: " + username)
+	return redirect(url_for('results', name = username))
+
+@app.route("/results")
+def results(name = None):
+	return render_template("results.html", name = name)
+
+
 if __name__ == "__main__":
 	app.debug = True
 	app.run()

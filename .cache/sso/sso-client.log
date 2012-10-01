@@ -76,3 +76,15 @@
 2012-09-23 23:18:20,381:381.472110748 - ubuntu_sso.credentials - INFO - find_credentials: self.app_name dbus.String(u'Ubuntu Software Center'), result is {}? True
 2012-09-23 23:18:20,381:381.746053696 - ubuntu_sso.main - INFO - 'CredentialsManagement': emitting 'CredentialsNotFound' with args (dbus.String(u'Ubuntu Software Center'),) and kwargs {}
 2012-09-23 23:18:30,392:392.523050308 - ubuntu_sso.main - INFO - Shutting down, calling <function shutdown_func at 0x19185f0>.
+2012-10-01 03:39:33,785:785.876989365 - ubuntu_sso.main - INFO - Setting up Ubuntu SSO service.
+2012-10-01 03:39:33,828:828.058958054 - ubuntu_sso.main - INFO - Ubuntu SSO service started.
+2012-10-01 03:39:33,828:828.519105911 - ubuntu_sso.account - INFO - Creating a new SSO access layer for service url u'https://login.ubuntu.com/api/1.0/'
+2012-10-01 03:39:33,903:903.600931168 - ubuntu_sso.credentials - INFO - find_credentials: self.app_name dbus.String(u'Ubuntu Software Center'), result is {}? True
+2012-10-01 03:39:33,904:904.194116592 - ubuntu_sso.main - INFO - 'CredentialsManagement': emitting 'CredentialsNotFound' with args (dbus.String(u'Ubuntu Software Center'),) and kwargs {}
+2012-10-01 03:39:43,914:914.911031723 - ubuntu_sso.main - INFO - Shutting down, calling <function shutdown_func at 0x31765f0>.
+2012-10-01 03:44:34,683:683.507919312 - ubuntu_sso.main - INFO - Setting up Ubuntu SSO service.
+2012-10-01 03:44:34,689:689.985990524 - ubuntu_sso.main - INFO - Ubuntu SSO service started.
+2012-10-01 03:44:34,690:690.215110779 - ubuntu_sso.account - INFO - Creating a new SSO access layer for service url u'https://login.ubuntu.com/api/1.0/'
+2012-10-01 03:44:34,695:695.691108704 - ubuntu_sso.credentials - INFO - find_credentials: self.app_name dbus.String(u'Ubuntu Software Center'), result is {}? True
+2012-10-01 03:44:34,695:695.982933044 - ubuntu_sso.main - INFO - 'CredentialsManagement': emitting 'CredentialsNotFound' with args (dbus.String(u'Ubuntu Software Center'),) and kwargs {}
+2012-10-01 03:44:44,706:706.348896027 - ubuntu_sso.main - INFO - Shutting down, calling <function shutdown_func at 0x12305f0>.

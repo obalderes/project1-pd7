@@ -311,4 +311,100 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="file:///home/tiffanyphan/GROUP_2/GroupConvo.md" added="2012-10-01T07:08:34Z" modified="2012-10-01T07:24:43Z" visited="2012-10-01T07:08:35Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-markdown"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="nautilus" exec="&apos;gedit %U&apos;" modified="2012-10-01T07:08:34Z" count="1"/>
+          <bookmark:application name="gedit" exec="&apos;gedit %u&apos;" modified="2012-10-01T07:24:43Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tiffanyphan/GROUP_2/feedbackerator.py" added="2012-10-01T07:09:16Z" modified="2012-10-01T07:25:37Z" visited="2012-10-01T07:09:16Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-python"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="gedit" exec="&apos;gedit %u&apos;" modified="2012-10-01T07:25:37Z" count="3"/>
+          <bookmark:application name="nautilus" exec="&apos;gedit %U&apos;" modified="2012-10-01T07:19:52Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tiffanyphan/GROUP_2/templates/rate_page.html" added="2012-10-01T07:10:38Z" modified="2012-10-01T07:38:45Z" visited="2012-10-01T07:10:38Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/html"/>
+        <bookmark:applications>
+          <bookmark:application name="nautilus" exec="&apos;firefox %u&apos;" modified="2012-10-01T07:38:45Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tiffanyphan/GROUP_2/templates/hello.html" added="2012-10-01T07:13:25Z" modified="2012-10-01T07:14:16Z" visited="2012-10-01T07:13:27Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/html"/>
+        <bookmark:applications>
+          <bookmark:application name="nautilus" exec="&apos;firefox %u&apos;" modified="2012-10-01T07:14:16Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tiffanyphan/GROUP_2/templates/form.html" added="2012-10-01T07:13:31Z" modified="2012-10-01T07:46:48Z" visited="2012-10-01T07:13:32Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/html"/>
+        <bookmark:applications>
+          <bookmark:application name="nautilus" exec="&apos;firefox %u&apos;" modified="2012-10-01T07:46:48Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tiffanyphan/GROUP_2/test.py" added="2012-10-01T07:13:47Z" modified="2012-10-01T07:27:46Z" visited="2012-10-01T07:13:47Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-python"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="gedit" exec="&apos;gedit %u&apos;" modified="2012-10-01T07:27:46Z" count="2"/>
+          <bookmark:application name="nautilus" exec="&apos;gedit %U&apos;" modified="2012-10-01T07:19:58Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tiffanyphan/%23view_ratings.html%23" added="2012-10-01T07:45:46Z" modified="2012-10-01T07:45:48Z" visited="2012-10-01T07:45:46Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="nautilus" exec="&apos;gedit %U&apos;" modified="2012-10-01T07:45:46Z" count="2"/>
+          <bookmark:application name="gedit" exec="&apos;gedit %u&apos;" modified="2012-10-01T07:45:48Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/tiffanyphan/GROUP_2/results.html" added="2012-10-01T07:46:10Z" modified="2012-10-01T07:57:14Z" visited="2012-10-01T07:46:11Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/html"/>
+        <bookmark:applications>
+          <bookmark:application name="nautilus" exec="&apos;firefox %u&apos;" modified="2012-10-01T07:57:14Z" count="5"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
