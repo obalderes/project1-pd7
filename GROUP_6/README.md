@@ -16,3 +16,4 @@ Back-end
 ![My body, it is ready](http://images5.fanpop.com/image/photos/31500000/My-Body-is-Ready-random-31574393-320-319.png)
 </br>
 <p><b>Sept 27: </b> typed up schema and drew out designs </p>
+<p><b>Sept 30: </b> started on the code. It's not much, but it's there </p>

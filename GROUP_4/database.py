@@ -6,7 +6,7 @@ import shelve
 
 def fixNames(names,questions):
     """
-    Changes the datafile recieved into a string of first,last,email
+    Changes the datafile received into a string of first,last,email
     Returns the list of names in the format [first,last,email first,last,email...], etc.
     """
     quest = shelve.open("questions.dat")
