@@ -1,10 +1,23 @@
-from flask import Flask, url_for
+from flask import Flask
+from flask import url_for, redirect, request, flash
 from flask import render_template
-app = Flask(__name__)
 
-@app.route("/")
+app = Flask(__name__)
+app.secret_key = "Group 2 rules!"
+
+@app.route("/", methods = ['GET', 'POST'])
 def home():
-	return "This is David's really cool test page. It's in the works."
+	if request.method == "GET":
+		return render_template("form.html")
+	else:
+		button = request.form['button']
+		username = request.form['username']
+		assert username != ""
+		flash("Name: " + username)
+		return redirect(url_for('hello', name = username))
+	#return "This is David's really cool test page. It's in the works."
+	#return url_for('hello')
+	#return redirect(url_for('hello'))
 
 @app.route("/hello")
 @app.route("/hello/<name>")

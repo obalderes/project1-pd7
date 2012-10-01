@@ -3,14 +3,32 @@
 	<head>
 		<title> Home </title>
 		<meta http-equiv="Content-Language" content="en-us" />
+		<style type="text/css" media="all">@import "style.css";</style>
 	</head>
 	<body>
-		<h1>
-			Home page.
-		</h1>
+		<header>
+			<ul>
+				<li><a href="#login">Login</a></li>
+				<li><a href="#rate">Rate</a></li>
+				<li><a href="#stats">Stats</a></li>
+			</ul>
+		</header>
 		
-		<p>
-			{{ info }}
-		</p>
+		<div id="login">
+			<h1>Log In With Your Email and ID:</h1>
+			<form method="POST" action="">
+  				Email:		<input type="text"     name="username" />
+  				4-Digit ID:	<input type="password" name="idnum"    />
+						<input type="submit"   value="Login"   />
+			</form>
+		</div>
+		
+		<div id="rate">
+			
+		</div>
+		
+		<div id="stats">
+			
+		</div>
 	</body>
 </html> 
