@@ -1,0 +1,20 @@
+from flask import Flask
+from flask import request, render_template, url_for, redirect, flash
+
+app = Flask(__name__)
+app.secret_key = 'Whatever'
+
+@app.route("/rate", methods = ['GET', 'POST'])
+def rate_page():
+    if request.method == "GET":
+        return render_template("rate_page.html")
+    else:
+        button = request.form['button']
+    
+    name = request.form['']
+    rating = request.form['rating']
+    assert name != ""
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run()

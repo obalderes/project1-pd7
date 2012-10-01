@@ -1,0 +1,20 @@
+<!doctype HTML>
+
+<form action ""  method="post">
+
+<p> Username: <input type=text name=student_rated>
+
+  <p>
+   Please rate this person on their overall group performance.
+
+   {% for number in range(10) %}
+   <input type=radio name=rating value={{number}}>{{number}}</input>
+   {% end for %}
+
+  <p>
+
+  <p><input type=submit name=button value=Rate>
+
+</form>
+
+
