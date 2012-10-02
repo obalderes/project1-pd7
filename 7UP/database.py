@@ -9,6 +9,7 @@ import shelve
 
 database = shelve.open('database.dat', writeback=True)
 
+
 def createProj(data):
     """
     creates new entry for Project(d) given data for that project
@@ -31,3 +32,4 @@ projects['1'] = createProj('p1.txt')
 
 print database['Projects']['1'][0]
 database.close()
+
