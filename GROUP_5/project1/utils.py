@@ -19,7 +19,7 @@ def prepro_p1():
             elif line!=" ":
                 emailList.append(line)
 prepro_p1()
-print emails
+#print emails
 
 def prepro_students():
     s=open("students.txt",'r')
@@ -29,7 +29,11 @@ def prepro_students():
         e = line.partition(',')
         info = e[2].split(',')
         students[e[0]]={"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6]}
-        
+
+def printStudentsNicely():
+    for key in students:
+        print students[key]["First"] + ' ' + students[key]["Last"] + ": Period " + students[key]["Period"] + ", Group " + students[key]["Group"] + ", ID number: " + students[key]["ID"]
+
 prepro_students()
-#print students
-      
+print students
+printStudentsNicely()      
