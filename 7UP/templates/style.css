@@ -1,5 +1,7 @@
 * { margin: 0; padding: 0; font-family: Georgia; }
 
+h3 { padding-bottom: 8px; }
+
 header
 {
     width: 100%;
@@ -76,4 +78,23 @@ body>div form *
 #login form p
 {
     text-align: right;
+}
+
+dl
+{
+    background-color: #DDD;
+    border: 1px solid #666;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+dl dt
+{
+    float: left;
+}
+
+dl dd
+{
+    float: right;
 }
