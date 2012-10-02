@@ -1,5 +1,6 @@
 import shelve
 emails = shelve.open("emails") #key: str(num 0-15) info: emails in lists
+students = shelve.open("students") #key: str(emails) info: student info in dictionaries
 
 def prepro_p1():
     f=open("p1.txt",'r')
@@ -18,6 +19,13 @@ def prepro_p1():
             elif line!=" ":
                 emailList.append(line)
 
-
+def prepro_students():
+    s=open("students.txt",'r')
+    key =""
+    for line in s.readlines():
+        e = line.partition(',')
+        info = e[2].split(',')
+        students[e[0]]={"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6]}
+        
 
       
