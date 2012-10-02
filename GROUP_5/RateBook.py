@@ -15,7 +15,7 @@ def index_page():
 
 
 @app.route("/rate")
-@app.route("/rate/<name>")
+@app.route("/rate/<name>", methods = ['GET', 'POST'])
 def rate(name = "Stranger"):
     return render_template("rate.html", name = name)
 
