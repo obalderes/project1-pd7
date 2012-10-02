@@ -8,7 +8,6 @@ header
     height: 60px;
     background-color: #DDD;
     border-bottom: 5px solid #666;
-    margin-bottom: 30px;
 }
 
 header ul
@@ -29,10 +28,15 @@ header ul li a
     float: left;
 }
 
-header ul li a:hover, header ul li a:focus, header ul li a:active
+header ul li a.selected
 {
     background-color: #666;
     color: #DDD;
+}
+
+header ul li a:hover, header ul li a:focus, header ul li a:active
+{
+    color: black;
 }
 
 input[type="password"], input[type="text"]
@@ -49,9 +53,9 @@ input[type="submit"]
 body>div
 {
     width: 28%;
-    padding-left:  2.66%;
-    padding-right: 2.66%;
+    min-height: 100%;
     float: left;
+    padding: 30px 2.66%;
 }
 
 body>div h1
@@ -97,4 +101,9 @@ dl dt
 dl dd
 {
     float: right;
+}
+
+body>div.selected
+{
+    background-color: #EAEAAE;
 }
