@@ -9,8 +9,8 @@
  */
 
 user_pref("accessibility.typeaheadfind.flashBar", 0);
-user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1348456213);
-user_pref("app.update.lastUpdateTime.blocklist-background-update-timer", 1348456337);
+user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1349078274);
+user_pref("app.update.lastUpdateTime.blocklist-background-update-timer", 1349078394);
 user_pref("app.update.lastUpdateTime.search-engine-update-timer", 1349075342);
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
 user_pref("browser.cache.disk.capacity", 1048576);
@@ -24,8 +24,8 @@ user_pref("browser.startup.homepage_override.buildID", "20120713224749");
 user_pref("browser.startup.homepage_override.mstone", "14.0.1");
 user_pref("browser.syncPromoViewsLeft", 0);
 user_pref("distribution.canonical.bookmarksProcessed", true);
-user_pref("extensions.blocklist.pingCountTotal", 5);
-user_pref("extensions.blocklist.pingCountVersion", 5);
+user_pref("extensions.blocklist.pingCountTotal", 6);
+user_pref("extensions.blocklist.pingCountVersion", 6);
 user_pref("extensions.bootstrappedAddons", "{}");
 user_pref("extensions.databaseSchema", 12);
 user_pref("extensions.enabledAddons", "globalmenu@ubuntu.com:3.2.5,ubufox@ubuntu.com:2.1.1,{972ce4c6-7e08-4474-a285-3208198ce6fd}:14.0.1");
@@ -43,7 +43,7 @@ user_pref("security.warn_viewing_mixed", false);
 user_pref("spellchecker.dictionary", "en_US");
 user_pref("storage.vacuum.last.index", 0);
 user_pref("storage.vacuum.last.places.sqlite", 1347860139);
-user_pref("toolkit.startup.last_success", 1349078152);
+user_pref("toolkit.startup.last_success", 1349136710);
 user_pref("urlclassifier.keyupdatetime.https://sb-ssl.google.com/safebrowsing/newkey", 1350353384);
 user_pref("xpinstall.whitelist.add", "");
 user_pref("xpinstall.whitelist.add.36", "");
