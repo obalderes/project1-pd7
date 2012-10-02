@@ -1,7 +1,7 @@
 ---
 Uno's (provisional name)  Schema
 ---
-Our project will be awesome. With pretty pictures. Oh, adn 2 dictionaries.
+Our project will be awesome. With pretty pictures. Oh, and 2 dictionaries.
 
 <h1> Personal Info Dictionary </h1>
 This will probably take email addresses as keys and return a list containing the person's first and last names as well as group number and project number corresponding to that group.
