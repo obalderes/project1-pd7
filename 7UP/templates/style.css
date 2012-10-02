@@ -33,9 +33,22 @@ header ul li a:hover, header ul li a:focus, header ul li a:active
     color: #DDD;
 }
 
+input[type="password"], input[type="text"]
+{
+    width: 100px;
+}
+
+input[type="submit"]
+{
+    width: 100px;
+    text-align: center;
+}
+
 body>div
 {
-    width: 33.33%;
+    width: 28%;
+    padding-left:  2.66%;
+    padding-right: 2.66%;
     float: left;
 }
 
@@ -49,4 +62,18 @@ body>div h1
 body>div form
 {
     text-align: center;
+    width: 84%;
+    padding-left:  8%;
+    padding-right: 8%;
+}
+
+body>div form *
+{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#login form p
+{
+    text-align: right;
 }
