@@ -43,3 +43,9 @@ Initializing unityshell options...done
 Setting Update "main_menu_key"
 Setting Update "run_key"
 ** Message: moving back from GtkStatusIcon to indicator
+
+** (nautilus:1758): WARNING **: GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark._g_2dfile_2derror_2dquark.Code4: Failed to create file '/home/tiffanyphan/.config/dconf/user.AQ49KW': No such file or directory
+
+** (nautilus:1758): WARNING **: GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark._g_2dfile_2derror_2dquark.Code4: Failed to create file '/home/tiffanyphan/.config/dconf/user.ZL39KW': No such file or directory
+
+** (nautilus:1758): WARNING **: GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark._g_2dfile_2derror_2dquark.Code4: Failed to create file '/home/tiffanyphan/.config/dconf/user.4V59KW': No such file or directory
