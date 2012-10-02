@@ -1,8 +1,0 @@
-print "hello world"
-
-a = "this is"
-b = " my first python"
-c = "blah code"
-d = a + b + c(5:)
-
-print d
