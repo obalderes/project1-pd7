@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 	<head>
 		<title> Home </title>
@@ -17,18 +18,76 @@
 		<div id="login">
 			<h1>Log In With Your Email and ID:</h1>
 			<form method="POST" action="">
-  				Email:		<input type="text"     name="username" />
-  				4-Digit ID:	<input type="password" name="idnum"    />
+  				Email:		<input type="text"     name="username" /> <br />
+  				4-Digit ID:	<input type="password" name="idnum"    /> <br />
 						<input type="submit"   value="Login"   />
 			</form>
 		</div>
 		
 		<div id="rate">
-			
+		  
+		  <h1>Rate Your Groupmates:</h1>
+
+		  <form method="POST" action="">
+
+		    <select>
+		      <optgroup label="Project 1">
+			<option value="person1">Person 1</option>
+			<option value="person2">Person 2</option>
+			<option value="person3">Person 3</option>
+		      </optgroup>
+		      <optgroup label="Project 2">
+			<option value="person4">Person 4</option>
+			<option value="person5">Person 5</option>
+			<option value="person6">Person 6</option>
+		      </optgroup>
+		      <optgroup label="Project 3">
+			<option value="person7">Person 7</option>
+			<option value="person8">Person 8</option>
+			<option value="person9">Person 9</option>
+		      </optgroup>
+		      <optgroup label="Project 4">
+			<option value="person10">Person 10</option>
+			<option value="person11">Person 11</option>
+			<option value="person12">Person 12</option>
+		      </optgroup>
+		    </select>
+
+		    <ol>
+		      <li>Question 1 ... ?</li>
+		      <input type="radio" name="question1" value="1"> 1
+		      <input type="radio" name="question1" value="2"> 2
+		      <input type="radio" name="question1" value="3"> 3
+
+		      <li>Question 2 ... ?</li>
+		      <input type="radio" name="question2" value="1"> 1
+		      <input type="radio" name="question2" value="2"> 2
+		      <input type="radio" name="question2" value="3"> 3
+
+		      <li>Question 3 ... ?</li>
+		      <input type="radio" name="question3" value="1"> 1
+		      <input type="radio" name="question3" value="2"> 2
+		      <input type="radio" name="question3" value="3"> 3
+
+		    </ol>
+
+		    <input type="submit" value="Submit Rating" />
+
+		  </form>
+
 		</div>
 		
 		<div id="stats">
+
+		  <h1>Your Ratings:</h1>
+
+                  <div class="box">
+                      <p>Average Rating:</p>
+                      <p>7.15</p>
+                  </div>
+
+		  
 			
 		</div>
 	</body>
-</html> 
+</html>
