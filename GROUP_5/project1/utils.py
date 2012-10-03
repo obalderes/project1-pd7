@@ -1,3 +1,5 @@
+#/usr/bin/env python
+
 import shelve
 emails = shelve.open("emails") #key: str(num 0-15) info: emails in lists   0-7 are groups for period 6    8-15 are groups for period 7
 students = shelve.open("students") #key: str(emails) info: student info in dictionaries
@@ -55,4 +57,29 @@ prepro_p1()
 prepro_students()
 raters_shelve()
 ratees_shelve()
-print ratees["mengdilin95@gmail.com"]
+
+
+def user_authen(user):
+    try:
+        raters[user]
+        return True
+    except Exception:
+        return False
+
+print user_authen("mengdilin95@gmail.com")
+'''
+def add_rating(rater,ratee,project,rating):
+       return true if rating is added 
+       return false if rater or ratee does not exist in the same group
+
+def get_rating_received(user)
+     return a list of ratings the user has received
+
+def get_rating_assigned(user)
+     return a list of ratings the user has given to other people
+
+
+
+
+
+'''
