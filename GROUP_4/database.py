@@ -3,6 +3,9 @@ from flask import Flask
 import shelve
 
 
+def makeAuth(data):
+    
+    
 
 def fixNames(names,questions):
     """
@@ -56,12 +59,6 @@ def createGroups(data):
     groups.close()
     pass
 
-def createQuestions(data):
-    """
-    Makes the Questions shelve
-    """
-
-    pass
 
 
 def testing():
@@ -69,13 +66,6 @@ def testing():
     print gr.keys()
 
 
-#testing()
-
+createGroups("p1.txt")
 fixNames("p1.txt","questions.txt")
-
-#createGroups("p1.txt")
-#f = shelve.open("groups")
-#print len(f)
-#print f.keys()
-#f.close()
 
