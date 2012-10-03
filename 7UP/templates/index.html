@@ -5,6 +5,8 @@
 		<title> Home </title>
 		<meta http-equiv="Content-Language" content="en-us" />
 		<style type="text/css" media="all">@import "style.css";</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="script.js"></script>
 	</head>
 	<body>
 		<header>
@@ -16,11 +18,11 @@
 		</header>
 		
 		<div id="login">
-			<h1>Log In With Your Email and ID:</h1>
+			<h1>Log In With Your Email:</h1>
 			<form method="POST" action="">
-  				Email:		<input type="text"     name="username" />
-  				4-Digit ID:	<input type="password" name="idnum"    />
-						<input type="submit"   value="Login"   />
+  				<p>Email:	<input type="text"     name="username" /> </p>
+  				<p>4-Digit ID:	<input type="password" name="idnum"    /> </p>
+				                <input type="submit"   value="Login"   />
 			</form>
 		</div>
 		
@@ -54,21 +56,30 @@
 		    </select>
 
 		    <ol>
-		      <li>Question 1 ... ?</li>
-		      <input type="radio" name="question1" value="1"> 1
-		      <input type="radio" name="question1" value="2"> 2
-		      <input type="radio" name="question1" value="3"> 3
+		      <li>How awesome was this person? <br />
+			<input type="radio" name="question1" value="1"> 1
+			<input type="radio" name="question1" value="2"> 2
+			<input type="radio" name="question1" value="3"> 3
+		      </li>
 
-		      <li>Question 2 ... ?</li>
-		      <input type="radio" name="question2" value="1"> 1
-		      <input type="radio" name="question2" value="2"> 2
-		      <input type="radio" name="question2" value="3"> 3
+		      <li>How easy was it to communicate with them? <br />
+			<input type="radio" name="question2" value="1"> 1
+			<input type="radio" name="question2" value="2"> 2
+			<input type="radio" name="question2" value="3"> 3
+		      </li>
 
-		      <li>Question 3 ... ?</li>
-		      <input type="radio" name="question3" value="1"> 1
-		      <input type="radio" name="question3" value="2"> 2
-		      <input type="radio" name="question3" value="3"> 3
-
+		      <li>How good is this person at grasping new concepts? <br />
+			<input type="radio" name="question3" value="1"> 1
+			<input type="radio" name="question3" value="2"> 2
+			<input type="radio" name="question3" value="3"> 3
+			<input type="radio" name="question3" value="4"> 4
+			<input type="radio" name="question3" value="5"> 5
+			<input type="radio" name="question3" value="6"> 6
+			<input type="radio" name="question3" value="7"> 7
+			<input type="radio" name="question3" value="8"> 8
+			<input type="radio" name="question3" value="9"> 9
+			<input type="radio" name="question3" value="10"> 10
+		      </li>
 		    </ol>
 
 		    <input type="submit" value="Submit Rating" />
@@ -81,12 +92,31 @@
 
 		  <h1>Your Ratings:</h1>
 
-                  <div class="box">
-                      <p>Average Rating:</p>
-                      <p>7.15</p>
-                  </div>
+		  <h3>Summary:</h3>
 
-		  
+                  <dl>
+		    <dt>Average Rating:</dt>
+		    <dd>7.15</dd>
+		    <div style="clear:both;"></div>
+		  </dl>
+
+		  <dl>
+		    <dt>Standard Deviation:</dt>
+		    <dd>1.46</dd>
+		    <div style="clear:both;"></div>
+		  </dl>
+
+		  <h3>Average per question:</h3>
+
+		  <dl>
+		    <dt>Question 1:</dt>
+		    <dd>8.52</dd> <br />
+		    <dt>Question 2:</dt>
+		    <dd>5.94</dd> <br />
+		    <dt>Question 3:</dt>
+		    <dd>7.80</dd> <br />
+		    <div style="clear:both;"></div>
+		  </dl>
 			
 		</div>
 	</body>

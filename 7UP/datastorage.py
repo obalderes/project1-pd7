@@ -1,10 +1,12 @@
 
 #
-#import shelve
+import shelve
 
-#database = shelve.open('database.dat', writeback=True)
-#d = shelve.open("students.db")
+database = shelve.open('database.dat', writeback=True)
+#d = shelve.open("students.dat")
 #I can't figure out the shelf implementation... I keep on getting a "db" type error so I'm just going to program instantiating a dictionary instead.
+
+#If you change db (I don't know what this is) to .dat, it works but idk if you specifically needed a db type
 
 s = open('students.txt')
 people = {}
