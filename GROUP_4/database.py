@@ -4,7 +4,17 @@ import shelve
 
 
 def makeAuth(data):
-    
+    auth = shelve.open("authen")
+    f = open(data).readlines()
+    for item in f:
+        item = item.strip()
+        email,last,first,id,cl,sect,pd,group = item.split(",")
+        auth[email] = [first,last,id,group]
+        print email
+        print auth[email]
+
+    pass
+                
     
 
 def fixNames(names,questions):
@@ -66,6 +76,6 @@ def testing():
     print gr.keys()
 
 
-createGroups("p1.txt")
-fixNames("p1.txt","questions.txt")
-
+#createGroups("p1.txt")
+#fixNames("p1.txt","questions.txt")
+makeAuth("students.dat")
