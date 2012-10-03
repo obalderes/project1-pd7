@@ -1,3 +1,4 @@
+
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -20,7 +21,7 @@ def home():
 #This is not the way we want to do it in the end, it's just a proof of concept
 @app.route("/login/", methods = ["GET", "POST"])
 def login():
-    error = None
+    error = ""
     if request.method == "POST":
         if valid_login(request.form['email'], request.form['IDnum']):
             return log_the_user_in(request.form['email'])
