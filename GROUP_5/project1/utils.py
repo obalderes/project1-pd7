@@ -1,5 +1,3 @@
-#/usr/bin/env python
-
 import shelve
 emails = shelve.open("emails") #key: str(num 0-15) info: emails in lists   0-7 are groups for period 6    8-15 are groups for period 7
 students = shelve.open("students") #key: str(emails) info: student info in dictionaries
@@ -52,7 +50,6 @@ def ratees_shelve():
         ratees[line]={"Ratings":"","Project":"1","Raters":""}
     s.close()        
 
-
 prepro_p1()
 prepro_students()
 raters_shelve()
@@ -66,7 +63,6 @@ def user_authen(user):
     except Exception:
         return False
 
-print user_authen("mengdilin95@gmail.com")
 '''
 def add_rating(rater,ratee,project,rating):
        return true if rating is added 
