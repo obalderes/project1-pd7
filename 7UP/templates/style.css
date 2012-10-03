@@ -8,6 +8,8 @@ header
     height: 60px;
     background-color: #DDD;
     border-bottom: 5px solid #666;
+    position: absolute;
+    top: 0;
 }
 
 header ul
@@ -53,9 +55,9 @@ input[type="submit"]
 body>div
 {
     width: 28%;
-    min-height: 100%;
     float: left;
-    padding: 30px 2.66%;
+    padding: 20px 2.66%;
+    padding-top: 90px;
 }
 
 body>div h1
