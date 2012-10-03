@@ -20,7 +20,7 @@ def setupPeople():
         people[email] = [first,last,email,projects,ID,className,classNumber,Period,GroupNumber]
         if groupnumbers.count(GroupNumber) == 0:
             groupnumbers.append(GroupNumber)
-    print people['iouthwaite1@gmail.com']
+    # print people['iouthwaite1@gmail.com']
     for person in people:
          projects = {}
          groups = {}
@@ -33,8 +33,17 @@ def addProjectToPerson(emailadress,projectname):
         if email==emailadress:
             people[email][3][projectname] = {}
             for g in groupnumbers:
-                people[email][3][projectname][g] = {}
-            print people[email][3][projectname]
+                people[email][3][projectname][g] = []
+            # print people[email][3][projectname]
+            for email in people:
+                currentgroup = people[email][8]
+                print currentgroup
+                if ((int)(currentgroup) ==  1):
+                    people[emailadress][3][projectname][currentgroup] + [5]
+                    print people[emailadress][3][projectname][currentgroup]
+                    #people[emailadress][3][projectname][currentgroup][email] = people[email]
+            
+        
     
 
 
