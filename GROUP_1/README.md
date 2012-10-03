@@ -6,4 +6,5 @@ Downloaded Virtualenv and Flask, which was fairly straightforward. I tried makin
 
 <b>Olivia Balderes- Visual</b>
 
-<b>Allen Wu - Visual</b>
+<b>Allen Wu - Visual</b> Something like this, but with actual coding. UNZIP TO FOLDER, then run blank.html
+http://dl.dropbox.com/u/12017509/HTML/HTML.zip
