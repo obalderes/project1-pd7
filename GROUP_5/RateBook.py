@@ -15,8 +15,8 @@ def index_page():
 
 
 @app.route("/rate")
-@app.route("/rate/<name>")
-def rate_page(name = "Stranger"):
+@app.route("/rate/<name>", methods = ['GET', 'POST'])
+def rate(name = "Stranger"):
     return render_template("rate.html", name = name)
 
 if __name__ == "__main__":
