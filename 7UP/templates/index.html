@@ -31,96 +31,76 @@
 		
 		<div id="rate">
 		  <div>
+
+		    {% if loggedin %}
 		  
 		    <h1>Rate Your Groupmates:</h1>
 
 		    <form method="POST" action="">
 
 		      <select>
-			<optgroup label="Project 1">
-			  <option value="person1">Person 1</option>
-			  <option value="person2">Person 2</option>
-			  <option value="person3">Person 3</option>
+			{% for proj in projects %}
+			<optgroup label="Project {{loop.index}}">
+			  {% for person in groupmembers %}
+			  <option value="person{{loop.index}}">{{person.first}} {{person.last}}</option>
+			  {% endfor %}
 			</optgroup>
-			<optgroup label="Project 2">
-			  <option value="person4">Person 4</option>
-			  <option value="person5">Person 5</option>
-			  <option value="person6">Person 6</option>
-			</optgroup>
-			<optgroup label="Project 3">
-			  <option value="person7">Person 7</option>
-			  <option value="person8">Person 8</option>
-			  <option value="person9">Person 9</option>
-			</optgroup>
-			<optgroup label="Project 4">
-			  <option value="person10">Person 10</option>
-			  <option value="person11">Person 11</option>
-			  <option value="person12">Person 12</option>
-			</optgroup>
+			{% endfor %}
 		      </select>
 
 		      <ol>
-			<li>How awesome was this person? <br />
-			  <input type="radio" name="question1" value="1"> 1
-			  <input type="radio" name="question1" value="2"> 2
-			  <input type="radio" name="question1" value="3"> 3
+			{% for question in questions %}
+			{% set qnum loop.index %}
+			<li>{{question.text}}<br />
+			  {% for number in range(10) %}
+			  <input type="radio" name="question{{qnum}}" value="{{number}}"> {{number}}
+			  {% endfor %}
 			</li>
-
-			<li>How easy was it to communicate with them? <br />
-			  <input type="radio" name="question2" value="1"> 1
-			  <input type="radio" name="question2" value="2"> 2
-			  <input type="radio" name="question2" value="3"> 3
-			</li>
-
-			<li>How good is this person at grasping new concepts? <br />
-			  <input type="radio" name="question3" value="1"> 1
-			  <input type="radio" name="question3" value="2"> 2
-			  <input type="radio" name="question3" value="3"> 3
-			  <input type="radio" name="question3" value="4"> 4
-			  <input type="radio" name="question3" value="5"> 5
-			  <input type="radio" name="question3" value="6"> 6
-			  <input type="radio" name="question3" value="7"> 7
-			  <input type="radio" name="question3" value="8"> 8
-			  <input type="radio" name="question3" value="9"> 9
-			  <input type="radio" name="question3" value="10"> 10
-			</li>
+			{% endfor %}
 		      </ol>
 
 		      <input type="submit" value="Submit Rating" />
 
 		    </form>
+
+		    {% endif %}
+
 		  </div>
 		</div>
 		
 		<div id="stats">
 		  <div>
+		    
+		    {% if loggedin %}
+
 		    <h1>Your Ratings:</h1>
 
 		    <h3>Summary:</h3>
 
                     <dl>
 		      <dt>Average Rating:</dt>
-		      <dd>7.15</dd>
+		      <dd>{{avgrating}}</dd>
 		      <div style="clear:both;"></div>
 		    </dl>
 
 		    <dl>
 		      <dt>Standard Deviation:</dt>
-		      <dd>1.46</dd>
+		      <dd>{{stddev}}</dd>
 		      <div style="clear:both;"></div>
 		    </dl>
 
 		    <h3>Average per question:</h3>
 
 		    <dl>
-		      <dt>Question 1:</dt>
-		      <dd>8.52</dd> <br />
-		      <dt>Question 2:</dt>
-		      <dd>5.94</dd> <br />
-		      <dt>Question 3:</dt>
-		      <dd>7.80</dd> <br />
+		      {% for question in questions %}
+		      <dt>Question {{loop.index}}:</dt>
+		      <dd>{{question.avg}}</dd> <br />
+		      {% endfor %}
 		      <div style="clear:both;"></div>
 		    </dl>
+
+		    {% endif %}
+
 		  </div>    
 		</div>
 	</body>
