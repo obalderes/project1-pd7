@@ -1,9 +1,9 @@
 import shelve
 import os
-import file
+
 if not os.path.isfile('info.dat'):
     s = shelve.open('info.dat')
-    firre = file.open('students.txt')
+    firre = open('students.txt')
     s['names'] = []
     s['ID'] = []
     s['responses'] = []
