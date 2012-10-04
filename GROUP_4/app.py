@@ -1,4 +1,3 @@
-
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -33,7 +32,7 @@ def login():
 
 @app.route("/choice/", methods = ["GET", "POST"])
 def choice():
-    return render_template("choice.html")
+    return render_template("page.html")
 
 def valid_login(email, IDnum):
     return email.find("@") != -1
