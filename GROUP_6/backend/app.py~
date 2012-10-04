@@ -1,0 +1,7 @@
+import storage
+
+print "Hi"
+
+def getRatings(email):
+    return storage.s('id',email)
+

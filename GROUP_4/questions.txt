@@ -1,5 +1,5 @@
-How well did the person communicate with the group?
-How well do you think they did his/her part of the project?
-How willing would you be to work with this person again?
-How well did the person work in the group overall?
-How many cookies do you think this person deserves for his/her part of the project?
+0. How well did the person communicate with the group?
+1. How well do you think they did his/her part of the project?
+2. How willing would you be to work with this person again?
+3. How well did the person work in the group overall?
+4. How many cookies do you think this person deserves for his/her part of the project?
