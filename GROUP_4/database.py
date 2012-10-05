@@ -1,4 +1,4 @@
-from flask import Flask
+#from flask import Flask
 
 import shelve
 
@@ -40,22 +40,9 @@ def fixNames():
         a,b = item.split(",",1)
         c = b.split(",")
         for item in c:
-            quest[item] = []
+            quest[item] = {}
+ 
 
-    qr = {}
-    """
-    make the emails refer to a dictionary that will hold emails that refer to a list of ratings (the ratings would refer to the questions in order)
-    """
-
-    for item in quest:
-        tmp = quest[item]
-        while num > 0:
-            tmp.append([])
-            quest[item] = tmp
-            num = num - 1
-        if num <= 0:
-            num = len(q)
-        
     quest.close()
     pass
     
@@ -87,13 +74,34 @@ def testing():
 
 def getRatings(email):
     quest = shelve.open("questions.dat")
-    return quest[email]
+    d = []
+    for item in quest[email]:
+        d.append(quest[email][item])
+    return d
 
-def rate(email,quest,rate):
+    
+def addRating(rater,ratee,ratings):
     quest = shelve.open("questions.dat")
+    groups = shelve.open("groups")
+    if not(ratee in groups[rater]):
+        return "This person is not in your group, so you cannot rate them"
+    dict = {rater:ratings}
+    #if rater in quest[ratee]:
+    #    quest[ratee][rater] = ratings
+    #else:
+    quest[ratee].update(dict)
+    print quest[ratee]
+        
+    print "Ratee: "
+    print ratee
+    print "Rater: "
+    print quest[ratee]
+
     pass
 
-createGroups()
+#createGroups()
 fixNames()
 #makeAuth()
-print getRatings('batya.zamansky@gmail.com')
+#print getRatings('batya.zamansky@gmail.com')
+addRating('batya.zamansky@gmail.com','jpengsmail@gmail.com',[2,3,4,5,6])
+addRating('darylsew@gmail.com','jpengsemail@gmail.com',[3,4,1,8,0])
