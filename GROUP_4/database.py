@@ -85,12 +85,19 @@ def addRating(rater,ratee,ratings):
     groups = shelve.open("groups")
     if not(ratee in groups[rater]):
         return "This person is not in your group, so you cannot rate them"
-    dict = {rater:ratings}
+    dicti = dict()
+    dicti[rater] = ratings
+    #quest[ratee] = {'email':'ratings'}
     #if rater in quest[ratee]:
     #    quest[ratee][rater] = ratings
     #else:
-    quest[ratee].update(dict)
+    print "ratee"
+    print ratee
+    print "raters"
     print quest[ratee]
+
+    quest[ratee][rater] = ratings
+    #print quest[ratee]
         
     print "Ratee: "
     print ratee
@@ -99,9 +106,14 @@ def addRating(rater,ratee,ratings):
 
     pass
 
+
+
+
+
+
 #createGroups()
 fixNames()
 #makeAuth()
 #print getRatings('batya.zamansky@gmail.com')
 addRating('batya.zamansky@gmail.com','jpengsmail@gmail.com',[2,3,4,5,6])
-addRating('darylsew@gmail.com','jpengsemail@gmail.com',[3,4,1,8,0])
+#addRating('darylsew@gmail.com','jpengsmail@gmail.com',[3,4,1,8,0])
