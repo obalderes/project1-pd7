@@ -1,45 +1,42 @@
 from flask import Flask
-from flask import render_template
 from flask import request
+from flask import render_template
+import utils
+from flask import url_for,redirect,flash
+
 
 app = Flask(__name__)
 
-"""
-@app.route(pathway)
-This defines the URL that will call the function after it.
-By default, a route only answers to HTTP GET requests.
-That can be changed by providing the 'methods' argument to the route() decorator.
-"""
-@app.route("/", methods = ["GET", "POST"])
+
+@app.route("/", methods = ['GET', 'POST'])
 def home():
-    #renders the homepage template
-    return render_template("page.html")
+    if request.method == "GET":
+        return render_template("homepage.html")
+    else:
+        button=request.homepage['button'] #login button
+        return redirect(url_for('login')) #needs to do authentication before directing to login. could be ID
+    email = request.homepage['email'] 
+    assert name != ""
+    databaseMethods.retrieveStudentInfo(email)
+    #groupNumber = databaseMethods.getGroupNumber(email) <-- DENIS MAKE THIS
+    retrieveGroupMembers(groupNumber)
+    #getMyGrades(email) <--DENIS MAKE THIS
+    #userInfo = databaseMethods.get_User() <-- should access first shelve DENIS made. 
+    
+    
+    
+    #flash?
 
 
-
-#This is not the way we want to do it in the end, it's just a proof of concept
-@app.route("/login/", methods = ["GET", "POST"])
+@app.route("/login", methods = ['GET', 'POST']
+#I THINK WE NEED get and post yet again b/c we want to have inputs on this page as well. 
 def login():
-    error = ""
-    if request.method == "POST":
-        if valid_login(request.form['email'], request.form['IDnum']):
-            return log_the_user_in(request.form['email'])
-        else:
-            error = "Invalid username/password"
-            print error
-    return render_template("login.html", error=error)
+    
+     return render_template("loginPage.html")
+#info about ratings and buttons that lead to new pages to 
+button = request.loginPage['button'] #need to set up buttons or links to go into other group members and give ratings
+#not sure what to write for displaying specific information for each user (previous ratings, fellow group members, etc.)
 
-
-@app.route("/choice/", methods = ["GET", "POST"])
-def choice():
-    return render_template("page.html")
-
-def valid_login(email, IDnum):
-    return email.find("@") != -1
-
-def log_the_user_in(email):
-    return render_template("hello.html")
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
+@app.route("/rate")
+def rate():
+    return render_template("rate.html")

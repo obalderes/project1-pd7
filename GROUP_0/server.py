@@ -9,10 +9,25 @@ def home():
     if request.method == "GET":
         return render_template("home.html")
     else:
-        username = request.form["username"]
-        #WHAT IS THE NAME OF THE BELOW METHOD
+        username = request.home["username"]
         if !(database.isUsername(username)):
-            flash("%s is not an authorized email. \nplease enter a valid username."%(username))
+            flash("%s is not an authorized email. \nPlease enter a valid username."%(username))
             return redirect(url_for("home"))
-        button = request.form["button"]
-        if button == "
+        #check if valid username. If not, error message.
+        button = request.home["button"]
+        if button == "View Ratings":
+            return redirect(url_for("view_ratings"))
+        elif button == "Post Ratings":
+            return redirect(url_for("post_ratings"))
+        #redirect to page corresponding to button value
+
+@app.route("/view_ratings", methods = ['GET','POST'])
+def view_ratings():
+    if request.method == "GET":
+        return render_template("view_ratings.html")
+    else:
+        button = request.view_ratings["button"]
+        if button == "Home":
+            return redirect(url_for("home"))
+        elif button == "Post Ratings":
+            return redirect(url_for("post_ratings"))
