@@ -23,5 +23,5 @@ I set up and tried out virtualenv. I also installed flask and went over some exa
 * * *
 * * *
 
-<h3>The Hard Coders: Peter Jasko, Denis Plotkin</h3>
-<h3>The Design Gurus: John Haggerty, Leopold Spohngellert</h3>
+<h3>The Hard Coders: Leopold Spohngellert, Denis Plotkin</h3>
+<h3>The Design Gurus: John Haggerty, Peter Jasko</h3>
