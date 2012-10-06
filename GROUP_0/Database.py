@@ -1,26 +1,28 @@
 import shelve
 
-def getRatings():
+def getRatings(email):
 #returns your ratings sorted by raters
-    l=[]
-    return l
+#user as key and list of ratings
+    d={}
+    return d
 
-def isUserName():
+def isUserName(email):
 #check is usuername exists
     return true
 
-def getRatees():
+def getRatees(email):
 #return current group members
     l=[]
     return []
 
-def getName():
+def getName(email):
 #return user's name and period
     s=""
     return s
 
-def setRatings(ratings):
+def setRatings(email,ratings):
 #updates ratings
+#ratings as a dictionary with username as key and rat
     return
 
 DIR="output"
