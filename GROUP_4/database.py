@@ -30,10 +30,12 @@ def fixNames():
     The emails refer to a list.
     At each index of the list there is a list of ratings refering to that question.
     """
+    
     quest = shelve.open("questions.dat")
     f = open("p1.txt").readlines()
-    q = open("questions.txt").readlines()
-    num = len(q)
+
+    if len(quest) != 0:
+        pass
      
     for item in f:
         item = item.strip()
@@ -42,7 +44,6 @@ def fixNames():
         for item in c:
             quest[item] = {}
  
-
     quest.close()
     pass
     
@@ -68,11 +69,10 @@ def createGroups():
 
 
 
-def testing():
-    gr = shelve.open("groups")
-    print gr.keys()
-
 def getRatings(email):
+    """
+    Returns all the ratings of a given email in a list of lists of ratings.
+    """
     quest = shelve.open("questions.dat")
     d = []
     for item in quest[email]:
@@ -81,39 +81,39 @@ def getRatings(email):
 
     
 def addRating(rater,ratee,ratings):
-    quest = shelve.open("questions.dat")
+    """
+    Adds a rating to a person.  If a person has rated this person before it overwrites the previous rating.  Returns the ratings added.
+    """
+    quest = shelve.open("questions.dat", writeback = True)
     groups = shelve.open("groups")
     if not(ratee in groups[rater]):
         return "This person is not in your group, so you cannot rate them"
-    dicti = dict()
-    dicti[rater] = ratings
-    #quest[ratee] = {'email':'ratings'}
-    #if rater in quest[ratee]:
-    #    quest[ratee][rater] = ratings
-    #else:
-    print "ratee"
-    print ratee
-    print "raters"
-    print quest[ratee]
 
     quest[ratee][rater] = ratings
-    #print quest[ratee]
         
-    print "Ratee: "
-    print ratee
-    print "Rater: "
-    print quest[ratee]
+    quest.close()
+    groups.close()
+    
+    return ratings
 
-    pass
+def getGroupMembers(email):
+    """
+    Returns a list of the group members of the email given.
+    """
+    group = shelve.open("groups")
+    lis = group[email]
+    lis.remove(email)
+    return lis
 
 
+print getGroupMembers('jpengsmail@gmail.com')
 
 
 
 
 #createGroups()
-fixNames()
+#fixNames()
 #makeAuth()
-#print getRatings('batya.zamansky@gmail.com')
-addRating('batya.zamansky@gmail.com','jpengsmail@gmail.com',[2,3,4,5,6])
-#addRating('darylsew@gmail.com','jpengsmail@gmail.com',[3,4,1,8,0])
+#print getRatings('jpengsmail@gmail.com')
+#addRating('batya.zamansky@gmail.com','jpengsmail@gmail.com',[2,3,4,5,6])
+#addRating('darylsew@gmail.com','jpengsmail@gmail.com',[3,4,1,8,25])
