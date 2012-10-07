@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import render_template
-import utils
+#import utils
 from flask import url_for,redirect,flash
 
 
@@ -27,14 +27,15 @@ def home():
    
     #flash?
 
-
-@app.route("/login", methods = ['GET', 'POST']
 #I THINK WE NEED get and post yet again b/c we want to have inputs on this page as well.
+@app.route("/login", methods = ['GET', 'POST'])
 def login():
-   
-     return render_template("loginPage.html")
+    return render_template("login.html")
 #info about ratings and buttons that lead to new pages to
-button = request.loginPage['button'] #need to set up buttons or links to go into other group members and give ratings
+#////Put back in
+#button = request.loginPage['button'] 
+#////put back in
+#need to set up buttons or links to go into other group members and give ratings
 #not sure what to write for displaying specific information for each user (previous ratings, fellow group members, etc.)
 
 @app.route("/rate")
