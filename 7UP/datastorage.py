@@ -8,15 +8,15 @@ database = shelve.open('database.db', writeback=True)
 
 #If you change db (I don't know what this is) to .dat, it works but idk if you specifically needed a db type
 
-s = open('students.txt')
-y = open('students.txt')
 people = {}
 projx = {}
 groupnumbers = []
 
 #creates a dictionary of people each with empty spaces for projects, groups in projects, and members in groups
+#people -> projects -> groups -> members
 def setupPeople():
-    for line in s:
+    z = open('students.txt')
+    for line in z:
         email,last,first,ID,className,classNumber,Period,Gnuminclass,gnum = str(line.strip()).split(",",8)
         projects = {}
         people[email] = [first,last,email,projects,ID,className,classNumber,Period,gnum,Gnuminclass]
@@ -40,28 +40,43 @@ def addProjectToPerson(emailaddress,projectname):
         if (((int)(currentgroup) == 15) and (people[email] != people[emailaddress])):
             people[emailaddress][3][projectname][theirgroup].append(people[email])
 
-#creates a dictionary of projects with groups and all the members of the groups, and an empty dictionary for their feedback. Used for individuals to look up their own data
-def setupProject():
+#creates a new project within the projx overarching dictionary. Fills it in with the groups, members of each group, and space in each member's location for feedback.
+#projects -> groups for that project -> memebers
+def createNewProject(projectname):
+    z = open('students.txt')
     groupnums = []
     membs = {}
-    for line in y:
+    for line in z:
         email,last,first,ID,className,classNumber,Period,Gnuminclass,gnum = str(line.strip()).split(",",8)
         if groupnums.count(gnum) == 0:
             groupnums.append(gnum)
-    projx['project one'] = groupnumbers
-    for grps in groupnumbers:
-        projx['project one'][(int)(grps)] = {}
+    projx[projectname] = groupnums
+    for grps in groupnums:
+        projx[projectname][(int)(grps)] = {}
     for person in people:
         theirgroup = people[person][8]
-        projx['project one'][(int)(theirgroup)][person] = {}
-    print projx['project one'][15]
+        projx[projectname][(int)(theirgroup)][person] = {}
 
         
-def returnPeopleDict(): # set up the people dictionary
+def returnPeopleDict():
     return people
 
+def getData(emailaddress):
+    data = []
+    for projs in projx:
+        for groops in projx[projs]:
+            for person in groops:
+                if person == emailaddress:
+                    data.append(projx[projs][(int)(people[person][8])][person])
+    return data
+
+def ratePerson(rater, ratee):
+    return null
+
 setupPeople()
-setupProject()
+createNewProject("project two")
+createNewProject("littlefish")
+print getData('iouthwaite1@gmail.com')
 #addProjectToPerson("iouthwaite1@gmail.com",'newproject')
 #database = [project,people]
 
