@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request, render_template, url_for, redirect, flash
+from ivan_smirnov import util
 
 app = Flask(__name__)
 app.secret_key = 'Whatever'
@@ -14,10 +15,16 @@ def login():
         button = request.form['button']
         username = request.form['username']
         password = request.form['password']
-        assert username != ""
-        assert password != ""
+        #assert username != ""
+        #assert password != ""
         #flash("User " + username)
-        return redirect(url_for('user_page', name = username)) #So frustrated. This is an important note to self, David. When you use url_for, the String input is the name of the method of the page, not it's actual URL. Agh!
+        #if util.verifylogin(username, password):
+        return redirect(url_for('user_page', name = username))
+        #else:
+            #return render_template("login.html")
+        
+
+#So frustrated. This is an important note to self, David. When you use url_for, the String input is the name of the method of the page, not it's actual URL. Agh!
 
 @app.route("/home")
 @app.route("/home/<name>", methods = ['GET', 'POST'])
