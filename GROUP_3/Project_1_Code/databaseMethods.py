@@ -7,7 +7,7 @@ import shelve
 def retrieveStudentInfo(email):
     studentDatabase = shelve.open("students.db")
     studentInfo = studentDatabase[email]
-    if studentInfo eq []:
+    if studentInfo == []:
         return False
     else:
         return studentInfo
@@ -19,7 +19,7 @@ def retrieveStudentInfo(email):
 def membersInGroup(groupNumber):
     groupDatabase = shelve.open("groups.db")
     groupMembers = groupDatabase[groupNumber]
-    if groupMembers eq []:
+    if groupMembers == []:
         return False
     else:
         return groupMembers
@@ -42,7 +42,7 @@ def retrieveGroupMembers(email):
 def retrieveGrades(email):
     gradesDatabase = shelve.open("grades.db")
     grades = gradesDatabase[email]
-    if grades = []:
+    if grades == []:
         return False
     else:
         return grades
@@ -54,7 +54,7 @@ def setGrades(grades,email):
     question = 0
     for question in gradesList:
         question.append[grades[question]]
-        question++
+        question = question + 1
     
     gradesDatabase.close()
 
