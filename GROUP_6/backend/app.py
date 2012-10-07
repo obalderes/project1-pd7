@@ -1,4 +1,11 @@
 import storage
+from flask import Flask
+from flask import request
+from flask import render_template
+import utils
+from flask import url_for,redirect,flash
+app = Flask(__name__)
+app.secret_key = 'some_secret'
 
 print "Hi"
 
