@@ -1,15 +1,11 @@
 from flask import Flask, render_template, request
 import database
 import shelve
+import sys
+import stat
 
 app = Flask(__name__)
 
-"""
-@app.route(pathway)
-This defines the URL that will call the function after it.
-By default, a route only answers to HTTP get requests.
-That can be changed by providing the 'methods' argument to the route() decorator.
-"""
 @app.route("/", methods = ["GET", "POST"])
 def home():
     """
@@ -22,8 +18,9 @@ def home():
             return log_the_user_in(request.form['email'])
         else:
             error = "Invalid username/password"
+            
 
-    return render_template("login.html")
+    return render_template("login.html", error=error)
 
 @app.route("/choose/", methods = ["GET", "POST"])
 def log_the_user_in(email):
@@ -34,9 +31,24 @@ def log_the_user_in(email):
         
     return render_template("choice.html")
 
+@app.route("/rate/", methods = ["GET", "POST"])
+def rate_page():
+    return render_template("rate.html")
+
+@app.route("/ratings/", methods = ["GET", "POST"])
+def ratings_page():
+    return render_template("ratings.html")
+    
+
 def valid_login(email, IDnum):
     auth = shelve.open("authen")
-    return auth[str(email)][2] == IDnum
+    valid = False
+    try:
+        valid = auth[str(email)][2] == IDnum
+    except KeyError, e:
+        return valid
+    else:
+        return valid
 
 if __name__ == "__main__":
     app.run(debug=True)
