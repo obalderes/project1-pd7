@@ -1,4 +1,5 @@
 from flask import Flask
+import util2
 from flask import request, render_template, url_for, redirect, flash
 
 app = Flask(__name__)
@@ -46,16 +47,11 @@ def rate_page():
     rating = request.form['rating']
     assert name != ""
 
+@app.route("/results")
 def view_results():
-    if request.method == "GET":
-        return render_template("results.html")
-    else:
-        button = request.form['button']
-    
-    name=request.form['student_rated']
-    rating = request.form['rating']
-    assert name != ""
-    flash("Name:%s Rating:%s"%(name,rating))                       
+   
+    return render_template("results.html")
+
 
 if __name__ == "__main__":
     app.debug = True
