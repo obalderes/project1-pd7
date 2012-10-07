@@ -29,7 +29,7 @@ def log_the_user_in(email):
     Here, they can choose whether they want to a) see ratings or b) rate people.
     """
         
-    return render_template("choice.html")
+    return render_template("page.html")
 
 @app.route("/rate/", methods = ["GET", "POST"])
 def rate_page():
