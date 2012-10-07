@@ -41,3 +41,7 @@ def login():
 @app.route("/rate")
 def rate():
     return render_template("rate.html")
+
+if __name__=="__main__":
+    app.debug=True # remove this line to turn off debugging
+    app.run() 
