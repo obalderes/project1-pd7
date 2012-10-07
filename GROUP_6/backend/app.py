@@ -8,7 +8,6 @@ from flask import url_for,redirect,flash
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
-print "Hi"
 
 def getRatings(email):
     return storage.s['id',email]
