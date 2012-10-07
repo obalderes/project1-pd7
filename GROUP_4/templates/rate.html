@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
+<link rel="stylesheet" type"test/css" href="style.css"/>
 <p><h4>{{ ratername }}></h4></p>
 <!--
 <p>Previous rating: {{ mem1q1prev }}</p>
@@ -15,7 +16,8 @@
 <p>Previous rating: {{ mem3q3prev }}</p>
 <p>Previous rating: {{ mem3q4prev }}</p>
 -->
-
+<br>
+<div id="radioes">
 <hr>
 <form action = "" method = "POST">
 <p><b>{{ mem1 }}</b></p>
@@ -161,6 +163,7 @@
 <input type=radio name={{ mem3 }} value = 9>9</input>
 
 <hr>
+</div>
 
 <p><input type = "submit" value = "Submit"></p>
 </form>
