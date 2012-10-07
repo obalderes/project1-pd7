@@ -40,48 +40,21 @@ def addProjectToPerson(emailaddress,projectname):
         if (((int)(currentgroup) == 15) and (people[email] != people[emailaddress])):
             people[emailaddress][3][projectname][theirgroup].append(people[email])
 
+#creates a dictionary of projects with groups and all the members of the groups, and an empty dictionary for their feedback. Used for individuals to look up their own data
 def setupProject():
     groupnums = []
+    membs = {}
     for line in y:
-        print 'here'
         email,last,first,ID,className,classNumber,Period,Gnuminclass,gnum = str(line.strip()).split(",",8)
         if groupnums.count(gnum) == 0:
             groupnums.append(gnum)
-    print groupnums
-    #projx['project one'] = groupnumbers
-    #for person in people:
-    #    theirgroup = people[person][8]
-    #    groupnumbers[(int)(theirgroup)].append(people[person])
-    
-        
-
-
-
-
-
-def createProj(data):
-    """
-creates new entry for Project(d) given data for that project
-in groups, emails are keys pointing to none
-- none to be replaced with members
-"""
-    p = dict([(i,{}) for i in range(0,15)])
-    emails = open(data)
-    
-    for line in emails:
-        x,y = str(line.strip()).split(",",1)
-        y = y.split(",")
-        p[int(x)] = dict([(i,{}) for i in y])
-
-    people = returnPeopleDict()
-    for x in p: #for every group in projects(d)
-        for person in p[x]:
-            tempList = people[person]
-            p[x][person] = {'first':tempList[0],'last':tempList[1],'email':person,'feedback':{}}
-            
-    return p
-    
-
+    projx['project one'] = groupnumbers
+    for grps in groupnumbers:
+        projx['project one'][(int)(grps)] = {}
+    for person in people:
+        theirgroup = people[person][8]
+        projx['project one'][(int)(theirgroup)][person] = {}
+    print projx['project one'][15]
 
         
 def returnPeopleDict(): # set up the people dictionary

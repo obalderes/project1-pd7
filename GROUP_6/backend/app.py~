@@ -1,8 +1,9 @@
 import storage
+import shelve
+import os
 from flask import Flask
 from flask import request
 from flask import render_template
-import utils
 from flask import url_for,redirect,flash
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -22,3 +23,4 @@ def getInfo(email):
     namesList =[]
     namesList[1] = storage.s[email,firstName]
     namesList.append(storage.s[email,lastName]
+
