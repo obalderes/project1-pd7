@@ -15,8 +15,8 @@ def makeAuth():
         item = item.strip()
         email,last,first,idnum,cl,sect,pd,group = item.split(",")
         auth[email] = [first,last,idnum,group]
-        print email
-        print auth[email]
+        #print email
+        #print auth[email]
 
     pass
                 
@@ -106,7 +106,7 @@ def getGroupMembers(email):
     return lis
 
 
-print getGroupMembers('jpengsmail@gmail.com')
+#print getGroupMembers('jpengsmail@gmail.com')
 
 
 
