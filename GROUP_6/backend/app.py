@@ -21,5 +21,6 @@ def rate(email,r1,r2,r3,comment):
 def getInfo(email):
     namesList =[]
     namesList[1] = storage.s[email,firstName]
-    namesList.append(storage.s[email,lastName]
+    namesList.append(storage.s[email,lastName])
+
 
