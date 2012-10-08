@@ -5,11 +5,7 @@ def init():
     if not os.path.isfile('info.dat'):
         s = shelve.open('info.dat')
         firre = open('students.txt')
-        s['names'] = []
-        s['ID'] = []
-        s['period'] = []
-        s['responses'] = []
-        names = []
+        name = []
         ID = []
         period = []
         group = []
@@ -17,26 +13,39 @@ def init():
         for line in firre.readlines():
             currentstudent = line.split(',')
             ID.append(currentstudent[0])
-            names.append(currentstudent[2] + " " + currentstudent[1])
-            period.append(currentstudent[4])
+            name.append(currentstudent[2] + " " + currentstudent[1])
+            period.append(currentstudent[6])
+            group.append(currentstudent[7])
             responses.append([])
         s['ID'] = ID
-        s['names'] = names
+        s['name'] = name
         s['period'] = period
         s['group'] = group
         s['responses'] = responses
+        print s
+    else:
+        s = shelve.open('info.dat')
 
 def addRating(email, rating):
-    index = s['ID'].index(email)
+    ids = s['ID']
+    index = ids.index(email)
     responses = s['responses'] 
     responses[index].append(rating)
     s['responses'] = responses
 
 def getInfo(email):
-    index = s['ID'].index(email)
+    ids = s['ID']
+    index = ids.index(email)
     ret = []
-    ret.append(s['names'][index])
+    ret.append(s['name'][index])
     ret.append(s['period'][index])    
     ret.append(s['group'][index])
     ret.append(s['responses'][index])
     return ret
+
+init()
+print s
+addRating('a455898334@gmail.com', '5 stars')
+print s
+getInfo('a455898334@gmail.com')
+print s
