@@ -3,9 +3,16 @@ from flask import request
 from flask import render_template
 #import utils
 from flask import url_for,redirect,flash
-import databaseMethods
+import databaseMethods, shelveSetup
 
 app = Flask(__name__)
+
+
+
+shelveSetup.getStudentInfo()
+shelveSetup.getGroups()
+shelveSetup.setupGrades()
+shelveSetup.setupRatedBy()
 
 
 @app.route("/", methods = ['GET', 'POST'])
