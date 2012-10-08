@@ -7,7 +7,16 @@ from flask import render_template
 from flask import url_for,redirect,flash
 app = Flask(__name__)
 app.secret_key = 'some_secret'
-
+@app.route("/homepage",methods = ['get'])
+def login():
+    if request.method == 'get':
+        return render_template('homepage.html')
+    else:
+        email = request.form["input"]
+        if email == storage.returnIDlist():
+            return render_template("RatingPage.html")
+        else:
+            return redirect(url_for('error'))
 
 '''def getRatings(email):
     return storage.s['id',email]
