@@ -3,22 +3,41 @@
 		<title> Welcome to Ratebook </title>
 		<style type="text/css">
 			body{
-				padding-left:3%;
-				padding-right: 3%;
 				font-family: "Arial";
+			}
+			body>div{
+				padding-left: 1%;
+				padding-right: 1%;
+			}
+			header{
+				background-color:#CCCCCC;
+				color: black;
 			}
 		</style>
 	</head>
 	<body bgcolor="#E8E8E8">
-		<font size="20"><b>Ratebook</b></font>
-		<br>
-		Please log in with your email.
-		<br><br>
-		
-		<form action="" method="POST">
-			Email:  <input type="text" name="email"><br>
-			<input type="submit" name="button" value="Login">
-		</form>
-		
+		<header><font size="20">
+			Ratebook
+		</font></header>
+		<div>
+			<br>
+			Please log in with your email.
+			<br><br>
+			
+			<form action="" method="POST">
+				<table border="0" bordercolor="0" style="background-color:#" width="25%" cellpadding="5" cellspacing="0">
+					<tr>
+						<td>Email</td>
+						<td><input type="text" name="email"></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" name="password"></td>
+					</tr>
+				</table>
+				<input type="submit" name="button" value="Login">
+				<input type="submit" name="button" value="Register">
+			</form>
+		</div>
 	</body>
 </html>

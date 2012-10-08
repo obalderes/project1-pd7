@@ -99,7 +99,8 @@ ratee="jdecker12@gmail.com"
 rating={"Question Number":"1","Rating":"3","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
 add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating)
 add_rating("mengdilin95@gmail.com",ratee,"1","8")
-
+print students["mengdilin95@gmail.com"]["Rating Given"]
+print students[ratee]["Rating Received"]
 '''
 def add_rating(rater,ratee,project,rating):
        return true if rating is added 

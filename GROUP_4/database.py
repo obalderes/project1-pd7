@@ -1,66 +1,64 @@
-from flask import Flask
+#from flask import Flask
 
 import shelve
 
 
-def makeAuth(data):
+def makeAuth():
+    """
+    Takes students.dat as a parameter, makes a shelve named 'authen'.
+    The keys are emails, the items are lists with [first,last,idnum,group].
+    Used to authenticate login.
+    """
     auth = shelve.open("authen")
-    f = open(data).readlines()
+    f = open("students.dat").readlines()
     for item in f:
         item = item.strip()
-        email,last,first,id,cl,sect,pd,group = item.split(",")
-        auth[email] = [first,last,id,group]
-        print email
-        print auth[email]
+        email,last,first,idnum,cl,sect,pd,group = item.split(",")
+        auth[email] = [first,last,idnum,group]
+        #print email
+        #print auth[email]
 
     pass
                 
     
 
-def fixNames(names,questions):
+def fixNames():
     """
-    Changes the datafile received into a string of first,last,email
-    Returns the list of names in the format [first,last,email first,last,email...], etc.
+    Takes 'questions.txt' and 'p1.dat'.
+    Creates shelve 'questions.dat'
+    This shelve has keys as emails.
+    The emails refer to a list.
+    At each index of the list there is a list of ratings refering to that question.
     """
-    quest = shelve.open("questions.dat")
-    f = open(names).readlines()
-    q = open(questions).readlines()
-    for item in f:
-        item = item.strip()
-    for item in q:
-        item = item.strip()
-
-    qr = {}
-    for item in q:
-        qr[item] = []
     
+    quest = shelve.open("questions.dat")
+    f = open("p1.txt").readlines()
+
+    if len(quest) != 0:
+        pass
+     
     for item in f:
+        item = item.strip()
         a,b = item.split(",",1)
         c = b.split(",")
         for item in c:
-            quest[item] = qr
-
-    #for item in quest:
-    #    print "/nNEXT ITEM"
-    #    print item
-    #    print quest[item]
-
+            quest[item] = {}
+ 
     quest.close()
     pass
     
 
-def createGroups(data):
+def createGroups():
     """
     Makes the Groups shelve
 
     Entire group is referenced by the key -- so when we do the list to show who is in the group, just make sure to take out the email that is the key.
     """
     groups = shelve.open("groups")
-    f = open(data).readlines()
-    for item in f:
-        item = item.strip()
+    f = open("p1.txt").readlines()
     num = 0
     for item in f:
+        item = item.strip()
         a,b = item.split(",",1)
         c = b.split(",")
         for item in c:
@@ -71,11 +69,51 @@ def createGroups(data):
 
 
 
-def testing():
-    gr = shelve.open("groups")
-    print gr.keys()
+def getRatings(email):
+    """
+    Returns all the ratings of a given email in a list of lists of ratings.
+    """
+    quest = shelve.open("questions.dat")
+    d = []
+    for item in quest[email]:
+        d.append(quest[email][item])
+    return d
+
+    
+def addRating(rater,ratee,ratings):
+    """
+    Adds a rating to a person.  If a person has rated this person before it overwrites the previous rating.  Returns the ratings added.
+    """
+    quest = shelve.open("questions.dat", writeback = True)
+    groups = shelve.open("groups")
+    if not(ratee in groups[rater]):
+        return "This person is not in your group, so you cannot rate them"
+
+    quest[ratee][rater] = ratings
+        
+    quest.close()
+    groups.close()
+    
+    return ratings
+
+def getGroupMembers(email):
+    """
+    Returns a list of the group members of the email given.
+    """
+    group = shelve.open("groups")
+    lis = group[email]
+    lis.remove(email)
+    return lis
 
 
-#createGroups("p1.txt")
-#fixNames("p1.txt","questions.txt")
-makeAuth("students.dat")
+#print getGroupMembers('jpengsmail@gmail.com')
+
+
+
+
+createGroups()
+fixNames()
+makeAuth()
+#print getRatings('jpengsmail@gmail.com')
+addRating('batya.zamansky@gmail.com','jpengsmail@gmail.com',[2,3,4,5,6])
+addRating('darylsew@gmail.com','jpengsmail@gmail.com',[3,4,1,8,25])

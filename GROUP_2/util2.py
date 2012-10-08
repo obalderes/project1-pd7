@@ -10,6 +10,9 @@ dbname = "%s/%s"%(DIR,database)
 students = open("students.txt","r").readlines()
 groups = open("p1.txt").readlines()
 
+A = []
+S = []
+G = []
 
 def process():
     s = shelve.open(dbname)
@@ -40,8 +43,24 @@ def save_rating(email):
 def get_rating(email):
     s=shelve.open(dbname)
     for i in s[email]:
-        print i.author
-        print i.score
-        print i.group
+        #print i.author
+        #print i.score
+        #print i.group
+        A.append(i.author)
+        S.append(i.score)
+        G.append(i.group)
     s.close()
+
+def authorlist():
+    return A
+
+def scorelist():
+    return S
+
+def grouplist():
+    return G
+
+
+
+
 

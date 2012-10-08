@@ -1,5 +1,7 @@
 * { margin: 0; padding: 0; font-family: Georgia; }
 
+html,body { width: 100%; height: 100%; min-width: 330px; }
+
 h3 { padding-bottom: 8px; }
 
 header
@@ -8,8 +10,6 @@ header
     height: 60px;
     background-color: #DDD;
     border-bottom: 5px solid #666;
-    position: absolute;
-    top: 0;
 }
 
 header ul
@@ -57,7 +57,6 @@ body>div
     width: 28%;
     float: left;
     padding: 20px 2.66%;
-    padding-top: 90px;
 }
 
 body>div h1
@@ -67,18 +66,24 @@ body>div h1
     padding-bottom: 15px;
 }
 
-body>div form
+body>div form, body>div#stats dl, body>div#stats h3
 {
     text-align: center;
-    width: 84%;
-    padding-left:  8%;
-    padding-right: 8%;
+    max-width: 260px;
+    width: 88%;
+    margin-left:  auto;
+    margin-right: auto;
 }
 
 body>div form *
 {
     text-align: left;
     margin-bottom: 10px;
+}
+
+body>div#login form
+{
+    max-width: 200px;
 }
 
 #login form p
@@ -108,4 +113,17 @@ dl dd
 body>div.selected
 {
     background-color: #EAEAAE;
+}
+
+@media only screen and (max-width : 330px)
+{
+    header
+    {
+	width: 330px;
+    }
+
+    header ul li a
+    {
+	width: 110px;
+    }
 }
