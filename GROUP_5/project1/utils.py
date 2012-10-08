@@ -21,7 +21,11 @@ def prepro_students():
         line = line.strip()
         e = line.partition(',')
         info = e[2].split(',')
-        students[e[0]]={"Rating Received":[],"Rating Given":[],"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6],"Password":""}
+        students[e[0]]={"Rating Received":[],"Rating Given":[],"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6],"Password":"","Members":"", "Rater":}
+        group = int(float(students[e[0]]["Group"]))
+        period =int(float(students[e[0]]["Period"]))
+        key = str((period-6)*8+group)
+        students[e[0]]["Members"]=emails[key]
     s.close()
 
 def printStudentsNicely():
@@ -94,10 +98,7 @@ def get_rating(user):
     return dictionary
 
 def get_members(user):
-    group = int(float(students[user]["Group"]))
-    period =int(float(students[user]["Period"]))
-    key = str((period-6)*8+group)
-    return emails[key]
+    return students[user]["Members"]
 
 def get_name(user):
     name = students[user]["First"]+" "+students[user]["Last"]
@@ -113,9 +114,9 @@ rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Rat
 add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating)
 add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating1)
 add_rating("mengdilin95@gmail.com",ratee,"1","8")
+print get_members(ratee)
 #print students["mengdilin95@gmail.com"]["Rating Given"]
 #print students["iBriaan@gmail.com"]["Rating Received"]
 #print get_rating("mengdilin95@gmail.com")    
    
-u=[0]*20
-print u
+
