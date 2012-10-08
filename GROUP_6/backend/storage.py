@@ -1,10 +1,22 @@
 import shelve
 import os
+#<<<<<<< HEAD
 s = shelve.open('info.dat')
 def init():
     #if not os.path.isfile('info.dat'):
 
     firre = open('students.txt')
+#=======
+
+if not os.path.isfile('info.dat'):
+    s = shelve.open('info.dat')
+    firre = open('students.txt')
+    s['ID'] = []
+    s['name'] = []
+    s['period'] = []
+    s['group'] = []
+    s['responses'] = []
+#>>>>>>> 5e8ed64946a08b1cc3fb440b8bf8b4ed83e2ee30
     name = []
     ID = []
     period = []
@@ -22,9 +34,14 @@ def init():
     s['period'] = period
     s['group'] = group
     s['responses'] = responses
-    print s
+#<<<<<<< HEAD
+    #print s
 #else:
  #       s = shelve.open('info.dat')
+#=======
+else:
+    s = shelve.open('info.dat')
+#>>>>>>> 5e8ed64946a08b1cc3fb440b8bf8b4ed83e2ee30
 
 def addRating(email, rating):
     ids = s['ID']
@@ -42,8 +59,13 @@ def getInfo(email):
     ret.append(s['group'][index])
     ret.append(s['responses'][index])
     return ret
+#<<<<<<< HEAD
 init()
 #print s
+#=======
+
+#print s
+#>>>>>>> 5e8ed64946a08b1cc3fb440b8bf8b4ed83e2ee30
 addRating('a455898334@gmail.com', '5 stars')
 #print s
 getInfo('a455898334@gmail.com')
