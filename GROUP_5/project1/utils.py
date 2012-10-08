@@ -3,22 +3,15 @@ emails = shelve.open("emails",writeback=True) #key: str(num 0-15) info: emails i
 students = shelve.open("students",writeback=True) #key: str(emails) info: student info in dictionaries
 #raters = shelve.open("raters")
 #ratees = shelve.open("ratees")
+
 def prepro_p1():
     f=open("p1.txt",'r')
-    emailList=[]
     key=""
     for line in f.readlines():
-        line= line.strip()
-        if line in ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15']:
-            if key!="":
-                emails[key]=emailList
-                emailList=[]
-                if len(line)>1 and line[1]!=" ":
-                    key=line[0:2]
-                else:
-                    key= line[0] 
-            elif line!=" ":
-                emailList.append(line)
+        line = line.strip()
+        e = line.partition(',')
+        info = e[2].split(',')
+        emails[e[0]]=info      
     f.close()
 
 def prepro_students():
@@ -52,7 +45,6 @@ def ratees_shelve():
 '''
 prepro_p1()
 prepro_students()
-
 #raters_shelve()
 #ratees_shelve()
 
@@ -86,34 +78,44 @@ def add_rating(rater,ratee,*args):
     #need user_authen
     if(students[rater]["Group"]==students[ratee]["Group"]):
         if(len(args)!=1): 
-            rating={"Question Number":args[0],"Rating":args[1],"Rater":rater,"Ratee":ratee}
+            rater_rating={"Question Number":args[0],"Rating":args[1],"Ratee":ratee}
+            ratee_rating={"Question Number":args[0],"Rating":args[1],"Rater":rater}
         else:
-            rating=args[0]
-        students[rater]["Rating Given"].append(rating)
-        students[ratee]["Rating Received"].append(rating)
+            rater_rating={"Question Number":args[0]["Question Number"],"Rating":args[0]["Rating"],"Ratee":args[0]["Ratee"]}
+            ratee_rating={"Question Number":args[0]["Question Number"],"Rating":args[0]["Rating"],"Rater":args[0]["Rater"]}
+        students[rater]["Rating Given"].append(rater_rating)
+        students[ratee]["Rating Received"].append(ratee_rating)
         return True
     else:
         return False
 
+def get_rating(user):
+    dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]}
+    return dictionary
+
+def get_members(user):
+    group = int(float(students[user]["Group"]))
+    period =int(float(students[user]["Period"]))
+    key = str((period-6)*8+group)
+    return emails[key]
+
+def get_name(user):
+    name = students[user]["First"]+" "+students[user]["Last"]
+    return name
+
+def get_info(user):
+    dictionary={"Period":students[user]["Period"], "Group":students[user]["Group"], "Section":students[user]["Section"], "ID":students[user]["ID"], "Class":students[user]["Class"]}
+    return dictionary
+
 ratee="jdecker12@gmail.com"
 rating={"Question Number":"1","Rating":"3","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
+rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
 add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating)
+add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating1)
 add_rating("mengdilin95@gmail.com",ratee,"1","8")
-print students["mengdilin95@gmail.com"]["Rating Given"]
-print students[ratee]["Rating Received"]
-'''
-def add_rating(rater,ratee,project,rating):
-       return true if rating is added 
-       return false if rater or ratee does not exist in the same group
-
-def get_rating_received(user)
-     return a list of ratings the user has received
-
-def get_rating_assigned(user)
-     return a list of ratings the user has given to other people
-
-
-
-
-
-'''
+#print students["mengdilin95@gmail.com"]["Rating Given"]
+#print students["iBriaan@gmail.com"]["Rating Received"]
+#print get_rating("mengdilin95@gmail.com")    
+   
+u=[0]*20
+print u
