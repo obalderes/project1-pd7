@@ -19,17 +19,12 @@ except Exception:
     studentShelve["createdCheck"] = "shelve has been created"
     print "Shelve has been compiled"
 
-
 def emailAuth(email):
     try:
         studentShelve[email]
-        print email
         return True
     except Exception:
-        print email
         return False
-
-print emailAuth("iBriaan@gmail.com")
 
 def userFirst(email):
     student = studentShelve[email]
@@ -55,4 +50,3 @@ def userGroup(email):
     student = studentShelve[email]
     email,lastname,firstname,idnumber,period,group = student.split(",")
     return group
-

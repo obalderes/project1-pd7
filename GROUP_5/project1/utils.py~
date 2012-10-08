@@ -1,5 +1,0 @@
-import shelve
-
-f=open("pd1.txt",r)
-emailList=f.readlines()
-f.strip()

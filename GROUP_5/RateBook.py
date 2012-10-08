@@ -16,9 +16,12 @@ def index(failedpass = False):
         return login(email,password)
 
 def login(email, password):
-    if(utils.user_authen(email) == True):
+    print email
+    if(utils.emailAuth(email) == True):
+        print "Passed auth"
         return redirect(url_for("rate", name = email))
     else:
+        print "Failed auth"
         return redirect(url_for("index", failedpass = True))
     
 @app.route("/rate")
