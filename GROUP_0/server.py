@@ -16,9 +16,9 @@ def home():
         #check if valid username. If not, error message.
         button = request.home["button"]
         if button == "View Ratings":
-            return redirect(url_for("view_ratings"))
+            return redirect(url_for("view_ratings", username = username))
         elif button == "Post Ratings":
-            return redirect(url_for("post_ratings"))
+            return redirect(url_for("post_ratings", username = username))
         #redirect to page corresponding to button value
 
 @app.route("/view_ratings", methods = ['GET','POST'])
