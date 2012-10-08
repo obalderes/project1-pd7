@@ -7,8 +7,7 @@ def verifylogin(email, idnum):
     for n in l:
         if (email in n and idnum in n):
             return True
-        else:
-            return False
+    return False
 
 def get_group(email):
     for n in StudentsList:
