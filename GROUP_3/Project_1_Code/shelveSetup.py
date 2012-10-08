@@ -4,7 +4,7 @@ import shelve
 
 
 def getStudentInfo():
-    a = shelve.open("students.db")
+    a = shelve.open("students.db", writeback=True)
 
 
     file1 = open("students.txt")
@@ -20,7 +20,7 @@ def getStudentInfo():
 
 
 def getGroups():
-    b = shelve.open("groups.db")
+    b = shelve.open("groups.db", writeback=True)
 
     file2 = open("p1.txt")
 
@@ -35,7 +35,7 @@ def getGroups():
 
 
 def setupGrades():
-    c = shelve.open("grades.db")
+    c = shelve.open("grades.db", writeback=True)
 
     file3 = open("students.txt")
 
@@ -50,7 +50,7 @@ def setupGrades():
 
 
 def setupRatedBy():
-    d = shelve.open("ratedBy.db")
+    d = shelve.open("ratedBy.db", writeback=True)
 
     file4 = open("students.txt")
 
