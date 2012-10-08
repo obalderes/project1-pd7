@@ -55,8 +55,7 @@ def rate_page():
     assert name != ""
 
 @app.route("/results")
-def view_results():
-   
+def view_results():   
     return render_template("results.html")
 
 
