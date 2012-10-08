@@ -57,6 +57,8 @@ def getInfo(email):
     ret.append(s['group'][index])
     ret.append(s['responses'][index])
     return ret
+def returnIDlist():
+    return s['ID']
 #<<<<<<< HEAD
 init()
 #print s
