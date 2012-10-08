@@ -2,11 +2,9 @@
 
 import shelve
 
-database = shelve.open('database.db', writeback=True)
+database = shelve.open('database.dat', writeback=True)
 #d = shelve.open("students.dat")
 #I can't figure out the shelf implementation... I keep on getting a "db" type error so I'm just going to program instantiating a dictionary instead.
-
-#If you change db (I don't know what this is) to .dat, it works but idk if you specifically needed a db type
 
 people = {}
 projx = {}
@@ -77,6 +75,9 @@ setupPeople()
 createNewProject("project two")
 createNewProject("littlefish")
 print getData('iouthwaite1@gmail.com')
+
+database['People'] = people
+database.close()
 #addProjectToPerson("iouthwaite1@gmail.com",'newproject')
 #database = [project,people]
 
