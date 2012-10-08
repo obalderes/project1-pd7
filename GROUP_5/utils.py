@@ -23,13 +23,9 @@ except Exception:
 def emailAuth(email):
     try:
         studentShelve[email]
-        print email
         return True
     except Exception:
-        print email
         return False
-
-print emailAuth("iBriaan@gmail.com")
 
 def userFirst(email):
     student = studentShelve[email]
