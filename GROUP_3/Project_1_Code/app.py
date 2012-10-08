@@ -3,9 +3,16 @@ from flask import request
 from flask import render_template
 #import utils
 from flask import url_for,redirect,flash
-import databaseMethods
+import databaseMethods, shelveSetup
 
 app = Flask(__name__)
+
+
+
+shelveSetup.getStudentInfo()
+shelveSetup.getGroups()
+shelveSetup.setupGrades()
+shelveSetup.setupRatedBy()
 
 
 @app.route("/", methods = ['GET', 'POST'])
@@ -19,17 +26,15 @@ def home():
     assert email != ""
     databaseMethods.saveCurrentStudent(email)
     
-   
-   
-    #flash?
+    flash("Email:%s" (email))
 
-#I THINK WE NEED get and post yet again b/c we want to have inputs on this page as well.
+
 @app.route("/home", methods = ['GET', 'POST'])
 def login():
-    if requeset.method == "GET":
+    if request.method == "GET":
         return render_template("home.html")
 
-
+    
     email = databaseMethods.getCurrentStudent()
 
     #retrieve the info of the student who logged in
@@ -41,15 +46,10 @@ def login():
     #get the members of that group
     retrieveGroupMembers(groupNumber)
 
-    #
-    getMyGrades(email) <--DENIS MAKE THIS
-    userInfo = databaseMethods.get_User()
-   if request.method == "GET":
-       return render_template("home.html")
-#info about ratings and buttons that lead to new pages to
-#////Put back in
-   else: 
-       button = request.form['button'] 
+    #getMyGrades(email)
+    userInfo = databaseMethods.retrieveGrades(email)
+
+
     
 #////put back in
 #need to set up buttons or links to go into other group members and give ratings
