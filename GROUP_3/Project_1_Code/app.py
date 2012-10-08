@@ -17,12 +17,8 @@ def home():
        # return redirect(url_for('home')) #needs to do authentication before directing to login. could be ID
     email = request.form['email']
     assert email != ""
-    databaseMethods.retrieveStudentInfo(email)
-    #groupNumber = databaseMethods.getGroupNumber(email) <-- DENIS MAKE THIS
-    retrieveGroupMembers(groupNumber)
-    #getMyGrades(email) <--DENIS MAKE THIS
-    #userInfo = databaseMethods.get_User() <-- should access first shelve DENIS made.
-   
+    databaseMethods.saveCurrentStudent(email)
+    
    
    
     #flash?
@@ -30,12 +26,30 @@ def home():
 #I THINK WE NEED get and post yet again b/c we want to have inputs on this page as well.
 @app.route("/home", methods = ['GET', 'POST'])
 def login():
+    if requeset.method == "GET":
+        return render_template("home.html")
+
+
+    email = databaseMethods.getCurrentStudent()
+
+    #retrieve the info of the student who logged in
+    databaseMethods.retrieveStudentInfo(email)
+    
+    #get the group number of that student
+    groupNumber = databaseMethods.getGroupNumber(email)
+
+    #get the members of that group
+    retrieveGroupMembers(groupNumber)
+
+    #
+    getMyGrades(email) <--DENIS MAKE THIS
+    userInfo = databaseMethods.get_User()
    if request.method == "GET":
        return render_template("home.html")
 #info about ratings and buttons that lead to new pages to
 #////Put back in
    else: 
-       button = request.loginPage['button'] 
+       button = request.form['button'] 
     
 #////put back in
 #need to set up buttons or links to go into other group members and give ratings
