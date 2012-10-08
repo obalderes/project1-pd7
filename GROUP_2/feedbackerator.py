@@ -22,8 +22,9 @@ def login():
         if util.verifylogin(username, password):
             return redirect(url_for('user_page', name = username))
         else:
-            return render_template("login.html")
-        
+            #flash("Sorry, your username and password did not match. Try again")
+            #return redirect(url_for('login'))
+            render_template("login.html")
 
 #So frustrated. This is an important note to self, David. When you use url_for, the String input is the name of the method of the page, not it's actual URL. Agh!
 
