@@ -11,10 +11,9 @@ We will have 2 shelves for accessing data.  One shelve will be called questions 
 Functions:
 
 <ul> 
-     <li>openDatabase(database)</li>
-     <li>getStudent(email)</li>
-     <li>seeRatings(email)</li>
-     <li>saveRating(name)</li>
+     <li>getRatings(email</li>
+     <li>addRating(ratee,rater,ratings)</li>
+     <li>seeGroupMembers(email)</li>
 </ul>
 
 Page Design: <br>
