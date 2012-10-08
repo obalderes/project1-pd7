@@ -1,10 +1,6 @@
-
-
 import shelve
 
 database = shelve.open('database.dat', writeback=True)
-#d = shelve.open("students.dat")
-#I can't figure out the shelf implementation... I keep on getting a "db" type error so I'm just going to program instantiating a dictionary instead.
 
 people = {}
 projx = {}
