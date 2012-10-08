@@ -10,11 +10,6 @@ import shelveSetup
 
 #### students.db ####
 
-shelveSetup.getStudentInfo()
-shelveSetup.getGroups()
-shelveSetup.setupGrades()
-shelveSetup.setupRatedBy()
-
 
 currentStudent = ""
 
