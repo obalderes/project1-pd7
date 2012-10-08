@@ -13,7 +13,7 @@ def login():
         return render_template('homepage.html')
     else:
         email = request.form["input"]
-        if(True): #loginAuth(email,password)):
+        if email == storage.s['ID']
             return render_template("RatingPage.html")
         else:
             return redirect(url_for('error'))
