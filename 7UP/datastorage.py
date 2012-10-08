@@ -95,6 +95,7 @@ print getData("Oneman2feet@gmail.com")
 #database = [project,people]
 
 database['People'] = people
+database['Projects'] = projx
 database.close()
 
 
