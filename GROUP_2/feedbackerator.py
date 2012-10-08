@@ -22,7 +22,8 @@ def login():
         if util.verifylogin(username, password):
             return redirect(url_for('user_page', name = username))
         else:
-            flash("Sorry, your username and password did not match. Try again")
+            flash("Sorry, incorrect login information for user %s"%(username))
+            # flash message doesnt work MUST FIX
             return redirect(url_for('login'))
             #render_template("login.html")
 
