@@ -31,6 +31,8 @@ def setupPeople():
 def addProjectToPerson(emailaddress,projectname):
     people[emailaddress][3][projectname] = {}
     theirgroup = people[emailaddress][8]
+    if groupnumbers.count(gnum) == 0:
+        groupnumbers.append(gnum)
     for g in groupnumbers:
         people[emailaddress][3][projectname][g] = []
     for email in people:
@@ -53,12 +55,14 @@ def createNewProject(projectname):
         projx[projectname][(int)(grps)] = {}
     for person in people:
         theirgroup = people[person][8]
-        projx[projectname][(int)(theirgroup)][person] = {}
+        projx[projectname][(int)(theirgroup)][person] = []
+    projx['currentproject'] = projectname
 
         
 def returnPeopleDict():
     return people
 
+#returns a list of their data, project->data from each project
 def getData(emailaddress):
     data = []
     for projs in projx:
@@ -68,18 +72,30 @@ def getData(emailaddress):
                     data.append(projx[projs][(int)(people[person][8])][person])
     return data
 
-def ratePerson(rater, ratee):
-    return null
+#rates a person in your group and in your current project
+def ratePerson(rater,ratee,question,score,comments):
+    data = {}
+    data['rater'] = rater
+    data['question'] = question
+    data['score'] = score
+    data['comments'] = comments
+    CurrProj = projx["currentproject"]
+    CurrGroup = people[rater][8]
+    projx[CurrProj][(int)(CurrGroup)][ratee].append(data)   
 
 setupPeople()
 createNewProject("project two")
 createNewProject("littlefish")
 print getData('iouthwaite1@gmail.com')
 
+#addProjectToPerson("iouthwaite1@gmail.com",'newproject')
+ratePerson("iouthwaite1@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
+ratePerson("raymondzzzeng@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
+print getData("Oneman2feet@gmail.com")
+#database = [project,people]
+
 database['People'] = people
 database.close()
-#addProjectToPerson("iouthwaite1@gmail.com",'newproject')
-#database = [project,people]
 
 
 
