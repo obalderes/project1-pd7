@@ -1,18 +1,46 @@
 body{
     font-size: small;
-    font-family: Times;
+    font-family: Times, serif;
+    line-height: 2;
+    background: #8FBC8F;
+    text-align: center;
+}
+
+title{
+    color: #06266F;
+
 }
 
 h1{
-    color: blue;
+    color: #06266F;
+    text-align: center;
+    
+}
+
+h2{
+    color: #06266F;
+    text-align: center;
 }
 
 p{
-    color: black;
+    color: white;
+    text-indent: 10%;
 }
 
 label{
+    color: white;
+    text-transform: uppercase;
+}
+
+img{
+    border: 1px solid silver;
+}
+
+input{
+    color: white;
+}
+
+.submit_button{
     color: black;
-    font-size: small-caps;
 }
 
