@@ -20,7 +20,7 @@ def login(email):
     if(utils.emailAuth(email) == True):
         print email + " Passed auth"
         fullname = utils.userFirst(email) + " " + utils.userLast(email)
-        #members = utils.userGroupMembers("iBriaan@gmail.com")
+        
         return redirect(url_for("rate", members = utils.userGroupMembers(email), email=email, name = utils.userFirst(email)))
     else:
         print email + " Failed auth"
