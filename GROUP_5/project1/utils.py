@@ -21,18 +21,19 @@ def prepro_students():
         line = line.strip()
         e = line.partition(',')
         info = e[2].split(',')
-        students[e[0]]={"Rating Received":[],"Rating Given":[],"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6],"Password":"","Members":"", "Rater":}
+        students[e[0]]={"Rating Received":[],"Rating Given":[],"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6],"Password":"","Members":"", "Rater":""}
         group = int(float(students[e[0]]["Group"]))
         period =int(float(students[e[0]]["Period"]))
         key = str((period-6)*8+group)
         students[e[0]]["Members"]=emails[key]
     s.close()
 
+'''
 def printStudentsNicely():
     for key in students:
         print students[key]["First"] + ' ' + students[key]["Last"] + ": Period " + students[key]["Period"] + ", Group " + students[key]["Group"] + ", ID number: " + students[key]["ID"]
 
-'''
+
 def raters_shelve():
     s=open("emails.txt")
     for line in s.readlines():
@@ -53,7 +54,7 @@ prepro_students()
 #ratees_shelve()
 
 
-def user_authen(user,password):
+def emailAuth(user,password):
     try:
         students[user]
         if(students[user]["Password"]==""):
@@ -64,7 +65,7 @@ def user_authen(user,password):
 '''
 #rater = email string
 #ratee = email string
-#rating = dictionary {"Question Number":"", "Rating":"", "Rater":"", "Ratee":""}
+#rating = dictionary {"Project Number":"","Question Number":"", "Rating":"", "Rater":"", "Ratee":""}
 def add_rating(rater,ratee,rating):
     #needs to be wrapped around some sort of user_authen
     if(students[rater]["Group"]==students[ratee]["Group"]):
@@ -93,18 +94,37 @@ def add_rating(rater,ratee,*args):
     else:
         return False
 
-def get_rating(user):
+def userRating(user):
     dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]}
     return dictionary
 
-def get_members(user):
+def userMembers(user):
     return students[user]["Members"]
 
-def get_name(user):
-    name = students[user]["First"]+" "+students[user]["Last"]
+def userFirst(user):
+    name = students[user]["First"]
     return name
 
-def get_info(user):
+def userLast(user):
+    name = students[user]["Last"]
+    return name
+
+def userPeriod(user):
+    return students[user]["Period"]
+
+def userGroup(user):
+    return students[user]["Group"]
+
+def userIdNumber(user):
+    return students[user]["ID"]
+
+def userClass(user):
+    return students[user]["Class"]
+
+def userSection(user):
+    return students[user]["Section"]
+
+def userInfo(user):
     dictionary={"Period":students[user]["Period"], "Group":students[user]["Group"], "Section":students[user]["Section"], "ID":students[user]["ID"], "Class":students[user]["Class"]}
     return dictionary
 
@@ -114,7 +134,6 @@ rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Rat
 add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating)
 add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating1)
 add_rating("mengdilin95@gmail.com",ratee,"1","8")
-print get_members(ratee)
 #print students["mengdilin95@gmail.com"]["Rating Given"]
 #print students["iBriaan@gmail.com"]["Rating Received"]
 #print get_rating("mengdilin95@gmail.com")    
