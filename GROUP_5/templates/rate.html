@@ -20,6 +20,12 @@
 		<br>
 		Hello, {{name}}, you judgmental jerk
 		<br>
+		Your group members are:
+		<ul>
+		{% for member in members %}
+			<li>{{member}}
+		{% endfor %}
+		</ul>
 		<br>
 		
 		
