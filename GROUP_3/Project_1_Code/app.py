@@ -58,7 +58,7 @@ def home():
 #need to set up buttons or links to go into other group members and give ratings
 #not sure what to write for displaying specific information for each user (previous ratings, fellow group members, etc.)
 
-@app.route("/rate")
+@app.route("/rate/")
 def rate():
     return render_template("rate.html")
 
