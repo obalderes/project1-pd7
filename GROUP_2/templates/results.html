@@ -3,14 +3,32 @@
 <h1>Hi user {{name}}!</h1>
 
 <h2>These are your results:</h2> 
-<br><br>
 
-<big>Project 1<br><br><br><hr></big>
+<h3><u>Project 1</u></h3>
+
+<i> Sorted by author </i>
+<br><br>
 {% set x = 0 %}
 {% for author in A %}
+  {{author}}:
   {% for rating in S[x] %}
-{{rating}}
-  {% endfor %}
+    {{rating}}
+    {% if not loop.last %}
+ ,
+    {% endif %}
+ {% endfor %}
 <br>
   {% set x = x + 1 %}
+{% endfor %}
+<br> <br> 
+
+<i> Sorted by question</i> 
+<br>
+{% for question in qlist %}
+  <br>{{question}}<br>
+  {% for author in A %}
+    {{author}}:
+    {{S[0]}}  {# ??? work on this later. make s[0] not refer to the set of four ratings, but to the rating of the first question #}
+      </br>
+  {% endfor %}
 {% endfor %}
