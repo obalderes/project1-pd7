@@ -60,6 +60,12 @@ input{
     color: black;
 }
 
+.typing{
+    font-size: medium;
+    color: black;
+    }
+
+
 img.judge{
     display: block;
     margin-left: auto;
