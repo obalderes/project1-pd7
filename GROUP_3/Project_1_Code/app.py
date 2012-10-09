@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 
 
-shelveSetup.getStudentInfo()
-shelveSetup.getGroups()
-shelveSetup.setupGrades()
-shelveSetup.setupRatedBy()
+#shelveSetup.getStudentInfo()
+#shelveSetup.getGroups()
+#shelveSetup.setupGrades()
+#shelveSetup.setupRatedBy()
 
 
 @app.route("/", methods = ['GET', 'POST'])
@@ -21,16 +21,15 @@ def login():
 
         return render_template("login.html")
 
-        return render_template("login.html")
 
     else:
         button=request.form['button'] #login button
-       # return redirect(url_for('home')) #needs to do authentication before directing to login. could be ID
+        return redirect(url_for('home')) 
+#needs to do authentication before directing to login. could be ID
     email = request.form['email']
     assert email != ""
     databaseMethods.saveCurrentStudent(email)
-    
-    flash("Email:%s" (email))
+
 
 
 @app.route("/home", methods = ['GET', 'POST'])
