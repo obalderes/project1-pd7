@@ -75,13 +75,19 @@ def getData(emailaddress):
                     data.append(projx[projs][(int)(people[person][8])][person])
     return data
 
-def getAvgForQuestion(email,q):
-    data = getData(email)
+def getAvgForQuestion(email,projnum,q):
+    data = getData(email)[int(projnum)]
     temp = []
-    print data
-    for dict in data:
-        if dict['question'] == str(q):
-            temp.append(dict)
+    if len(data) == 0:
+        return 0
+    
+    for d in data:
+        if d['question'] == str(q):
+            temp.append(d)
+            
+    if len(temp) == 0:
+        return 0
+    
     sum = 0        
     for dict in temp:
         sum = sum + dict['score']
@@ -103,29 +109,40 @@ setupPeople()
 createNewProject('2')
 createNewProject("1")
 
-print getData('iouthwaite1@gmail.com')
 print getFirst('iouthwaite1@gmail.com')
 print getLast('iouthwaite1@gmail.com')
 
 #addProjectToPerson("iouthwaite1@gmail.com",'newproject')
 ratePerson("iouthwaite1@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
 ratePerson("raymondzzzeng@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
-print getData("Oneman2feet@gmail.com")
+ratePerson("iouthwaite1@gmail.com","raymondzzzeng@gmail.com","Do you like pizza", 3,"m")
+ratePerson("Oneman2feet@gmail.com","raymondzzzeng@gmail.com","Do you like pizza",1, "m")
+ratePerson("raymondzzzeng@gmail.com","iouthwaite1@gmail.com","Do you like pizza", 4, "m")
+ratePerson("raymondzzzeng@gmail.com","bdh227@gmail.com","Do you like pizza", 3, "m")
+#print getData("Oneman2feet@gmail.com")
 
 database['People'] = people
 database['Projects'] = projx
 
-#returns sorted list ranking students for a given question
-def getRankings(question):
+#returns list of tuples (Avg rating, email)
+#return[0] has the highest rating
+#input: Project number where the first project is indexed by 0
+def getRankings(projnum,question):
     people = database['People']
     rankings = []
     for person in people:
-        t = (getAvgForQuestion(person,question), person)
+        t = (getAvgForQuestion(person,projnum,question), person)
         rankings.append(t)            
-               
     rankings.sort()
-    return rankings
-#print getRankings("Do you like pizza")
+
+    temp = []
+    for i in reversed(rankings):
+        temp.append(i)
+        
+    return temp
+
+
+print getRankings('0',"Do you like pizza")
 database.close()
 
 
