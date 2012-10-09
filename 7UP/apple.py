@@ -1,7 +1,5 @@
-from flask import Flask
-from flask import request
-from flask import render_template
-import utils
+from flask import Flask, request, render_template
+import datastorage
 import math
 from flask import url_for,redirect,flash
 
