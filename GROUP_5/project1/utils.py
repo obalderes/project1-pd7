@@ -62,7 +62,10 @@ def add_rating(rater,ratee,*args):
     else:
         return False
 '''
-
+#rater = email string
+#ratee = email string
+#question = "q01" etc
+#rating = number string
 def add_rating(rater,ratee,question,rating):
     total_question=10
     index =int(float(question[1:]))-1
@@ -72,6 +75,9 @@ def add_rating(rater,ratee,question,rating):
             students[rater]["Rating Given"][ratee]=['-1']*total_question
         students[ratee]["Rating Received"][rater][index]=rating
         students[rater]["Rating Given"][ratee][index]=rating
+        return True
+    else:
+        return False
 
 def userRating(user):
     dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]}
