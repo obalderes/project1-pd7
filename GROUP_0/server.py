@@ -31,3 +31,7 @@ def view_ratings():
             return redirect(url_for("home"))
         elif button == "Post Ratings":
             return redirect(url_for("post_ratings"))
+
+if __name__=="__main__":
+    app.debug=True # remove this line to turn off debugging
+    app.run() # connect to localhost:5000 or http://127.0.0.1:5000
