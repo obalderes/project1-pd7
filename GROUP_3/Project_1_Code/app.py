@@ -18,7 +18,7 @@ shelveSetup.setupRatedBy()
 @app.route("/", methods = ['GET', 'POST'])
 def login():
     if request.method == "GET":
-        return render_template("./templates/login.html")
+        return render_template("/templates/login.html")
     else:
         button=request.form['button'] #login button
        # return redirect(url_for('home')) #needs to do authentication before directing to login. could be ID
