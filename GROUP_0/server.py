@@ -10,7 +10,7 @@ def home():
         return render_template("home.html")
     else:
         username = request.home["username"]
-        if !(database.isUsername(username)):
+        if not(database.isUsername(username)):
             flash("%s is not an authorized email. \nPlease enter a valid username."%(username))
             return redirect(url_for("home"))
         #check if valid username. If not, error message.
