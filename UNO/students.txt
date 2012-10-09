@@ -25,7 +25,7 @@ biggs0125@gmail.com,Biggs,Nathaniel,8493,ml7,0,6, 5
 drteehan@gmail.com,Teehan,Daniel,8226,ml7,0,6, 6
 kn2ply@gmail.com,Jacob,Nevin,8295,ml7,0,6, 6
 so_patrick@gmail.com,So,Patrick,8632,ml7,0,6, 6
-ztsapos@gmail.com,Tsapos,Zambeta,8701,ml7,1,7, 6
+ztsapos@gmail.com,Tsapos,Zambeta,8701,ml7,0,6, 6
 wilsonstamm@gmail.com,Stamm,Wilson,8392,ml7,0,6, 7
 chripcsak@gmail.com,Hripcsak,Claire,8767,ml7,0,6, 7
 jasmineli4444@gmail.com,Li,Jasmine,8742,ml7,0,6, 7

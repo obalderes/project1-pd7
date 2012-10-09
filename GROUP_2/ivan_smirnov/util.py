@@ -12,7 +12,7 @@ def verifylogin(email, idnum):
 def get_group(email):
     for n in StudentsList:
         if (email in n):
-            print str(n)[(len(str(n))-2):]
+            return str(n)[(len(str(n))-2):]
 
 GroupsList = open("students.txt", "r").readlines()
 
