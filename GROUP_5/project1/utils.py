@@ -59,6 +59,8 @@ def emailAuth(user,password):
         students[user]
         if(students[user]["Password"]==""):
             students[user]["Password"]=password
+        elif(students[user]["Password"]!=password):
+            return False
         return True
     except Exception:
         return False
