@@ -63,8 +63,8 @@ def rate_page(name=None):
         name = request.form['student_rated']
         print name
         assert name != ""
-        util2.save_rating("ivansmirnov13@gmail.com",tmpscore)
-
+        util2.save_rating(str(name),tmpscore)
+        util2.get_rating(str(name))
         return render_template("rate_page.html",qlist=qlist)
 
 
