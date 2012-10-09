@@ -105,18 +105,15 @@ def getGroupMembers(email):
     lis.remove(email)
     return lis
 
+def reset():
+    """
+    This function can be called to reset all ratings.
+    """
+    createGroups()
+    fixNames()
+    makeAuth()
 
 #print getGroupMembers('jpengsmail@gmail.com')
-
-
-"""
-#These only need to be run once.
-createGroups()
-fixNames()
-makeAuth()
-"""
-
-
 #print getRatings('jpengsmail@gmail.com')
 #addRating('batya.zamansky@gmail.com','jpengsmail@gmail.com',[2,3,4,5,6])
 #addRating('darylsew@gmail.com','jpengsmail@gmail.com',[3,4,1,8,25])
