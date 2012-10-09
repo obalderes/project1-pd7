@@ -28,31 +28,12 @@ def prepro_students():
         students[e[0]]["Members"]=emails[key]
     s.close()
 
-'''
 def printStudentsNicely():
     for key in students:
         print students[key]["First"] + ' ' + students[key]["Last"] + ": Period " + students[key]["Period"] + ", Group " + students[key]["Group"] + ", ID number: " + students[key]["ID"]
 
-
-def raters_shelve():
-    s=open("emails.txt")
-    for line in s.readlines():
-        line=line.strip()
-        raters[line]={"Ratings":"","Project":"1","Ratees":""}
-    s.close()
-
-def ratees_shelve():
-    s=open("emails.txt")
-    for line in s.readlines():
-        line=line.strip()
-        ratees[line]={"Ratings":"","Project":"1","Raters":""}
-    s.close()        
-'''
 prepro_p1()
 prepro_students()
-#raters_shelve()
-#ratees_shelve()
-
 
 def emailAuth(user,password):
     try:
@@ -64,19 +45,6 @@ def emailAuth(user,password):
         return True
     except Exception:
         return False
-'''
-#rater = email string
-#ratee = email string
-#rating = dictionary {"Project Number":"","Question Number":"", "Rating":"", "Rater":"", "Ratee":""}
-def add_rating(rater,ratee,rating):
-    #needs to be wrapped around some sort of user_authen
-    if(students[rater]["Group"]==students[ratee]["Group"]):
-        students[rater]["Rating Given"].append(rating)
-        students[ratee]["Rating Received"].append(rating)
-        return True
-    else:
-        return False
-'''
 
 #rater = email string
 #ratee = email string
