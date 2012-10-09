@@ -54,6 +54,13 @@ def createNewProject(projectname):
         projx[projectname][(int)(theirgroup)][person] = []
     projx['currentproject'] = projectname
 
+def getFirst(emailadd):
+    return people[emailadd][0]
+
+def getLast(emailadd):
+    return people[emailadd][1]
+
+
         
 def returnPeopleDict():
     return people
@@ -96,6 +103,9 @@ setupPeople()
 createNewProject('2')
 createNewProject("1")
 
+print getData('iouthwaite1@gmail.com')
+print getFirst('iouthwaite1@gmail.com')
+print getLast('iouthwaite1@gmail.com')
 
 #addProjectToPerson("iouthwaite1@gmail.com",'newproject')
 ratePerson("iouthwaite1@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
