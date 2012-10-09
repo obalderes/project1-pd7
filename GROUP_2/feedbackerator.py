@@ -1,12 +1,14 @@
 from flask import Flask
-import util2
+
 from flask import request, render_template, url_for, redirect, flash
+
 from ivan_smirnov import util
+import util2
 
 app = Flask(__name__)
 app.secret_key = 'Whatever'
 
-qlist = ["How awesome are they?", "How compliant?", "How knowledgable", "How much effort?", "How much of a team player?"]
+qlist = open("questions.txt","r").readlines()
 
 @app.route("/", methods = ['GET', 'POST'])
 def login():
@@ -51,11 +53,20 @@ def rate_page(name=None):
     if request.method == "GET":
         return render_template("rate_page.html",qlist=qlist)
     else:
-        button = request.form['button']
-    
-    name = request.form['student_rated']
-    rating = request.form['rating']
-    assert name != ""
+        tmpscore =[]
+        count = 0
+        for n in qlist:
+            tmp = request.form["Button %d" %count]
+            tmpscore.append(tmp)
+            count = count + 1
+        
+        name = request.form['student_rated']
+        print name
+        assert name != ""
+        util2.save_rating("ivansmirnov13@gmail.com",tmpscore)
+
+        return render_template("rate_page.html",qlist=qlist)
+
 
 @app.route("/results")
 @app.route("/results/<name>")
