@@ -67,8 +67,9 @@ def rate_page(name=None):
         print group
         util2.save_rating(str(uname),str(name),tmpscore,group)
         util2.get_rating(str(name))
+
         flash("Rating Sent!!!")
-        return redirect(url_for('login'))
+        return redirect(url_for('user_page',name=name))
 
 
 @app.route("/results")
