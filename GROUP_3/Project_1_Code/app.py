@@ -28,14 +28,15 @@ def login():
 #needs to do authentication before directing to login. could be ID
     email = request.form['email']
     assert email != ""
-    databaseMethods.saveCurrentStudent(email)
-
+    databaseMethods.saveCurrentStudent(email)    
 
 
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
     if request.method == "GET":
         return render_template("home.html")
+    else:
+        return redirect(url_for('rate/'))
 
     
     email = databaseMethods.getCurrentStudent()
