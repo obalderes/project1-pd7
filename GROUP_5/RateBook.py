@@ -19,11 +19,13 @@ def login(email):
     email = str(email)
     if(utils.emailAuth(email) == True):
         print email + " Passed auth"
+        #this isn't actually printing on the site. fyi
         fullname = utils.userFirst(email) + " " + utils.userLast(email)
-        #members = utils.userGroupMembers("iBriaan@gmail.com")
+        
         return redirect(url_for("rate", members = utils.userGroupMembers(email), email=email, name = utils.userFirst(email)))
     else:
         print email + " Failed auth"
+        #same as above, you see the url but not the actual error message
         return redirect(url_for("index", failedpass = True))
     
 @app.route("/rate")

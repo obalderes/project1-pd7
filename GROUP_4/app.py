@@ -38,6 +38,11 @@ def log_the_user_in():
 def rate_page():
     global globalemail
     members = database.getGroupMembers(globalemail)
+    auth = shelve.open("authen")
+    members[0] = auth[members[0]][0] + " " + auth[members[0]][1]
+    members[1] = auth[members[1]][0] + " " + auth[members[1]][1]
+    members[2] = auth[members[2]][0] + " " + auth[members[2]][1]
+
     #assuming there are 3 members- this could be dynamic but that's slightly more difficult
     #I don't REALLY want to do any more work than I have to
     message = ""
@@ -47,27 +52,51 @@ def rate_page():
     q3 = f[2]
     q4 = f[3]
     if request.method == "POST":
-        mem1ratings = [request.form['mem1q1'], 
-                       request.form['mem1q2'],
-                       request.form['mem1q3'],
-                       request.form['mem1q4']]
-        
-        mem2ratings = [request.form['mem2q1'],
-                       request.form['mem2q2'],
-                       request.form['mem2q3'],
-                       request.form['mem2q4']]
+        """
+        print request.form['mem1q1']
+        print request.form['mem1q2']
+        print request.form['mem1q3']
+        print request.form['mem1q4']
+        print request.form['mem2q1']
+        print request.form['mem2q2']
+        print request.form['mem2q3']
+        print request.form['mem2q4']
+        print request.form['mem2q4']
+        print request.form['mem3q1']
+        print request.form['mem3q2']
+        print request.form['mem3q3']
+        print request.form['mem3q4']
 
-        mem3ratings = [request.form['mem3q1'],
-                       request.form['mem3q2'],
-                       request.form['mem3q3'],
-                       request.form['mem3q4']]
+        print "Member1 Question1 is null:"
+        print request.form['mem1q1'] is None
+        print "Member3 Question4 is null:"
+        print request.form['mem3q4'] is None
+        """
 
-        database.addRating(globalemail, members[0], mem1ratings)
-        database.addRating(globalemail, members[1], mem2ratings)
-        database.addRating(globalemail, members[2], mem3ratings)
-        message="Rated successfully!"
+        try:
+            mem1ratings = [request.form['mem1q1'], 
+                           request.form['mem1q2'],
+                           request.form['mem1q3'],
+                           request.form['mem1q4']]
+            
+            mem2ratings = [request.form['mem2q1'],
+                           request.form['mem2q2'],
+                           request.form['mem2q3'],
+                           request.form['mem2q4']]
+            
+            mem3ratings = [request.form['mem3q1'],
+                           request.form['mem3q2'],
+                           request.form['mem3q3'],
+                           request.form['mem3q4']]
+            
+            database.addRating(globalemail, members[0], mem1ratings)
+            database.addRating(globalemail, members[1], mem2ratings)
+            database.addRating(globalemail, members[2], mem3ratings)
+            message="Rated successfully!"
+        except:
+            message="You didn't answer every question."
         return render_template("rate.html",
-                               ratername=globalemail,
+                               ratername=auth[globalemail][0] + auth[globalemail][1],
                                mem1=members[0],
                                mem2=members[1],
                                mem3=members[2],
@@ -77,7 +106,7 @@ def rate_page():
                                q3=q3,
                                q4=q4)
     return render_template("rate.html",
-                           ratername=globalemail,
+                           ratername=auth[globalemail][0] + " " + auth[globalemail][1],
                            mem1=members[0],
                            mem2=members[1],
                            mem3=members[2],
