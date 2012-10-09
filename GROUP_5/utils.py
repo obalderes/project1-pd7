@@ -61,7 +61,7 @@ def userGroupMembers(email):
         student = student.strip()
         studentemail,lastname,firstname,idnumber,course,ignore,period,group=student.split(",")
         group = group.strip()
-        if(period == periodnumber and group == groupnumber and studentemail != email):
+        if(period == periodnumber and group == groupnumber):
             L.append(studentemail)
     return L
         
