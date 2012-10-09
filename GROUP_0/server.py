@@ -1,4 +1,4 @@
-import Flask
+from flask import Flask, request, render_template, url_for, redirect, flash
 import database
 
 app = Flask(__name__)
@@ -10,15 +10,15 @@ def home():
         return render_template("home.html")
     else:
         username = request.home["username"]
-        if !(database.isUsername(username)):
+        if not(database.isUsername(username)):
             flash("%s is not an authorized email. \nPlease enter a valid username."%(username))
             return redirect(url_for("home"))
         #check if valid username. If not, error message.
         button = request.home["button"]
         if button == "View Ratings":
-            return redirect(url_for("view_ratings"))
+            return redirect(url_for("view_ratings", username = username))
         elif button == "Post Ratings":
-            return redirect(url_for("post_ratings"))
+            return redirect(url_for("post_ratings", username = username))
         #redirect to page corresponding to button value
 
 @app.route("/view_ratings", methods = ['GET','POST'])
@@ -31,3 +31,7 @@ def view_ratings():
             return redirect(url_for("home"))
         elif button == "Post Ratings":
             return redirect(url_for("post_ratings"))
+
+if __name__=="__main__":
+    app.debug=True # remove this line to turn off debugging
+    app.run() # connect to localhost:5000 or http://127.0.0.1:5000

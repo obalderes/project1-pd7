@@ -1,0 +1,29 @@
+<!doctype HTML>
+<form action="" method="post" style= "background-color:#E0FFFF">
+
+<font size = "10" face = "garamond"  color = "green">
+<p></p>
+<p></p>
+<b>
+{{username.first}} {{username.last}}'s Ratings
+</b>
+</font>
+
+<p></p>
+
+{% for project in ratings.keys() %}
+<font size = "5" face = "garamond"  color = "green">
+{{project}} Ratings:
+<font size = "4" face = "garamond"  color = "green">
+<ul>
+{% for question in questions %} 
+	<li> {{question}}: <!--ratings list for this question for this person (for example, "8 , 8 , 9")--> </li>
+	{% endfor }
+</ul>
+{% endfor }
+
+<p></p>
+<p></p>
+<font size = "4" face = "garamond"  color = "green">
+<input type=submit name=button value="Home">
+<input type=submit name=button value="Post Ratings">

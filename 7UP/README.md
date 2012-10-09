@@ -17,6 +17,7 @@ Group 7UP
 * Wrote Outline for general project design, looked at more Python stuff for the program including some of the shelf implementation -IO
 * Started some basic styling -ZZ
 * added SCHEMA.md -IO
+* datastorage.py is basically done! Now just a few more minor methods (get top ranked per question, ect) -IO
 
 ## Outline: ##
 

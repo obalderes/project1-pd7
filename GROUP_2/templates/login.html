@@ -2,6 +2,16 @@
 
 <form action="" method="post">
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
 <p>Username: <input type=text name=username>
 <p>Password: <input type=password name=password>
 <p><input type=submit name=button value=Login>

@@ -19,29 +19,49 @@ def process():
         s[email] = []
     s.close()
 
-def save_rating(email):
-    group = 100
-    for line in groups:
-        x = line.split(',')
-        
-        if email in x[1:]:
-            group = x[0]
-            
 
+
+def save_rating(email,author,score,group):
     s = shelve.open(dbname)
+    x = rating.rating(author,score,group)
 
-    x = rating.rating("author",[5,4,3,2,1],group)
     if s.has_key(email):
         tmp = s[email]
         tmp.append(x)
         s[email] = tmp
+    else:
+        print "not saved"
+    
     s.close()
 
+#save_rating("ivansmirnov13@gmail.com",[5,5])
+
 def get_rating(email):
+    A = []
+    S = []
+    G = []
     s=shelve.open(dbname)
-    for i in s[email]:
-        print i.author
-        print i.score
-        print i.group
+    if s.has_key(email):
+        for i in s[email]:
+            A.append(i.author)
+            S.append(i.score)
+            G.append(i.group)
     s.close()
+    return A,S
+
+
+#get_rating("ivansmirnov13@gmail.com")
+
+def authorlist():
+    return A
+
+def scorelist():
+    return S
+
+def grouplist():
+    return G
+
+
+
+
 
