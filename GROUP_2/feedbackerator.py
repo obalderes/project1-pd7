@@ -56,16 +56,21 @@ def rate_page(name=None):
         tmpscore =[]
         count = 0
         for n in qlist:
-            tmp = request.form["Button %d" %count]
+            tmp = str(request.form["Button %d" %count])
             tmpscore.append(tmp)
             count = count + 1
         
-        name = request.form['student_rated']
-        print name
-        assert name != ""
-        util2.save_rating("ivansmirnov13@gmail.com",tmpscore)
+        uname = request.form['student_rated']
+        
+        assert uname != ""
+        group = util.get_group(str(uname))
+        print group
+        util2.save_rating(str(uname),str(name),tmpscore,group)
+        util2.get_rating(str(name))
 
-        return render_template("rate_page.html",qlist=qlist)
+        flash("Rating Sent!!!")
+        return redirect(url_for('user_page',name=name))
+
 
 
 @app.route("/results")
@@ -73,7 +78,8 @@ def rate_page(name=None):
 def view_results(name=None):
     if name == None:
         return redirect(url_for('login'))
-    return render_template("results.html", name=name)
+    A,S = util2.get_rating(str(name))
+    return render_template("results.html", name=name,A=A,S=S)
 
 
 if __name__ == "__main__":

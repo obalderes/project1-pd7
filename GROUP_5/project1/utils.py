@@ -1,8 +1,6 @@
 import shelve
 emails = shelve.open("emails",writeback=True) #key: str(num 0-15) info: emails in lists   0-7 are groups for period 6    8-15 are groups for period 7
 students = shelve.open("students",writeback=True) #key: str(emails) info: student info in dictionaries
-#raters = shelve.open("raters")
-#ratees = shelve.open("ratees")
 
 def prepro_p1():
     f=open("p1.txt",'r')

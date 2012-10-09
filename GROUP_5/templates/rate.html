@@ -21,23 +21,80 @@
 		Hello, {{name}}, you judgmental jerk
 		<br>
 		<br>
-		
+		Your group members' emails are:
+		<ul>
+		{% for member in members %}
+			<li>{{member}}
+		{% endfor %}
+		</ul>
 		
 		<form method="POST">
-			Ratee's Email:  <input type="text" name="Victimemail"><br>
-			Rating: <br>
-			<input type = "radio" name="rating" value=0"> 0 <br>
-			<input type = "radio" name="rating" value=1"> 1 <br>
-			<input type = "radio" name="rating" value=2"> 2 <br>
-			<input type = "radio" name="rating" value=3"> 3 <br>
-			<input type = "radio" name="rating" value=4"> 4 <br>
-			<input type = "radio" name="rating" value=5"> 5 <br>
-			<input type = "radio" name="rating" value=6"> 6 <br>
-			<input type = "radio" name="rating" value=7"> 7 <br>
-			<input type = "radio" name="rating" value=8"> 8 <br>
-			<input type = "radio" name="rating" value=9"> 9 <br>
+			{% for member in members %}
+				<br>
+				<b>Ratee's Email:  {{member}}</b> <br>
+				Intelligence (10 being most intelligent)<br>
+				<input type = "radio" name="q1{{member}}" value=0"> 0   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 1   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 2   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 3   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 4   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 5   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 6   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 7   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 8   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 9   </input>
+				<input type = "radio" name="q1{{member}}" value=0"> 10  </input>
+				<br><br>
+				Douchey-ness (10 being the least douchey) <br>
+				<input type = "radio" name="q2{{member}}" value=0"> 0   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 1   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 2   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 3   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 4   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 5   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 6   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 7   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 8   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 9   </input>
+				<input type = "radio" name="q2{{member}}" value=0"> 10  </input>
+				<br><br>
+				
+				Hard working (10 being the most hard working) <br>
+				<input type = "radio" name="q3{{member}}" value=0"> 0   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 1   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 2   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 3   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 4   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 5   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 6   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 7   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 8   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 9   </input>
+				<input type = "radio" name="q3{{member}}" value=0"> 10  </input>
+				<br><br>
+				
+				Reliability (10 being the most reliable) <br>
+				<input type = "radio" name="q4{{member}}" value=0"> 0   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 1   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 2   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 3   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 4   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 5   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 6   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 7   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 8   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 9   </input>
+				<input type = "radio" name="q4{{member}}" value=0"> 10  </input>
+				<br><br>
+				
+				{% if member == "iBriaan@gmail.com" %}
+				Sex Appeal (only applies to Brian Lam):
+				<input type = "radio" name="lolitsajoke" value="100" checked="checked"> 100 </input><br>
+				{% endif %}
+			{% endfor %}
 			<input type="submit" name="Submit" value="Submit">
 		</form>
+		
 		
 		<br>
 		<br>

@@ -54,6 +54,13 @@ def createNewProject(projectname):
         projx[projectname][(int)(theirgroup)][person] = []
     projx['currentproject'] = projectname
 
+def getFirst(emailadd):
+    return people[emailadd][0]
+
+def getLast(emailadd):
+    return people[emailadd][1]
+
+
         
 def returnPeopleDict():
     return people
@@ -80,9 +87,11 @@ def ratePerson(rater,ratee,question,score,comments):
     projx[CurrProj][(int)(CurrGroup)][ratee].append(data)   
 
 setupPeople()
-createNewProject("project two")
-createNewProject("littlefish")
+createNewProject('2')
+createNewProject("1")
 print getData('iouthwaite1@gmail.com')
+print getFirst('iouthwaite1@gmail.com')
+print getLast('iouthwaite1@gmail.com')
 
 #addProjectToPerson("iouthwaite1@gmail.com",'newproject')
 ratePerson("iouthwaite1@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
@@ -92,6 +101,24 @@ print getData("Oneman2feet@gmail.com")
 
 database['People'] = people
 database['Projects'] = projx
+
+#returns sorted list ranking students for a given project and given question
+def getRankings(question,projnum):
+    project = database['Projects'][projnum]
+    rankings = []
+    for group in project:
+        for member in group:
+            for info in member:
+                if (project[group][member][info]['question'] == question):
+                    t = project[group][member]['data']['score'], project[group][member]['email']
+                    rankings.append(t)
+            
+               
+    rankings.sort()
+    return rankings
+
+#print database['Projects']['1']
+print getRankings('Do you like pizza','1')
 database.close()
 
 

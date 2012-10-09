@@ -16,9 +16,13 @@ shelveSetup.setupRatedBy()
 
 
 @app.route("/", methods = ['GET', 'POST'])
-def home():
+def login():
     if request.method == "GET":
+
         return render_template("login.html")
+
+        return render_template("login.html")
+
     else:
         button=request.form['button'] #login button
        # return redirect(url_for('home')) #needs to do authentication before directing to login. could be ID
@@ -30,7 +34,7 @@ def home():
 
 
 @app.route("/home", methods = ['GET', 'POST'])
-def login():
+def home():
     if request.method == "GET":
         return render_template("home.html")
 
