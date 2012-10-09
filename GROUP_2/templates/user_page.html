@@ -2,6 +2,16 @@
 
 <form action="" method="post">
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
 {% if name %}
 <h1>User {{name}} page</h1>
 {% else %}
