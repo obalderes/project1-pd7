@@ -62,13 +62,13 @@ def rate_page(name=None):
         
         uname = request.form['student_rated']
         
-        assert name != ""
+        assert uname != ""
         group = util.get_group(str(uname))
         print group
         util2.save_rating(str(uname),str(name),tmpscore,group)
         util2.get_rating(str(name))
         flash("Rating Sent!!!")
-        return redirect(url_for('login'))
+        return redirect(url_for('user_page', name=name))
 
 
 @app.route("/results")
@@ -76,7 +76,7 @@ def rate_page(name=None):
 def view_results(name=None):
     if name == None:
         return redirect(url_for('login'))
-    A,S,G = util2.get_rating(str(email))
+    A,S,G = util2.get_rating(str(name))
     return render_template("results.html", name=name)
 
 

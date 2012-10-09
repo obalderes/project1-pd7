@@ -1,12 +1,22 @@
 <!doctype HTML>
 
-<form action = "" method = "post">
+<h1>Hi user {{name}}!</h1>}
 
-<h1>Hey!</h1>
 <h2>These are your results:</h2> 
 <br><br>
 
-<big>Project #1<br><br><br><hr>Project #2<br><br><br><hr>Project #3<br><br><br><hr></big>
+<big>Project 1<br><br><br><hr></big>
+{% set x = 0 %}
+{% for author in A %}
+  {% for rating in S[x] %}
+{{str(rating)}}
+<br>
+  {% endfor %}
+  {% set x = x + 1 %}
+{% endfor %}
+
+
+ 
 
 
 
