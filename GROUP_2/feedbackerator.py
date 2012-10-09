@@ -79,7 +79,7 @@ def view_results(name=None):
     if name == None:
         return redirect(url_for('login'))
     A,S = util2.get_rating(str(name))
-    return render_template("results.html", name=name,A=A,S=S)
+    return render_template("results.html", name=name,A=A,S=S,qlist=qlist)
 
 
 if __name__ == "__main__":
