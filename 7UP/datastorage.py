@@ -68,6 +68,19 @@ def getData(emailaddress):
                     data.append(projx[projs][(int)(people[person][8])][person])
     return data
 
+def getAvgForQuestion(email,q):
+    data = getData(email)
+    temp = []
+    print data
+    for dict in data:
+        if dict['question'] == str(q):
+            temp.append(dict)
+    sum = 0        
+    for dict in temp:
+        sum = sum + dict['score']
+        
+    return sum / len(temp)
+        
 #rates a person in your group and in your current project
 def ratePerson(rater,ratee,question,score,comments):
     data = {}
@@ -82,34 +95,27 @@ def ratePerson(rater,ratee,question,score,comments):
 setupPeople()
 createNewProject('2')
 createNewProject("1")
-print getData('iouthwaite1@gmail.com')
+
 
 #addProjectToPerson("iouthwaite1@gmail.com",'newproject')
 ratePerson("iouthwaite1@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
 ratePerson("raymondzzzeng@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
 print getData("Oneman2feet@gmail.com")
-#database = [project,people]
 
 database['People'] = people
 database['Projects'] = projx
 
-#returns sorted list ranking students for a given project and given question
-def getRankings(question,projnum):
-    project = database['Projects'][projnum]
+#returns sorted list ranking students for a given question
+def getRankings(question):
+    people = database['People']
     rankings = []
-    for group in project:
-        for member in group:
-            for info in member:
-                if (project[group][member][info]['question'] == question):
-                    t = project[group][member]['data']['score'], project[group][member]['email']
-                    rankings.append(t)
-            
+    for person in people:
+        t = (getAvgForQuestion(person,question), person)
+        rankings.append(t)            
                
     rankings.sort()
     return rankings
-
-#print database['Projects']['1']
-print getRankings('Do you like pizza','1')
+#print getRankings("Do you like pizza")
 database.close()
 
 
