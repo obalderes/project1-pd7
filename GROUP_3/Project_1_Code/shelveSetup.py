@@ -13,7 +13,7 @@ def getStudentInfo():
         line = line.strip()
         line = line.split(",")
         email = line.pop(0)
-        a[email] = line
+        a[str(email)] = line
 
     a.close()
     file1.close()
