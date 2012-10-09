@@ -31,20 +31,24 @@
 		
 		
 		<form method="POST">
-			Ratee's Email:  <input type="text" name="Victimemail"><br>
+			{% for member in members %}
+			<b>Ratee's Email:  {{member}}</b> <br>
 			Rating: <br>
-			<input type = "radio" name="rating" value=0"> 0 <br>
-			<input type = "radio" name="rating" value=1"> 1 <br>
-			<input type = "radio" name="rating" value=2"> 2 <br>
-			<input type = "radio" name="rating" value=3"> 3 <br>
-			<input type = "radio" name="rating" value=4"> 4 <br>
-			<input type = "radio" name="rating" value=5"> 5 <br>
-			<input type = "radio" name="rating" value=6"> 6 <br>
-			<input type = "radio" name="rating" value=7"> 7 <br>
-			<input type = "radio" name="rating" value=8"> 8 <br>
-			<input type = "radio" name="rating" value=9"> 9 <br>
+			<input type = "radio" name="rating{{member}}" value=0"> 0 <br>
+			<input type = "radio" name="rating{{member}}" value=1"> 1 <br>
+			<input type = "radio" name="rating{{member}}" value=2"> 2 <br>
+			<input type = "radio" name="rating{{member}}" value=3"> 3 <br>
+			<input type = "radio" name="rating{{member}}" value=4"> 4 <br>
+			<input type = "radio" name="rating{{member}}" value=5"> 5 <br>
+			<input type = "radio" name="rating{{member}}" value=6"> 6 <br>
+			<input type = "radio" name="rating{{member}}" value=7"> 7 <br>
+			<input type = "radio" name="rating{{member}}" value=8"> 8 <br>
+			<input type = "radio" name="rating{{member}}" value=9"> 9 <br>
+			<br>
+			{% endfor %}
 			<input type="submit" name="Submit" value="Submit">
 		</form>
+		
 		
 		<br>
 		<br>
