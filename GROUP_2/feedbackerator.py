@@ -76,6 +76,7 @@ def rate_page(name=None):
 def view_results(name=None):
     if name == None:
         return redirect(url_for('login'))
+    A,S,G = util2.get_rating(str(email))
     return render_template("results.html", name=name)
 
 
