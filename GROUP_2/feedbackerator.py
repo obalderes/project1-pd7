@@ -1,12 +1,14 @@
 from flask import Flask
-import util2
+
 from flask import request, render_template, url_for, redirect, flash
+
 from ivan_smirnov import util
+import util2
 
 app = Flask(__name__)
 app.secret_key = 'Whatever'
 
-qlist = ["How awesome are they?", "How compliant?", "How knowledgable", "How much effort?", "How much of a team player?"]
+qlist = open("questions.txt","r").readlines()
 
 @app.route("/", methods = ['GET', 'POST'])
 def login():
@@ -19,11 +21,11 @@ def login():
         #assert username != ""
         #assert password != ""
         #flash("User " + username)
-        #if util.verifylogin(username, password):
-        return redirect(url_for('user_page', name = username))
-        #else:
-            #return render_template("login.html")
-        
+        if util.verifylogin(username, password):
+            return redirect(url_for('user_page', name = username))
+        else:
+            flash("Sorry, incorrect login information for user %s"%(username))
+            return redirect(url_for('login'))
 
 #So frustrated. This is an important note to self, David. When you use url_for, the String input is the name of the method of the page, not it's actual URL. Agh!
 
@@ -38,26 +40,40 @@ def user_page(name=None):
     else:
         button = request.form['button']
         if button == 'Rate':
-            return redirect(url_for('rate_page'))
+            return redirect(url_for('rate_page', name=name))
         elif button == 'View':
-            return redirect(url_for('view_results'))
+            return redirect(url_for('view_results', name=name))
 
 
-@app.route("/rate", methods = ['GET', 'POST'])
-def rate_page():
+@app.route("/rate")
+@app.route("/rate/<name>", methods = ['GET', 'POST'])
+def rate_page(name=None):
+    if name == None:
+        return redirect(url_for('login'))
     if request.method == "GET":
         return render_template("rate_page.html",qlist=qlist)
     else:
-        button = request.form['button']
-    
-    name = request.form['student_rated']
-    rating = request.form['rating']
-    assert name != ""
+        tmpscore =[]
+        count = 0
+        for n in qlist:
+            tmp = request.form["Button %d" %count]
+            tmpscore.append(tmp)
+            count = count + 1
+        
+        name = request.form['student_rated']
+        print name
+        assert name != ""
+        util2.save_rating(str(name),tmpscore)
+        util2.get_rating(str(name))
+        return render_template("rate_page.html",qlist=qlist)
+
 
 @app.route("/results")
-def view_results():
-   
-    return render_template("results.html")
+@app.route("/results/<name>")
+def view_results(name=None):
+    if name == None:
+        return redirect(url_for('login'))
+    return render_template("results.html", name=name)
 
 
 if __name__ == "__main__":

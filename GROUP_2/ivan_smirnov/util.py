@@ -2,12 +2,12 @@ QuestionsList = open("questions.txt", "r").readlines()
 
 StudentsList = open("students.txt", "r").readlines()
 
-def verifylogin(email, idnum):
-    for n in StudentsList:
+def verifylogin(email, idnum):    
+    l = open("students.txt", "r").readlines()
+    for n in l:
         if (email in n and idnum in n):
             return True
-        else:
-            return False
+    return False
 
 def get_group(email):
     for n in StudentsList:

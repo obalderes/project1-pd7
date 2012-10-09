@@ -1,8 +1,24 @@
 #!/usr/bin/python 
 
 import shelve
+import shelveSetup
+
+
+
+
+
 
 #### students.db ####
+
+
+currentStudent = ""
+
+def saveCurrentStudent(email):
+    currentStudent = email
+
+def getCurrentStudent():
+    return currentStudent
+
 
 def retrieveStudentInfo(email):
     studentDatabase = shelve.open("students.db")
@@ -11,7 +27,7 @@ def retrieveStudentInfo(email):
         return False
     else:
         return studentInfo
-    studentDatabse.close()
+    studentDatabase.close()
 
 
 #### groups.db ####

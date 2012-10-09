@@ -2,58 +2,66 @@
 
 import shelve
 
-a = shelve.open("students.db")
+
+def getStudentInfo():
+    a = shelve.open("students", writeback=True)
 
 
-file1 = open("students.txt")
+    file1 = open("students.txt")
 
-for line in file1:
-    line = line.strip()
-    line = line.split(",")
-    email = line.pop(0)
-    a[email] = line
+    for line in file1:
+        line = line.strip()
+        line = line.split(",")
+        email = line.pop(0)
+        a[str(email)] = line
 
-a.close()
-file1.close()
+    a.close()
+    file1.close()
 
-b = shelve.open("groups.db")
 
-file2 = open("p1.txt")
+def getGroups():
+    b = shelve.open("groups", writeback=True)
 
-for line in file2:
-    line = line.strip()
-    line = line.split(",")
-    email = line.pop(0)
-    b[email] = line
+    file2 = open("p1.txt")
+
+    for line in file2:
+        line = line.strip()
+        line = line.split(",")
+        email = line.pop(0)
+        b[email] = line
  
-b.close()
-file2.close()
+    b.close()
+    file2.close()
 
-c = shelve.open("grades.db")
 
-file3 = open("students.txt")
+def setupGrades():
+    c = shelve.open("grades", writeback=True)
 
-for line in file3:
-    line = line.strip()
-    line = line.split(",")
-    email = line.pop(0)
-    c[email] = []
+    file3 = open("students.txt")
 
-c.close()
-file3.close()
+    for line in file3:
+        line = line.strip()
+        line = line.split(",")
+        email = line.pop(0)
+        c[email] = []
 
-d = shelve.open("ratedBy.db")
+    c.close()
+    file3.close()
 
-file4 = open("students.txt")
 
-for line in file4:
-    line = line.strip()
-    line = line.split(",")
-    email = line.pop(0)
-    d[email] = []
+def setupRatedBy():
+    d = shelve.open("ratedBy", writeback=True)
 
-d.close()
-file4.close()
+    file4 = open("students.txt")
+
+    for line in file4:
+        line = line.strip()
+        line = line.split(",")
+        email = line.pop(0)
+        d[email] = []
+
+    d.close()
+    file4.close()
 
 
     
