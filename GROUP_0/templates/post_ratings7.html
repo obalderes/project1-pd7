@@ -9,12 +9,14 @@
 
 {% for groupmember in ratees %}
 Rate {{groupmember}}:
+     {% set qnum = 0 %}
      {% for question in questions%}
        {{question}}:
        {% for n in range(9) %}
-          <input type=radio name="{{username}}:{{project}}:{{groupmember}}:{{n}}" value={{n}}</input>
+          <input type=radio name="{{username}}:{{project}}:{{groupmember}}:{{n}}:{{qnum}}" value={{n}}</input>
        {% endfor %}
-          <<input type=radio name="{{username}}:{{project}}:{{groupmember}}:10" value=10 checked>10 </input> 
+          <<input type=radio name="{{username}}:{{project}}:{{groupmember}}:10:{{qnum}}" value=10 checked>10 </input> 
+       {% set qnum = qnum + 1 %}
      {% endfor %}
 {% endfor %}
 
