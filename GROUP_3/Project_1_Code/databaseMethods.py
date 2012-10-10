@@ -1,7 +1,7 @@
 #!/usr/bin/python 
 
 import shelve
-import shelveSetup
+#import shelveSetup
 
 
 
@@ -21,7 +21,7 @@ def getCurrentStudent():
 
 
 def retrieveStudentInfo(email):
-    studentDatabase = shelve.open("students.db")
+    studentDatabase = shelve.open("students")
     studentInfo = studentDatabase[email]
     if studentInfo == []:
         return False
@@ -33,7 +33,7 @@ def retrieveStudentInfo(email):
 #### groups.db ####
 
 def membersInGroup(groupNumber):
-    groupDatabase = shelve.open("groups.db")
+    groupDatabase = shelve.open("groups")
     groupMembers = groupDatabase[groupNumber]
     if groupMembers == []:
         return False
@@ -56,16 +56,14 @@ def retrieveGroupMembers(email):
 #### grades.db ####
 
 def retrieveGrades(email):
-    gradesDatabase = shelve.open("grades.db")
+    gradesDatabase = shelve.open("grades")
     grades = gradesDatabase[email]
-    if grades == []:
-        return False
-    else:
-        return grades
     gradesDatabase.close()
+    return grades
+   
 
 def setGrades(grades,email):
-    gradesDatabase = shelve.open("grades.db")
+    gradesDatabase = shelve.open("grades")
     gradesList = gradesDatabase[email]
     question = 0
     for question in gradesList:
@@ -79,12 +77,12 @@ def setGrades(grades,email):
 #### ratedBy.db ####
    
 def addRatedBy(targetEmail,graderEmail):
-    ratedByDatabase = shelve.open("ratedBy.db")
+    ratedByDatabase = shelve.open("ratedBy")
     ratedByDatabase[targetEmail].append(graderEmail)
     ratedByDatabase.close()
 
 def hasBeenRatedBy(targetEmail,graderEmail):
-    ratedByDatabase = shelve.open("ratedBy.db")
+    ratedByDatabase = shelve.open("ratedBy")
     ratedBy = ratedByDatabase[targetEmail]
     if graderEmail in ratedBy:
         return True

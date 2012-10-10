@@ -8,8 +8,9 @@ app = Flask(__name__)
 def index(failedpass = False):
     if request.method=="GET":
         return render_template("index.html")
+    if failedpass == True:
+        return render_template("index.html", failedpass = True)
     elif request.method=="POST":
-        button = request.form['button']
         email = request.form['email']
         assert email != ""
         return login(email)
@@ -22,23 +23,24 @@ def login(email):
         return rate(email, fullname)
     else:
         print email + " Failed auth"
-        return redirect(url_for("index", failedpass = True))
+        failedpass = True
+        return index(failedpass = True)
     
 @app.route("/rate")
 @app.route("/rate/<name>", methods = ['GET', 'POST'])
 def rate(email = "", name = "Stranger", rated = "false"):
-    if request.method=="POST":
-        members = utils.userGroupMembers(email)
-        return render_template("rate.html", name = name, members = members)
-        submit = request.form["Submit"]
-        if submit == "Submit":
-            return confirm()
-    if request.method=="POST":
-        members = utils.userGroupMembers(email)
-        return render_template("rate.html", name = name, members = members)
-        submit = request.form["Submit"]
-        if submit == "Submit":
-            return confirm()
+    try:
+        if rated == "false":
+            members = utils.userGroupMembers(email)
+            return render_template("rate.html", name = name, members = members)
+    except Exception:
+        Exception.printStackTrace()
+    """
+        if (request.method == "POST"):
+            confirm()
+
+    """
+    
 
 @app.route("/confirm")
 def confirm():
