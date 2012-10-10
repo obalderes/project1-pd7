@@ -51,7 +51,7 @@ def home():
     a4 = getAverage(q4)
     if request.method == "GET":
         return render_template("home.html",
-                               name = name
+                               name = name,
                                g1 = g1,
                                a1 = a1,
                                g2 = g2, 
@@ -89,7 +89,7 @@ def rate():
 def getGradeList( i, grades ):
     return grades[i]
 
-def getStudentName:
+def getStudentName():
     global email
     info = databaseMethods.retrieveStudentInfo(email)
     name = info[1] + " " + info[0]
@@ -101,7 +101,7 @@ def getAverage(question):
     count = 0
     for count in question:
         ans = question[count]
-        total++
+        total = total + 1
 
     return ans/total
 
