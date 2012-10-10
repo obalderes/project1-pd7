@@ -1,7 +1,7 @@
 <!doctype HTML>
 <form action="" method="post">
 
-<h1>{{username.last}}, {{username.first}}</h1>
+<h1>{{last}}, {{first}}</h1>
 
 <hr>
 
@@ -20,7 +20,7 @@
          {% if groupmember[3]==None %}
             {% for n in range(10) %}
             <input type=radio 
-             name="{{username.email}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
+             name="{{username}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
              value={{n}}>{{n}} </input>
            {% endfor %}
           {% else %}
@@ -30,11 +30,11 @@
             {% for n in range(10) %}
 	        {% if n is sameas slctd %}
                 <input type=radio 
-                 name="{{username.email}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
+                 name="{{username}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
                  value={{n}} checked>{{n}}</input>
 	        {% else %}
                 <input type=radio 
-                 name="{{username.email}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
+                 name="{{username}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
                  value={{n}}>{{n}}</input>
 	        {% endif %}
            {% endfor %}

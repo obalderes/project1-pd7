@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<form action="" method="post">
+<html>
+<body>
 
 <div id="container" style="width:500px;">
 
@@ -10,5 +11,8 @@
 <div id="menu" style="background-color:#A2BFF4;height:20px;width:500px;">
 <p style=text-align:center;font-family:arial;"><b> <a href="http://www.google.com/">Profile</a></b> <a href="http://www.google.com/">Group</a> <a href="http://www.google.com/">Ratings</a></p></div>
 
-<p style=text-align:center;font-family:arial;>Email Address: <input type=text name=username>
-<p style=text-align:center;font-family:arial;><input type=submit name=button value=Login>
+
+<div id="content" style="background-color:#EEEEEE;height:200px;width:500px;float:left;">
+<p </p>
+<form name="input" action="html_form_action.asp" method="get">
+<center> <p style=font-family:arial;"> Email:<input type="text" name="user"><center></br><center><input type="submit" value="Login" <p style=font-family:arial;">  <center></br></form>

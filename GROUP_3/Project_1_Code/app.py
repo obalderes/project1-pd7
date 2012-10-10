@@ -17,6 +17,7 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def login():
+    global email
     if request.method == "GET":
 
         return render_template("login.html")
@@ -26,7 +27,7 @@ def login():
         button=request.form['button'] #login button
         return redirect(url_for('home')) 
 #needs to do authentication before directing to login. could be ID
-    global email = request.form['email']
+    email = request.form['email']
     assert email != ""
     databaseMethods.saveCurrentStudent(email) 
  
@@ -34,25 +35,30 @@ def login():
 
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
+    global email
     grades = retrieveGrades(email)
     q1 = getGradeList(0, grades)
     q2 = getGradeList(1, grades)
     q3 = getGradeList(2, grades)
     q4 = getGradeList(3, grades)
+    g1 = getGrades(q1)
+    g2 = getGrades(q2)
+    g3 = getGrades(q3)
+    g4 = getGrades(q4)
     a1 = getAverage(q1)
     a2 = getAverage(q2)
     a3 = getAverage(q3)
     a4 = getAverage(q4)
     if request.method == "GET":
         return render_template("home.html",
-                               name = name
-                               q1 = q1,
+                               name = name,
+                               g1 = g1,
                                a1 = a1,
-                               q2 = q2, 
+                               g2 = g2, 
                                a2 = a2,
-                               q3 = q3, 
+                               g3 = g3, 
                                a3 = a3,
-                               q4 = q4, 
+                               g4 = g4, 
                                a4 = a4)
     else:
         return redirect(url_for('rate/'))
@@ -64,6 +70,7 @@ def home():
 
 @app.route("/rate/")
 def rate():
+    global email
 
     #retrieve the info of the student who logged in
     studentInfo = databaseMethods.retrieveStudentInfo(email)
@@ -82,7 +89,8 @@ def rate():
 def getGradeList( i, grades ):
     return grades[i]
 
-def getStudentName:
+def getStudentName():
+    global email
     info = databaseMethods.retrieveStudentInfo(email)
     name = info[1] + " " + info[0]
     return name
@@ -93,9 +101,17 @@ def getAverage(question):
     count = 0
     for count in question:
         ans = question[count]
-        total++
+        total = total + 1
 
     return ans/total
+
+def getGrades(question):
+    ans = ""
+    count = 0
+    for count in question:
+        ans = ans + str(question[count]) + ", "
+    return ans
+
     
 
 if __name__=="__main__":

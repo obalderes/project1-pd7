@@ -30,16 +30,23 @@ def printStudentsNicely():
     for key in students:
         print students[key]["First"] + ' ' + students[key]["Last"] + ": Period " + students[key]["Period"] + ", Group " + students[key]["Group"] + ", ID number: " + students[key]["ID"]
 
-prepro_p1()
-prepro_students()
+#prepro_p1()
+#prepro_students()
 
-def emailAuth(user,password):
+def userAuth(user,password):
     try:
         students[user]
         if(students[user]["Password"]==""):
             students[user]["Password"]=password
         elif(students[user]["Password"]!=password):
             return False
+        return True
+    except Exception:
+        return False
+
+def emailAuth(user):
+    try:
+        students[user]
         return True
     except Exception:
         return False
@@ -132,6 +139,7 @@ def userInfo(user):
     return dictionary
 
 '''
+
 ratee="jdecker12@gmail.com"
 rating={"Question Number":"1","Rating":"3","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
 rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
@@ -147,5 +155,5 @@ print students["mengdilin95@gmail.com"]["Rating Given"]
 print get_rating_received(ratee)
 print get_rating_given("mengdilin95@gmail.com")
 #print get_rating("mengdilin95@gmail.com")    
-   
+
 '''
