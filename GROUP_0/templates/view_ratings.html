@@ -1,0 +1,30 @@
+<!doctype HTML>
+<form action="" method="post" style= "background-color:#E0FFFF">
+
+<font size = "10" face = "garamond"  color = "green">
+<p></p>
+<p></p>
+<b>
+{{first}} {{last}}'s Ratings
+</b>
+</font>
+
+<p></p>
+
+{% for project in projects %}
+<font size = "5" face = "garamond"  color = "green">
+Project {{project}} Ratings:
+<font size = "4" face = "garamond"  color = "green">
+<ul>
+{% for question in questions %} 
+	<li> {{question}}: {% for rating in ratings %} {{rating}} { % endfor % }
+	</li>
+	{% endfor }
+</ul>
+{% endfor }
+
+<p></p>
+<p></p>
+<font size = "4" face = "garamond"  color = "green">
+<input type=submit name=button value="Cancel">
+<input type=submit name=button value="Post Ratings">

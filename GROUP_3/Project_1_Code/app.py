@@ -25,10 +25,11 @@ def login():
 
     else:
         button=request.form['button'] #login button
-        email = request.form['email']
-        assert email != ""
-        databaseMethods.saveCurrentStudent(email) 
         return redirect(url_for('home')) 
+#needs to do authentication before directing to login. could be ID
+    email = request.form['email']
+    assert email != ""
+    databaseMethods.saveCurrentStudent(email) 
  
 
 

@@ -35,12 +35,12 @@ def rate(email = "", name = "Stranger", rated = "false"):
             return render_template("rate.html", name = name, members = members)
     except Exception:
         Exception.printStackTrace()
-    #Still don't understand why this code won't work. It's linked
-    #in with the issue to the Submit button producing an error. Aagghhhhh
-    #-Brian Lam
-    if request.form["submitbutton"] == "Submit":
-        confirm()
+    """
+        if (request.method == "POST"):
+            confirm()
 
+    """
+    
 
 @app.route("/confirm")
 def confirm():
