@@ -1,4 +1,4 @@
-import Flask
+import flask
 import database
 
 app = Flask(__name__)
@@ -44,8 +44,8 @@ def post_ratings():
     if session['username'] == "":
         flash("Please enter a valid username on the home page.")
         return redirect(url_for("home"))
+    user = session['username']
     if request.method == "GET":
-        user = session['username']
         name = database.getName(user)
         return render_template("post_ratings", username = user, first = name[0], last = name[1], ratees = database.getRatees(user), project = database.getCurrentProject(user))
     else:
@@ -54,6 +54,10 @@ def post_ratings():
             session['username'] == ""
             return redirect(url_for("home"))
         elif button == "Save":
+            ratings = {}
+            for ratee in database.getRatees(user):
+                pass
+                
             
         
     
