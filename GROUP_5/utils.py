@@ -1,12 +1,22 @@
 import shelve
 
+#Have to use try-except statements because the way file paths worked
+#in Windows and in Linux/Mac were different. This should have fixed
+#the problem
 try:
     Students = open("students.txt", "r").readlines()
 except Exception:
     Students = open("/students.txt", "r").readlines()
 
-groupShelve = shelve.open("groupShelves")
-studentShelve = shelve.open("studentShelves")
+try:
+    groupShelve = shelve.open("groupShelves")
+except Exception:
+    groupShelve = shelve.open("/groupShelves")
+
+try:
+    studentShelve = shelve.open("studentShelves")
+except Exception:
+    studentShelve = shelve.open("/studentShelves")
 
 #Check if shelve has been created so the program doesn't create a new shelf
 #each time- Brian Lam's version
