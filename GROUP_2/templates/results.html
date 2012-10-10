@@ -10,7 +10,6 @@
 <br><br>
 {% set x = 0 %}
 {% for author in A %}
-  {{author}}:
   {% for rating in S[x] %}
     {{rating}}
     {% if not loop.last %}
@@ -24,10 +23,10 @@
 
 <i> Sorted by question</i> 
 <br>
+{% set y = 0 %}
 {% for question in qlist %}
   <br>{{question}}<br>
   {% for author in A %}
-    {{author}}:
     {{S[0]}}  {# ??? work on this later. make s[0] not refer to the set of four ratings, but to the rating of the first question #}
       </br>
   {% endfor %}
