@@ -1,6 +1,9 @@
 import shelve
 
-Students = open("students.txt", "r").readlines()
+try:
+    Students = open("students.txt", "r").readlines()
+except Exception:
+    Students = open("/students.txt", "r").readlines()
 
 groupShelve = shelve.open("groupShelves")
 studentShelve = shelve.open("studentShelves")
