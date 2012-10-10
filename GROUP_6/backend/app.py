@@ -7,23 +7,24 @@ from flask import render_template
 from flask import url_for,redirect,flash
 app = Flask(__name__)
 app.secret_key = 'some_secret'
-@app.route("",methods=['GET','POST'])
+@app.route("/",methods = ['get','post'])
 def login():
     if request.method=='GET':
         return render_template("homepage.html")
     else:
         Email=request.form['username']
-        if storage.checkUser(Email) == true:
-            return redirect(url_for('/RatingPage'))
+        button = request.form['button']
+        if button == 'Login':
+            if storage.checkUser(Email):
+                return redirect(url_for('/RatingPage'))
+            else:
+                return redirect(url_for('/'))
         else:
-            return redirect(url_for(''))
+            return redirect(url_for('/'))
 
-@app.route("/RatingPage",methods = ['get'])
+@app.route("/RatingPage",methods=['get','post'])
 def rate():
-    if request.method == 'get':
-        return render_template("RatingPage.html")
-    else:
-        pass #just a placeholder for when I can test the rate routine
+    return render_template("RatingPage.html")
    
 '''
 def getRatings(email):
@@ -39,10 +40,8 @@ def getInfo(email):
     namesList =[]
     namesList[1] = storage.s[email,firstName]
     namesList.append(storage.s[email,lastName])
-
+'''
     
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
     app.run() # connect to localhost:5000 or http://127.0.0.1:5000
-
-'''

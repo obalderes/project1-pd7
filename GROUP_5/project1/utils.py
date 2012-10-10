@@ -1,9 +1,7 @@
 import shelve
-emails = shelve.open("emails",writeback=True) #key: str(num 0-15) info: emails in lists   0-7 are groups for period 6    8-15 are groups for period 7
-students = shelve.open("students",writeback=True) #key: str(emails) info: student info in dictionaries
 
-'''
 def prepro_p1():
+    emails = shelve.open("emails",writeback=True)
     f=open("p1.txt",'r')
     key=""
     for line in f.readlines():
@@ -12,9 +10,12 @@ def prepro_p1():
         info = e[2].split(',')
         emails[e[0]]=info   
     f.close()
+    emails.close()
 prepro_p1()
+
 def prepro_students():
-  #  emails = shelve.open("emails",writeback=True) #key: str(num 0-15) info: emails in lists   0-7 are groups for period 6    8-15 are groups for period 7
+    emails = shelve.open("emails",writeback=True) 
+    students = shelve.open("students",writeback=True) 
     s=open("students.txt",'r')
     key =""
     for line in s.readlines():
@@ -27,14 +28,19 @@ def prepro_students():
         key = str((period-6)*8+group)
         students[e[0]]["Project One"]=emails[key]
     s.close()
+    emails.close()
+    students.close()
 prepro_students()
-'''
+
 
 def printStudentsNicely():
+    students = shelve.open("students",writeback=True)     
     for key in students:
         print students[key]["First"] + ' ' + students[key]["Last"] + ": Period " + students[key]["Period"] + ", Group " + students[key]["Group"] + ", ID number: " + students[key]["ID"]
+    students.close()
 
 def userAuth(user,password):
+    students = shelve.open("students",writeback=True) 
     try:
         students[user]
         if(students[user]["Password"]==""):
@@ -44,13 +50,16 @@ def userAuth(user,password):
         return True
     except Exception:
         return False
+    students.close()
 
 def emailAuth(user):
+    students = shelve.open("students",writeback=True) 
     try:
         students[user]
         return True
     except Exception:
         return False
+    students.close()
 '''
 #rater = email string
 #ratee = email string
@@ -75,6 +84,7 @@ def add_rating(rater,ratee,*args):
 #question = "q01" etc
 #rating = number string
 def add_rating(rater,ratee,question,rating):
+    students = shelve.open("students",writeback=True) 
     total_question=9
     index =int(float(question[1:]))-1
     if(students[rater]["Group"]==students[ratee]["Group"]):
@@ -86,8 +96,10 @@ def add_rating(rater,ratee,question,rating):
         return True
     else:
         return False
+    students.close()
 
 def get_rating(user,type_rating):
+    students = shelve.open("students",writeback=True) 
     d=[]
     for key in students[user][type_rating].keys():
         for index in range(len(students[user][type_rating][key])):
@@ -95,6 +107,7 @@ def get_rating(user,type_rating):
                 q='q0'+str(index+1)
                 tmp=q+user+'/'+students[user][type_rating][key][index]
                 d.append(tmp) #what is d?
+    students.close()
     return d
 
 def get_rating_received(user):
@@ -106,38 +119,62 @@ def get_rating_given(user):
     return get_rating(user,type_rating)
     
 def userRating(user):
+    students = shelve.open("students",writeback=True) 
     dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]} #I thought it was "Ratings Recieved" and "Ratings Given" as lists of dictionaries
+    students.close()
     return dictionary
 
 def userMembers(user):
+    students = shelve.open("students",writeback=True) 
     l = students[user]["Project One"]
+    students.close()
     return l
 
 def userFirst(user):
+    students = shelve.open("students",writeback=True) 
     name = students[user]["First"]
+    students.close()
     return name
 
 def userLast(user):
+    students = shelve.open("students",writeback=True) 
     name = students[user]["Last"]
+    students.close()
     return name
 
 def userPeriod(user):
-    return students[user]["Period"]
-
+    students = shelve.open("students",writeback=True) 
+    a=students[user]["Period"]
+    students.close
+    return a
 def userGroup(user):
-    return students[user]["Group"]
+    students = shelve.open("students",writeback=True) 
+    a=students[user]["Group"]
+    students.close()
+    return a
 
 def userIdNumber(user):
-    return students[user]["ID"]
+    students = shelve.open("students",writeback=True) 
+    a=students[user]["ID"]
+    students.close()
+    return a
 
 def userClass(user):
-    return students[user]["Class"]
+    students = shelve.open("students",writeback=True) 
+    a=students[user]["Class"]
+    students.close()
+    return a
 
 def userSection(user):
-    return students[user]["Section"]
+    students = shelve.open("students",writeback=True) 
+    a=students[user]["Section"]
+    students.close()
+    return a
 
 def userInfo(user):
+    students = shelve.open("students",writeback=True) 
     dictionary={"Period":students[user]["Period"], "Group":students[user]["Group"], "Section":students[user]["Section"], "ID":students[user]["ID"], "Class":students[user]["Class"]}
+    students.close()
     return dictionary
 '''
 if ("created" not in emails.keys()):
@@ -148,8 +185,6 @@ if ("created" not in students.keys()):
 '''
 
 ratee="jdecker12@gmail.com"
-rating={"Question Number":"1","Rating":"3","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
-rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
 add_rating("mengdilin95@gmail.com",ratee,"q02","8")
 add_rating("mengdilin95@gmail.com",ratee,"q01","9")
 add_rating("mengdilin95@gmail.com",ratee,"q03","8")
@@ -164,4 +199,5 @@ print get_rating_given("mengdilin95@gmail.com")
 #print get_rating("mengdilin95@gmail.com")    
 
 '''
-print userMembers("mengdilin95@gmail.com")
+#prepro_p1()
+#prepro_students()
