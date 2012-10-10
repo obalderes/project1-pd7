@@ -26,13 +26,13 @@ def login():
 
     else:
         button=request.form['button'] #login button
-        email = request.form['email']
+        email = str(request.form['email'])
         assert email != ""
         #databaseMethods.saveCurrentStudent(email) 
         return redirect(url_for('home'))
  
 
-
+    
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
     global email
