@@ -2,6 +2,7 @@ import shelve
 
 Students = open("students.txt", "r").readlines()
 
+groupShelve = shelve.open("groupShelves")
 studentShelve = shelve.open("studentShelves")
 
 #Check if shelve has been created
@@ -18,6 +19,7 @@ except Exception:
         print studentShelve[email]
     studentShelve["createdCheck"] = "shelve has been created"
     print "Shelve has been compiled"
+
 
 def emailAuth(email):
     try:
@@ -42,6 +44,7 @@ def userIdNumber(email):
     return idnumber
 
 def userPeriod(email):
+    email = str(email)
     student = studentShelve[email]
     email,lastname,firstname,idnumber,period,group = student.split(",")
     return period
@@ -50,3 +53,24 @@ def userGroup(email):
     student = studentShelve[email]
     email,lastname,firstname,idnumber,period,group = student.split(",")
     return group
+
+def userGroupMembers(email):
+    L = []
+    email = str(email)
+    groupnumber = userGroup(email)
+    periodnumber = userPeriod(email)
+    for student in Students:
+        student = student.strip()
+        studentemail,lastname,firstname,idnumber,course,ignore,period,group=student.split(",")
+        group = group.strip()
+        if(period == periodnumber and group == groupnumber and studentemail != email):
+            L.append(studentemail)
+    return L
+        
+     
+def compileShelve():
+    for student in Students:
+        student = student.strip()
+        email,lastname,firstname,idnumber,course,ignore,period,group=student.split(",")
+        group = group.strip()
+        studentShelve[email]=email+","+lastname+","+firstname+","+idnumber+","+period+","+group
