@@ -16,15 +16,18 @@ def login():
         button = request.form['button']
         if button == 'Login':
             if storage.checkUser(Email):
-                return redirect(url_for('/RatingPage'))
+                return redirect(url_for("rate"))
             else:
-                return redirect(url_for('/'))
+                return redirect(url_for(""))
         else:
-            return redirect(url_for('/'))
+            abort(401)
 
-@app.route("/RatingPage",methods=['get','post'])
+@app.route('/Rater',methods=['get','post'])
 def rate():
-    return render_template("RatingPage.html")
+    if request.method=='GET':
+        return render_template("RatingPage.html")
+    else:
+        return redirect(url_for(""))
    
 '''
 def getRatings(email):
