@@ -91,6 +91,8 @@ def rate():
 def getGradeList( i, grades ):
     if len(grades) != 0:
         return grades[i]
+    else:
+        return 0
 
 def getStudentName():
     global email
@@ -100,6 +102,8 @@ def getStudentName():
     return name
 
 def getAverage(question):
+    if len(question) == 0:
+        return "No grades"
     ans = 0
     total = 0
     count = 0
@@ -111,6 +115,8 @@ def getAverage(question):
 
 def getGrades(question):
     ans = ""
+    if len(question) == 0:
+        return "No grades"
     count = 0
     for count in question:
         ans = ans + str(question[count]) + ", "
