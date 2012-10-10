@@ -10,15 +10,11 @@
 
 <div id="menu" style="background-color:#A2BFF4;height:20px;width:500px;">
 <p style=text-align:center;font-family:arial;"><b> <a href="http://www.google.com/">Profile</a></b> <a href="http://www.google.com/">Group</a> <a href="http://www.google.com/">Ratings</a></p></div>
-<p> This is 
-
-{% if name %}
-  {{ name }} {{last}}
-{% else %}
-  an unknown user
+<p>
+{% if Email %}
+  Hello {{ Email }}
 {% endif %}
-  
-'s page </p>
+</p>
 
 <center><p style=font-family:arial;>How did you like working with this person?<center>
 </p>
