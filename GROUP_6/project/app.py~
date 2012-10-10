@@ -16,7 +16,7 @@ def login():
     else:
 
         button = request.form['button']
-        if button == 'Login':
+        if button == 'Rate':
             Email = str(request.form["username"])
             if storage.checkUser(Email)==True:
                 return redirect(url_for("rate"))
