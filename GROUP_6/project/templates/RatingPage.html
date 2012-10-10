@@ -5,19 +5,24 @@
 <div id="container" style="width:500px;">
 
 <div id="header" style="background-color:#C0C0C0;">
-<h1 style=text-align:center;font-family:arial;"> Group</h1>
+<h1 style=text-align:center;font-family:arial;>RATER!</h1>
 
 
 <div id="menu" style="background-color:#A2BFF4;height:20px;width:500px;">
-<p style=text-align:center;font-family:arial;"><b> <a href="http://www.google.com/">Profile</a></b> <a href="http://www.google.com/">Group</a> <a href="http://www.google.com/">Ratings</a></p></div>
+</div>
+<p>
+{% if Email %}
+  Hello {{ Email }}
+{% endif %}
+</p>
 
+<center><p style=font-family:arial;>How did you like working with this person?<center>
+</p>
 
 <div id="content" style="background-color:#EEEEEE;height:200px;width:500px;float:left;">
 <p </p>
 <form name="input" action="html_form_action.asp" method="get">
 <p style=font-family:arial;"> Team Member:<input type="text" name="user"></br></br>
-
-<center><p style=font-family:arial;>How did you like working with this person?<center>
 
 <input type=radio name="rating1" value="0">0&nbsp;
 <input type=radio name="rating1" value="1">1&nbsp;

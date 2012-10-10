@@ -40,10 +40,19 @@ def user_page(name=None):
     else:
         button = request.form['button']
         if button == 'Rate':
-            return redirect(url_for('rate_page', name=name))
+            return redirect(url_for('choose_member', name=name))
         elif button == 'View':
             return redirect(url_for('view_results', name=name))
 
+@app.route("/choose/<name>")
+def choose_member(name=None):
+    if name == None:
+        return redirect(url_for('login'))
+    groupnum = util.get_group(str(name))
+    periodnum = util.get_period(str(name))
+    gmembers = []
+    gmembers.append(util.get_groupMembers(groupnum,periodnum))
+    return render_template("choose.html", name=name, groupnum=groupnum, periodnum=periodnum,gmembers=gmembers)
 
 @app.route("/rate")
 @app.route("/rate/<name>", methods = ['GET', 'POST'])
@@ -70,7 +79,6 @@ def rate_page(name=None):
 
         flash("Rating Sent!!!")
         return redirect(url_for('user_page',name=name))
-
 
 
 @app.route("/results")

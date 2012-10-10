@@ -18,6 +18,7 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def login():
+    global email
     if request.method == "GET":
 
         return render_template("login.html")
@@ -25,17 +26,18 @@ def login():
 
     else:
         button=request.form['button'] #login button
-        return redirect(url_for('home')) 
-#needs to do authentication before directing to login. could be ID
-    email = request.form['email']
-    assert email != ""
-    databaseMethods.saveCurrentStudent(email) 
+        email = str(request.form['email'])
+        assert email != ""
+        #databaseMethods.saveCurrentStudent(email) 
+        return redirect(url_for('home'))
  
 
-
+    
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
-    email = databaseMethods.getCurrentStudent()
+    global email
+    
+    #email = databaseMethods.getCurrentStudent()
     grades = databaseMethods.retrieveGrades(email)
     q1 = getGradeList(0, grades)
     q2 = getGradeList(1, grades)
@@ -70,7 +72,8 @@ def home():
 
 @app.route("/rate/")
 def rate():
-    email = databaseMethods.getCurrentStudent()
+    global email
+    #email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
     studentInfo = databaseMethods.retrieveStudentInfo(email)
     
@@ -86,10 +89,12 @@ def rate():
 
 
 def getGradeList( i, grades ):
-    return grades[i]
+    if len(grades) != 0:
+        return grades[i]
 
 def getStudentName():
-    email = databaseMethods.getCurrentStudent()
+    global email
+    #email = databaseMethods.getCurrentStudent()
     info = databaseMethods.retrieveStudentInfo(email)
     name = info[1] + " " + info[0]
     return name

@@ -2,6 +2,10 @@
 	<head>
 		<title>Ratebook</title>
 		<style type="text/css">
+		<!--
+		CSS Designed by Brian Lam. Based off of the design used by the news startup 
+		Pulse News (dark gray background, blue logo, light text
+		-->
 			body{
 				font-family: "Arial";
 				color:"white";
@@ -17,7 +21,7 @@
 		</style>
 	</head>
 	<body bgcolor="#212121">
-		<header><font size="20">
+		<header><font size="20" color="#87CEFA">
 			Ratebook
 		</font></header>
 		<font color="white">
@@ -27,75 +31,98 @@
 		<br>
 		Your group members' emails are:
 		<ul>
+		
+		<!--
+		This flask code will list all the members in the group not including
+		the person who is logged in. -Brian Lam
+		-->
 		{% for member in members %}
 			<li>{{member}}
 		{% endfor %}
 		</ul>
 		
 		<form method="POST">
+			<!--
+			This flask code will create questions, whose names differ by the email
+			addresses of each ratee to make them distinguishable. -Brian Lam
+			-->
 			{% for member in members %}
 				<br>
 				<b>Ratee's Email:  {{member}}</b> <br>
 				Intelligence (10 being most intelligent)<br>
-				<input type = "radio" name="q1{{member}}" value=0"> 0   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 1   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 2   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 3   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 4   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 5   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 6   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 7   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 8   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 9   </input>
-				<input type = "radio" name="q1{{member}}" value=0"> 10  </input>
+				<input type = "radio" name="q1{{member}}" value="0" checked="checked"> 0   </input>
+				<input type = "radio" name="q1{{member}}" value="1"> 1   </input>
+				<input type = "radio" name="q1{{member}}" value="2"> 2   </input>
+				<input type = "radio" name="q1{{member}}" value="3"> 3   </input>
+				<input type = "radio" name="q1{{member}}" value="4"> 4   </input>
+				<input type = "radio" name="q1{{member}}" value="5"> 5   </input>
+				<input type = "radio" name="q1{{member}}" value="6"> 6   </input>
+				<input type = "radio" name="q1{{member}}" value="7"> 7   </input>
+				<input type = "radio" name="q1{{member}}" value="8"> 8   </input>
+				<input type = "radio" name="q1{{member}}" value="9"> 9   </input>
+				<input type = "radio" name="q1{{member}}" value="10"> 10  </input>
 				<br><br>
+				
 				Douchey-ness (10 being the least douchey) <br>
-				<input type = "radio" name="q2{{member}}" value=0"> 0   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 1   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 2   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 3   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 4   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 5   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 6   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 7   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 8   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 9   </input>
-				<input type = "radio" name="q2{{member}}" value=0"> 10  </input>
+				<input type = "radio" name="q2{{member}}" value="0" checked="checked"> 0   </input>
+				<input type = "radio" name="q2{{member}}" value="1"> 1   </input>
+				<input type = "radio" name="q2{{member}}" value="2"> 2   </input>
+				<input type = "radio" name="q2{{member}}" value="3"> 3   </input>
+				<input type = "radio" name="q2{{member}}" value="4"> 4   </input>
+				<input type = "radio" name="q2{{member}}" value="5"> 5   </input>
+				<input type = "radio" name="q2{{member}}" value="6"> 6   </input>
+				<input type = "radio" name="q2{{member}}" value="7"> 7   </input>
+				<input type = "radio" name="q2{{member}}" value="8"> 8   </input>
+				<input type = "radio" name="q2{{member}}" value="9"> 9   </input>
+				<input type = "radio" name="q2{{member}}" value="10"> 10  </input>
 				<br><br>
 				
 				Hard working (10 being the most hard working) <br>
-				<input type = "radio" name="q3{{member}}" value=0"> 0   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 1   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 2   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 3   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 4   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 5   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 6   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 7   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 8   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 9   </input>
-				<input type = "radio" name="q3{{member}}" value=0"> 10  </input>
+				<input type = "radio" name="q3{{member}}" value="0" checked="checked"> 0   </input>
+				<input type = "radio" name="q3{{member}}" value="1"> 1   </input>
+				<input type = "radio" name="q3{{member}}" value="2"> 2   </input>
+				<input type = "radio" name="q3{{member}}" value="3"> 3   </input>
+				<input type = "radio" name="q3{{member}}" value="4"> 4   </input>
+				<input type = "radio" name="q3{{member}}" value="5"> 5   </input>
+				<input type = "radio" name="q3{{member}}" value="6"> 6   </input>
+				<input type = "radio" name="q3{{member}}" value="7"> 7   </input>
+				<input type = "radio" name="q3{{member}}" value="8"> 8   </input>
+				<input type = "radio" name="q3{{member}}" value="9"> 9   </input>
+				<input type = "radio" name="q3{{member}}" value="10"> 10  </input>
 				<br><br>
 				
 				Reliability (10 being the most reliable) <br>
-				<input type = "radio" name="q4{{member}}" value=0"> 0   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 1   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 2   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 3   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 4   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 5   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 6   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 7   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 8   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 9   </input>
-				<input type = "radio" name="q4{{member}}" value=0"> 10  </input>
+				<input type = "radio" name="q4{{member}}" value="0" checked="checked"> 0   </input>
+				<input type = "radio" name="q4{{member}}" value="1"> 1   </input>
+				<input type = "radio" name="q4{{member}}" value="2"> 2   </input>
+				<input type = "radio" name="q4{{member}}" value="3"> 3   </input>
+				<input type = "radio" name="q4{{member}}" value="4"> 4   </input>
+				<input type = "radio" name="q4{{member}}" value="5"> 5   </input>
+				<input type = "radio" name="q4{{member}}" value="6"> 6   </input>
+				<input type = "radio" name="q4{{member}}" value="7"> 7   </input>
+				<input type = "radio" name="q4{{member}}" value="8"> 8   </input>
+				<input type = "radio" name="q4{{member}}" value="9"> 9   </input>
+				<input type = "radio" name="q4{{member}}" value="10"> 10  </input>
 				<br><br>
 				
+				<!--
+				Added this because I can. Also because it's true. - Brian Lam
+				-->
 				{% if member == "iBriaan@gmail.com" %}
 				Sex Appeal (only applies to Brian Lam):
 				<input type = "radio" name="lolitsajoke" value="100" checked="checked"> 100 </input><br>
 				{% endif %}
+				
+				Comments <br>
+				<textarea name="q5{{member}}" cols="50" rows="3">Enter comments here...</textarea>
 			{% endfor %}
+			
+			<!--
+			This submit button just won't work. It keeps giving a "Bad Request The browser 
+			(or proxy) sent a request that this server could not understand" error whenever it 
+			is clicked. I have been spending HOURS trying to fix it.
+			-Brian Lam
+			-->
 			<input type="submit" name="submitbutton" value="Submit">
 		</form>
 		</font>

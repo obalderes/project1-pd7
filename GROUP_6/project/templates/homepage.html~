@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<form action="" method="post">
+
+<div id="container" style="width:500px;">
+
+<div id="header" style="background-color:#C0C0C0;">
+<h1 style=text-align:center;font-family:arial;"> iRate</h1>
+
+
+<div id="menu" style="background-color:#A2BFF4;height:20px;width:500px;">
+
+
+<p style=text-align:center;font-family:arial>Email Address: <input type="text" name="username">
+</p>
+<p style=text-align:center;font-family:arial><input type="submit" name="button" value="Rate">
+<center><input type="submit" name="button" value="Get Ratings!"><p style=font-family:arial;><center>
+</p>
