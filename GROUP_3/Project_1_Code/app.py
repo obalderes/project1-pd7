@@ -35,7 +35,7 @@ def login():
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
     email = databaseMethods.getCurrentStudent()
-    grades = databaseMehods.retrieveGrades(email)
+    grades = databaseMethods.retrieveGrades(email)
     q1 = getGradeList(0, grades)
     q2 = getGradeList(1, grades)
     q3 = getGradeList(2, grades)
