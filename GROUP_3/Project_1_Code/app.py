@@ -39,6 +39,10 @@ def home():
     q2 = getGradeList(1, grades)
     q3 = getGradeList(2, grades)
     q4 = getGradeList(3, grades)
+    g1 = getGrades(q1)
+    g2 = getGrades(q2)
+    g3 = getGrades(q3)
+    g4 = getGrades(q4)
     a1 = getAverage(q1)
     a2 = getAverage(q2)
     a3 = getAverage(q3)
@@ -46,13 +50,13 @@ def home():
     if request.method == "GET":
         return render_template("home.html",
                                name = name
-                               q1 = q1,
+                               g1 = g1,
                                a1 = a1,
-                               q2 = q2, 
+                               g2 = g2, 
                                a2 = a2,
-                               q3 = q3, 
+                               g3 = g3, 
                                a3 = a3,
-                               q4 = q4, 
+                               g4 = g4, 
                                a4 = a4)
     else:
         return redirect(url_for('rate/'))
@@ -96,6 +100,14 @@ def getAverage(question):
         total++
 
     return ans/total
+
+def getGrades(question):
+    ans = ""
+    count = 0
+    for count in question:
+        ans = ans + str(question[count]) + ", "
+    return ans
+
     
 
 if __name__=="__main__":
