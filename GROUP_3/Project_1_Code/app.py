@@ -89,7 +89,8 @@ def rate():
 
 
 def getGradeList( i, grades ):
-    return grades[i]
+    if len(grades) != 0:
+        return grades[i]
 
 def getStudentName():
     global email
