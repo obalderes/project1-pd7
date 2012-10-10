@@ -110,7 +110,8 @@ def userRating(user):
     return dictionary
 
 def userMembers(user):
-    return students[user]["Project One"] #ideally this would be set up to work with whatever project we are on
+    l = students[user]["Project One"]
+    return l
 
 def userFirst(user):
     name = students[user]["First"]
@@ -163,4 +164,4 @@ print get_rating_given("mengdilin95@gmail.com")
 #print get_rating("mengdilin95@gmail.com")    
 
 '''
-
+print userMembers("mengdilin95@gmail.com")
