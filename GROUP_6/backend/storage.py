@@ -66,6 +66,11 @@ def getInfo(email):
     ret.append(s['rating3'])
     ret.append(s['comment'])
     return ret
+def checkUser(email):
+    for emails in s['ID']:
+        if (str)emails == email:
+            return true
+    return false
 
 def returnIDlist():
     return s['ID']
