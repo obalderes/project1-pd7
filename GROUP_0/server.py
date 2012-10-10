@@ -48,6 +48,14 @@ def post_ratings():
         user = session['username']
         name = database.getName(user)
         return render_template("post_ratings", username = user, first = name[0], last = name[1], ratees = database.getRatees(user), project = database.getCurrentProject(user))
+    else:
+        button = request.post_ratings["button"]
+        if button == "Cancel":
+            session['username'] == ""
+            return redirect(url_for("home"))
+        elif button == "Save":
+            
+        
     
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
