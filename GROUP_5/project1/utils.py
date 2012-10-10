@@ -19,11 +19,11 @@ def prepro_students():
         line = line.strip()
         e = line.partition(',')
         info = e[2].split(',')
-        students[e[0]]={"Rating Received":[],"Rating Given":[],"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6],"Password":"","Members":"", "Rater":""}
+        students[e[0]]={"Rating Received":{},"Rating Given":{},"Last":info[0],"First":info[1],"ID":info[2],"Class":info[3],"Section":info[4],"Period":info[5],"Group":info[6],"Password":"","Project One":"",}
         group = int(float(students[e[0]]["Group"]))
         period =int(float(students[e[0]]["Period"]))
         key = str((period-6)*8+group)
-        students[e[0]]["Members"]=emails[key]
+        students[e[0]]["Project One"]=emails[key]
     s.close()
 
 def printStudentsNicely():
@@ -43,7 +43,7 @@ def emailAuth(user,password):
         return True
     except Exception:
         return False
-
+'''
 #rater = email string
 #ratee = email string
 #args can be a dictionary {"Question Number":"", "Rating":"", "Rater":"", "Ratee":""} or two string number arguments for question number and string respectively
@@ -61,13 +61,30 @@ def add_rating(rater,ratee,*args):
         return True
     else:
         return False
+'''
+#rater = email string
+#ratee = email string
+#question = "q01" etc
+#rating = number string
+def add_rating(rater,ratee,question,rating):
+    total_question=10
+    index =int(float(question[1:]))-1
+    if(students[rater]["Group"]==students[ratee]["Group"]):
+        if(rater not in students[ratee]["Rating Received"].keys() and ratee not in students[rater]["Rating Given"].keys()):
+            students[ratee]["Rating Received"][rater]=['-1']*total_question
+            students[rater]["Rating Given"][ratee]=['-1']*total_question
+        students[ratee]["Rating Received"][rater][index]=rating
+        students[rater]["Rating Given"][ratee][index]=rating
+        return True
+    else:
+        return False
 
 def userRating(user):
     dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]}
     return dictionary
 
 def userMembers(user):
-    return students[user]["Members"]
+    return students[user]["Project One"]
 
 def userFirst(user):
     name = students[user]["First"]
@@ -99,11 +116,11 @@ def userInfo(user):
 ratee="jdecker12@gmail.com"
 rating={"Question Number":"1","Rating":"3","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
 rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
-add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating)
-add_rating("mengdilin95@gmail.com","iBriaan@gmail.com",rating1)
-add_rating("mengdilin95@gmail.com",ratee,"1","8")
-#print students["mengdilin95@gmail.com"]["Rating Given"]
-#print students["iBriaan@gmail.com"]["Rating Received"]
+add_rating("mengdilin95@gmail.com",ratee,"q01","8")
+
+
+print students["mengdilin95@gmail.com"]["Rating Given"]
+print students[ratee]["Rating Received"]
 #print get_rating("mengdilin95@gmail.com")    
    
 
