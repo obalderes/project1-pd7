@@ -37,7 +37,12 @@ def view_ratings():
 
 @app.route("/post_ratings", methods = ['GET', 'POST'])
 def post_ratings():
-
+    if session['username'] == "":
+        flash("Please enter a username on the home page.")
+        return redirect(url_for("home"))
+    if request.method == "GET":
+        name = database.getName(session['username'])
+        return render_template("post_ratings", username = session['username'], username.first = name[0], username.last = name[1], listofratees = database.getRatees(session['username']))
     
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
