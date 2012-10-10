@@ -17,9 +17,15 @@ def login():
 
         button = request.form['button']
         if button == 'Rate':
-            Email = str(request.form["username"])
+            Email = request.form["username"]
             if storage.checkUser(Email)==True:
                 return redirect(url_for("rate"))
+            else:
+                return redirect(url_for("page_not_found"))
+        elif button == 'Get Ratings!':
+            Email = request.form["username"]
+            if storage.checkUser(Email)==True:
+                return redirect(url_for("viewRates"))
             else:
                 return redirect(url_for("page_not_found"))
         else:
@@ -29,6 +35,10 @@ def login():
 @app.route('/fail')
 def page_not_found():
     return render_template("Fail.html")
+
+@app.route('/view')
+def viewRates():
+    return render_template("ViewRatings.html")
 
 @app.route('/Rater',methods=['get'])
 def rate():
