@@ -12,6 +12,7 @@ def home():
         session['username'] = request.home["username"]
         if not(database.isUsername(session['username'])):
             flash("%s is not an authorized email. \nPlease enter a valid username."%(session['username']))
+            session['username'] = ""
             return redirect(url_for("home"))
         #check if valid username. If not, error message.
         session['information'] = database.getInformation(session['username'])
@@ -24,13 +25,16 @@ def home():
 @app.route("/view_ratings", methods = ['GET','POST'])
 def view_ratings():
     if session['username'] == "":
-        flash("Please enter a username on the home page.")
+        flash("Please enter a valid username on the home page.")
         return redirect(url_for("home"))
     if request.method == "GET":
-        return render_template("view_ratings.html", username = session['username'], information = session)
+        user = session['username']
+        name = database.getName(user)
+        return render_template("view_ratings.html", username = user, first = name[0], last = name[1], ratings = database.getRatings(user))
     else:
         button = request.view_ratings["button"]
-        if button == "Home":
+        if button == "Cancel":
+            session['username'] = ""
             return redirect(url_for("home"))
         elif button == "Post Ratings":
             return redirect(url_for("post_ratings"))
@@ -38,7 +42,7 @@ def view_ratings():
 @app.route("/post_ratings", methods = ['GET', 'POST'])
 def post_ratings():
     if session['username'] == "":
-        flash("Please enter a username on the home page.")
+        flash("Please enter a valid username on the home page.")
         return redirect(url_for("home"))
     if request.method == "GET":
         user = session['username']
