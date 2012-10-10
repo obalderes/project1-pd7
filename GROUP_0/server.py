@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, url_for, redirect, flash
+import Flask
 import database
 
 app = Flask(__name__)
