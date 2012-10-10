@@ -26,7 +26,7 @@ def login():
         button=request.form['button'] #login button
         return redirect(url_for('home')) 
 #needs to do authentication before directing to login. could be ID
-    email = request.form['email']
+    global email = request.form['email']
     assert email != ""
     databaseMethods.saveCurrentStudent(email) 
  
@@ -39,16 +39,24 @@ def home():
     q2 = getGradeList(1, grades)
     q3 = getGradeList(2, grades)
     q4 = getGradeList(3, grades)
+    a1 = getAverage(q1)
+    a2 = getAverage(q2)
+    a3 = getAverage(q3)
+    a4 = getAverage(q4)
     if request.method == "GET":
-        return render_template("home.html", 
-                               q1 = q1, 
+        return render_template("home.html",
+                               name = name
+                               q1 = q1,
+                               a1 = a1,
                                q2 = q2, 
+                               a2 = a2,
                                q3 = q3, 
-                               q4 = q4)
+                               a3 = a3,
+                               q4 = q4, 
+                               a4 = a4)
     else:
         return redirect(url_for('rate/'))
 
-    grades = databaseMethods.retrieve
     
 #////put back in
 #need to set up buttons or links to go into other group members and give ratings
@@ -56,8 +64,6 @@ def home():
 
 @app.route("/rate/")
 def rate():
-
-    email = databaseMethods.getCurrentStudent()
 
     #retrieve the info of the student who logged in
     studentInfo = databaseMethods.retrieveStudentInfo(email)
@@ -76,6 +82,21 @@ def rate():
 def getGradeList( i, grades ):
     return grades[i]
 
+def getStudentName:
+    info = databaseMethods.retrieveStudentInfo(email)
+    name = info[1] + " " + info[0]
+    return name
+
+def getAverage(question):
+    ans = 0
+    total = 0
+    count = 0
+    for count in question:
+        ans = question[count]
+        total++
+
+    return ans/total
+    
 
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
