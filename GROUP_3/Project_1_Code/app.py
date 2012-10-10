@@ -3,7 +3,8 @@ from flask import request
 from flask import render_template
 #import utils
 from flask import url_for,redirect,flash
-import databaseMethods, shelveSetup
+import databaseMethods
+#import  shelveSetup
 
 app = Flask(__name__)
 
@@ -17,7 +18,6 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def login():
-    global email
     if request.method == "GET":
 
         return render_template("login.html")
@@ -35,8 +35,8 @@ def login():
 
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
-    global email
-    grades = retrieveGrades(email)
+    email = databaseMethods.getCurrentStudent()
+    grades = databaseMethods.retrieveGrades(email)
     q1 = getGradeList(0, grades)
     q2 = getGradeList(1, grades)
     q3 = getGradeList(2, grades)
@@ -70,8 +70,7 @@ def home():
 
 @app.route("/rate/")
 def rate():
-    global email
-
+    email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
     studentInfo = databaseMethods.retrieveStudentInfo(email)
     
@@ -90,7 +89,7 @@ def getGradeList( i, grades ):
     return grades[i]
 
 def getStudentName():
-    global email
+    email = databaseMethods.getCurrentStudent()
     info = databaseMethods.retrieveStudentInfo(email)
     name = info[1] + " " + info[0]
     return name
