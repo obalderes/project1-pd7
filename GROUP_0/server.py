@@ -1,4 +1,5 @@
 import flask
+from flask import *
 import database
 
 app = Flask(__name__)
@@ -9,14 +10,14 @@ def home():
     if request.method == "GET":
         return render_template("home.html")
     else:
-        session['username'] = request.home["username"]
+        session['username'] = request.form["username"]
         if not(database.isUsername(session['username'])):
             flash("%s is not an authorized email. \nPlease enter a valid username."%(session['username']))
             session['username'] = ""
             return redirect(url_for("home"))
         #check if valid username. If not, error message.
         session['information'] = database.getInformation(session['username'])
-        button = request.home["button"]
+        button = request.form["button"]
         if button == "View Ratings":
             return redirect(url_for("view_ratings"))
         elif button == "Post Ratings":
@@ -32,7 +33,7 @@ def view_ratings():
         name = database.getName(user)
         return render_template("view_ratings.html", username = user, first = name[0], last = name[1], ratings = database.getRatings(user))
     else:
-        button = request.view_ratings["button"]
+        button = request.form["button"]
         if button == "Cancel":
             session['username'] = ""
             return redirect(url_for("home"))
@@ -49,7 +50,7 @@ def post_ratings():
         name = database.getName(user)
         return render_template("post_ratings", username = user, first = name[0], last = name[1], ratees = database.getRatees(user), project = database.getCurrentProject(user))
     else:
-        button = request.post_ratings["button"]
+        button = request.form["button"]
         if button == "Cancel":
             session['username'] == ""
             return redirect(url_for("home"))
