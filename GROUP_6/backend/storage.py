@@ -71,9 +71,9 @@ def getInfo(email):
 
 def checkUser(email):
     for emails in s['ID']:
-        if email == email:
-            return true
-    return false
+        if emails == email:
+            return True
+    return False
 
 def returnIDlist():
     return s['ID']
