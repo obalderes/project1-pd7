@@ -1,0 +1,11 @@
+<!doctype html>
+
+<hr>What would you like to do?</hr>
+
+<p>Choices:
+<select name="choice">
+<option>Rate a group member</option>
+<option>See my ratings</option>
+<optin>Go back to login screen</option>
+</select>
+</p>

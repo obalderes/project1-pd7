@@ -1,10 +1,6 @@
-
-
 import shelve
 
 database = shelve.open('database.dat', writeback=True)
-#d = shelve.open("students.dat")
-#I can't figure out the shelf implementation... I keep on getting a "db" type error so I'm just going to program instantiating a dictionary instead.
 
 people = {}
 projx = {}
@@ -31,8 +27,8 @@ def setupPeople():
 def addProjectToPerson(emailaddress,projectname):
     people[emailaddress][3][projectname] = {}
     theirgroup = people[emailaddress][8]
-    if groupnumbers.count(gnum) == 0:
-        groupnumbers.append(gnum)
+    if groupnumbers.count(theirgroup) == 0:
+        groupnumbers.append(theirgroup)
     for g in groupnumbers:
         people[emailaddress][3][projectname][g] = []
     for email in people:
@@ -58,7 +54,12 @@ def createNewProject(projectname):
         projx[projectname][(int)(theirgroup)][person] = []
     projx['currentproject'] = projectname
 
-        
+def getFirst(emailadd):
+    return people[emailadd][0]
+
+def getLast(emailadd):
+    return people[emailadd][1]
+
 def returnPeopleDict():
     return people
 
@@ -72,6 +73,25 @@ def getData(emailaddress):
                     data.append(projx[projs][(int)(people[person][8])][person])
     return data
 
+def getAvgForQuestion(email,projnum,q):
+    data = getData(email)[int(projnum)]
+    temp = []
+    if len(data) == 0:
+        return 0
+    
+    for d in data:
+        if d['question'] == str(q):
+            temp.append(d)
+            
+    if len(temp) == 0:
+        return 0
+    
+    sum = 0        
+    for dict in temp:
+        sum = sum + dict['score']
+        
+    return sum / len(temp)
+        
 #rates a person in your group and in your current project
 def ratePerson(rater,ratee,question,score,comments):
     data = {}
@@ -83,22 +103,39 @@ def ratePerson(rater,ratee,question,score,comments):
     CurrGroup = people[rater][8]
     projx[CurrProj][(int)(CurrGroup)][ratee].append(data)   
 
-setupPeople()
-createNewProject("project two")
-createNewProject("littlefish")
-print getData('iouthwaite1@gmail.com')
 
-#addProjectToPerson("iouthwaite1@gmail.com",'newproject')
-ratePerson("iouthwaite1@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
-ratePerson("raymondzzzeng@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
-print getData("Oneman2feet@gmail.com")
-#database = [project,people]
+#returns list of tuples (Avg rating, email)
+#return[0] has the highest rating
+#input: Project number where the first project is indexed by 0
+def getRankings(projnum,question):
+    people = database['People']
+    rankings = []
+    for person in people:
+        t = (getAvgForQuestion(person,projnum,question), person)
+        rankings.append(t)            
+    rankings.sort()
+    temp = []
+    for i in reversed(rankings):
+        temp.append(i)
+    return temp
+
+def getGroupMembers(emailaddres,projct):
+    temp = []
+    for person in people[emailaddres][3][projct][people[emailaddres][8]]:
+        temp.append(person[0] + " " + person[1])
+    return temp
+
+setupPeople()
+createNewProject('2')
+createNewProject("1")
+addProjectToPerson('iouthwaite1@gmail.com','1')
+
+print getFirst('iouthwaite1@gmail.com')
+print getLast('iouthwaite1@gmail.com')
+print getGroupMembers('iouthwaite1@gmail.com','1')
 
 database['People'] = people
 database['Projects'] = projx
+
+
 database.close()
-
-
-
-
-

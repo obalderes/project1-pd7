@@ -8,23 +8,39 @@ app = Flask(__name__)
 def index(failedpass = False):
     if request.method=="GET":
         return render_template("index.html")
+    if failedpass == True:
+        return render_template("index.html", failedpass = True)
     elif request.method=="POST":
-        button = request.form['button']
         email = request.form['email']
-        password = request.form['password']
         assert email != ""
-        return login(email,password)
+        return login(email)
 
-def login(email, password):
-    if(utils.user_authen(email) == True):
-        return redirect(url_for("rate", name = email))
+def login(email):
+    email = str(email)
+    if(utils.emailAuth(email) == True):
+        print email + " Passed auth"
+        fullname = utils.userFirst(email) + " " + utils.userLast(email)
+        return rate(email, fullname)
     else:
-        return redirect(url_for("index", failedpass = True))
+        print email + " Failed auth"
+        failedpass = True
+        return index(failedpass = True)
     
 @app.route("/rate")
 @app.route("/rate/<name>", methods = ['GET', 'POST'])
-def rate(name = "Stranger"):
-    return render_template("rate.html", name = name)
+def rate(email = "", name = "Stranger", rated = "false"):
+    try:
+        if rated == "false":
+            members = utils.userGroupMembers(email)
+            return render_template("rate.html", name = name, members = members)
+        if (request.form["submitbutton"] == "Submit"):
+            confirm()
+    except Exception:
+        Exception.printStackTrace()
+
+@app.route("/confirm")
+def confirm():
+    return render_template("confirm.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -8,35 +8,33 @@
 			body>div{
 				padding-left: 1%;
 				padding-right: 1%;
+				color:white;
 			}
 			header{
-				background-color:#CCCCCC;
-				color: black;
+				color: #87CEFA;
 			}
 		</style>
 	</head>
-	<body bgcolor="#E8E8E8">
+	<body bgcolor="#212121">
 		<header><font size="20">
 			Ratebook
 		</font></header>
 		<div>
 			<br>
+			{% if failedpass %}
+				<b><font color="red">Invalid email. </font></b> <br>
+			{% endif %}
 			Please log in with your email.
 			<br><br>
 			
 			<form action="" method="POST">
 				<table border="0" bordercolor="0" style="background-color:#" width="25%" cellpadding="5" cellspacing="0">
 					<tr>
-						<td>Email</td>
+						<td><font color = "white">Email</color></td>
 						<td><input type="text" name="email"></td>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td><input type="password" name="password"></td>
 					</tr>
 				</table>
 				<input type="submit" name="button" value="Login">
-				<input type="submit" name="button" value="Register">
 			</form>
 		</div>
 	</body>
