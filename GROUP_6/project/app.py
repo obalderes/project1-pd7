@@ -8,8 +8,6 @@ from flask import url_for,redirect,flash,session
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
-Email = ""
-
 @app.route("/",methods = ['get','post'])
 def login():
     if request.method=='GET':
