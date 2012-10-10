@@ -1,0 +1,10 @@
+<!doctype HTML>
+
+<h1> Hi {{name}}! Please choose the group member you would like to rate</h1>
+
+{% for member in gmember %}
+{{member}}
+<form action="/rate/<name>">
+  <p><input type=submit value="Pick">
+</form>
+{% endfor %}
