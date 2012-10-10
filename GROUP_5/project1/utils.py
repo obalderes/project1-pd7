@@ -86,7 +86,7 @@ def get_rating(user,type_rating):
             if(students[user][type_rating][key][index]!='-1'):
                 q='q0'+str(index+1)
                 tmp=q+user+'/'+students[user][type_rating][key][index]
-                d.append(tmp)
+                d.append(tmp) #what is d?
     return d
 
 def get_rating_received(user):
@@ -98,11 +98,11 @@ def get_rating_given(user):
     return get_rating(user,type_rating)
     
 def userRating(user):
-    dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]}
+    dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]} #I thought it was "Ratings Recieved" and "Ratings Given" as lists of dictionaries
     return dictionary
 
 def userMembers(user):
-    return students[user]["Project One"]
+    return students[user]["Project One"] #ideally this would be set up to work with whatever project we are on
 
 def userFirst(user):
     name = students[user]["First"]
