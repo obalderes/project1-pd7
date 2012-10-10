@@ -67,7 +67,7 @@ def add_rating(rater,ratee,*args):
 #question = "q01" etc
 #rating = number string
 def add_rating(rater,ratee,question,rating):
-    total_question=10
+    total_question=9
     index =int(float(question[1:]))-1
     if(students[rater]["Group"]==students[ratee]["Group"]):
         if(rater not in students[ratee]["Rating Received"].keys() and ratee not in students[rater]["Rating Given"].keys()):
@@ -79,6 +79,24 @@ def add_rating(rater,ratee,question,rating):
     else:
         return False
 
+def get_rating(user,type_rating):
+    d=[]
+    for key in students[user][type_rating].keys():
+        for index in range(len(students[user][type_rating][key])):
+            if(students[user][type_rating][key][index]!='-1'):
+                q='q0'+str(index+1)
+                tmp=q+user+'/'+students[user][type_rating][key][index]
+                d.append(tmp)
+    return d
+
+def get_rating_received(user):
+    type_rating="Rating Received"
+    return get_rating(user,type_rating)
+
+def get_rating_given(user):
+    type_rating="Rating Given"
+    return get_rating(user,type_rating)
+    
 def userRating(user):
     dictionary={"Rating Received":students[user]["Rating Received"],"Rating Given":students[user]["Rating Given"]}
     return dictionary
@@ -116,11 +134,17 @@ def userInfo(user):
 ratee="jdecker12@gmail.com"
 rating={"Question Number":"1","Rating":"3","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
 rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
-add_rating("mengdilin95@gmail.com",ratee,"q01","8")
-
+add_rating("mengdilin95@gmail.com",ratee,"q02","8")
+add_rating("mengdilin95@gmail.com",ratee,"q01","9")
+add_rating("mengdilin95@gmail.com",ratee,"q03","8")
+add_rating("mengdilin95@gmail.com",ratee,"q04","8")
+add_rating("mengdilin95@gmail.com",ratee,"q05","8")
+a=[1,2,3]
+a[00]=2
 
 print students["mengdilin95@gmail.com"]["Rating Given"]
-print students[ratee]["Rating Received"]
+print get_rating_received(ratee)
+print get_rating_given("mengdilin95@gmail.com")
 #print get_rating("mengdilin95@gmail.com")    
    
 
