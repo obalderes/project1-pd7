@@ -36,10 +36,10 @@ if not os.path.isfile('info.dat'):
 else:
     s = shelve.open('info.dat')
 
-def addRating(ratee, _rater, _rating1, _rating2, _rating3, _comment):
-    if not _rater in s['rater'][s['ID'].index(ratee)]:
+def addRating(_ratee, _rater, _rating1, _rating2, _rating3, _comment):
+    if not _rater in s['rater'][s['ID'].index(_ratee)]:
         ids = s['ID']
-        index = ids.index(ratee)
+        index = ids.index(_ratee)
         rating1 = s['rating1'] 
         rating2 = s['rating2'] 
         rating3 = s['rating3']
@@ -57,8 +57,7 @@ def addRating(ratee, _rater, _rating1, _rating2, _rating3, _comment):
         s['rater'] = rater
 
 def getInfo(email):
-    ids = s['ID']
-    index = ids.index(email)
+    index = s['ID'].index(email)
     ret = []
     ret.append(s['name'][index])
     ret.append(s['period'][index])    
@@ -69,9 +68,10 @@ def getInfo(email):
     ret.append(s['comment'][index])
     ret.append(s['rater'][index])
     return ret
+
 def checkUser(email):
     for emails in s['ID']:
-        if (str)emails == email:
+        if email == email:
             return true
     return false
 
@@ -80,7 +80,7 @@ def returnIDlist():
 
 if __name__ == "__main__":
     print s
-    addRating('rybicka.zuzanna@gmail.com','a455898334@gmail.com','5','6','7','coolest person on earth')
-    addRating('sorakeyblade@gmail.com','a455898334@gmail.com','5','6','7','coolest person on earth')
+    addRating('a455898334@gmail.com','rybicka.zuzanna@gmail.com','5','6','7','coolest person on earth')
+    addRating('a455898334@gmail.com','sorakeyblade@gmail.com','9','8','7','coolest person on earth')
     print s
     print getInfo('a455898334@gmail.com')
