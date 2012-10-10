@@ -7,6 +7,7 @@ from flask import render_template
 from flask import url_for,redirect,flash
 app = Flask(__name__)
 app.secret_key = 'some_secret'
+Email=""
 @app.route("/",methods = ['get','post'])
 def login():
     if request.method=='GET':
@@ -20,12 +21,17 @@ def login():
             else:
                 return redirect(url_for(""))
         else:
-            abort(401)
+            return redirect(url_for("page_not_found"))
+
+
+@app.route('/fail')
+def page_not_found():
+    abort(404)
 
 @app.route('/Rater',methods=['get','post'])
 def rate():
     if request.method=='GET':
-        return render_template("RatingPage.html")
+        return render_template("RatingPage.html",username = Email)
     else:
         return redirect(url_for(""))
    
@@ -46,5 +52,5 @@ def getInfo(email):
 '''
     
 if __name__=="__main__":
-    app.debug=True # remove this line to turn off debugging
-    app.run() # connect to localhost:5000 or http://127.0.0.1:5000
+    app.debug=True
+    app.run()
