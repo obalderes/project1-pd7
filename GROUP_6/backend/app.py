@@ -20,7 +20,10 @@ def login():
 
 @app.route("/RatingPage",methods = ['get'])
 def rate():
-    return render_template("RatingPage.html")
+    if request.method == 'get':
+        return render_template("RatingPage.html")
+    else:
+        pass #just a placeholder for when I can test the rate routine
    
 '''
 def getRatings(email):
