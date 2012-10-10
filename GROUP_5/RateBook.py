@@ -29,11 +29,14 @@ def login(email):
 @app.route("/rate")
 @app.route("/rate/<name>", methods = ['GET', 'POST'])
 def rate(email = "", name = "Stranger", rated = "false"):
-    if rated == "false":
-        members = utils.userGroupMembers(email)
-        return render_template("rate.html", name = name, members = members)
-    if (request.form["submitbutton"] == "Submit"):
-        confirm()
+    try:
+        if rated == "false":
+            members = utils.userGroupMembers(email)
+            return render_template("rate.html", name = name, members = members)
+        if (request.form["submitbutton"] == "Submit"):
+            confirm()
+    except Exception:
+        Exception.printStackTrace()
 
 @app.route("/confirm")
 def confirm():
