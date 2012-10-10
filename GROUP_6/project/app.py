@@ -21,14 +21,14 @@ def login():
             if storage.checkUser(Email)==True:
                 return redirect(url_for("rate"))
             else:
-                return redirect(url_for("login"))
+                return redirect(url_for("page_not_found"))
         else:
             return redirect(url_for("page_not_found"))
 
 
 @app.route('/fail')
 def page_not_found():
-    abort(404)
+    return render_template("Fail.html")
 
 @app.route('/Rater',methods=['get'])
 def rate():
