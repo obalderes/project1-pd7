@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title> Welcome to Ratebook </title>
+		<!--
+		CSS Designed by Brian Lam. Based off of the design used by the news startup 
+		Pulse News (dark gray background, blue logo, light text
+		-->
+		<style type="text/css">
+			body{
+				font-family: "Arial";
+			}
+			body>div{
+				padding-left: 1%;
+				padding-right: 1%;
+				color:white;
+			}
+			header{
+				color: #87CEFA;
+			}
+		</style>
+	</head>
+	<body bgcolor="#212121">
+		<header><font size="20">
+			Ratebook
+		</font></header>
+		<div>
+			<br>
+			{% if failedpass %}
+				<b><font color="red">Invalid email. </font></b> <br>
+			{% endif %}
+			Please log in with your email.
+			<br><br>
+			
+			<form action="" method="POST">
+				<table border="0" bordercolor="0" style="background-color:#" width="25%" cellpadding="5" cellspacing="0">
+					<tr>
+						<td><font color = "white">Email</color></td>
+						<td><input type="text" name="email"></td>
+					</tr>
+				</table>
+				<input type="submit" name="button" value="Login">
+			</form>
+		</div>
+	</body>
+</html>
