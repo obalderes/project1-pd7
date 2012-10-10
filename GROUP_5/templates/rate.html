@@ -21,7 +21,7 @@
 		</style>
 	</head>
 	<body bgcolor="#212121">
-		<header><font size="20">
+		<header><font size="20" color="#87CEFA">
 			Ratebook
 		</font></header>
 		<font color="white">
@@ -112,6 +112,9 @@
 				Sex Appeal (only applies to Brian Lam):
 				<input type = "radio" name="lolitsajoke" value="100" checked="checked"> 100 </input><br>
 				{% endif %}
+				
+				Comments <br>
+				<textarea name="q5{{member}}" cols="50" rows="3">Enter comments here...</textarea>
 			{% endfor %}
 			
 			<!--
