@@ -10,24 +10,47 @@
 
 <div id="menu" style="background-color:#A2BFF4;height:20px;width:500px;">
 <p style=text-align:center;font-family:arial;"><b> <a href="http://www.google.com/">Profile</a></b> <a href="http://www.google.com/">Group</a> <a href="http://www.google.com/">Ratings</a></p></div>
+<p> This is 
 
+{% if name %}
+  {{ name }} {{last}}
+{% else %}
+  an unknown user
+{% endif %}
+  
+'s page </p>
+
+<center><p style=font-family:arial;>How did you like working with this person?<center>
+</p>
 
 <div id="content" style="background-color:#EEEEEE;height:200px;width:500px;float:left;">
 <p </p>
 <form name="input" action="html_form_action.asp" method="get">
 <p style=font-family:arial;"> Team Member:<input type="text" name="user"></br></br>
 
-<center><p style=font-family:arial;>How did you like working with this person?<center>
+<input type=radio name="rating1" value="0">0&nbsp;
+<input type=radio name="rating1" value="1">1&nbsp;
+<input type=radio name="rating1" value="2">2&nbsp;
+<input type=radio name="rating1" value="3">3&nbsp;
+<input type=radio name="rating1" value="4">4&nbsp;
+<input type=radio name="rating1" value="5">5&nbsp;
+<input type=radio name="rating1" value="6">6&nbsp;
+<input type=radio name="rating1" value="7">7&nbsp;
+<input type=radio name="rating1" value="8">8&nbsp;
+<input type=radio name="rating1" value="9">9<p>
 
-<input type=radio name="rating" value="0">0&nbsp;
-<input type=radio name="rating" value="1">1&nbsp;
-<input type=radio name="rating" value="2">2&nbsp;
-<input type=radio name="rating" value="3">3&nbsp;
-<input type=radio name="rating" value="4">4&nbsp;
-<input type=radio name="rating" value="5">5&nbsp;
-<input type=radio name="rating" value="6">6&nbsp;
-<input type=radio name="rating" value="7">7&nbsp;
-<input type=radio name="rating" value="8">8&nbsp;
-<input type=radio name="rating" value="9">9<p>
+<center><p style=font-family:arial;>How easy to get in contact with was this person?<center>
 
-<input type="submit" value="Rate"><p style=font-family:arial;></form>
+<input type=radio name="rating2" value="0">0&nbsp;
+<input type=radio name="rating2" value="1">1&nbsp;
+<input type=radio name="rating2" value="2">2&nbsp;
+<input type=radio name="rating2" value="3">3&nbsp;
+<input type=radio name="rating2" value="4">4&nbsp;
+<input type=radio name="rating2" value="5">5&nbsp;
+<input type=radio name="rating2" value="6">6&nbsp;
+<input type=radio name="rating2" value="7">7&nbsp;
+<input type=radio name="rating2" value="8">8&nbsp;
+<input type=radio name="rating2" value="9">9<p>
+
+<input type="submit" value="Rate!"><p style=font-family:arial;>
+</form>

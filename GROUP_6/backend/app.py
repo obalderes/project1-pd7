@@ -4,22 +4,24 @@ import os
 from flask import Flask
 from flask import request
 from flask import render_template
-from flask import url_for,redirect,flash
+from flask import url_for,redirect,flash,session
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 Email=""
+IDList = []
 @app.route("/",methods = ['get','post'])
 def login():
     if request.method=='GET':
         return render_template("homepage.html")
     else:
-        Email=request.form['username']
+
         button = request.form['button']
         if button == 'Login':
-            if storage.checkUser(Email):
+            Email = str(request.form["username"])
+            if storage.checkUser(Email)==True:
                 return redirect(url_for("rate"))
             else:
-                return redirect(url_for(""))
+                return redirect(url_for("login"))
         else:
             return redirect(url_for("page_not_found"))
 
@@ -28,12 +30,12 @@ def login():
 def page_not_found():
     abort(404)
 
-@app.route('/Rater',methods=['get','post'])
+@app.route('/Rater',methods=['get'])
 def rate():
     if request.method=='GET':
-        return render_template("RatingPage.html",username = Email)
+        return render_template('RatingPage.html', Email = Email)
     else:
-        return redirect(url_for(""))
+        return redirect(url_for('login'))
    
 '''
 def getRatings(email):
