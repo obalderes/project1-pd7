@@ -131,6 +131,7 @@ def userInfo(user):
     dictionary={"Period":students[user]["Period"], "Group":students[user]["Group"], "Section":students[user]["Section"], "ID":students[user]["ID"], "Class":students[user]["Class"]}
     return dictionary
 
+'''
 ratee="jdecker12@gmail.com"
 rating={"Question Number":"1","Rating":"3","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
 rating1={"Question Number":"1","Rating":"4","Rater":"mengdilin95@gmail.com","Ratee":"iBriaan@gmail.com"}
@@ -147,4 +148,4 @@ print get_rating_received(ratee)
 print get_rating_given("mengdilin95@gmail.com")
 #print get_rating("mengdilin95@gmail.com")    
    
-
+'''
