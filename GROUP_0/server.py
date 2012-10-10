@@ -41,8 +41,9 @@ def post_ratings():
         flash("Please enter a username on the home page.")
         return redirect(url_for("home"))
     if request.method == "GET":
-        name = database.getName(session['username'])
-        return render_template("post_ratings", username = session['username'], username.first = name[0], username.last = name[1], listofratees = database.getRatees(session['username']))
+        user = session['username']
+        name = database.getName(user)
+        return render_template("post_ratings", username = user, first = name[0], last = name[1], ratees = database.getRatees(user), project = database.getCurrentProject(user))
     
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
