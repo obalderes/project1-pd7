@@ -10,9 +10,7 @@
 
 <div id="menu" style="background-color:#A2BFF4;height:20px;width:500px;">
 <p style=text-align:center;font-family:arial;"><b> <a href="http://www.google.com/">Profile</a></b> <a href="http://www.google.com/">Group</a> <a href="http://www.google.com/">Ratings</a></p></div>
-{% if username %}
-<p> Hello {{username}} </p>
-{% endif %}
+
 
 <div id="content" style="background-color:#EEEEEE;height:200px;width:500px;float:left;">
 <p </p>
