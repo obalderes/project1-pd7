@@ -4,19 +4,23 @@
 		<style type="text/css">
 			body{
 				font-family: "Arial";
+				color:"white";
 			}
 			body>div{
 				padding-left: 1%;
 				padding-right: 1%;
+				color:white;
 			}
 			header{
-				background-color:#CCCCCC;
-				color: black;
+				color: #87CEFA;
 			}
 		</style>
 	</head>
-	<body bgcolor="#E8E8E8">
-		<font size="20"><b>Ratebook</b></font>
+	<body bgcolor="#212121">
+		<header><font size="20">
+			Ratebook
+		</font></header>
+		<font color="white">
 		<br>
 		Hello, {{name}}, you judgmental jerk
 		<br>
@@ -92,14 +96,16 @@
 				<input type = "radio" name="lolitsajoke" value="100" checked="checked"> 100 </input><br>
 				{% endif %}
 			{% endfor %}
-			<input type="submit" name="Submit" value="Submit">
+			<input type="submit" name="submitbutton" value="Submit">
 		</form>
+		</font>
 		
-		
 		<br>
 		<br>
 		<br>
-		<font size="1">Ratebook is not responsible for any suicides that may occur from the use of this program. </font>
+		<font size="2" color="gray">
+		Ratebook is not responsible for any suicides that may occur from the use of this program. 
+		</font>
 		
 	</body>
 </html>
