@@ -2,6 +2,10 @@
 	<head>
 		<title>Ratebook</title>
 		<style type="text/css">
+		<!--
+		CSS Designed by Brian Lam. Based off of the design used by the news startup 
+		Pulse News (dark gray background, blue logo, light text
+		-->
 			body{
 				font-family: "Arial";
 				color:"white";
@@ -27,12 +31,21 @@
 		<br>
 		Your group members' emails are:
 		<ul>
+		
+		<!--
+		This flask code will list all the members in the group not including
+		the person who is logged in. -Brian Lam
+		-->
 		{% for member in members %}
 			<li>{{member}}
 		{% endfor %}
 		</ul>
 		
 		<form method="POST">
+			<!--
+			This flask code will create questions, whose names differ by the email
+			addresses of each ratee to make them distinguishable. -Brian Lam
+			-->
 			{% for member in members %}
 				<br>
 				<b>Ratee's Email:  {{member}}</b> <br>
@@ -92,11 +105,21 @@
 				<input type = "radio" name="q4{{member}}" value="10"> 10  </input>
 				<br><br>
 				
+				<!--
+				Added this because I can. Also because it's true. - Brian Lam
+				-->
 				{% if member == "iBriaan@gmail.com" %}
 				Sex Appeal (only applies to Brian Lam):
 				<input type = "radio" name="lolitsajoke" value="100" checked="checked"> 100 </input><br>
 				{% endif %}
 			{% endfor %}
+			
+			<!--
+			This submit button just won't work. It keeps giving a "Bad Request The browser 
+			(or proxy) sent a request that this server could not understand" error whenever it 
+			is clicked. I have been spending HOURS trying to fix it.
+			-Brian Lam
+			-->
 			<input type="submit" name="submitbutton" value="Submit">
 		</form>
 		</font>
