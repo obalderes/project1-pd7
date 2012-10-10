@@ -113,6 +113,21 @@ def reset():
     fixNames()
     makeAuth()
 
+
+def getPrevRatings(email):
+    d = dict()
+    quest = shelve.open("questions.dat")
+    for item in quest:
+        for ee in quest[item]:
+            if ee == email:
+                d[item] = quest[item][ee]
+    return d
+
+
+
+print getPrevRatings('batya.zamansky@gmail.com')
+    
+
 #print getGroupMembers('jpengsmail@gmail.com')
 #print getRatings('jpengsmail@gmail.com')
 #addRating('batya.zamansky@gmail.com','jpengsmail@gmail.com',[2,3,4,5,6])
