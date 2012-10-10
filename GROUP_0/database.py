@@ -14,7 +14,7 @@ def getRatings(email):
             l[int(key[-1])-1][ind].append(rating)
     return l
 
-def isUserName(email):
+def isUsername(email):
     for member in d:
         if member == email:
             return True
