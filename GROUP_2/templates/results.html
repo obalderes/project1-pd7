@@ -23,7 +23,7 @@
 
 <i> Sorted by question</i> 
 <br>
-<<<<<<< HEAD
+
 {% set qnum = 0 %}
 {% set anum = 0 %}
 {% for question in qlist %}
@@ -33,6 +33,9 @@
       {{rating}}
     {% endfor %}
     {% set anum = anum + 1 %}
+  {% endfor %}
+{% set qnum = qnum + 1 %}
+{% endfor %}
     
  
       </br>
