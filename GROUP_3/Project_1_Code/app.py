@@ -3,7 +3,8 @@ from flask import request
 from flask import render_template
 #import utils
 from flask import url_for,redirect,flash
-import databaseMethods, shelveSetup
+import databaseMethods
+#import  shelveSetup
 
 app = Flask(__name__)
 
