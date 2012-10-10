@@ -4,8 +4,7 @@ import shelve
 import utils
 
 app = Flask(__name__)
-utils.prepro_p1()
-utils.prepro_students()
+
 @app.route("/", methods = ['GET', 'POST'])
 def index(failedpass = False):
     if request.method=="GET":

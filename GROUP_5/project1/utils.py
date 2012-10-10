@@ -2,6 +2,7 @@ import shelve
 emails = shelve.open("emails",writeback=True) #key: str(num 0-15) info: emails in lists   0-7 are groups for period 6    8-15 are groups for period 7
 students = shelve.open("students",writeback=True) #key: str(emails) info: student info in dictionaries
 
+'''
 def prepro_p1():
     f=open("p1.txt",'r')
     key=""
@@ -9,10 +10,11 @@ def prepro_p1():
         line = line.strip()
         e = line.partition(',')
         info = e[2].split(',')
-        emails[e[0]]=info      
+        emails[e[0]]=info   
     f.close()
-
+prepro_p1()
 def prepro_students():
+  #  emails = shelve.open("emails",writeback=True) #key: str(num 0-15) info: emails in lists   0-7 are groups for period 6    8-15 are groups for period 7
     s=open("students.txt",'r')
     key =""
     for line in s.readlines():
@@ -25,13 +27,12 @@ def prepro_students():
         key = str((period-6)*8+group)
         students[e[0]]["Project One"]=emails[key]
     s.close()
+prepro_students()
+'''
 
 def printStudentsNicely():
     for key in students:
         print students[key]["First"] + ' ' + students[key]["Last"] + ": Period " + students[key]["Period"] + ", Group " + students[key]["Group"] + ", ID number: " + students[key]["ID"]
-
-#prepro_p1()
-#prepro_students()
 
 def userAuth(user,password):
     try:
@@ -137,7 +138,12 @@ def userSection(user):
 def userInfo(user):
     dictionary={"Period":students[user]["Period"], "Group":students[user]["Group"], "Section":students[user]["Section"], "ID":students[user]["ID"], "Class":students[user]["Class"]}
     return dictionary
-
+'''
+if ("created" not in emails.keys()):
+    prepro_p1()
+if ("created" not in students.keys()):
+    prepro_students()
+'''
 '''
 
 ratee="jdecker12@gmail.com"
@@ -157,3 +163,4 @@ print get_rating_given("mengdilin95@gmail.com")
 #print get_rating("mengdilin95@gmail.com")    
 
 '''
+
