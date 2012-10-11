@@ -40,27 +40,30 @@ def user_page(name=None):
     else:
         button = request.form['button']
         if button == 'Rate':
-            return redirect(url_for('choose_member', name=name))
+            return redirect(url_for('rate_page', name=name))
         elif button == 'View':
             return redirect(url_for('view_results', name=name))
 
-@app.route("/choose/<name>")
-def choose_member(name=None):
-    if name == None:
-        return redirect(url_for('login'))
-    groupnum = util.get_group(str(name))
-    periodnum = util.get_period(str(name))
-    gmembers = []
-    gmembers.append(util.get_groupMembers(groupnum,periodnum))
-    return render_template("choose.html", name=name, groupnum=groupnum, periodnum=periodnum,gmembers=gmembers)
+#@app.route("/choose/<name>")
+#def choose_member(name=None):
+ #   if name == None:
+  #      return redirect(url_for('login'))
+   # groupnum = util.get_group(str(name))
+    #periodnum = util.get_period(str(name))
+    #gmembers = []
+    #gmembers.append(util.get_groupMembers(groupnum,periodnum))
+    #return render_template("choose.html", name=name, groupnum=groupnum, periodnum=periodnum,gmembers=gmembers)
 
 @app.route("/rate")
 @app.route("/rate/<name>", methods = ['GET', 'POST'])
 def rate_page(name=None):
     if name == None:
         return redirect(url_for('login'))
+    groupnum = util.get_group(str(name))
+    periodnum = util.get_period(str(name))
+    names,emails = util.get_groupMembers(groupnum,periodnum,name)
     if request.method == "GET":
-        return render_template("rate_page.html",qlist=qlist)
+        return render_template("rate_page.html",qlist=qlist,gmembers=gmembers)
     else:
         tmpscore =[]
         count = 0

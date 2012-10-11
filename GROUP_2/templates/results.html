@@ -1,13 +1,18 @@
 <!doctype HTML>
 
+<body body bgcolor = #FFF1D4>
+<font face = "times new roman" >
+
 <h1>Hi user {{name}}!</h1>
 
 <h2>These are your results:</h2> 
 
 <h3><u>Project 1</u></h3>
 
-<i> Sorted by author </i>
+<form style ="background-color: #FFE6B2">
+<i><u> Sorted by author </i></u>
 <br><br>
+<font size = "3">
 {% set x = 0 %}
 {% for author in A %}
   {% for rating in S[x] %}
@@ -19,22 +24,22 @@
 <br>
   {% set x = x + 1 %}
 {% endfor %}
+</form>
+
 <br> <br> 
 
-<i> Sorted by question</i> 
+<i><u> Sorted by question</i></u>
 <br>
 
-{% set qnum = 0 %}
-{% set anum = 0 %}
+{% set questionNumber = 0 %}
+{% set authorNumber = 0 %}
 {% for question in qlist %}
   <br>{{question}}<br>
   {% for author in A %}
-    {% for rating in S[anum][qnum] %}
-      {{rating}}
-    {% endfor %}
-    {% set anum = anum + 1 %}
+      {{S[authorNumber][questionNumber]}}
+      {% set authorNumber = authorNumber + 1 %}
   {% endfor %}
-{% set qnum = qnum + 1 %}
+{% set questionNumber = questionNumber + 1 %}
 {% endfor %}
     
  

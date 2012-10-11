@@ -1,10 +1,8 @@
 <!doctype HTML>
 
-<h1> Hi {{name}}! Please choose the group member you would like to rate</h1>
+<h1> Hi {{name}}! </br> Please choose the group member you would like to rate</h1>
 
-{% for member in gmember %}
+{% for member in gmembers %}
 {{member}}
-<form action="/rate/<name>">
-  <p><input type=submit value="Pick">
-</form>
 {% endfor %}
+
