@@ -66,7 +66,8 @@ def confirm():
         l.append(str("q5"+member+":")+str(request.form["q5"+member]))
     print l
     utils.save_response(useremail,l)
-    return render_template("confirm.html")
+    ratings = utils.get_ownratings(useremail)
+    return render_template("confirm.html", ratings=ratings)
 
 if __name__ == "__main__":
     app.run(debug=True)
