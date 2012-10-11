@@ -3,6 +3,7 @@ import shelve
 #Have to use try-except statements because the way file paths worked
 #in Windows and in Linux/Mac were different. This should have fixed
 #the problem
+#-Brian Lam
 try:
     Students = open("students.txt", "r").readlines()
 except Exception:
