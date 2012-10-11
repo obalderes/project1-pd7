@@ -111,13 +111,12 @@ def view_results(name=None):
     #print lengths
     means = [int(sums[x]/lengths[x]) for x in range(len(S))]
     #print means
-
+   """
     #Question by question stats
     questCounter = 0
     finalQList = []
-    qlistcop = qlist
     tempScores = S
-    for q in qlistcop:
+    for q in qlist:
         newList = []
         for scoreList in tempScores:
             newList.append(scoreList[questCounter])
@@ -126,9 +125,9 @@ def view_results(name=None):
     print finalQList
 
     qSums = []
-    for qlist in finalQList:
+    for ql in finalQList:
         qtmpInt = 0
-        for score in qlist:
+        for score in ql:
             qtmpInt = qtmpInt + int(score)
         qSums.append(qtmpInt)
     print qSums                                                                 
@@ -137,7 +136,7 @@ def view_results(name=None):
     qMeans = [int(qSums[x]/qLengths[x]) for x in range(len(finalQList))]
     print qMeans
 
-    
+    """
 
     return render_template("results.html", name=name,A=A,S=S,qlist=qlist, means=means)
 
