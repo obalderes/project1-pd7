@@ -12,6 +12,7 @@ app.secret_key = 'some_secret'
 @app.route("/",methods = ['get','post'])
 def login():
     global email
+    global IDList
     if request.method=='GET':
         return render_template("homepage.html")
     else:
@@ -20,12 +21,14 @@ def login():
         if button == 'Rate':
             email = request.form["username"]
             if storage.checkUser(email)==True:
+                IDList = storage.getInfo(email)
                 return redirect(url_for("rate"))
             else:
                 return redirect(url_for("page_not_found"))
         elif button == 'Get Ratings!':
             email = request.form["username"]
             if storage.checkUser(email)==True:
+                IDList = storage.getInfo(email)
                 return redirect(url_for("viewRates"))
             else:
                 return redirect(url_for("page_not_found"))
@@ -35,18 +38,23 @@ def login():
 @app.route('/fail')
 def page_not_found():
     global email
+    global IDList
     return render_template("Fail.html")
 
 @app.route('/view')
 def viewRates():
     global email
-    return render_template("ViewRatings.html")
+    global IDList
+    return render_template("ViewRatings.html",info=IDList)
 
 @app.route('/Rater',methods=['get'])
 def rate():
     global email
+    global IDList
+    global MembersofGroup
+    currentCounter = 0
     if request.method=='GET':
-        return render_template('RatingPage.html',username=email)
+        return render_template('RatingPage.html',currentRatee = storage.s['group',int(float(IDList[2])),currentCounter])
     else:
         return redirect(url_for('login'))
    
