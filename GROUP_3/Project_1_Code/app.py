@@ -88,7 +88,7 @@ def rate():
     groupNumber = databaseMethods.getGroupNumber(email)
 
     #get the members of that group
-    groupMembers = retrieveGroupMembers(groupNumber)
+    groupMembers = databaseMethods.retrieveGroupMembers(groupNumber)
 
     #getMyGrades(email)
     
