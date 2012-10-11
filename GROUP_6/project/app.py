@@ -63,28 +63,27 @@ def rate():
     global IDList
     global MembersofGroup
     global currentCounter
+    groupsize = len(MembersofGroup)
     if request.method == 'GET':   
         return render_template('RatingPage.html',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0])
     else:
-        if request.form['button'] == 'Rate!':
+        if request.form["button"] == "Rate":
             currentCounter = currentCounter + 1
-            if currentCounter >= (len(MembersofGroup)):
+            if currentCounter < groupSize:
                 r1 = str(request.form["rating1"])
                 r2 = str(request.form["rating2"])
                 r3 = str(request.form["rating3"])
                 r4 = str(request.form["rating4"])
                 comment = str(request.form["comment"])
-                storage.addRating(email,MembersofGroup[currentCounter],r1,r2,r3,r4,comment)
-                return redirect(url_for('Success'))
+                return redirect(url_for('rate',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0]))
             else:
-                print 5
                 r1 = str(request.form["rating1"])
                 r2 = str(request.form["rating2"])
                 r3 = str(request.form["rating3"])
                 r4 = str(request.form["rating4"])
                 comment = str(request.form["comment"])
-                storage.addRating(email,MembersofGroup[currentCounter],r1,r2,r3,r4,comment)
-                return render_template('rate',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0])
+                return redirect(url_for('Success'))
+
 @app.route("/Success")
 def Success():
     return render_template("Success.html")

@@ -28,11 +28,12 @@
 		Congratulations! You have just rated your fellow classmates! Hope you feel good about it! <br>
 		Jerk...
 		<br>
-		<br>These are all the ratings, if any, your classmates gave you: <br>
-		{% for rating in ratings %}
-			{{rating}}<br>
-		{% endfor %}
-		
+		<br>
+		Click here to view ratings you've recieved 
+		<form action=viewratings>
+		  <input type="submit" value="View Ratings">
+		  </form>
+
 		</font>
 	</body>
 </html>

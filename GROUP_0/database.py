@@ -39,8 +39,12 @@ def getCurrentProject(email):
     return int(s[-6])
 
 def setRatings(email,ratings):
+    print ratings
     for proj in ratings:
         for member in ratings[proj]:
+            for rating in ratings[proj][member]:
+                ratings[proj][member][rating] = int(ratings[proj][member][rating])
+                print int(rating)
             s= member + str(proj)
             d[email][-2][s] = ratings[proj][member]
             d[member][-1][s] = ratings[proj][member]

@@ -37,6 +37,12 @@ def home():
 		A2=A[2]
 		A3=A[3]
 		A4=A[4] 
+		f = open("questions.txt", "r").readlines()
+		#opening the questions file in a readonly mode
+		Q1 = f[0]
+		Q2 = f[1]
+		Q3 = f[2]
+		Q4 = f[3]
 #The "A"s are the answers to each question
 #This whole part still need the function to know how the data will return
 		if request.method == 'POST':  
@@ -53,7 +59,7 @@ def home():
 	else:
 		return redirect(url_for('login'))
 #if someone jsut types /home at the end of the url without logging in they will just go back to the login page	
-	return render_template("Feedbackeratr.html", error = error,A1=A1,A2=A2,A3=A3,A4=A4)			
+	return render_template("Feedbackeratr.html", error = error,A1=A1,A2=A2,A3=A3,A4=A4,Q1=Q1,Q2=Q2,Q3=Q3,Q4=Q4)			
 
 if __name__ == "__main__":
     app.debug=True
