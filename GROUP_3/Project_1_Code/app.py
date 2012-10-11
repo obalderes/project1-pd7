@@ -113,7 +113,7 @@ def rate():
         e3 = ""
         for each in range(0,4):
             if s[each] == email:
-            pass
+                pass
         else:
                 if e1 != "":
                     e1 = s[each]
