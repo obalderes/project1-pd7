@@ -27,8 +27,8 @@ def setupPeople():
 def addProjectToPerson(emailaddress,projectname):
     people[emailaddress][3][projectname] = {}
     theirgroup = people[emailaddress][8]
-    if groupnumbers.count(gnum) == 0:
-        groupnumbers.append(gnum)
+    if groupnumbers.count(theirgroup) == 0:
+        groupnumbers.append(theirgroup)
     for g in groupnumbers:
         people[emailaddress][3][projectname][g] = []
     for email in people:
@@ -105,24 +105,17 @@ def ratePerson(rater,ratee,question,score,comments):
     CurrGroup = people[rater][8]
     projx[CurrProj][(int)(CurrGroup)][ratee].append(data)   
 
-setupPeople()
-createNewProject('2')
-createNewProject("1")
 
-print getFirst('iouthwaite1@gmail.com')
-print getLast('iouthwaite1@gmail.com')
+#returns a list of the group members not including the individual
+# Ex: If you're Bobby Joe, you might see ['Will Smith', 'Harry Fontane', 'Bobby Banjo']
+def getGroupMembers(emailad,project):
+    temp = []
+    for person in people[emailad][3][project][people[emailad][8]]:
+        temp.append(person[0] + " " + person[1])
+    #for person in people[emailad][3][project][people[emailad][gnum]]:
+    #    temp.append(person[1] + " " + person[0])
+    return temp
 
-#addProjectToPerson("iouthwaite1@gmail.com",'newproject')
-ratePerson("iouthwaite1@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
-ratePerson("raymondzzzeng@gmail.com","Oneman2feet@gmail.com","Do you like pizza", 5, "eat it all day")
-ratePerson("iouthwaite1@gmail.com","raymondzzzeng@gmail.com","Do you like pizza", 3,"m")
-ratePerson("Oneman2feet@gmail.com","raymondzzzeng@gmail.com","Do you like pizza",1, "m")
-ratePerson("raymondzzzeng@gmail.com","iouthwaite1@gmail.com","Do you like pizza", 4, "m")
-ratePerson("raymondzzzeng@gmail.com","bdh227@gmail.com","Do you like pizza", 3, "m")
-#print getData("Oneman2feet@gmail.com")
-
-database['People'] = people
-database['Projects'] = projx
 
 #returns list of tuples (Avg rating, email)
 #return[0] has the highest rating
@@ -138,11 +131,17 @@ def getRankings(projnum,question):
     temp = []
     for i in reversed(rankings):
         temp.append(i)
-        
     return temp
 
+setupPeople()
+createNewProject('2')
+createNewProject("1")
+addProjectToPerson('iouthwaite1@gmail.com','1')
+print getGroupMembers('iouthwaite1@gmail.com','1')
 
-print getRankings('0',"Do you like pizza")
+database['People'] = people
+database['Projects'] = projx
+
 database.close()
 
 
