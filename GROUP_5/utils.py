@@ -12,12 +12,18 @@ except Exception:
 try:
     groupShelve = shelve.open("groupShelves")
 except Exception:
-    groupShelve = shelve.open("/groupShelves")
+    try:
+        groupShelve = shelve.open("groupShelves.dat")
+    except Exception:
+        groupShelve = shelve.open("/groupShelves")
 
 try:
     studentShelve = shelve.open("studentShelves")
 except Exception:
-    studentShelve = shelve.open("/studentShelves")
+    try:
+        studentShelve = shelve.open("/studentShelves")
+    except Exception:
+        tudentShelve = shelve.open("studentShelves.dat")
 
 #Check if shelve has been created so the program doesn't create a new shelf
 #each time- Brian Lam's version
