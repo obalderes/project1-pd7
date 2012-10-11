@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key="nothing"
 
 #UserEmail=""
-#logged_in = false
+#logged_in = False
 
 @app.route("/",methods=['GET','POST'])
 def login():
@@ -21,7 +21,7 @@ def login():
 		UserEmail = request.form["user"]
 		UserCode = request.form["idnum"]
 		if data.checkLogin (UserEmail, UserCode):
-			logged_in = true
+			logged_in = True
 			return redirect(url_for('home'))
 		else:
 			error =  "Member name and password were not found. Please try again."
