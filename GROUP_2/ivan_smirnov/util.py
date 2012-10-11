@@ -16,7 +16,6 @@ def get_group(email):
 
 
 GroupsList = open("students.txt", "r").readlines()
-
 g = []
 
 for n in GroupsList:
