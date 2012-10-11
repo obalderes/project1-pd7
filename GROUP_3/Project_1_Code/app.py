@@ -123,10 +123,10 @@ def rate():
             if s[each] == email:
                 pass
         else:
-                if e1 != "":
+                if e1 == "":
                     e1 = s[each]
                 else:
-                    if e2 != "":
+                    if e2 == "":
                         e2 = s[each]
                     else:
                         e3 = s[each]
