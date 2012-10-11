@@ -57,9 +57,9 @@ else:
     d = shelve.open('data')
 
 
-#d['ste920ven@gmail.com'][-1]['TEST1']= [1,2,3,4]
-#d['ste920ven@gmail.com'][-1]['QWERTY1']= [4,5,6,9]
-#d['ste920ven@gmail.com'][-1]['ASDF1']= [7,8,9,3]
+d['ste920ven@gmail.com'][-1]['TEST1']= [1,2,3,4]
+d['ste920ven@gmail.com'][-1]['QWERTY1']= [4,5,6,9]
+d['ste920ven@gmail.com'][-1]['ASDF1']= [7,8,9,3]
 
 #a = {3:{'Hayden.kh@gmail.com':[1,2,3,4]},1:{'jskestrel@aol.com':[5,6,7,8]}}
 
