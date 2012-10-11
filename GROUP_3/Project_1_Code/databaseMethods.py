@@ -70,7 +70,7 @@ def setGrades(grades,email):
     gradesList = gradesDatabase[email]
     question = 0
     for question in gradesList:
-        question.append[grades[question]]
+        question.append[grades[int(question)]]
         question = question + 1
     
     gradesDatabase.close()
