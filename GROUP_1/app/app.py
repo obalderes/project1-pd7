@@ -10,8 +10,9 @@ app.secret_key="nothing"
 
 @app.route("/",methods=['GET','POST'])
 def login():
-	global logged_in = false
+	global logged_in
 	global UserEmail = ""
+	logged_in = false
 	UserCode = ""
 	error = None
 	if request.method == 'POST':
