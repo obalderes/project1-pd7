@@ -49,7 +49,7 @@ def post_ratings():
     user = session['username']
     name = database.getName(str(user))
 #unicode again, for some reason 
-   questions = open("questions.txt", "r").readlines()
+    questions = open("questions.txt", "r").readlines()
     ratees = database.getRatees(user)
     project = database.getCurrentProject(user)
     if request.method == "GET":
