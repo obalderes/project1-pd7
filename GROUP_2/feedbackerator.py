@@ -61,8 +61,10 @@ def rate_page(name=None):
         return redirect(url_for('login'))
     groupnum = util.get_group(name)
     periodnum = util.get_period(name)
+    #print groupnum, periodnum
     names,emails = util.get_groupMembers(str(groupnum),str(periodnum),str(name))
     if request.method == "GET":
+        #print names, emails
         return render_template("rate_page.html",qlist=qlist,names=names, emails=emails)
     else:
         for email in emails:
@@ -91,9 +93,29 @@ def view_results(name=None):
     if name == None:
         return redirect(url_for('login'))
     A,S = util2.get_rating(str(name))
-    return render_template("results.html", name=name,A=A,S=S,qlist=qlist)
+
+    #tempScores = S
+    #scoreSum = 0
+    #scoreLength = S.len
+    #for score in S:
+    
+    tempScores = S
+    #print tempScores
+    sums = []
+    for scoreList in tempScores:
+        tmpInt = 0
+        for rating in scoreList:
+            tmpInt = tmpInt + int(rating)
+        sums.append(tmpInt)
+    #print sums
+    lengths = [len(x) for x in S]
+    #print lengths
+    means = [int(sums[x]/lengths[x]) for x in range(len(S))]
+    #print means
+
+    return render_template("results.html", name=name,A=A,S=S,qlist=qlist, means=means)
 
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run(port=7010)
