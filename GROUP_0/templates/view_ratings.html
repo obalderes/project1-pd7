@@ -17,7 +17,7 @@ Project {{project}} Ratings:
 <font size = "4" face = "garamond"  color = "green">
 <ul>
 {% for question in questions %} 
-	<li> {{question}}: {% for rating in ratings %} {{rating}} { % endfor % }
+	<li> {{question}}: {% for rating in ratings %} {{rating}} {% endfor %}
 	</li>
 	{% endfor %}
 </ul>
