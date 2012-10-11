@@ -122,8 +122,7 @@ def getGrades(question):
         ans = ans + str(question[count]) + ", "
     return ans
 
-def getGroupMembers(email):
-
+#def getGroupMembers(email):
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
     app.run() 
