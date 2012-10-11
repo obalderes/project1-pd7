@@ -32,13 +32,17 @@ g = []
 """
 def get_groupMembers(x,period,email):
    g = open("students.txt", "r").readlines()
+   l = []
    names = []
    emails = []
    for n in g:
+       l.append(n.split(','))
+   for n in l:
        if(x in n[7] and period in n[6] and email not in n[0]):
            names.append(n[2])
            emails.append(n[0])
    return names,emails
+   
 
 def get_period(email):
     g = open("students.txt", "r").readlines() 
@@ -48,6 +52,6 @@ def get_period(email):
         
 
 
-
+#get_groupMembers("2","7","ivansmirnov13@gmail.com")
 
 
