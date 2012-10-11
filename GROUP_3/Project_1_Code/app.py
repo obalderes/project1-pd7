@@ -90,9 +90,9 @@ def rate():
     q2 = f[1]
     q3 = f[2]
     q4 = f[3]
-    p1 = groupMembers[0]
-    p2 = groupMembers[1]
-    p3 = groupMembers[2]
+    p1 = getGroupMembers(email, 0)
+    p2 = getGroupMembers(email, 1)
+    p3 = getGroupMembers(email, 2)
     
     userInfo = databaseMethods.retrieveGrades(email)
     return render_template("rate.html",
@@ -102,7 +102,7 @@ def rate():
                            q1=q1,
                            q2=q2,
                            q3=q3,
-                           q4=q)
+                           q4=q4)
 
 
 def getGradeList( i, grades ):
@@ -140,7 +140,13 @@ def getGrades(question):
         ans = ans + str(question[count]) + ", "
     return ans
 
-#def getGroupMembers(email):
+def getGroupMembers(email, n):
+    s = retrieveGroupMembers(email)
+    e = s[n]
+    info = databaseMethods.retrieveStudentInfo(e)
+    name = info[1] + " " + info[0]
+    return name
+    
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
     app.run() 
