@@ -22,7 +22,7 @@ def login():
 			return redirect(url_for('home'))
 		else:
 			error =  "Member name and password were not found. Please try again."   
-	return render_template("login.html", error = error)
+	return render_template("Homepage.html", error = error)
 #logging in by comparng the username and idnumber, if the input is incorrect the login fails and the user gets an error message
 
 @app.route("/home", methods = ['GET', 'POST'])
@@ -53,7 +53,7 @@ def home():
 	else:
 		return redirect(url_for('login'))
 #if someone jsut types /home at the end of the url without logging in they will just go back to the login page	
-	return render_template("home.html", error = error,A1=A1,A2=A2,A3=A3,A4=A4)			
+	return render_template("Feedbackeratr.html", error = error,A1=A1,A2=A2,A3=A3,A4=A4)			
 
 if __name__ == "__main__":
     app.debug=True
