@@ -149,7 +149,10 @@ def getGrades(question):
 
 def getGroupMembers(email, n):
     s = databaseMethods.retrieveGroupMembers(email)
-    e = s[n]
+    if s[n] == email:
+        e = s[n+1]
+    else:
+        e = s[n]
     info = databaseMethods.retrieveStudentInfo(e)
     name = info[1] + " " + info[0]
     return name
