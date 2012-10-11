@@ -1,4 +1,7 @@
-How knowledgable a partner was this person
-How helpful
-How reliable
-How easy to work with
+How Knowledgeable?
+How Helpful?
+How Reliable?
+How Easy to Work With?
+How Accesible?
+How Committed?
+How Willing to Learn?
