@@ -10,12 +10,6 @@ app = Flask(__name__)
 
 
 
-#shelveSetup.getStudentInfo()
-#shelveSetup.getGroups()
-#shelveSetup.setupGrades()
-#shelveSetup.setupRatedBy()
-
-
 @app.route("/", methods = ['GET', 'POST'])
 def login():
     global email
@@ -76,18 +70,20 @@ def home():
 #need to set up buttons or links to go into other group members and give ratings
 #not sure what to write for displaying specific information for each user (previous ratings, fellow group members, etc.)
 
-@app.route("/rate/")
+@app.route("/rate/", methods = ['GET', 'POST'])
 def rate():
     global email
     
+"""
     #email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
-#    studentInfo = databaseMethods.retrieveStudentInfo(email)
+  #studentInfo = databaseMethods.retrieveStudentInfo(email)
     
     #get the group number of that student
- #   groupNumber = databaseMethods.getGroupNumber(email)
+    #groupNumber = databaseMethods.getGroupNumber(email)
 
     #get the members of that group
+"""
     groupMembers = databaseMethods.retrieveGroupMembers(email)
 
     #getMyGrades(email)
@@ -109,14 +105,46 @@ def rate():
 
 
     userInfo = databaseMethods.retrieveGrades(email)
-    return render_template("rate.html",
-                           p1=p1,
-                           p2=p2,
-                           p3=p3,
-                           q1=q1,
-                           q2=q2,
-                           q3=q3,
-                           q4=q4)
+    if request.method == "GET":
+        return render_template("rate.html", 
+                               p1=p1,
+                               p2=p2,
+                               p3=p3,
+                               q1=q1,
+                               q2=q2,
+                               q3=q3,
+                               q4=q4)
+    else:
+        x = 0
+        s = databaseMethods.retrieveGroupMembers(email)
+        e1 = ""
+        e2 = ""
+        e3 = ""
+        for x in s:
+            if s[x] != email:
+                if e1 != "":
+                    e1 = s[x]
+                else:
+                    if e2 != "":
+                        e2 = s[x]
+                    else:
+                        e3 = s[x]
+        
+               
+           
+        button=request.form['button'] 
+        m1 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
+        m2 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
+        m3 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
+        databaseMethods.setGrades(m1 , e1)
+        databaseMethods.setGrades(m2, e2)
+        databaseMethods.setGrades(m3, e3)
+           
+           #except:
+               
+
+
+
 
 
 def getGradeList( i, grades ):
@@ -151,7 +179,7 @@ def getGrades(question):
     ans = ""
     count = 0
     for count in question:
-        ans = ans + str(question[count]) + ", "
+               ans = ans + str(question[count]) + ", "
     return ans
 
 def getGroupMembers(email):
