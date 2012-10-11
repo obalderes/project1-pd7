@@ -26,8 +26,14 @@ def get_group_members(email):
    for n in Grouper:
        if email in n:           
            member_emails = n.split(',')
-   return member_emails[1:]
-
+   tmp = []
+   for i in member_emails[1:]:
+       if i != email:
+           tmp.append(i)
+   member_emails = tmp
+   return member_emails
+   
+   
 def get_period(email):
     g = open("students.txt", "r").readlines() 
     for n in g:
