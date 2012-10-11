@@ -76,8 +76,12 @@ def confirm():
     print l
     utils.save_response(useremail,l)
     ratings = utils.get_ownratings(useremail)
+<<<<<<< HEAD
     return render_template("confirm.html", ratings=ratings)
 >>>>>>> 392ca070469e442a8022851ab02abde036a38d7a
+=======
+    return render_template("confirm.html", ratings = ratings)
+>>>>>>> semi-working response retrieval system
 
 if __name__ == "__main__":
     app.run(debug=True)
