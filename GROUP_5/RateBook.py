@@ -37,6 +37,14 @@ def login(email):
     
 @app.route("/rate")
 @app.route("/rate/<name>", methods = ['GET', 'POST'])
+#Rate v2, maybe rewriting the code will fix our error?
+def rate(email, name):
+    members = utils.userGroupMembers(email)
+    return render_template("rate.html", name = name, members = members)
+    if (request.form(buttonvalue == "Submit")):
+        return confirm()
+    
+"""
 def rate(email = "", name = "Stranger"):
     try:
         members = utils.userGroupMembers(email)
@@ -57,14 +65,12 @@ def rate(email = "", name = "Stranger"):
 
     #Mock code in case I get the submit button to work
     #-Brian Lam
-    """
-    q1question="q1"+members[1]
+      q1question="q1"+members[1]
     q1answer = request.form[q1question]
     utils.add_rating(email, members[1],q1question,q1answer)
-    """
-
     
-    """
+
+
     assert request.form["button"] != ""
     if (request.form["button"] == ""):
         print "Error: empty"
@@ -72,7 +78,8 @@ def rate(email = "", name = "Stranger"):
         print request.form["button"]
     if request.method == "POST":
         return confirm()
-    """
+
+"""
 
 @app.route("/confirm")
 def confirm():
