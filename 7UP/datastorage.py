@@ -60,8 +60,6 @@ def getFirst(emailadd):
 def getLast(emailadd):
     return people[emailadd][1]
 
-
-        
 def returnPeopleDict():
     return people
 
@@ -75,25 +73,75 @@ def getData(emailaddress):
                     data.append(projx[projs][(int)(people[person][8])][person])
     return data
 
-def getAvgForQuestion(email,projnum,q):
-    data = getData(email)[int(projnum)]
-    temp = []
-    if len(data) == 0:
+def getTotalIndividualAvgForQuestion(emailadd,ques):
+    temp = getData(emailadd)[0]
+    x = 0.0
+    count = 0.0
+    for response in temp:
+        if (response['question'] == ques):
+            x = x + response['score']
+            count = count + 1
+    return x/count
+
+def getTotalIndividualPointsForQuestion(emailadd,ques):
+    temp = getData(emailadd)[0]
+    x = 0
+    for response in temp:
+        if (response['question'] == ques):
+            x = x + response['score']
+    return x
+
+def getTotalGroupAvgForQuestion(ques):
+    x = 0.0
+    count = 0.0
+    for person in people:
+        temp = getData(person)
+        for entry in temp:
+            if (entry != []):
+                for response in entry:
+                    if (response['question'] == ques):
+                        x = x + response['score']
+                        count = count + 1 
+    if (count == 0):
         return 0
+    return x/count 
+
+def getTotalGroupOverallAvg():
+    x = 0.0
+    count = 0.0
+    for person in people:
+        temp = getData(person)
+        for entry in temp:
+            if (entry != []):
+                for response in entry:
+                    x = x + response['score']
+                    count = count + 1
+    if (count == 0):
+        return count
+    return x/count
     
-    for d in data:
-        if d['question'] == str(q):
-            temp.append(d)
-            
-    if len(temp) == 0:
+def getTotalOverallIndividualPoints(emailadd):
+    x = 0
+    temp = getData(emailadd)
+    for entry in temp:
+        if (entry != []):
+            for response in entry:
+                x = x + response['score']
+    return x    
+
+def getAvgOverallIndividualPoints(emailadd):    
+    x = 0.0
+    count = 0.0
+    temp = getData(emailadd)
+    for entry in temp:
+        if (entry != []):
+            for response in entry:
+                x = x + response['score']
+                count = count + 1
+    if (count == 0):
         return 0
-    
-    sum = 0        
-    for dict in temp:
-        sum = sum + dict['score']
-        
-    return sum / len(temp)
-        
+    return x/count       
+                  
 #rates a person in your group and in your current project
 def ratePerson(rater,ratee,question,score,comments):
     data = {}
@@ -104,7 +152,6 @@ def ratePerson(rater,ratee,question,score,comments):
     CurrProj = projx["currentproject"]
     CurrGroup = people[rater][8]
     projx[CurrProj][(int)(CurrGroup)][ratee].append(data)   
-
 
 #returns a list of the group members not including the individual
 # Ex: If you're Bobby Joe, you might see ['Will Smith', 'Harry Fontane', 'Bobby Banjo']
@@ -120,18 +167,22 @@ def getGroupMembers(emailad,project):
 #returns list of tuples (Avg rating, email)
 #return[0] has the highest rating
 #input: Project number where the first project is indexed by 0
-def getRankings(projnum,question):
-    people = database['People']
-    rankings = []
-    for person in people:
-        t = (getAvgForQuestion(person,projnum,question), person)
-        rankings.append(t)            
-    rankings.sort()
+#def getRankings(projnum,question):
+#    people = database['People']
+#    rankings = []
+#    for person in people:
+#        t = (getAvgForQuestion(person,projnum,question), person)
+#        rankings.append(t)            
+#    rankings.sort()
+#
+#    temp = []
+#    for i in reversed(rankings):
+#        temp.append(i)
+#    return temp
 
-    temp = []
-    for i in reversed(rankings):
-        temp.append(i)
-    return temp
+
+
+
 
 #checks to see if entered name is a user, returns 0 for false and 1 for true
 def isUser(emailadd):
@@ -146,9 +197,24 @@ setupPeople()
 createNewProject('2')
 createNewProject("1")
 addProjectToPerson('iouthwaite1@gmail.com','1')
-print getGroupMembers('iouthwaite1@gmail.com','1')
-print isUser('iouthwaite1@gmail.com')
-print isUser('toad')
+addProjectToPerson('Oneman2feet@gmail.com','1')
+ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',5,'it was lovely')
+ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','bladsalfa',5,'it was lovely')
+addProjectToPerson('Oneman2feet@gmail.com','2')
+ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',3,'marrrr')
+
+print getTotalOverallIndividualPoints('Oneman2feet@gmail.com')
+print getTotalIndividualPointsForQuestion('Oneman2feet@gmail.com','question?')
+print getAvgOverallIndividualPoints('Oneman2feet@gmail.com')
+print getTotalIndividualAvgForQuestion('Oneman2feet@gmail.com','question?')
+
+print getTotalGroupOverallAvg()
+print getTotalGroupAvgForQuestion('question?')
+
+
+#print getGroupMembers('iouthwaite1@gmail.com','1')
+#print isUser('iouthwaite1@gmail.com')
+#print isUser('toad')
 
 database['People'] = people
 database['Projects'] = projx
