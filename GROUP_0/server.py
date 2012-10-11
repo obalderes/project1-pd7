@@ -16,7 +16,6 @@ def home():
             session['username'] = ""
             return redirect(url_for("home"))
         #check if valid username. If not, error message.
-        session['information'] = database.getInformation(session['username'])
         button = request.form["button"]
         if button == "View Ratings":
             return redirect(url_for("view_ratings"))
