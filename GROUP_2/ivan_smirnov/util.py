@@ -17,8 +17,6 @@ def get_group(email):
 
 GroupsList = open("students.txt", "r").readlines()
 
-g = []
-
 for n in GroupsList:
     g.append(n.split(","))
 
@@ -28,6 +26,7 @@ def get_groupMembers(x):    #<--this method returns members from BOTH group x's
             print n[1] + "," + n[2] + ";"
 
 def get_groupMembers(x,period,email):
+   g = open("students.txt", "r").readlines()
    names = []
    emails = []
    for n in g:
