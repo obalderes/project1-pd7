@@ -1,18 +1,6 @@
 <!doctype HTML>
 
 <form action="" method="post" style= "background-color:#E0FFFF">
-
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-{% block body %}
-
 <font size = "10" face = "garamond"  color = "green">
 <p></p>
 <p></p>
@@ -43,7 +31,5 @@ Logged in as {{last}}, {{first}}
 
 <input type=submit name=button value="Save">
 <input type=submit name=button value="Cancel">
-
-{% endblock %}
 
 </form>

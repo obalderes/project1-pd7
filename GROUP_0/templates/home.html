@@ -1,5 +1,17 @@
 <!doctype HTML>
 <form action="" method="post" style= "background-color:#E0FFFF">
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}
+
 <body bgcolor = "#E0FFFF">
 <font size = "10" face = "desdemona"  color = "green">
 <div align = "center">
@@ -22,4 +34,7 @@ The Feedbackerator
 <p style= "display: inline"><input type=submit name=button value="View Ratings">
 </div>
 </body>
+
+{% endblock %}
+
 </form>
