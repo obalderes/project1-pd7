@@ -21,6 +21,8 @@ def index(failedpass = False):
         assert email != ""
         return login(email)
 
+#To be used as a global variable to keep track of email amongst
+#different webpages
 useremail = ""
 
 #Takes an email address and checks to see if it's in the email list.
@@ -55,6 +57,7 @@ def rate(email, name):
 def viewratings(email):
     ratings = utils.get_ratings(email,"Rating Recieved")
     return render_template("viewratings.html", ratings=ratings)
+
 #Coded by Brian Lam
 #Many thanks to Bernie Birnbaum for catching what was wrong with my Submit button
 #for two days
@@ -78,5 +81,3 @@ def confirm():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
