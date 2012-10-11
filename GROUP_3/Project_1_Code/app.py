@@ -28,6 +28,8 @@ def login():
         button=request.form['button'] #login button
         email = str(request.form['email'])
         assert email != ""
+        #id = request.form['id']
+        #if def auten(email, idNum)""
         #databaseMethods.saveCurrentStudent(email) 
         return redirect(url_for('home'))
  
@@ -90,9 +92,9 @@ def rate():
     q2 = f[1]
     q3 = f[2]
     q4 = f[3]
-    p1 = groupMembers[0]
-    p2 = groupMembers[1]
-    p3 = groupMembers[2]
+    p1 = getGroupMembers(email, 0)
+    p2 = getGroupMembers(email, 1)
+    p3 = getGroupMembers(email, 2)
     
     userInfo = databaseMethods.retrieveGrades(email)
     return render_template("rate.html",
@@ -102,19 +104,16 @@ def rate():
                            q1=q1,
                            q2=q2,
                            q3=q3,
-                           q4=q4,
+                           q4=q)
 
 
 def getGradeList( i, grades ):
     if len(grades) != 0:
         return grades[i]
-<<<<<<< HEAD
-    
-=======
     else:
         return 0
 
->>>>>>> 09b9bb668b2635fddcd2abff925d53618598a396
+
 def getStudentName():
     global email
     #email = databaseMethods.getCurrentStudent()
@@ -143,8 +142,20 @@ def getGrades(question):
         ans = ans + str(question[count]) + ", "
     return ans
 
-def getGroupMembers(email):
+def getGroupMembers(email, n):
+    s = retrieveGroupMembers(email)
+    e = s[n]
+    info = databaseMethods.retrieveStudentInfo(e)
+    name = info[1] + " " + info[0]
+    return name
 
+def auten(email, idNum):
+    info = databaseMethods.retrieveStudentInfo(email)
+    if info[2] != idNum:
+        return false
+    return true
+
+    
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
     app.run() 

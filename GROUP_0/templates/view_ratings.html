@@ -11,7 +11,7 @@
 
 <p></p>
 
-{% for project in projects %}
+{% for project in ratings %}
 <font size = "5" face = "garamond"  color = "green">
 Project {{project}} Ratings:
 <font size = "4" face = "garamond"  color = "green">
@@ -19,9 +19,9 @@ Project {{project}} Ratings:
 {% for question in questions %} 
 	<li> {{question}}: {% for rating in ratings %} {{rating}} { % endfor % }
 	</li>
-	{% endfor }
+	{% endfor %}
 </ul>
-{% endfor }
+{% endfor %}
 
 <p></p>
 <p></p>

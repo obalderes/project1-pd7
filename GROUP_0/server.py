@@ -47,7 +47,8 @@ def post_ratings():
     user = session['username']
     if request.method == "GET":
         name = database.getName(user)
-        return render_template("post_ratings", username = user, first = name[0], last = name[1], ratees = database.getRatees(user), project = database.getCurrentProject(user))
+        questions = open("questions.txt", "r").readlines()
+        return render_template("post_ratings.html", username = user, first = name[0], last = name[1], ratees = database.getRatees(user), project = database.getCurrentProject(user), questions = questions)
     else:
         button = request.form["button"]
         if button == "Cancel":
@@ -56,7 +57,8 @@ def post_ratings():
         elif button == "Save":
             ratings = {}
             for ratee in database.getRatees(user):
-                pass
+                rateeDict = {}
+                
                 
             
         

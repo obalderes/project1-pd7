@@ -38,12 +38,10 @@ for line in file3:
     line = line.strip()
     line = line.split(",")
     email = line.pop(0)
-    q1 = []
-    q2 = []
-    q3 = []
-    q4 = []
-    g = {q1, q2, q3, q4}
-    c[email] = g
+    c[email] = [[],[],[],[]]
+    for location in range(1,4):
+        c[email].append([5])
+
 
 c.close()
 file3.close()

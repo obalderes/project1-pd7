@@ -1,56 +1,28 @@
 <!doctype HTML>
+
 <form action="" method="post">
 
-<h1>{{last}}, {{first}}</h1>
+<h1> Logged in as {{last}}, {{first}}</h1>
+
+<h2> Post Feedback for Project {{project}} below:</h2>
 
 <hr>
-
-{% for project in ratings.keys() %}
-<h2> Ratings for {{project}}:</h2>
-
 
 {% for groupmember in ratees %}
-
-{{ groupmember[1]}}, {{groupmember[2] }}
-<p>
- 
-    {% set tmp = 0 %}
-    {% for question in questions %}
-     {{question}}: 
-         {% if groupmember[3]==None %}
-            {% for n in range(10) %}
-            <input type=radio 
-             name="{{username}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
-             value={{n}}>{{n}} </input>
-           {% endfor %}
-          {% else %}
-	        {% set gpm = groupmember %}
-	        {% set slctd = gpm[3][tmp]|int %}
-
-            {% for n in range(10) %}
-	        {% if n is sameas slctd %}
-                <input type=radio 
-                 name="{{username}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
-                 value={{n}} checked>{{n}}</input>
-	        {% else %}
-                <input type=radio 
-                 name="{{username}}:{{project}}:{{groupmember[0]}}:{{tmp}}" 
-                 value={{n}}>{{n}}</input>
-	        {% endif %}
-           {% endfor %}
-          {% endif %}
-
-{% set tmp = tmp + 1 %}
-	        <p>
-{%endfor%}
-
+<h3>Rate {{groupmember}}: </h3>
+     <br>
+     {% set qnum = 0 %}
+     {% for question in questions%}
+       {{question}}:
+       {% for n in range(9) %}
+          <input type=radio name="{{project}}:{{groupmember}}:{{n}}:{{qnum}}" value={{n}}>{{n}} </input>
+       {% endfor %}
+          <input type=radio name="{{project}}:{{groupmember}}:10:{{qnum}}" value=10 checked>10 </input> 
+       {% set qnum = qnum + 1 %}
+      <br>
+     {% endfor %}
 <hr>
 {% endfor %}
-
-{% endfor %}
-
-  <p>
-
 
 <input type=submit name=button value="Save">
 <input type=submit name=button value="Cancel">
