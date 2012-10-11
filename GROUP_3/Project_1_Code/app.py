@@ -70,7 +70,7 @@ def home():
 #need to set up buttons or links to go into other group members and give ratings
 #not sure what to write for displaying specific information for each user (previous ratings, fellow group members, etc.)
 
-@app.route("/rate/", methods = ['GET', 'POST']
+@app.route("/rate/", methods = ['GET', 'POST'])
 def rate():
     global email
     
@@ -105,42 +105,40 @@ def rate():
 
 
     userInfo = databaseMethods.retrieveGrades(email)
-    if request.method == "GET"
-           return render_template("rate.html"
-                                  p1=p1,
-                             `         p2=p2,
-                                      p3=p3,
-                                      q1=q1,
-                                      q2=q2,
-                                      q3=q3,
-                                      q4=q4)
-           else:
-               x = 0
-               s = databaseMethods.retrieveGroupMembers(email)
-           e1 = ""
-           e2 = ""
-           e3 = ""
-           for x in s:
-               if s[x] != email:
-               if e1 != "":
-               e1 = s[x]
-           else:
-               if e2 != "":
-               e2 = s[x]
-           else:
-               e3 = s[x]
+    if request.method == "GET":
+        return render_template("rate.html", 
+                               p1=p1,
+                               p2=p2,
+                               p3=p3,
+                               q1=q1,
+                               q2=q2,
+                               q3=q3,
+                               q4=q4)
+    else:
+        x = 0
+        s = databaseMethods.retrieveGroupMembers(email)
+        e1 = ""
+        e2 = ""
+        e3 = ""
+        for x in s:
+            if s[x] != email:
+                if e1 != "":
+                    e1 = s[x]
+                else:
+                    if e2 != "":
+                        e2 = s[x]
+                    else:
+                        e3 = s[x]
         
                
            
-          # try:
-           
-               button=request.form['button'] 
-           m1 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
-           m2 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
-           m3 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
-           databaseMethods.setGrades(m1 , e1)
-           databaseMethods.setGrades(m2, e2)
-           databaseMethods.setGrades(m3, e3)
+        button=request.form['button'] 
+        m1 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
+        m2 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
+        m3 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
+        databaseMethods.setGrades(m1 , e1)
+        databaseMethods.setGrades(m2, e2)
+        databaseMethods.setGrades(m3, e3)
            
            #except:
                

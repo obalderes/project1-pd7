@@ -61,26 +61,27 @@ def rate_page(name=None):
         return redirect(url_for('login'))
     groupnum = util.get_group(str(name))
     periodnum = util.get_period(str(name))
-    names,emails = util.get_groupMembers(groupnum,periodnum,name)
+    names,emails = util.get_groupMembers(groupnum,periodnum,str(name))
     if request.method == "GET":
-        return render_template("rate_page.html",qlist=qlist,gmembers=gmembers)
+        return render_template("rate_page.html",qlist=qlist,names=names, emails=emails)
     else:
-        tmpscore =[]
-        count = 0
-        for n in qlist:
-            tmp = str(request.form["Button %d" %count])
+        for email in emails:
+            tmpscore = []
+            count = 0
+            for n in qlist:
+                tmp = str(request.form["%s:Button %d" %(email,count)])
             tmpscore.append(tmp)
             count = count + 1
         
-        uname = request.form['student_rated']
+            uname = email
         
-        assert uname != ""
-        group = util.get_group(str(uname))
-        print group
-        util2.save_rating(str(uname),str(name),tmpscore,group)
-        util2.get_rating(str(name))
+            assert uname != ""
+            group = util.get_group(str(uname))
+            print group
+            util2.save_rating(str(uname),str(name),tmpscore,group)
+            util2.get_rating(str(name))
 
-        flash("Rating Sent!!!")
+        flash("Ratings Sent!!!")
         return redirect(url_for('user_page',name=name))
 
 
