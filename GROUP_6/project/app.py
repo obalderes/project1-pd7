@@ -11,6 +11,7 @@ app.secret_key = 'some_secret'
 
 @app.route("/",methods = ['get','post'])
 def login():
+    global currentCounter
     global MembersofGroup
     global email
     global IDList
@@ -24,6 +25,7 @@ def login():
             if storage.checkUser(email)==True:
                 IDList = storage.getInfo(email)
                 MembersofGroup = storage.returnGroupList(email)
+                currentCounter = 0
                 return redirect(url_for("rate"))
             else:
                 return redirect(url_for("page_not_found"))
@@ -32,6 +34,7 @@ def login():
             if storage.checkUser(email)==True:
                 IDList = storage.getInfo(email)
                 MembersofGroup = storage.returnGroupList(email)
+                currentCounter = 0
                 return redirect(url_for("viewRates"))
             else:
                 return redirect(url_for("page_not_found"))
@@ -40,6 +43,7 @@ def login():
 
 @app.route('/fail')
 def page_not_found():
+    global currentCounter
     global MembersofGroup
     global email
     global IDList
@@ -47,6 +51,7 @@ def page_not_found():
 
 @app.route('/view')
 def viewRates():
+    global currentCounter
     global MembersofGroup
     global email
     global IDList
@@ -57,13 +62,34 @@ def rate():
     global email
     global IDList
     global MembersofGroup
-    currentCounter = 0
-    if request.method=='GET':
-        
+    global currentCounter
+    if request.method=='GET':   
+        print MembersofGroup
         return render_template('RatingPage.html',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0])
+    elif request.form('button') == "Rate!":
+        counter = (counter + 1)
+        if counter == (len(MembersofGroup)):
+            r1 = str(request.form["rating1"])
+            r2 = str(request.form["rating2"])
+            r3 = str(request.form["rating3"])
+            r4 = str(request.form["rating4"])
+            comment = str(request.form["comment"])
+            storage.addRating(email,MembersofGroup[currentCounter],r1,r2,r3,r4,comment)
+            return redirect(url_for('Success'))
+        else:
+            r1 = str(request.form["rating1"])
+            r2 = str(request.form["rating2"])
+            r3 = str(request.form["rating3"])
+            r4 = str(request.form["rating4"])
+            comment = str(request.form["comment"])
+            storage.addRating(email,MembersofGroup[currentCounter],r1,r2,r3,r4,comment)
+            return render_template('RatingPage.html')
+            
     else:
         return redirect(url_for('login'))
-   
+@app.route("/Success")
+def Success():
+    return render_template("Success.html")
 '''
 def getRatings(email):
     return storage.s['id',email]

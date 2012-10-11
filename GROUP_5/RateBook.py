@@ -81,7 +81,7 @@ def rate(email = "", name = "Stranger"):
 
 """
 
-@app.route("/confirm")
+@app.route("/confirm", methods = ['GET', 'POST'])
 def confirm():
     return render_template("confirm.html")
 

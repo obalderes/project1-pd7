@@ -81,6 +81,8 @@ def getTotalIndividualAvgForQuestion(emailadd,ques):
         if (response['question'] == ques):
             x = x + response['score']
             count = count + 1
+    if (count==0):
+        return 0
     return x/count
 
 def getTotalIndividualPointsForQuestion(emailadd,ques):
@@ -167,18 +169,23 @@ def getGroupMembers(emailad,project):
 #returns list of tuples (Avg rating, email)
 #return[0] has the highest rating
 #input: Project number where the first project is indexed by 0
-#def getRankings(projnum,question):
-#    people = database['People']
-#    rankings = []
-#    for person in people:
-#        t = (getAvgForQuestion(person,projnum,question), person)
-#        rankings.append(t)            
-#    rankings.sort()
-#
-#    temp = []
-#    for i in reversed(rankings):
-#        temp.append(i)
-#    return temp
+def getRankings(question):
+    people = database['People']
+    rankings = []
+    for person in people:
+        t = (getTotalIndividualAvgForQuestion(person,question), person)
+        rankings.append(t)            
+    rankings.sort()
+
+    temp = []
+    for i in reversed(rankings):
+        temp.append(i)
+    return temp
+
+def getTopTen(question):
+    rankings = getRankings(question)
+    rankings = rankings[:10]
+    return rankings
 
 
 
@@ -210,6 +217,9 @@ print getTotalIndividualAvgForQuestion('Oneman2feet@gmail.com','question?')
 
 print getTotalGroupOverallAvg()
 print getTotalGroupAvgForQuestion('question?')
+
+#print getRankings('question?')
+print getTopTen('question?')
 
 
 #print getGroupMembers('iouthwaite1@gmail.com','1')
