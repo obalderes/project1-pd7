@@ -21,6 +21,7 @@ def login(email):
         print email + " Passed auth"
         fullname = utils.userFirst(email) + " " + utils.userLast(email)
         return rate(email, fullname)
+        
     else:
         print email + " Failed auth"
         failedpass = True
@@ -28,19 +29,29 @@ def login(email):
     
 @app.route("/rate")
 @app.route("/rate/<name>", methods = ['GET', 'POST'])
-def rate(email = "", name = "Stranger", rated = "false"):
+def rate(email = "", name = "Stranger"):
     try:
-        if rated == "false":
-            members = utils.userGroupMembers(email)
-            return render_template("rate.html", name = name, members = members)
+        members = utils.userGroupMembers(email)
+        return render_template("rate.html", name = name, members = members)
     except Exception:
         Exception.printStackTrace()
     #Still don't understand why this code won't work. It's linked
     #in with the issue to the Submit button producing an error. Aagghhhhh
+    #EDIT: Changed some stuff, now it doesn't produce an error, it just
+    #goes back to the homepage
     #-Brian Lam
-    if request.form["submitbutton"] == "Submit":
-        confirm()
-
+    buttonvalue = str(request.form['button'])
+    if (buttonvalue == "Submit"):
+        return confirm()
+        """
+    assert request.form["button"] != ""
+    if (request.form["button"] == ""):
+        print "Error: empty"
+    else:
+        print request.form["button"]
+    if request.method == "POST":
+        return confirm()
+    """
 
 @app.route("/confirm")
 def confirm():

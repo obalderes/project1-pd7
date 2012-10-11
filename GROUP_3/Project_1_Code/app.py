@@ -31,7 +31,6 @@ def login():
         #databaseMethods.saveCurrentStudent(email) 
         return redirect(url_for('home'))
  
-
     
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
@@ -73,6 +72,7 @@ def home():
 @app.route("/rate/")
 def rate():
     global email
+    
     #email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
     studentInfo = databaseMethods.retrieveStudentInfo(email)
@@ -84,8 +84,25 @@ def rate():
     groupMembers = retrieveGroupMembers(groupNumber)
 
     #getMyGrades(email)
+    
+    f = open("question.txt", "r").readlines()
+    q1 = f[0]
+    q2 = f[1]
+    q3 = f[2]
+    q4 = f[3]
+    p1 = groupMembers[0]
+    p2 = groupMembers[1]
+    p3 = groupMembers[2]
+    
     userInfo = databaseMethods.retrieveGrades(email)
-    return render_template("rate.html")
+    return render_template("rate.html",
+                           p1=p1,
+                           p2=p2,
+                           p3=p3,
+                           q1=q1,
+                           q2=q2,
+                           q3=q3,
+                           q4=q4,
 
 
 def getGradeList( i, grades ):
@@ -93,6 +110,7 @@ def getGradeList( i, grades ):
         return grades[i]
     else:
         return 0
+
 
 def getStudentName():
     global email
@@ -122,8 +140,7 @@ def getGrades(question):
         ans = ans + str(question[count]) + ", "
     return ans
 
-def getGroupMembers(email):
-
+#def getGroupMembers(email):
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
     app.run() 
