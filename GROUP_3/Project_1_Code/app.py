@@ -35,7 +35,7 @@ def login():
 
 @app.route("/error", methods = ['GET', 'POST'])
 def error():
- if reques.method == "GET":
+ if request.method == "GET":
      return render_template("error.html")
     
 @app.route("/home", methods = ['GET', 'POST'])
@@ -154,8 +154,8 @@ def getGroupMembers(email, n):
     name = info[1] + " " + info[0]
     return name
 
-def auten(email)
-    return isKey(email)
+def authen(email):
+    return databaseMethods.isAKey(email)
 
     
 if __name__=="__main__":
