@@ -1,4 +1,5 @@
 <!doctype HTML>
+
 <form action="" method="post">
 
 <h1> Logged in as {{last}}, {{first}}</h1>
@@ -13,11 +14,16 @@ Rate {{groupmember}}:
      {% for question in questions%}
        {{question}}:
        {% for n in range(9) %}
-          <input type=radio name="{{username}}:{{project}}:{{groupmember}}:{{n}}:{{qnum}}" value={{n}}</input>
+<<<<<<< HEAD
+          <input type=radio name="{{project}}:{{groupmember}}:{{n}}:{{qnum}}" value={{n}}>{{n}} </input>
+=======
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:{{n}}" value={{n}}</input>
+>>>>>>> db93a088c313b73f39d09323e770c956e0d23f69
        {% endfor %}
-          <<input type=radio name="{{username}}:{{project}}:{{groupmember}}:10:{{qnum}}" value=10 checked>10 </input> 
+          <<input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:10" value=10 checked>10 </input> 
        {% set qnum = qnum + 1 %}
      {% endfor %}
+<hr>
 {% endfor %}
 
 <input type=submit name=button value="Save">
