@@ -20,11 +20,11 @@ Logged in as {{last}}, {{first}}
      {% set qnum = 0 %}
      {% for question in questions%}
        {{question}}:
-       {% for n in range(9) %}
+       {% for n in range(11) %}
        {% if n is sameas tmp %}
-          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:{{n}}" value={{n}} checked>{{n}} </input>
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}" value={{n}} checked>{{n}} </input>
        {% else %}
-          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:{{n}}" value={{n}}>{{n}} </input>
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}" value={{n}}>{{n}} </input>
        {% endif %}
        {% endfor %}
     
