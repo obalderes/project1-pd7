@@ -11,6 +11,7 @@ app.secret_key = 'some_secret'
 
 @app.route("/",methods = ['get','post'])
 def login():
+    global MembersofGroup
     global email
     global IDList
     if request.method=='GET':
@@ -22,6 +23,7 @@ def login():
             email = request.form["username"]
             if storage.checkUser(email)==True:
                 IDList = storage.getInfo(email)
+                MembersofGroup = storage.returnGroupList(email)
                 return redirect(url_for("rate"))
             else:
                 return redirect(url_for("page_not_found"))
@@ -29,6 +31,7 @@ def login():
             email = request.form["username"]
             if storage.checkUser(email)==True:
                 IDList = storage.getInfo(email)
+                MembersofGroup = storage.returnGroupList(email)
                 return redirect(url_for("viewRates"))
             else:
                 return redirect(url_for("page_not_found"))
@@ -37,12 +40,14 @@ def login():
 
 @app.route('/fail')
 def page_not_found():
+    global MembersofGroup
     global email
     global IDList
     return render_template("Fail.html")
 
 @app.route('/view')
 def viewRates():
+    global MembersofGroup
     global email
     global IDList
     return render_template("ViewRatings.html",info=IDList)
@@ -54,7 +59,8 @@ def rate():
     global MembersofGroup
     currentCounter = 0
     if request.method=='GET':
-        return render_template('RatingPage.html',currentRatee = storage.s['group',int(float(IDList[2])),currentCounter])
+        
+        return render_template('RatingPage.html',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0])
     else:
         return redirect(url_for('login'))
    
