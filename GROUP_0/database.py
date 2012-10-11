@@ -46,7 +46,7 @@ def setRatings(email,ratings):
             d[member][-1][s] = ratings[proj][member]
     return
 
-if not os.path.isfile('data') or True:
+if not os.path.isfile('data'):
     d = shelve.open('data',writeback=True)
     for line in open('students.txt'):   
         email,last,first,ID,course,courseNum,period,group = line.strip().split(',')
@@ -54,7 +54,7 @@ if not os.path.isfile('data') or True:
         givenRatings = {}
         d[email]=[last,first,ID,course,courseNum,period,group,givenRatings,receivedRatings]
 else:
-    d = shelve.open('data')
+    d = shelve.open('data',writeback=True)
 
 
 d['ste920ven@gmail.com'][-1]['TEST1']= [1,2,3,4,5,6,7]
