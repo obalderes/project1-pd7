@@ -76,5 +76,5 @@ def post_ratings():
     
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
-    app.run() # connect to localhost:5000 or http://127.0.0.1:5000
+    app.run(port=7000) # connect to localhost:7000 or http://127.0.0.1:7000 (group 0 for 70xx)
         
