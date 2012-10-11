@@ -80,7 +80,7 @@ def rate():
             storage.addRating(email,storage.getInfo( MembersofGroup[currentCounter])[0],r1,r2,r3,r4,comment)
             currentCounter = currentCounter+1
             if currentCounter < groupsize:
-                return redirect(url_for('rate',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0]))
+                return redirect(url_for('rate',currentRatee = MembersofGroup[currentCounter]))
             
             else:
                 return redirect(url_for('Success'))
