@@ -65,8 +65,6 @@ else:
 #d['ste920ven@gmail.com'][-1]['QWERTY1']= [4,5,6,9,1,8,7]
 #d['ste920ven@gmail.com'][-1]['ASDF1']= [7,8,9,3,2,2,2]
 
-#a = {3:{'Hayden.kh@gmail.com':[1,2,3,4]},1:{'jskestrel@aol.com':[5,6,7,8]}}
-
 #print setRatings('ste920ven@gmail.com', a)
 #print d['ste920ven@gmail.com'][-2]
 #print d['Hayden.kh@gmail.com'][-1]
