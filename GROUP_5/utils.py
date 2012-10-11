@@ -81,7 +81,7 @@ def get_rating(user,type_rating):
             if(students[user][type_rating][key][index]!='-1'):
                 q='q0'+str(index+1)
                 tmp=q+user+'/'+students[user][type_rating][key][index]
-                d.append(tmp) #what is d?
+                d.append(tmp)
     students.close()
     return d
 

@@ -51,6 +51,10 @@ def rate(email, name):
     if (request.form(buttonvalue == "Submit")):
         return confirm()
     
+@app.route("/viewratings")
+def viewratings(email):
+    ratings = utils.get_ratings(email,"Rating Recieved")
+    return render_template("viewratings.html", ratings=ratings)
 #Coded by Brian Lam
 #Many thanks to Bernie Birnbaum for catching what was wrong with my Submit button
 #for two days
@@ -64,8 +68,8 @@ def confirm():
         l.append(str("q3"+member+":")+str(request.form["q3"+member]))
         l.append(str("q4"+member+":")+str(request.form["q4"+member]))
         l.append(str("q5"+member+":")+str(request.form["q5"+member]))
-    print l
-    utils.save_response(useremail,l)
+        print l
+        utils.save_response(useremail,l)
     return render_template("confirm.html")
 
 if __name__ == "__main__":
