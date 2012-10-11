@@ -1,5 +1,4 @@
 from flask import Flask
-from flask import render_template
 from flask import session,url_for,request,redirect
 import data
 
@@ -11,9 +10,9 @@ app.secret_key="nothing"
 
 @app.route("/",methods=['GET','POST'])
 def login():
-	global logged_in 
+	global logged_in
 	global UserEmail
-	logged_in = False
+	logged_in = false
 	UserEmail = ""
 	UserCode = ""
 	error = None
@@ -21,7 +20,7 @@ def login():
 		UserEmail = request.form["user"]
 		UserCode = request.form["idnum"]
 		if data.checkLogin (UserEmail, UserCode):
-			logged_in = True
+			logged_in = true
 			return redirect(url_for('home'))
 		else:
 			error =  "Member name and password were not found. Please try again."
@@ -51,7 +50,7 @@ def home():
 		if request.method == 'POST':
 			button = request.form['button']
 		if button == 'logout':
-				logged_in = False
+				logged_in = false
 				return redirect(url_for('login'))
 		else:
 				RatedEmail = request.form["user"]
