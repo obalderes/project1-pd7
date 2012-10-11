@@ -7,8 +7,8 @@ from flask import render_template
 from flask import url_for,redirect,flash,session
 app = Flask(__name__)
 app.secret_key = 'some_secret'
-Email=""
-IDList = []
+Email = ""
+
 @app.route("/",methods = ['get','post'])
 def login():
     if request.method=='GET':
@@ -31,7 +31,6 @@ def login():
         else:
             return redirect(url_for("page_not_found"))
 
-
 @app.route('/fail')
 def page_not_found():
     return render_template("Fail.html")
@@ -43,7 +42,7 @@ def viewRates():
 @app.route('/Rater',methods=['get'])
 def rate():
     if request.method=='GET':
-        return render_template('RatingPage.html', Email = Email)
+        return render_template('RatingPage.html')
     else:
         return redirect(url_for('login'))
    
