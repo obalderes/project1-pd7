@@ -5,6 +5,10 @@ import utils
 app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
+#failedpass will check to see if the user had already tried to log in.
+#if he has, it will display a message telling him that he or she provided
+#an invalid email address.
+#-Brian Lam
 def index(failedpass = False):
     if request.method=="GET":
         return render_template("index.html")
@@ -15,6 +19,10 @@ def index(failedpass = False):
         assert email != ""
         return login(email)
 
+#Takes an email address and checks to see if it's in the email list.
+#If it fails the authentification, the website will display a
+#message in red.
+#-Brian Lam
 def login(email):
     email = str(email)
     if(utils.emailAuth(email) == True):
@@ -33,6 +41,9 @@ def rate(email = "", name = "Stranger"):
     try:
         members = utils.userGroupMembers(email)
         return render_template("rate.html", name = name, members = members)
+        buttonvalue = str(request.form['button'])
+        if (buttonvalue == "Submit"):
+            return confirm()
     except Exception:
         Exception.printStackTrace()
     #Still don't understand why this code won't work. It's linked
@@ -43,7 +54,17 @@ def rate(email = "", name = "Stranger"):
     buttonvalue = str(request.form['button'])
     if (buttonvalue == "Submit"):
         return confirm()
-        """
+
+    #Mock code in case I get the submit button to work
+    #-Brian Lam
+    """
+    q1question="q1"+members[1]
+    q1answer = request.form[q1question]
+    utils.add_rating(email, members[1],q1question,q1answer)
+    """
+
+    
+    """
     assert request.form["button"] != ""
     if (request.form["button"] == ""):
         print "Error: empty"
