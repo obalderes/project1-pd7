@@ -88,7 +88,7 @@ def rate():
     groupNumber = databaseMethods.getGroupNumber(email)
 
     #get the members of that group
-    groupMembers = retrieveGroupMembers(groupNumber)
+    groupMembers = databaseMethods.retrieveGroupMembers(groupNumber)
 
     #getMyGrades(email)
     
@@ -148,7 +148,7 @@ def getGrades(question):
     return ans
 
 def getGroupMembers(email, n):
-    s = retrieveGroupMembers(email)
+    s = databaseMethods.retrieveGroupMembers(email)
     e = s[n]
     info = databaseMethods.retrieveStudentInfo(e)
     name = info[1] + " " + info[0]

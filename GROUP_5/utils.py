@@ -25,6 +25,8 @@ except Exception:
     except Exception:
         tudentShelve = shelve.open("studentShelves.dat")
 
+responseShelve = shelve.open("responseShelve.dat")
+
 #Check if shelve has been created so the program doesn't create a new shelf
 #each time- Brian Lam's version
 try:
@@ -82,6 +84,28 @@ def get_rating(user,type_rating):
                 d.append(tmp) #what is d?
     students.close()
     return d
+
+#Brian Lam's version of response saving
+def save_response(email,response):
+    responseShelve[email]=response
+
+#Brian Lam's verison of response retrieval
+def get_response(email):
+    try:
+        return responseShelve[email]
+    except Exception:
+        return ""
+
+#Brian Lam's version of self-rating retrieval
+def get_ownratings(email):
+    l=[]
+    keylist = responseShelve.keys()
+    for key in keylist:
+        answer = responseShelve[key]
+        if email in answer:
+            l.append(answer)
+    return l
+
 
 #Brian Lam's version
 def userFirst(email):
