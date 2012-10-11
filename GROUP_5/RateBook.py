@@ -68,16 +68,13 @@ def confirm():
         l.append(str("q3"+member+":")+str(request.form["q3"+member]))
         l.append(str("q4"+member+":")+str(request.form["q4"+member]))
         l.append(str("q5"+member+":")+str(request.form["q5"+member]))
-<<<<<<< HEAD
-        print l
-        utils.save_response(useremail,l)
-    return render_template("confirm.html")
-=======
+
     print l
     utils.save_response(useremail,l)
     ratings = utils.get_ownratings(useremail)
-    return render_template("confirm.html", ratings=ratings)
->>>>>>> 392ca070469e442a8022851ab02abde036a38d7a
+
+    return render_template("confirm.html", ratings = ratings)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

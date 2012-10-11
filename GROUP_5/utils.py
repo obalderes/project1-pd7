@@ -96,14 +96,15 @@ def get_response(email):
     except Exception:
         return ""
 
-#Brian Lam's version of self-rating retrieval
+    
+#Brian Lam's version of retrieving your own ratings
 def get_ownratings(email):
-    l=[]
     keylist = responseShelve.keys()
+    l = []
     for key in keylist:
-        answer = responseShelve[key]
-        if email in answer:
-            l.append(answer)
+        response = responseShelve[key]
+        if email in response:
+            l.append(response)
     return l
 
 
