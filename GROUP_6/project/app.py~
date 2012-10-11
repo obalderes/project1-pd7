@@ -11,6 +11,8 @@ app.secret_key = 'some_secret'
 
 @app.route("/",methods = ['get','post'])
 def login():
+    global currentCounter
+    global MembersofGroup
     global email
     global IDList
     if request.method=='GET':
@@ -19,9 +21,12 @@ def login():
 
         button = request.form['button']
         if button == 'Rate':
+            print "HI"
             email = request.form["username"]
             if storage.checkUser(email)==True:
                 IDList = storage.getInfo(email)
+                MembersofGroup = storage.returnGroupList(email)
+                currentCounter = 0
                 return redirect(url_for("rate"))
             else:
                 return redirect(url_for("page_not_found"))
@@ -29,6 +34,8 @@ def login():
             email = request.form["username"]
             if storage.checkUser(email)==True:
                 IDList = storage.getInfo(email)
+                MembersofGroup = storage.returnGroupList(email)
+                currentCounter = 0
                 return redirect(url_for("viewRates"))
             else:
                 return redirect(url_for("page_not_found"))
@@ -37,41 +44,54 @@ def login():
 
 @app.route('/fail')
 def page_not_found():
+    global currentCounter
+    global MembersofGroup
     global email
     global IDList
     return render_template("Fail.html")
 
 @app.route('/view')
 def viewRates():
+    global currentCounter
+    global MembersofGroup
     global email
     global IDList
     return render_template("ViewRatings.html",info=IDList)
 
-@app.route('/Rater',methods=['get'])
+@app.route('/Rater',methods=['GET','POST'])
 def rate():
     global email
     global IDList
-    if request.method=='GET':
-        return render_template('RatingPage.html',username=email)
+    global MembersofGroup
+    global currentCounter
+    groupsize = len(MembersofGroup)
+    if request.method == 'GET':   
+        return render_template('RatingPage.html',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0])
     else:
-        return redirect(url_for('login'))
-   
-'''
-def getRatings(email):
-    return storage.s['id',email]
+        if request.form["button"] == "Rate":
+            if currentCounter < groupSize:
+                r1 = str(request.form["rating1"])
+                r2 = str(request.form["rating2"])
+                r3 = str(request.form["rating3"])
+                r4 = str(request.form["rating4"])
+                comment = str(request.form["comment"])
+                storage.add(email,getInfo( MembersofGroup[currentCounter])[0],r1,r2,r3,r4,comment)
+                currentCounter = currentCounter+1
+                return redirect(url_for('rate',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0]))
+            else:
+                r1 = str(request.form["rating1"])
+                r2 = str(request.form["rating2"])
+                r3 = str(request.form["rating3"])
+                r4 = str(request.form["rating4"])
+                comment = str(request.form["comment"])
+                storage.add(email,getInfo( MembersofGroup[currentCounter])[0],r1,r2,r3,r4,comment)
 
-def rate(email,r1,r2,r3,comment):
-    storage.s['responses',email,1] = r1
-    storage.s['responses',email,2] = r2
-    storage.s['responses',email,3] = r3
-    storage.s['responses',email,4] = comment
+                return redirect(url_for('Success'))
 
-def getInfo(email):
-    namesList =[]
-    namesList[1] = storage.s[email,firstName]
-    namesList.append(storage.s[email,lastName])
-'''
-    
+@app.route("/Success")
+def Success():
+    return render_template("Success.html")
+
 if __name__=="__main__":
     app.debug=True
     app.run()
