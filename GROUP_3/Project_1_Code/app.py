@@ -97,10 +97,17 @@ def rate():
     q2 = f[1]
     q3 = f[2]
     q4 = f[3]
-    p1 = getGroupMembers(email, 0)
-    p2 = getGroupMembers(email, 1)
-    p3 = getGroupMembers(email, 2)
     
+    p = getGroupMembers(email)
+    # p1 = getGroupMembers(email, 0)
+    # p2 = getGroupMembers(email, 1)
+    # p3 = getGroupMembers(email, 2)
+    
+    p1 = p[0]
+    p2 = p[1]
+    p3 = p[2]
+
+
     userInfo = databaseMethods.retrieveGrades(email)
     return render_template("rate.html",
                            p1=p1,
@@ -147,15 +154,17 @@ def getGrades(question):
         ans = ans + str(question[count]) + ", "
     return ans
 
-def getGroupMembers(email, n):
+def getGroupMembers(email):
     s = databaseMethods.retrieveGroupMembers(email)
-    if s[n] == email:
-        e = s[n+1]
-    else:
-        e = s[n]
-    info = databaseMethods.retrieveStudentInfo(e)
-    name = info[1] + " " + info[0]
-    return name
+    ans = []
+    for each in range(0,4):
+        if s[each] == email:
+            pass
+        else:
+            info = databaseMethods.retrieveStudentInfo(s[each])
+            name = info[1] + " " + info[0]
+            ans.append(name)
+    return ans
 
 def authen(email):
     return databaseMethods.isAKey(email)
