@@ -11,13 +11,16 @@
 
 <p></p>
 
+{%set pnum = 0 %}
 {% for project in ratings %}
+{% set outer_loop = loop %}
 <font size = "5" face = "garamond"  color = "green">
-Project {{project}} Ratings:
+Project {{project[outer_loop.index - 1][0]}} Ratings:
 <font size = "5" face = "garamond"  color = "green">
 <ul>
-{% for question in questions %} 
-	<li> {{question}}: {% for rating in ratings %} {{rating}} {% endfor %}
+{% for question in questions %}
+	<li> {{question}}: {{ratings[outer_loop.index - 1][loop.index - 1][1]}}, {{ratings[outer_loop.index-1][loop.index - 1][2]}}, {{ratings[outer_loop.index - 1][loop.index - 1][3]}}
+
 	</li>
 	{% endfor %}
 </ul>
