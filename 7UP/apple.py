@@ -7,11 +7,10 @@ app = Flask(__name__)
 app.secret_key = 'some_secret'
 
 global questions
-global email
-global loggedin
+
 @app.route("/",methods=['GET','POST'])
 def home():
-   if email in session:
+   if session.get('username'):
       return redirect(url_for('rate'))
    else:
       return redirect(url_for('login'))
@@ -21,8 +20,14 @@ def home():
         
 @app.route('/rate', methods=['GET','POST'])
 def rate():
-   if email in session:
+   if session.get('username'):
       if request.method=='POST':
+         
+         loggedin=True
+         
+         email=request.form("username")
+         
+
          rater = email
          rating1 = request.form('question1')
          rating2 = request.form('question2')
@@ -87,7 +92,7 @@ def login():
         paswrd = request.form["idnum"]
         if datastorage.isUser(email):
            loggedin = True
-           session[email]=True
+           session["username"]=True
         return redirect(url_for('home'))
    return render_template('index.html',loggedin=False,projects=None,questions=questions,avgrating=None,stdex=None,questionavgs=None)
 
