@@ -7,16 +7,22 @@
 <br>
 <form action ""  method="post">
 <font size = "5">
-{% set x = 0 %}
-{% for question in qlist %}   
- <p>
-   {{question}}
+
+{% set memberCounter = 0 %}
+{% for name in names %}
+  <h1>Rating {{name}}</h1>
+  {% set x = 0 %}
+  {% for question in qlist %}   
    <p>
-   {% for number in range(10) %}
-   <input type=radio name="Button {{x}}" value={{number + 1}}>{{number + 1}}</input>
-   {% endfor %}
-   {% set x = x + 1 %}
-  <p>
+     {{question}}
+     <p>
+     {% for number in range(10) %}
+       <input type=radio name="emails[memberCounter]:Button {{x}}" value={{number + 1}}>{{number + 1}}</input>
+     {% endfor %}
+     {% set x = x + 1 %}
+    <p>
+  {% endfor %}
+{% set memberCounter = memberCounter + 1 %}
 {% endfor %}
 
 
