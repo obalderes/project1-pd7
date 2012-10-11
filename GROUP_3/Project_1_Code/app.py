@@ -27,7 +27,7 @@ def login():
     else:
         button=request.form['button'] #login button
         email = str(request.form['email'])
-        assert email != 
+        assert email != ""
         #id = request.form['id']
         #if def auten(email, idNum)""
         #databaseMethods.saveCurrentStudent(email) 
