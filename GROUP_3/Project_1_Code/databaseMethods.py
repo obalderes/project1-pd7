@@ -68,10 +68,10 @@ def retrieveGrades(email):
 def setGrades(grades,email):
     gradesDatabase = shelve.open("grades")
     gradesList = gradesDatabase[email]
-    question = 0
+    questionNum = 0
     for question in gradesList:
-        question.append[grades[int(question)]]
-        question = question + 1
+        gradesList[questionNum].append[grades[int(questionNum)]]
+        questionNum = questionNum + 1
     
     gradesDatabase.close()
 
