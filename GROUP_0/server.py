@@ -66,7 +66,7 @@ def post_ratings():
                 for qnum in range(len(questions)):
                     ratings[groupmember[qnum]] = []
                     ratings[groupmember[qnum]].append(int(request.form["%i:%s:%i"%(project, groupmember, qnum)]))
-            database.setRatings(str(user),ratings)
+            database.setRatings(str(user),ratings, len(questions))
             session['username'] = ""
             return redirect(url_for("home"))
                         
