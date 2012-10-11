@@ -1,4 +1,3 @@
-
 #this is what creates the personal info and group databases/shelves
 #Ratings are lists of strings in the format [email,q1,q2,q3,q4,comment]
 #A blank rating should have 0's for question answers and empty string for the comment
@@ -32,27 +31,26 @@ class data:
             Pd6[str(i)]=list()
             Pd7[str(i)]=list()
             i+=1
-            for line in sList:
-                email = line[ : line.find(',')].lower()
-                print email
-                line = line[line.find(',',1) : ]
-                last = line[1 : line.find(',',1)]
-                line = line[line.find(',',1) : ]
-                first = line[1 : line.find(',',1)]
-                line = line[line.find(',',1) : ]
-                ID = line[1 : line.find(',',1)]
-                line = line[line.find(',',7) : ]
-                period = line[1:line.find(',',1)]
-                group=line[-2]
-                info[email] = [ last, first, ID, period, group]
-                if period>'0':
-                    temp=Pd7[group]
-                    temp.append(email)
-                    Pd7[group]=temp
-                else:
-                    temp=Pd6[group]
-                    temp.append(email)
-                    Pd6[group]=temp
+        for line in sList:
+            email = line[ : line.find(',')].lower()
+            line = line[line.find(',',1) : ]
+            last = line[1 : line.find(',',1)]
+            line = line[line.find(',',1) : ]
+            first = line[1 : line.find(',',1)]
+            line = line[line.find(',',1) : ]
+            ID = line[1 : line.find(',',1)]
+            line = line[line.find(',',7) : ]
+            period = line[1:line.find(',',1)]
+            group=line[-2]
+            info[email] = [ last, first, ID, period, group]
+            if period>'0':
+                temp=Pd7[group]
+                temp.append(email)
+                Pd7[group]=temp
+            else:
+                temp=Pd6[group]
+                temp.append(email)
+                Pd6[group]=temp
         questionText = open('databases/questions.txt')
         q = questionText.readlines()
         questionText.close()
@@ -117,18 +115,24 @@ class data:
         else:
             return Pd7[group]
 
-#given an email, returns the ratings of the person as a list of lists
+#given an email, returns the ratings of the person as a list of lists. this took a lot of thought to write
     @staticmethod
     def getRatingsOf(username):
         temp=info[username.lower()]
+        ratelist=[]
         period=temp[3]
         group=temp[4]
         if period == 0:
             temp2 = Pd6[group]
         else:
             temp2 = Pd7[group]
-        for entry in temp2:
-            pass
+        for email in temp2:
+            if not email == username.lower():
+                temp3 = ratings[email]
+                for entry in temp3:
+                    if entry[0] == username.lower():
+                        ratelist.append(entry)
+        return ratelist
 
 #given an email, returns ratings made by this person
     @staticmethod
@@ -139,5 +143,4 @@ class data:
 #creates/modifies a rating given the email of the rater, email of the ratee, their question answers, and comments
     @staticmethod
     def setRating(rater, ratee, q1, q2, q3, q4, comment):
-        #will do tuesday ASAP
-        pass
+        

@@ -73,6 +73,7 @@ def getData(emailaddress):
                     data.append(projx[projs][(int)(people[person][8])][person])
     return data
 
+#returns the average score of someone for a particular question
 def getTotalIndividualAvgForQuestion(emailadd,ques):
     temp = getData(emailadd)[0]
     x = 0.0
@@ -81,8 +82,11 @@ def getTotalIndividualAvgForQuestion(emailadd,ques):
         if (response['question'] == ques):
             x = x + response['score']
             count = count + 1
+    if (count==0):
+        return 0
     return x/count
 
+#returns the total points for one question for one person
 def getTotalIndividualPointsForQuestion(emailadd,ques):
     temp = getData(emailadd)[0]
     x = 0
@@ -91,6 +95,7 @@ def getTotalIndividualPointsForQuestion(emailadd,ques):
             x = x + response['score']
     return x
 
+#returns the average total score for everyone
 def getTotalGroupAvgForQuestion(ques):
     x = 0.0
     count = 0.0
@@ -106,6 +111,7 @@ def getTotalGroupAvgForQuestion(ques):
         return 0
     return x/count 
 
+#returns the total average points for everyone
 def getTotalGroupOverallAvg():
     x = 0.0
     count = 0.0
@@ -120,6 +126,7 @@ def getTotalGroupOverallAvg():
         return count
     return x/count
     
+#returns the total overall points for an individual
 def getTotalOverallIndividualPoints(emailadd):
     x = 0
     temp = getData(emailadd)
@@ -129,6 +136,7 @@ def getTotalOverallIndividualPoints(emailadd):
                 x = x + response['score']
     return x    
 
+#returns the average overall points for an individual
 def getAvgOverallIndividualPoints(emailadd):    
     x = 0.0
     count = 0.0
@@ -167,22 +175,48 @@ def getGroupMembers(emailad,project):
 #returns list of tuples (Avg rating, email)
 #return[0] has the highest rating
 #input: Project number where the first project is indexed by 0
-#def getRankings(projnum,question):
-#    people = database['People']
-#    rankings = []
-#    for person in people:
-#        t = (getAvgForQuestion(person,projnum,question), person)
-#        rankings.append(t)            
-#    rankings.sort()
-#
-#    temp = []
-#    for i in reversed(rankings):
-#        temp.append(i)
-#    return temp
+def getRankings(question):
+    people = database['People']
+    rankings = []
+    for person in people:
+        t = (getTotalIndividualAvgForQuestion(person,question), person)
+        rankings.append(t)            
+    rankings.sort()
 
+    temp = []
+    for i in reversed(rankings):
+        temp.append(i)
+    return temp
 
+#returns a list of the top 10 people overall in average score for a question
+def getTopTen(question):
+    rankings = getRankings(question)
+    rankings = rankings[:10]
+    return rankings
 
+#returns a list of people overall in average rankings
+def getOverallAverageRankings():
+    people = database['People']
+    rankings = []
+    for person in people:
+        t = (getAvgOverallIndividualPoints(person), person)
+        rankings.append(t)
+    rankings.sort()
+    temp = []
+    for i in reversed(rankings):
+        temp.append(i)
+    return temp
 
+#returns a list of the top 10 overall highest average ranked people
+def getTopTen():
+    rankings = getOverallAverageRankings()
+    rankings = rankings[:10]
+    return rankings
+
+def whereAmIOverall(emailadd):
+    return 1
+    
+    
 
 #checks to see if entered name is a user, returns 0 for false and 1 for true
 def isUser(emailadd):
@@ -202,15 +236,20 @@ ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',5,'it was
 ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','bladsalfa',5,'it was lovely')
 addProjectToPerson('Oneman2feet@gmail.com','2')
 ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',3,'marrrr')
+ratePerson('Oneman2feet@gmail.com','iouthwaite1@gmail.com','question?',3,'marrrr')
 
-print getTotalOverallIndividualPoints('Oneman2feet@gmail.com')
-print getTotalIndividualPointsForQuestion('Oneman2feet@gmail.com','question?')
-print getAvgOverallIndividualPoints('Oneman2feet@gmail.com')
-print getTotalIndividualAvgForQuestion('Oneman2feet@gmail.com','question?')
+#print getTotalOverallIndividualPoints('Oneman2feet@gmail.com')
+#print getTotalIndividualPointsForQuestion('Oneman2feet@gmail.com','question?')
+#print getAvgOverallIndividualPoints('Oneman2feet@gmail.com')
+#print getTotalIndividualAvgForQuestion('Oneman2feet@gmail.com','question?')
 
-print getTotalGroupOverallAvg()
-print getTotalGroupAvgForQuestion('question?')
+#print getTotalGroupOverallAvg()
+#print getTotalGroupAvgForQuestion('question?')
 
+#print getRankings('question?')
+#print getTopTen('question?')
+print getOverallAverageRankings()
+print getTopTen()
 
 #print getGroupMembers('iouthwaite1@gmail.com','1')
 #print isUser('iouthwaite1@gmail.com')

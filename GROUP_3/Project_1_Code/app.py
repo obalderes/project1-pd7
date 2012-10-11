@@ -28,11 +28,15 @@ def login():
         button=request.form['button'] #login button
         email = str(request.form['email'])
         assert email != ""
-        #id = request.form['id']
-        #if def auten(email, idNum)""
-        #databaseMethods.saveCurrentStudent(email) 
-        return redirect(url_for('home'))
- 
+        if (authen(email)):
+            return redirect(url_for('home'))
+        else:
+            return redirect(url_for('error'))
+
+@app.route("/error", methods = ['GET', 'POST'])
+def error():
+ if request.method == "GET":
+     return render_template("error.html")
     
 @app.route("/home", methods = ['GET', 'POST'])
 def home():
@@ -150,11 +154,8 @@ def getGroupMembers(email, n):
     name = info[1] + " " + info[0]
     return name
 
-def auten(email, idNum):
-    info = databaseMethods.retrieveStudentInfo(email)
-    if info[2] != idNum:
-        return false
-    return true
+def authen(email):
+    return databaseMethods.isAKey(email)
 
     
 if __name__=="__main__":
