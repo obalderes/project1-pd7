@@ -16,13 +16,18 @@ Logged in as {{last}}, {{first}}
 {% for groupmember in ratees %}
 <h3>Rate {{groupmember}}: </h3>
      <br>
+     {% set tmp = 5 %}
      {% set qnum = 0 %}
      {% for question in questions%}
        {{question}}:
        {% for n in range(9) %}
+       {% if n is sameas tmp %}
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:{{n}}" value={{n}} checked>{{n}} </input>
+       {% else %}
           <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:{{n}}" value={{n}}>{{n}} </input>
+       {% endif %}
        {% endfor %}
-          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:10" value=10 checked>10 </input> 
+    
        {% set qnum = qnum + 1 %}
       <br>
      {% endfor %}
