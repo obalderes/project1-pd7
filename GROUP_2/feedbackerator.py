@@ -59,8 +59,11 @@ def choose_member(name=None):
 def rate_page(name=None):
     if name == None:
         return redirect(url_for('login'))
+    groupnum = util.get_group(str(name))
+    periodnum = util.get_period(str(name))
+    gmembers = util.get_groupMembers(groupnum,periodnum)
     if request.method == "GET":
-        return render_template("rate_page.html",qlist=qlist)
+        return render_template("rate_page.html",qlist=qlist,gmembers=gmembers)
     else:
         tmpscore =[]
         count = 0
