@@ -99,6 +99,7 @@ def view_results(name=None):
     #scoreLength = S.len
     #for score in S:
     
+    #Compiling statistics for author by author scores.
     tempScores = S
     #print tempScores
     sums = []
@@ -112,6 +113,33 @@ def view_results(name=None):
     #print lengths
     means = [int(sums[x]/lengths[x]) for x in range(len(S))]
     #print means
+
+    #Question by question stats
+    questCounter = 0
+    finalQList = []
+    qlistcop = qlist
+    tempScores = S
+    for q in qlistcop:
+        newList = []
+        for scoreList in tempScores:
+            newList.append(scoreList[questCounter])
+        questCounter = questCounter + 1
+        finalQList.append(newList)
+    print finalQList
+
+    qSums = []
+    for qlist in finalQList:
+        qtmpInt = 0
+        for score in qlist:
+            qtmpInt = qtmpInt + int(score)
+        qSums.append(qtmpInt)
+    print qSums                                                                 
+    qLengths = [len(x) for x in finalQList]
+    print qLengths                                                              
+    qMeans = [int(qSums[x]/qLengths[x]) for x in range(len(finalQList))]
+    print qMeans
+
+    
 
     return render_template("results.html", name=name,A=A,S=S,qlist=qlist, means=means)
 
