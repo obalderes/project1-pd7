@@ -41,6 +41,10 @@
 		{% endfor %}
 		</ul>
 		
+		{% if ratings != "" %}
+			Your previous answers were: {{ratings}} <br><br>
+		{% endif %}
+		
 		<form action="confirm" method = "POST">
 			<!--
 			This flask code will create questions, whose names differ by the email
@@ -48,6 +52,7 @@
 			-->
 			{% for member in members %}
 				<br>
+
 				<b>Ratee's Email:  {{member}}</b> <br>
 				Intelligence (10 being most intelligent)<br>
 				<input type = "radio" name="q1{{member}}" value="0" checked="checked"> 0   </input>
@@ -121,6 +126,7 @@
 			This submit button just won't work. It keeps giving a "Bad Request The browser 
 			(or proxy) sent a request that this server could not understand" error whenever it 
 			is clicked. I have been spending HOURS trying to fix it.
+			UPDATE: It works now. Now I'm trying to get it to send data.
 			-Brian Lam
 			-->
 			<br>
