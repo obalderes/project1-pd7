@@ -133,11 +133,22 @@ def getRankings(projnum,question):
         temp.append(i)
     return temp
 
+#checks to see if entered name is a user, returns 0 for false and 1 for true
+def isUser(emailadd):
+    for person in people:
+        if (people[person][2] == emailadd):
+            return 1
+    return 0
+        
+            
+
 setupPeople()
 createNewProject('2')
 createNewProject("1")
 addProjectToPerson('iouthwaite1@gmail.com','1')
 print getGroupMembers('iouthwaite1@gmail.com','1')
+print isUser('iouthwaite1@gmail.com')
+print isUser('toad')
 
 database['People'] = people
 database['Projects'] = projx
