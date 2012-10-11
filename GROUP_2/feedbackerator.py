@@ -59,10 +59,8 @@ def user_page(name=None):
 def rate_page(name=None):
     if name == None:
         return redirect(url_for('login'))
-    groupnum = util.get_group(name)
-    periodnum = util.get_period(name)
-    #print groupnum, periodnum
-    names,emails = util.get_groupMembers(str(groupnum),str(periodnum),str(name))
+    names = util.get_group_members(str(name))
+    emails = names
     if request.method == "GET":
         #print names, emails
         return render_template("rate_page.html",qlist=qlist,names=names, emails=emails)
