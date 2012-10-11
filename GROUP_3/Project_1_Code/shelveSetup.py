@@ -38,7 +38,10 @@ for line in file3:
     line = line.strip()
     line = line.split(",")
     email = line.pop(0)
-    c[email] = [4] []
+    c[email] = [[],[],[],[]]
+    for location in range(1,4):
+        c[email].append([5])
+
 
 c.close()
 file3.close()
