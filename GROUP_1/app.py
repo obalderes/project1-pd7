@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 from flask import session,url_for,request,redirect
 import data
 
@@ -12,7 +13,7 @@ app.secret_key="nothing"
 def login():
 	global logged_in
 	global UserEmail
-	logged_in = false
+	logged_in = False
 	UserEmail = ""
 	UserCode = ""
 	error = None
@@ -33,7 +34,7 @@ def home():
 	global logged_in
 	RatedEmail =""
 	error = None
-	if logged_in == true: 
+	if logged_in == True: 
 		A=data.getRatingof(UserEmail) 
 		A1=A[1]
 		A2=A[2]
@@ -50,7 +51,7 @@ def home():
 		if request.method == 'POST':
 			button = request.form['button']
 		if button == 'logout':
-				logged_in = false
+				logged_in = False
 				return redirect(url_for('login'))
 		else:
 				RatedEmail = request.form["user"]

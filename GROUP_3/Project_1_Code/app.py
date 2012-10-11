@@ -74,7 +74,6 @@ def home():
 def rate():
     global email
     
-"""
     #email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
   #studentInfo = databaseMethods.retrieveStudentInfo(email)
@@ -83,7 +82,7 @@ def rate():
     #groupNumber = databaseMethods.getGroupNumber(email)
 
     #get the members of that group
-"""
+
     groupMembers = databaseMethods.retrieveGroupMembers(email)
 
     #getMyGrades(email)
@@ -120,15 +119,17 @@ def rate():
         e1 = ""
         e2 = ""
         e3 = ""
-        for x in s:
-            if s[x] != email:
-                if e1 != "":
-                    e1 = s[x]
+        for each in range(0,4):
+            if s[each] == email:
+                pass
+        else:
+                if e1 == "":
+                    e1 = s[each]
                 else:
-                    if e2 != "":
-                        e2 = s[x]
+                    if e2 == "":
+                        e2 = s[each]
                     else:
-                        e3 = s[x]
+                        e3 = s[each]
         
                
            
