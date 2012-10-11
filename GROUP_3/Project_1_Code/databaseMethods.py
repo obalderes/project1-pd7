@@ -60,6 +60,7 @@ def retrieveGrades(email):
     grades = gradesDatabase[email]
     gradesDatabase.close()
     return grades
+
    
 
 def setGrades(grades,email):

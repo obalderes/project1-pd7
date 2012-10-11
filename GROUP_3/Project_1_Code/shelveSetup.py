@@ -38,7 +38,12 @@ for line in file3:
     line = line.strip()
     line = line.split(",")
     email = line.pop(0)
-    c[email] = []
+    q1 = []
+    q2 = []
+    q3 = []
+    q4 = []
+    g = {q1, q2, q3, q4}
+    c[email] = g
 
 c.close()
 file3.close()

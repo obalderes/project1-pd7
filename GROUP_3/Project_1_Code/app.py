@@ -108,7 +108,13 @@ def rate():
 def getGradeList( i, grades ):
     if len(grades) != 0:
         return grades[i]
+<<<<<<< HEAD
     
+=======
+    else:
+        return 0
+
+>>>>>>> 09b9bb668b2635fddcd2abff925d53618598a396
 def getStudentName():
     global email
     #email = databaseMethods.getCurrentStudent()
@@ -117,6 +123,8 @@ def getStudentName():
     return name
 
 def getAverage(question):
+    if len(question) == 0:
+        return "No grades"
     ans = 0
     total = 0
     count = 0
@@ -127,13 +135,15 @@ def getAverage(question):
     return ans/total
 
 def getGrades(question):
+    if len(question) == 0:
+        return "No grades"
     ans = ""
     count = 0
     for count in question:
         ans = ans + str(question[count]) + ", "
     return ans
 
-    
+def getGroupMembers(email):
 
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging

@@ -1,8 +1,7 @@
 import shelve, os
 
 def getRatings(email):
-## fix hardcoded 4s
-    quesNum,projNum = 4,4
+    quesNum,projNum = 4,getCurrentProject(email)
     l=[]
     for proj in range(projNum):
         l.append([])
@@ -34,10 +33,10 @@ def getName(email):
     s.reverse()
     return s
 
-def getCurrentProject():
+def getCurrentProject(email):
 #returns top project number in projects.txt
     s=open('projects.txt').readline()
-    return s[-6]
+    return int(s[-6])
 
 def setRatings(email,ratings):
 #updates ratings
@@ -55,12 +54,12 @@ else:
     d = shelve.open('data')
 
 
-#d['ste920ven@gmail.com'][-1]['TEST1']= [1,2,3,4]
-#d['ste920ven@gmail.com'][-1]['QWERTY1']= [4,5,6,9]
-#d['ste920ven@gmail.com'][-1]['ASDF1']= [7,8,9,3]
+d['ste920ven@gmail.com'][-1]['TEST1']= [1,2,3,4]
+d['ste920ven@gmail.com'][-1]['QWERTY1']= [4,5,6,9]
+d['ste920ven@gmail.com'][-1]['ASDF1']= [7,8,9,3]
 
 
-#print getCurrentProject()
+#print getRatings('ste920ven@gmail.com')
 #print isUserName('ste90ven@gmail.com')
 
-d.close()
+#d.close()
