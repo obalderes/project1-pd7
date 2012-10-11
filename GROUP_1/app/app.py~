@@ -64,5 +64,5 @@ def home():
 	return render_template("Feedbackeratr.html", error = error,A1=A1,A2=A2,A3=A3,A4=A4,Q1=Q1,Q2=Q2,Q3=Q3,Q4=Q4)			
 
 if __name__ == "__main__":
-	app.debug=True
-	app.run()
+app.debug=True
+app.run()
