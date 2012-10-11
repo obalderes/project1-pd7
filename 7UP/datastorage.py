@@ -213,10 +213,22 @@ def getTopTen():
     rankings = rankings[:10]
     return rankings
 
+#returns your overall ranking - First person is 1, second is 2, ect.
 def whereAmIOverall(emailadd):
-    return 1
+    count = 1
+    rankings = getOverallAverageRankings()
+    for entry in rankings:
+        if (emailadd == entry[1]):
+            print count
+        count = count + 1    
     
-    
+def whereAmIOverallInQuestion(emailadd, question):
+    count = 1
+    rankings = getRankings(question)
+    for entry in rankings:
+        if (emailadd == entry[1]):
+            print count
+        count = count + 1
 
 #checks to see if entered name is a user, returns 0 for false and 1 for true
 def isUser(emailadd):
@@ -248,8 +260,10 @@ ratePerson('Oneman2feet@gmail.com','iouthwaite1@gmail.com','question?',3,'marrrr
 
 #print getRankings('question?')
 #print getTopTen('question?')
-print getOverallAverageRankings()
-print getTopTen()
+#print getOverallAverageRankings()
+#print getTopTen()
+#whereAmIOverall('iouthwaite1@gmail.com')
+#whereAmIOverallInQuestion('Oneman2feet@gmail.com', 'question?')
 
 #print getGroupMembers('iouthwaite1@gmail.com','1')
 #print isUser('iouthwaite1@gmail.com')
