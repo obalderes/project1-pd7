@@ -19,6 +19,7 @@ Group 7UP
 * added SCHEMA.md -IO
 * datastorage.py is basically done! Now just a few more minor methods (get top ranked per question, ect) -IO
 * datastorage.py has been done for a while now, along with all the templates (though one got deleted?). Up with datastorage buddy Raymond trying to get apple.py to work, but enocuntering various issues involving (among other things) variables without assigned values and correct implementation of the datastorage.py methods -IO 
+
 ## Outline: ##
 
 Login Page & Profile Page
