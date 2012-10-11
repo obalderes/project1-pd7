@@ -82,17 +82,17 @@ def rate():
     
     #email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
-    studentInfo = databaseMethods.retrieveStudentInfo(email)
+#    studentInfo = databaseMethods.retrieveStudentInfo(email)
     
     #get the group number of that student
-    groupNumber = databaseMethods.getGroupNumber(email)
+ #   groupNumber = databaseMethods.getGroupNumber(email)
 
     #get the members of that group
-    groupMembers = retrieveGroupMembers(groupNumber)
+    groupMembers = databaseMethods.retrieveGroupMembers(email)
 
     #getMyGrades(email)
     
-    f = open("question.txt", "r").readlines()
+    f = open("questions.txt", "r").readlines()
     q1 = f[0]
     q2 = f[1]
     q3 = f[2]
@@ -109,7 +109,7 @@ def rate():
                            q1=q1,
                            q2=q2,
                            q3=q3,
-                           q4=q)
+                           q4=q4)
 
 
 def getGradeList( i, grades ):
@@ -148,8 +148,11 @@ def getGrades(question):
     return ans
 
 def getGroupMembers(email, n):
-    s = retrieveGroupMembers(email)
-    e = s[n]
+    s = databaseMethods.retrieveGroupMembers(email)
+    if s[n] == email:
+        e = s[n+1]
+    else:
+        e = s[n]
     info = databaseMethods.retrieveStudentInfo(e)
     name = info[1] + " " + info[0]
     return name
@@ -160,6 +163,6 @@ def authen(email):
     
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
-    app.run() 
+    app.run(port = 7003) 
 
 

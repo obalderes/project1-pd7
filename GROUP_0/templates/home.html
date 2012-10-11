@@ -1,13 +1,15 @@
 <!doctype HTML>
 <form action="" method="post" style= "background-color:#E0FFFF">
-
+<font color = "red" size = "6" font = "impact">
+<div align = "center">
+<p></p>
 {% with messages = get_flashed_messages() %}
   {% if messages %}
-    <ul class=flashes>
     {% for message in messages %}
-      <li>{{ message }}</li>
+      {{ message }}
     {% endfor %}
-    </ul>
+</div>
+</font>
   {% endif %}
 {% endwith %}
 {% block body %}

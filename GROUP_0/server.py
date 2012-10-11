@@ -29,7 +29,8 @@ def view_ratings():
         return redirect(url_for("home"))
     if request.method == "GET":
         user = session['username']
-        name = database.getName(user)
+        name = database.getName(str(user))
+#note: we have no idea why str(user) is necessary. user should not be unicode.
         questions = open("questions.txt", "r").readlines()
         return render_template("view_ratings.html", username = user, first = name[0], last = name[1], ratings = database.getRatings(user), questions = questions)
     else:
@@ -46,7 +47,8 @@ def post_ratings():
         flash("Please enter a valid username on the home page.")
         return redirect(url_for("home"))
     user = session['username']
-    name = database.getName(user)
+    name = database.getName(str(user))
+#unicode again, for some reason 
     questions = open("questions.txt", "r").readlines()
     ratees = database.getRatees(user)
     project = database.getCurrentProject(user)
@@ -62,11 +64,9 @@ def post_ratings():
             for groupmember in ratees:
                 ratings[groupmember] = {}
                 for qnum in range(len(questions)):
-                    ratings[groupmember[qnum]] = []
-                    for n in range(10):
-                        if request.form["%i:%s:%i:%i"%(project, groupmember, qnum, n)] == 'CHECKED':
-                            ratings[groupmember[qnum]] += n
-            database.setRatings(ratings)
+                    ratings[groupmember][qnum] = []
+                    ratings[groupmember][qnum].append(int(request.form["%i:%s:%i"%(project, groupmember, qnum)]))
+            database.setRatings(str(user),ratings)
             session['username'] = ""
             return redirect(url_for("home"))
                         

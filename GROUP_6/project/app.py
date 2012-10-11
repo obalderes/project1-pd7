@@ -57,55 +57,37 @@ def viewRates():
     global IDList
     return render_template("ViewRatings.html",info=IDList)
 
-@app.route('/Rater',methods=['get'])
+@app.route('/Rater',methods=['GET','POST'])
 def rate():
     global email
     global IDList
     global MembersofGroup
     global currentCounter
-    if request.method=='GET':   
-        print MembersofGroup
+    groupsize = len(MembersofGroup)
+    if request.method == 'GET':   
         return render_template('RatingPage.html',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0])
-    elif request.form('button') == "Rate!":
-        counter = (counter + 1)
-        if counter == (len(MembersofGroup)):
-            r1 = str(request.form["rating1"])
-            r2 = str(request.form["rating2"])
-            r3 = str(request.form["rating3"])
-            r4 = str(request.form["rating4"])
-            comment = str(request.form["comment"])
-            storage.addRating(email,MembersofGroup[currentCounter],r1,r2,r3,r4,comment)
-            return redirect(url_for('Success'))
-        else:
-            r1 = str(request.form["rating1"])
-            r2 = str(request.form["rating2"])
-            r3 = str(request.form["rating3"])
-            r4 = str(request.form["rating4"])
-            comment = str(request.form["comment"])
-            storage.addRating(email,MembersofGroup[currentCounter],r1,r2,r3,r4,comment)
-            return render_template('RatingPage.html')
-            
     else:
-        return redirect(url_for('login'))
+        if request.form["button"] == "Rate":
+            currentCounter = currentCounter + 1
+            if currentCounter < groupSize:
+                r1 = str(request.form["rating1"])
+                r2 = str(request.form["rating2"])
+                r3 = str(request.form["rating3"])
+                r4 = str(request.form["rating4"])
+                comment = str(request.form["comment"])
+                return redirect(url_for('rate',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0]))
+            else:
+                r1 = str(request.form["rating1"])
+                r2 = str(request.form["rating2"])
+                r3 = str(request.form["rating3"])
+                r4 = str(request.form["rating4"])
+                comment = str(request.form["comment"])
+                return redirect(url_for('Success'))
+
 @app.route("/Success")
 def Success():
     return render_template("Success.html")
-'''
-def getRatings(email):
-    return storage.s['id',email]
 
-def rate(email,r1,r2,r3,comment):
-    storage.s['responses',email,1] = r1
-    storage.s['responses',email,2] = r2
-    storage.s['responses',email,3] = r3
-    storage.s['responses',email,4] = comment
-
-def getInfo(email):
-    namesList =[]
-    namesList[1] = storage.s[email,firstName]
-    namesList.append(storage.s[email,lastName])
-'''
-    
 if __name__=="__main__":
     app.debug=True
     app.run()

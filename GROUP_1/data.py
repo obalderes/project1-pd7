@@ -105,6 +105,7 @@ class data:
             return Pd6[num]
         return Pd7[num]
 
+#yay for overloading
     @staticmethod
     def getGroup(username):
         temp=info[username.lower()]
@@ -140,7 +141,8 @@ class data:
         return ratings[username.lower()]
             
 
-#creates/modifies a rating given the email of the rater, email of the ratee, their question answers, and comments
+#creates/modifies a rating given the email of the rater(username), email of the ratee(to be rated), their question answers, and comments
+#make sure the answers for q1 through q4 are passed to to setRating as strings, so instead of 7, pass '7'
     @staticmethod
-    def setRating(rater, ratee, q1, q2, q3, q4, comment):
-        
+    def setRating(username, ratee, q1, q2, q3, q4, comment):
+        ratings[username.lower()] = [ ratee.lower(), q1, q2, q3, q4, comment ]

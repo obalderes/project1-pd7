@@ -31,10 +31,7 @@ def isAKey(email):
 def retrieveStudentInfo(email):
     studentDatabase = shelve.open("students")
     studentInfo = studentDatabase[email]
-    if studentInfo == []:
-        return False
-    else:
-        return studentInfo
+    return studentInfo
     studentDatabase.close()
 
 
@@ -42,11 +39,8 @@ def retrieveStudentInfo(email):
 
 def membersInGroup(groupNumber):
     groupDatabase = shelve.open("groups")
-    groupMembers = groupDatabase[groupNumber]
-    if groupMembers == []:
-        return False
-    else:
-        return groupMembers
+    groupMembers = groupDatabase[groupNumber.strip()]
+    return groupMembers
     groupDatabase.close()
 
 def getGroupNumber(email):
@@ -55,7 +49,7 @@ def getGroupNumber(email):
     return groupNumber
 
 def retrieveGroupMembers(email):
-    groupNumber = getGroupNumber(email)
+    groupNumber = isInGroupNumber(email)
     groupMembers = membersInGroup(groupNumber)
     return groupMembers
 
@@ -97,3 +91,12 @@ def hasBeenRatedBy(targetEmail,graderEmail):
         return True
     else:
         return False
+
+
+#### nameToGroupNumber ####
+
+def isInGroupNumber(email):
+    place = shelve.open("nameToGroupNumber")
+    groupNumber = place[email]
+    place.close()
+    return groupNumber

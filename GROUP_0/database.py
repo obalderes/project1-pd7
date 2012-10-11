@@ -39,14 +39,18 @@ def getCurrentProject(email):
     return int(s[-6])
 
 def setRatings(email,ratings):
+    print ratings
     for proj in ratings:
         for member in ratings[proj]:
+            for rating in ratings[proj][member]:
+                ratings[proj][member][rating] = int(ratings[proj][member][rating])
+                print int(rating)
             s= member + str(proj)
             d[email][-2][s] = ratings[proj][member]
             d[member][-1][s] = ratings[proj][member]
     return
 
-if not os.path.isfile('data') or True:
+if not os.path.isfile('data'):
     d = shelve.open('data',writeback=True)
     for line in open('students.txt'):   
         email,last,first,ID,course,courseNum,period,group = line.strip().split(',')
@@ -54,14 +58,12 @@ if not os.path.isfile('data') or True:
         givenRatings = {}
         d[email]=[last,first,ID,course,courseNum,period,group,givenRatings,receivedRatings]
 else:
-    d = shelve.open('data')
+    d = shelve.open('data',writeback=True)
 
 
-d['ste920ven@gmail.com'][-1]['TEST1']= [1,2,3,4,5,6,7]
-d['ste920ven@gmail.com'][-1]['QWERTY1']= [4,5,6,9,1,8,7]
-d['ste920ven@gmail.com'][-1]['ASDF1']= [7,8,9,3,2,2,2]
-
-#a = {3:{'Hayden.kh@gmail.com':[1,2,3,4]},1:{'jskestrel@aol.com':[5,6,7,8]}}
+#d['ste920ven@gmail.com'][-1]['TEST1']= [1,2,3,4,5,6,7]
+#d['ste920ven@gmail.com'][-1]['QWERTY1']= [4,5,6,9,1,8,7]
+#d['ste920ven@gmail.com'][-1]['ASDF1']= [7,8,9,3,2,2,2]
 
 #print setRatings('ste920ven@gmail.com', a)
 #print d['ste920ven@gmail.com'][-2]
