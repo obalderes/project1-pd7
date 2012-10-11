@@ -1,7 +1,7 @@
 import shelve, os
 
 def getRatings(email):
-    quesNum,projNum = 4,getCurrentProject()
+    quesNum,projNum = 4,getCurrentProject(email)
     l=[]
     for proj in range(projNum):
         l.append([])
@@ -33,7 +33,7 @@ def getName(email):
     s.reverse()
     return s
 
-def getCurrentProject():
+def getCurrentProject(email):
 #returns top project number in projects.txt
     s=open('projects.txt').readline()
     return int(s[-6])
