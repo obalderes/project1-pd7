@@ -74,16 +74,7 @@ def home():
 def rate():
     global email
     
-"""
-    #email = databaseMethods.getCurrentStudent()
-    #retrieve the info of the student who logged in
-  #studentInfo = databaseMethods.retrieveStudentInfo(email)
-    
-    #get the group number of that student
-    #groupNumber = databaseMethods.getGroupNumber(email)
 
-    #get the members of that group
-"""
     groupMembers = databaseMethods.retrieveGroupMembers(email)
 
     #getMyGrades(email)
