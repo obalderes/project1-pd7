@@ -1,9 +1,12 @@
 <!doctype HTML>
 
+<body body bgcolor = #FFF1D4>
+<font face = "times new roman" >
+<h1> You may rate your group members here. </h1>
+<hr>
+<br>
 <form action ""  method="post">
-
-<p> Username: <input type=text name=student_rated>
-
+<font size = "5">
 {% set x = 0 %}
 {% for question in qlist %}   
  <p>
@@ -14,8 +17,8 @@
    {% endfor %}
    {% set x = x + 1 %}
   <p>
-
 {% endfor %}
+
 
   <p><input type=submit name=button value=Rate>
 
