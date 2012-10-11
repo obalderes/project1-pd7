@@ -58,3 +58,21 @@ for line in file4:
 
 d.close()
 file4.close()
+
+
+e = shelve.open("nameToGroupNumber")
+
+file5 = open("p1.txt")
+
+for line in file5:
+    line = line.strip()
+    line = line.split(",")
+    
+    e[line[1]] = line[0]
+    e[line[2]] = line[0]
+    e[line[3]] = line[0]
+    if len(line) > 4:
+        e[line[4]] = line[0]
+
+e.close()
+file5.close()
