@@ -82,17 +82,17 @@ def rate():
     
     #email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
-    studentInfo = databaseMethods.retrieveStudentInfo(email)
+#    studentInfo = databaseMethods.retrieveStudentInfo(email)
     
     #get the group number of that student
-    groupNumber = databaseMethods.getGroupNumber(email)
+ #   groupNumber = databaseMethods.getGroupNumber(email)
 
     #get the members of that group
-    groupMembers = databaseMethods.retrieveGroupMembers(groupNumber)
+    groupMembers = databaseMethods.retrieveGroupMembers(email)
 
     #getMyGrades(email)
     
-    f = open("question.txt", "r").readlines()
+    f = open("questions.txt", "r").readlines()
     q1 = f[0]
     q2 = f[1]
     q3 = f[2]
@@ -109,7 +109,7 @@ def rate():
                            q1=q1,
                            q2=q2,
                            q3=q3,
-                           q4=q)
+                           q4=q4)
 
 
 def getGradeList( i, grades ):
