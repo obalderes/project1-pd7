@@ -102,3 +102,4 @@ if __name__ == "__main__":
     #print getInfo('a455898334@gmail.com')
     #print s['group']
     print returnGroupList('sorakeybade@gmail.com')
+    print len(returnGroupList('sorakeybade@gmail.com'))
