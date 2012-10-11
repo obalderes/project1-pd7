@@ -15,14 +15,17 @@
   Hello {{username}}
 {% endif %}
 </p>
-
-<center><p style=font-family:arial;>How did you like working with this person?<center>
+<p>
+{% if currentRatee %}
+    Rating: {{currentRatee}}
+{% endif %}
 </p>
 
 <div id="content" style="background-color:#EEEEEE;height:200px;width:500px;float:left;">
 <p </p>
 <form name="input" action="html_form_action.asp" method="get">
-<p style=font-family:arial;"> Team Member:<input type="text" name="user"></br></br>
+
+<center><p style=font-family:arial;>How knowledgable a partner was this person?<center>
 
 <input type=radio name="rating1" value="0">0&nbsp;
 <input type=radio name="rating1" value="1">1&nbsp;
@@ -35,7 +38,7 @@
 <input type=radio name="rating1" value="8">8&nbsp;
 <input type=radio name="rating1" value="9">9<p>
 
-<center><p style=font-family:arial;>How easy to get in contact with was this person?<center>
+<center><p style=font-family:arial;>How helpful was this person?<center>
 
 <input type=radio name="rating2" value="0">0&nbsp;
 <input type=radio name="rating2" value="1">1&nbsp;
@@ -48,5 +51,32 @@
 <input type=radio name="rating2" value="8">8&nbsp;
 <input type=radio name="rating2" value="9">9<p>
 
-<input type="submit" value="Rate!"><p style=font-family:arial;>
+<center><p style=font-family:arial;>How reliable was this person?<center>
+
+<input type=radio name="rating3" value="0">0&nbsp;
+<input type=radio name="rating3" value="1">1&nbsp;
+<input type=radio name="rating3" value="2">2&nbsp;
+<input type=radio name="rating3" value="3">3&nbsp;
+<input type=radio name="rating3" value="4">4&nbsp;
+<input type=radio name="rating3" value="5">5&nbsp;
+<input type=radio name="rating3" value="6">6&nbsp;
+<input type=radio name="rating3" value="7">7&nbsp;
+<input type=radio name="rating3" value="8">8&nbsp;
+<input type=radio name="rating3" value="9">9<p>
+
+<center><p style=font-family:arial;>How easy to work with was this person?<center>
+
+<input type=radio name="rating4" value="0">0&nbsp;
+<input type=radio name="rating4" value="1">1&nbsp;
+<input type=radio name="rating4" value="2">2&nbsp;
+<input type=radio name="rating4" value="3">3&nbsp;
+<input type=radio name="rating4" value="4">4&nbsp;
+<input type=radio name="rating4" value="5">5&nbsp;
+<input type=radio name="rating4" value="6">6&nbsp;
+<input type=radio name="rating4" value="7">7&nbsp;
+<input type=radio name="rating4" value="8">8&nbsp;
+<input type=radio name="rating4" value="9">9<p>
+
+
+<input type="submit" name = "button" value="Rate!"><p style=font-family:arial;>
 </form>

@@ -1,12 +1,29 @@
 <!doctype HTML>
 
-<form action="" method="post">
+<form action="" method="post" style= "background-color:#E0FFFF">
 
-<h1> Logged in as {{last}}, {{first}}</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}
 
-<h2> Post Feedback for Project {{project}} below:</h2>
-
+<font size = "10" face = "garamond"  color = "green">
+<p></p>
+<p></p>
+<b>
+Logged in as {{last}}, {{first}}
+</b>
+</font>
+<p></p>
 <hr>
+<font size = "5" face = "garamond"  color = "green">
+<h2> Post Feedback for Project {{project}} below:</h2>
 
 {% for groupmember in ratees %}
 <h3>Rate {{groupmember}}: </h3>
@@ -15,9 +32,9 @@
      {% for question in questions%}
        {{question}}:
        {% for n in range(9) %}
-          <input type=radio name="{{project}}:{{groupmember}}:{{n}}:{{qnum}}" value={{n}}>{{n}} </input>
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:{{n}}" value={{n}}>{{n}} </input>
        {% endfor %}
-          <input type=radio name="{{project}}:{{groupmember}}:10:{{qnum}}" value=10 checked>10 </input> 
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:10" value=10 checked>10 </input> 
        {% set qnum = qnum + 1 %}
       <br>
      {% endfor %}
@@ -26,5 +43,7 @@
 
 <input type=submit name=button value="Save">
 <input type=submit name=button value="Cancel">
+
+{% endblock %}
 
 </form>
