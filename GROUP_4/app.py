@@ -159,4 +159,4 @@ def valid_login(email, IDnum):
         return valid
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=7011)

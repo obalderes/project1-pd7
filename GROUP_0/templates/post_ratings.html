@@ -1,23 +1,33 @@
 <!doctype HTML>
 
-<form action="" method="post">
-
-<h1> Logged in as {{last}}, {{first}}</h1>
-
-<h2> Post Feedback for Project {{project}} below:</h2>
-
+<form action="" method="post" style= "background-color:#E0FFFF">
+<font size = "10" face = "garamond"  color = "green">
+<p></p>
+<p></p>
+<b>
+Logged in as {{last}}, {{first}}
+</b>
+</font>
+<p></p>
 <hr>
+<font size = "5" face = "garamond"  color = "green">
+<h2> Post Feedback for Project {{project}} below:</h2>
 
 {% for groupmember in ratees %}
 <h3>Rate {{groupmember}}: </h3>
      <br>
+     {% set tmp = 5 %}
      {% set qnum = 0 %}
      {% for question in questions%}
        {{question}}:
-       {% for n in range(9) %}
-          <input type=radio name="{{project}}:{{groupmember}}:{{n}}:{{qnum}}" value={{n}}>{{n}} </input>
+       {% for n in range(11) %}
+       {% if n is sameas tmp %}
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}" value={{n}} checked>{{n}} </input>
+       {% else %}
+          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}" value={{n}}>{{n}} </input>
+       {% endif %}
        {% endfor %}
-          <input type=radio name="{{project}}:{{groupmember}}:10:{{qnum}}" value=10 checked>10 </input> 
+    
        {% set qnum = qnum + 1 %}
       <br>
      {% endfor %}

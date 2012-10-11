@@ -3,7 +3,7 @@
 		<title>Ratebook</title>
 		<style type="text/css">
 		<!--
-		CSS Designed by Brian Lam. Based off of the design used by the news startup 
+		CSS coded by Brian Lam. Based off of the design used by the news startup 
 		Pulse News (dark gray background, blue logo, light text
 		-->
 			body{
@@ -41,7 +41,7 @@
 		{% endfor %}
 		</ul>
 		
-		<form method = "POST">
+		<form action="confirm" method = "POST">
 			<!--
 			This flask code will create questions, whose names differ by the email
 			addresses of each ratee to make them distinguishable. -Brian Lam
@@ -128,7 +128,6 @@
 		</form>
 		</font>
 		
-		<br>
 		<br>
 		<br>
 		<font size="2" color="gray">
