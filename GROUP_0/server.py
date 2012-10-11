@@ -11,11 +11,11 @@ def home():
         return render_template("home.html")
     else:
         session['username'] = request.form["username"]
+       #check if valid username. If not, error message.
         if not(database.isUsername(session['username'])):
             flash("%s is not an authorized email. \nPlease enter a valid username."%(session['username']))
             session['username'] = ""
             return redirect(url_for("home"))
-        #check if valid username. If not, error message.
         button = request.form["button"]
         if button == "View Ratings":
             return redirect(url_for("view_ratings"))
