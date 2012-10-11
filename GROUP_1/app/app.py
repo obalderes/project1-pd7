@@ -31,11 +31,12 @@ def home():
 	global logged_in
 	RatedEmail =""
 	error = None
-	if logged_in = true:
-		A1=data.getRatingof(UserEmail) 
-		A2=data.getRatingof(UserEmail) 
-		A3=data.getRatingof(UserEmail) 
-		A4=data.getRatingof(UserEmail) 
+	if logged_in = true: 
+		A=data.getRatingof(UserEmail) 
+		A1=A[1]
+		A2=A[2]
+		A3=A[3]
+		A4=A[4] 
 #The "A"s are the answers to each question
 #This whole part still need the function to know how the data will return
 		if request.method == 'POST':  
