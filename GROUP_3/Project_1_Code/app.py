@@ -53,6 +53,7 @@ def home():
     a3 = getAverage(q3)
     a4 = getAverage(q4)
     if request.method == "GET":
+        name = getStudentName()
         return render_template("home.html",
                                name = name,
                                g1 = g1,

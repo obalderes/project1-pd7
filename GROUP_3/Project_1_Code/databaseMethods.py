@@ -19,6 +19,14 @@ def saveCurrentStudent(email):
 def getCurrentStudent():
     return currentStudent
 
+def isAKey(email):
+    studentDatabase = shelve.open("students")
+    if studentDatabase.has_key(email):
+        return True
+    else:
+        return False
+    studentDatabase.close()
+
 
 def retrieveStudentInfo(email):
     studentDatabase = shelve.open("students")
