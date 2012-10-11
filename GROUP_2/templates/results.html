@@ -24,17 +24,15 @@
 <i> Sorted by question</i> 
 <br>
 
-{% set qnum = 0 %}
-{% set anum = 0 %}
+{% set questionNumber = 0 %}
+{% set authorNumber = 0 %}
 {% for question in qlist %}
   <br>{{question}}<br>
   {% for author in A %}
-    {% for rating in S[anum][qnum] %}
-      {{rating}}
-    {% endfor %}
-    {% set anum = anum + 1 %}
+      {{S[authorNumber][questionNumber]}}
+      {% set authorNumber = authorNumber + 1 %}
   {% endfor %}
-{% set qnum = qnum + 1 %}
+{% set qustionNumber = questionNumber + 1 %}
 {% endfor %}
     
  
