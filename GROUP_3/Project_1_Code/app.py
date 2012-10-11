@@ -27,7 +27,9 @@ def login():
     else:
         button=request.form['button'] #login button
         email = str(request.form['email'])
-        assert email != ""
+        assert email != 
+        #id = request.form['id']
+        #if def auten(email, idNum)""
         #databaseMethods.saveCurrentStudent(email) 
         return redirect(url_for('home'))
  
@@ -102,7 +104,7 @@ def rate():
                            q1=q1,
                            q2=q2,
                            q3=q3,
-                           q4=q4)
+                           q4=q)
 
 
 def getGradeList( i, grades ):
@@ -146,6 +148,13 @@ def getGroupMembers(email, n):
     info = databaseMethods.retrieveStudentInfo(e)
     name = info[1] + " " + info[0]
     return name
+
+def auten(email, idNum):
+    info = databaseMethods.retrieveStudentInfo(email)
+    if info[2] != idNum:
+        return false
+    return true
+
     
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
