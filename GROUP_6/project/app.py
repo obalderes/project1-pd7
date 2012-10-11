@@ -11,6 +11,7 @@ app.secret_key = 'some_secret'
 
 @app.route("/",methods = ['get','post'])
 def login():
+    global groupsize
     global currentCounter
     global MembersofGroup
     global email
@@ -21,10 +22,12 @@ def login():
 
         button = request.form['button']
         if button == 'Rate':
+            print "HI"
             email = request.form["username"]
             if storage.checkUser(email)==True:
                 IDList = storage.getInfo(email)
                 MembersofGroup = storage.returnGroupList(email)
+                groupsize = len(MembersofGroup)
                 currentCounter = 0
                 return redirect(url_for("rate"))
             else:
@@ -63,25 +66,23 @@ def rate():
     global IDList
     global MembersofGroup
     global currentCounter
-    groupsize = len(MembersofGroup)
+    global groupsize
     if request.method == 'GET':   
         return render_template('RatingPage.html',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0])
     else:
         if request.form["button"] == "Rate":
-            currentCounter = currentCounter + 1
-            if currentCounter < groupSize:
-                r1 = str(request.form["rating1"])
-                r2 = str(request.form["rating2"])
-                r3 = str(request.form["rating3"])
-                r4 = str(request.form["rating4"])
-                comment = str(request.form["comment"])
-                return redirect(url_for('rate',currentRatee =storage.getInfo( MembersofGroup[currentCounter])[0]))
+            
+            r1 = str(request.form["rating1"])
+            r2 = str(request.form["rating2"])
+            r3 = str(request.form["rating3"])
+            r4 = str(request.form["rating4"])
+            comment = str(request.form["comment"])
+            storage.addRating(email,storage.getInfo( MembersofGroup[currentCounter])[0],r1,r2,r3,r4,comment)
+            currentCounter = currentCounter+1
+            if currentCounter < groupsize:
+                return redirect(url_for('rate',currentRatee = MembersofGroup[currentCounter]))
+            
             else:
-                r1 = str(request.form["rating1"])
-                r2 = str(request.form["rating2"])
-                r3 = str(request.form["rating3"])
-                r4 = str(request.form["rating4"])
-                comment = str(request.form["comment"])
                 return redirect(url_for('Success'))
 
 @app.route("/Success")

@@ -17,7 +17,7 @@
      {{question}}
      <p>
      {% for number in range(10) %}
-       <input type=radio name="emails[memberCounter]:Button {{x}}" value={{number + 1}}>{{number + 1}}</input>
+       <input type=radio name="emails[{{memberCounter}}]:Button {{x}}" value={{number + 1}}>{{number + 1}}</input>
      {% endfor %}
      {% set x = x + 1 %}
     <p>

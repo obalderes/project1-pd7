@@ -15,35 +15,25 @@ def get_group(email):
         if (email in n):
             return str(n)[(len(str(n))-2):]
 
+Grouper = open("p1.txt","r").readlines()
 
 GroupsList = open("students.txt", "r").readlines()
-"""<<<<<<< HEAD
-g = []
-=======
->>>>>>> ca2936eb94aa1ec4b125060ddb7d026f22740bc1
-"""
-#for n in GroupsList:
- #   g.append(n.split(","))
 
-"""def get_groupMembers(x):    #<--this method returns members from BOTH group x's
-    for n in g:
-        if(x in n[7]):
-            print n[1] + "," + n[2] + ";"
-"""
-def get_groupMembers(x,period,email):
-   g = open("students.txt", "r").readlines()
-   l = []
-   names = []
-   emails = []
-   for n in g:
-       l.append(n.split(','))
-   for n in l:
-       if(x in n[7] and period in n[6] and email not in n[0]):
-           names.append(n[2])
-           emails.append(n[0])
-   return names,emails
+
+def get_group_members(email):
+   member_emails=[]
+   members=[]
+   for n in Grouper:
+       if email in n:           
+           member_emails = n.split(',')
+   tmp = []
+   for i in member_emails[1:]:
+       if i != email:
+           tmp.append(i)
+   member_emails = tmp
+   return member_emails
    
-
+   
 def get_period(email):
     g = open("students.txt", "r").readlines() 
     for n in g:
