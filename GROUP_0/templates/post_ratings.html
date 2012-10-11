@@ -14,13 +14,9 @@ Rate {{groupmember}}:
      {% for question in questions%}
        {{question}}:
        {% for n in range(9) %}
-<<<<<<< HEAD
           <input type=radio name="{{project}}:{{groupmember}}:{{n}}:{{qnum}}" value={{n}}>{{n}} </input>
-=======
-          <input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:{{n}}" value={{n}}</input>
->>>>>>> db93a088c313b73f39d09323e770c956e0d23f69
        {% endfor %}
-          <<input type=radio name="{{project}}:{{groupmember}}:{{qnum}}:10" value=10 checked>10 </input> 
+          <input type=radio name="{{project}}:{{groupmember}}:10:{{qnum}}" value=10 checked>10 </input> 
        {% set qnum = qnum + 1 %}
      {% endfor %}
 <hr>
