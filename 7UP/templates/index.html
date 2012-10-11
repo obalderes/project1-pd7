@@ -38,11 +38,11 @@
 
 		    <form method="POST" action="">
 
-		      <select>
+		      <select name='ratees'>
 			{% for proj in projects %}
 			<optgroup label="Project {{loop.index}}">
-			  {% for person in groupmembers %}
-			  <option value="person{{loop.index}}">{{person.first}} {{person.last}}</option>
+			  {% for person in proj %}
+			  <option value="person{{loop.index}}">{{person}}</option>
 			  {% endfor %}
 			</optgroup>
 			{% endfor %}
@@ -50,8 +50,8 @@
 
 		      <ol>
 			{% for question in questions %}
-			{% set qnum loop.index %}
-			<li>{{question.text}}<br />
+			{% set qnum=loop.index %}
+			<li>{{question}}<br />
 			  {% for number in range(10) %}
 			  <input type="radio" name="question{{qnum}}" value="{{number}}"> {{number}}
 			  {% endfor %}
@@ -92,9 +92,9 @@
 		    <h3>Average per question:</h3>
 
 		    <dl>
-		      {% for question in questions %}
+		      {% for avgs in questionavgs %}
 		      <dt>Question {{loop.index}}:</dt>
-		      <dd>{{question.avg}}</dd> <br />
+		      <dd>{{avgs}}</dd> <br />
 		      {% endfor %}
 		      <div style="clear:both;"></div>
 		    </dl>
