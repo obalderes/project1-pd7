@@ -114,15 +114,15 @@ def getAverage(question):
     return ans/total
 
 def getGrades(question):
-    ans = ""
     if len(question) == 0:
         return "No grades"
+    ans = ""
     count = 0
     for count in question:
         ans = ans + str(question[count]) + ", "
     return ans
 
-    
+def getGroupMembers(email):
 
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
