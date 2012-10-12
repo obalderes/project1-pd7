@@ -122,7 +122,7 @@ def rate():
         for each in range(0,4):
             if s[each] == email:
                 pass
-        else:
+            else:
                 if e1 == "":
                     e1 = s[each]
                 else:
@@ -132,11 +132,14 @@ def rate():
                         e3 = s[each]
         
                
-           
+#        print e1,e2,e3   
         button=request.form['button'] 
-        m1 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
-        m2 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
-        m3 = {request.form['p1q1'], request.form['p1q2'], request.form['p1q3'], request.form['p1q4']}
+        m1 = [int(request.form['p1q1']),int( request.form['p1q2']), int(request.form['p1q3']), int(request.form['p1q4'])]
+        m2 = [int(request.form['p2q1']),int( request.form['p2q2']),int( request.form['p2q3']), int(request.form['p2q4'])]
+        m3 = [int(request.form['p3q1']),int( request.form['p3q2']), int(request.form['p3q3']),int( request.form['p3q4'])]
+        # print m1
+        # print m2
+        # print m3
         databaseMethods.setGrades(m1 , e1)
         databaseMethods.setGrades(m2, e2)
         databaseMethods.setGrades(m3, e3)
