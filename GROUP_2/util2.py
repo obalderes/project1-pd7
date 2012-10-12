@@ -26,15 +26,29 @@ def save_rating(email,author,score,group):
     x = rating.rating(author,score,group)
 
     if s.has_key(email):
+        count = 0
         tmp = s[email]
-        tmp.append(x)
-        s[email] = tmp
+        checked = False
+        for i in s[email]:
+            print i.author
+            
+            if i.author == author:
+                tmp[count-1] = x
+                checked = True
+            count = count + 1
+
+        
+        if checked == False:
+            tmp.append(x)
+            s[email] = tmp
+        
+    
     else:
         print "not saved"
     
     s.close()
 
-#save_rating("ivansmirnov13@gmail.com",[5,5])
+
 
 def get_rating(email):
     A = []
@@ -47,11 +61,8 @@ def get_rating(email):
             S.append(i.score)
             G.append(i.group)
     s.close()
-    print A,S,G
-#    return A,S
+    return A,S
 
-
-#get_rating("ivansmirnov13@gmail.com")
 
 def authorlist():
     return A
