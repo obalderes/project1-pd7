@@ -65,21 +65,19 @@ def rate_page(name=None):
         #print names, emails
         return render_template("rate_page.html",qlist=qlist,names=names, emails=emails)
     else:
-        for email in emails:
-            tmpscore =[]
-            count = 0
-            for n in qlist:
-                tmp = str(request.form["%s:Button %d" %(email,count)])
+        group_members = util.get_group_members(name)
+        counta = 0
+        for member in group_members:
+            tmpscore = []
+            countb = 0
+            for q in qlist:
+                tmp = str(request.form["emails[%d]:Button %d" %(counta,countb)])
+                countb = countb + 1
                 tmpscore.append(tmp)
-                count = count + 1
-        
-        uname = email
-        
-        assert uname != ""
-        group = util.get_group(str(uname))
-        print group
-        util2.save_rating(str(uname),str(name),tmpscore,group)
-        util2.get_rating(str(name))
+            group = util.get_group(str(group_members[counta]))
+            util2.save_rating(str(group_members[counta]),str(name),tmpscore,group)
+            util2.get_rating(str(group_members[counta]))
+            counta = counta + 1
 
         flash("Ratings Sent!!!")
         return redirect(url_for('user_page',name=name))

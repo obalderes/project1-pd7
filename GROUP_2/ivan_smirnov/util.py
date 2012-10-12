@@ -13,7 +13,9 @@ def get_group(email):
     g = open("students.txt", "r").readlines()
     for n in g:
         if (email in n):
-            return str(n)[(len(str(n))-2):]
+            r = str(n)[(len(str(n))-2):]
+            r = r.strip()
+            return r
 
 Grouper = open("p1.txt","r").readlines()
 
@@ -26,6 +28,7 @@ def get_group_members(email):
    for n in Grouper:
        if email in n:           
            member_emails = n.split(',')
+           member_emails[-1] = member_emails[-1].strip()
    tmp = []
    for i in member_emails[1:]:
        if i != email:

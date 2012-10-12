@@ -47,7 +47,8 @@ def get_rating(email):
             S.append(i.score)
             G.append(i.group)
     s.close()
-    return A,S
+    print A,S,G
+#    return A,S
 
 
 #get_rating("ivansmirnov13@gmail.com")
