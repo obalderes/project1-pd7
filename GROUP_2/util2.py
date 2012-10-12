@@ -28,19 +28,8 @@ def save_rating(email,author,score,group):
     if s.has_key(email):
         count = 0
         tmp = s[email]
-        checked = False
-        for i in s[email]:
-            print i.author
-            
-            if i.author == author:
-                tmp[count-1] = x
-                checked = True
-            count = count + 1
-
-        
-        if checked == False:
-            tmp.append(x)
-            s[email] = tmp
+        tmp.append(x)
+        s[email] = tmp
         
     
     else:
