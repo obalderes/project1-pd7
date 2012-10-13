@@ -19,5 +19,6 @@ print f[0]
 
 #database.addRating("jpengsmail@gmail.com", "darylsew@gmail.com", [5, 4, 3, 1])
 
-print database.getRatings("darylsew@gmail.com")
+#print database.getRatings("darylsew@gmail.com")
+#print database.getRatings("jpengsmail@gmail.com")
 print database.getRatings("jpengsmail@gmail.com")
