@@ -5,10 +5,10 @@ Group 7UP
 
 ## Members: ##
 
-* Benjamin Huber
-* Ian Outhwaite
-* Raymond Zeng
-* Zachary Zimmerman
+* Benjamin Huber - app part 
+* Ian Outhwaite - utils and database (all in datastorage.py)
+* Raymond Zeng - utils and database (all in datastorage.py)
+* Zachary Zimmerman - html templates 
 
 ## Progress: ##
 
