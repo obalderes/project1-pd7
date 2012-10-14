@@ -32,7 +32,9 @@ def home():
 def rate():
    if session.get('username'):
       #if request.method == 'POST':
-         
+
+      if email == None:
+         return redirect(url_for('login'))
       info = datastorage.getData(email)
 
       projects = []
