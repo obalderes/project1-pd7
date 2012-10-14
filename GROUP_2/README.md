@@ -1,5 +1,22 @@
 GROUP 2
 
+TO USERS:
+
+launch the app with feedbackerator.py, we had some random issues where first ru\
+n doesn't work, but please try again if that happens , we have a working build.
+
+type in your email address, some errors occur with case sensitivity if your ema\
+il doesn't work make sure you've entered it exactly as it appears on the studen\
+ts.txt file
+
+YOU HAVE TO RATE ALL THE USERS AT ONCE. Errors can be caused by not filling out\
+ every bubble, we did not get a try-catch thing set up.
+
+ratings as of now do not replace themselves as they entered. We are working on \
+a method to do this.
+
+
+
 Hey guys. We should all exchange e-mails! Mine is brainmonkey95@gmail.com - DK
 
 <b>Tiffany Phan</b> VISUAL
