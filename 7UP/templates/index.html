@@ -234,9 +234,9 @@
 		    <h3>Average per question:</h3>
 
 		    <dl>
-		      {% for question in questions %}
+		      {% for question in questionavgs %}
 		      <dt>Question {{loop.index}}:</dt>
-		      <dd>{{question.avg}}</dd> <br />
+		      <dd>{{question}}</dd> <br />
 		      {% endfor %}
 		      <div style="clear:both;"></div>
 		    </dl>
