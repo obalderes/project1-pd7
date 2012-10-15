@@ -33,8 +33,9 @@ def addProjectToPerson(emailaddress,projectname):
         people[emailaddress][3][projectname][g] = []
     for email in people:
         currentgroup = people[email][8]
-        if (((int)(currentgroup) == 15) and (people[email] != people[emailaddress])):
-            people[emailaddress][3][projectname][theirgroup].append(people[email])
+        if (currentgroup == theirgroup):
+        #if (((int)(currentgroup) == people[emailaddress][8]) and (people[email] != people[emailaddress])):
+            people[emailaddress][3][projectname][currentgroup].append(people[email])
 
 #creates a new project within the projx overarching dictionary. Fills it in with the groups, members of each group, and space in each member's location for feedback.
 #projects -> groups for that project -> memebers
@@ -157,7 +158,7 @@ def ratePerson(rater,ratee,question,score,comments):
     data['question'] = question
     data['score'] = score
     data['comments'] = comments
-    CurrProj = projx["currentproject"]
+    CurrProj = projx['currentproject']
     CurrGroup = people[rater][8]
     projx[CurrProj][(int)(CurrGroup)][ratee].append(data)   
 
@@ -166,7 +167,7 @@ def ratePerson(rater,ratee,question,score,comments):
 def getGroupMembers(emailad,project):
     temp = []
     for person in people[emailad][3][project][people[emailad][8]]:
-        temp.append(person[0] + " " + person[1])
+        temp.append(person[2])
     #for person in people[emailad][3][project][people[emailad][gnum]]:
     #    temp.append(person[1] + " " + person[0])
     return temp
@@ -244,6 +245,9 @@ setupPeople()
 createNewProject("Feebackerator")
 for person in people:
     addProjectToPerson(people[person][2],'Feedbackerator')
+
+    
+   # ratePerson('iouthwaite1@gmail.com',people[person][2],'-',10,'to instantiate this individual')
 #print people['iouthwaite1@gmail.com']
 #addProjectToPerson('iouthwaite1@gmail.com','1')
 #addProjectToPerson('Oneman2feet@gmail.com','1')
