@@ -17,7 +17,6 @@ for line in open('question.txt').readlines():
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
-<<<<<<< HEAD
 global questions
 global email
 global loggedin
@@ -28,13 +27,11 @@ q = open('question.txt')
 def home():
    if email in session:
       return redirect(url_for('/rate'))
-=======
 
 @app.route("/",methods=['GET','POST'])
 def home():
    if session.get('username'):
       return redirect(url_for('rate'))
->>>>>>> 206562c3275e328c9bdd4725a1dfd34a6a88a7a7
    else:
       return redirect(url_for('/login'))
         
@@ -130,9 +127,6 @@ def rate():
 
 
 
-<<<<<<< HEAD
-=======
-        
 @app.route('/login', methods=['GET','POST'])
 def login():
    if request.method == 'POST':
@@ -152,7 +146,6 @@ def logout():
    return redirect(url_for('home'))
 
 
->>>>>>> 206562c3275e328c9bdd4725a1dfd34a6a88a7a7
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
     app.run(port=7007) # connect to localhost:5000 or http://127.0.0.1:5000
