@@ -39,11 +39,11 @@ def getCurrentProject(email):
     return int(s[-6])
 
 def setRatings(email,ratings, qnum):
-#MOST LIKELY DOES NOT WORK
-    #print ratings
     for member in ratings:
         for rating in ratings[member]:
             for n in range(qnum):
+#THIS LINE IS THE PROBLEM WITH OUR PROJECT
+#In conjunction with the line calling setRatings in server.py, this line causes the post_ratings error.
                 ratings[member][n] = int(ratings[member][n])
         s= member + str(getCurrentProject(email))
         d[email][-2][s] = ratings[member]
