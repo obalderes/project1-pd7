@@ -7,4 +7,5 @@ class rating:
         self.group = group
 
 
-
+    def replace_score(self, nscore):
+        self.score = nscore

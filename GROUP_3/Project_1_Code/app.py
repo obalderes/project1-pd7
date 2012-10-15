@@ -10,12 +10,6 @@ app = Flask(__name__)
 
 
 
-#shelveSetup.getStudentInfo()
-#shelveSetup.getGroups()
-#shelveSetup.setupGrades()
-#shelveSetup.setupRatedBy()
-
-
 @app.route("/", methods = ['GET', 'POST'])
 def login():
     global email
@@ -76,18 +70,19 @@ def home():
 #need to set up buttons or links to go into other group members and give ratings
 #not sure what to write for displaying specific information for each user (previous ratings, fellow group members, etc.)
 
-@app.route("/rate/")
+@app.route("/rate/", methods = ['GET', 'POST'])
 def rate():
     global email
     
     #email = databaseMethods.getCurrentStudent()
     #retrieve the info of the student who logged in
-#    studentInfo = databaseMethods.retrieveStudentInfo(email)
+  #studentInfo = databaseMethods.retrieveStudentInfo(email)
     
     #get the group number of that student
- #   groupNumber = databaseMethods.getGroupNumber(email)
+    #groupNumber = databaseMethods.getGroupNumber(email)
 
     #get the members of that group
+
     groupMembers = databaseMethods.retrieveGroupMembers(email)
 
     #getMyGrades(email)
@@ -97,19 +92,63 @@ def rate():
     q2 = f[1]
     q3 = f[2]
     q4 = f[3]
-    p1 = getGroupMembers(email, 0)
-    p2 = getGroupMembers(email, 1)
-    p3 = getGroupMembers(email, 2)
     
+    p = getGroupMembers(email)
+    # p1 = getGroupMembers(email, 0)
+    # p2 = getGroupMembers(email, 1)
+    # p3 = getGroupMembers(email, 2)
+    
+    p1 = p[0]
+    p2 = p[1]
+    p3 = p[2]
+
+
     userInfo = databaseMethods.retrieveGrades(email)
-    return render_template("rate.html",
-                           p1=p1,
-                           p2=p2,
-                           p3=p3,
-                           q1=q1,
-                           q2=q2,
-                           q3=q3,
-                           q4=q4)
+    if request.method == "GET":
+        return render_template("rate.html", 
+                               p1=p1,
+                               p2=p2,
+                               p3=p3,
+                               q1=q1,
+                               q2=q2,
+                               q3=q3,
+                               q4=q4)
+    else:
+        x = 0
+        s = databaseMethods.retrieveGroupMembers(email)
+        e1 = ""
+        e2 = ""
+        e3 = ""
+        for each in range(0,4):
+            if s[each] == email:
+                pass
+            else:
+                if e1 == "":
+                    e1 = s[each]
+                else:
+                    if e2 == "":
+                        e2 = s[each]
+                    else:
+                        e3 = s[each]
+        
+               
+#        print e1,e2,e3   
+        button=request.form['button'] 
+        m1 = [int(request.form['p1q1']),int( request.form['p1q2']), int(request.form['p1q3']), int(request.form['p1q4'])]
+        m2 = [int(request.form['p2q1']),int( request.form['p2q2']),int( request.form['p2q3']), int(request.form['p2q4'])]
+        m3 = [int(request.form['p3q1']),int( request.form['p3q2']), int(request.form['p3q3']),int( request.form['p3q4'])]
+        # print m1
+        # print m2
+        # print m3
+        databaseMethods.setGrades(m1 , e1)
+        databaseMethods.setGrades(m2, e2)
+        databaseMethods.setGrades(m3, e3)
+           
+           #except:
+               
+
+
+
 
 
 def getGradeList( i, grades ):
@@ -144,15 +183,20 @@ def getGrades(question):
     ans = ""
     count = 0
     for count in question:
-        ans = ans + str(question[count]) + ", "
+               ans = ans + str(question[count]) + ", "
     return ans
 
-def getGroupMembers(email, n):
+def getGroupMembers(email):
     s = databaseMethods.retrieveGroupMembers(email)
-    e = s[n]
-    info = databaseMethods.retrieveStudentInfo(e)
-    name = info[1] + " " + info[0]
-    return name
+    ans = []
+    for each in range(0,4):
+        if s[each] == email:
+            pass
+        else:
+            info = databaseMethods.retrieveStudentInfo(s[each])
+            name = info[1] + " " + info[0]
+            ans.append(name)
+    return ans
 
 def authen(email):
     return databaseMethods.isAKey(email)

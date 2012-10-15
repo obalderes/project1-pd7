@@ -10,18 +10,20 @@ app.secret_key="nothing"
 
 @app.route("/",methods=['GET','POST'])
 def login():
-	global logged_in = false
-	global UserEmail = ""
+	global logged_in
+	global UserEmail
+	logged_in = false
+	UserEmail = ""
 	UserCode = ""
 	error = None
 	if request.method == 'POST':
 		UserEmail = request.form["user"]
-        	UserCode = request.form["idnum"]
+		UserCode = request.form["idnum"]
 		if data.checkLogin (UserEmail, UserCode):
 			logged_in = true
 			return redirect(url_for('home'))
 		else:
-			error =  "Member name and password were not found. Please try again."   
+			error =  "Member name and password were not found. Please try again."
 	return render_template("Homepage.html", error = error)
 #logging in by comparng the username and idnumber, if the input is incorrect the login fails and the user gets an error message
 
@@ -31,7 +33,7 @@ def home():
 	global logged_in
 	RatedEmail =""
 	error = None
-	if logged_in = true: 
+	if logged_in == true: 
 		A=data.getRatingof(UserEmail) 
 		A1=A[1]
 		A2=A[2]
@@ -45,12 +47,12 @@ def home():
 		Q4 = f[3]
 #The "A"s are the answers to each question
 #This whole part still need the function to know how the data will return
-		if request.method == 'POST':  
+		if request.method == 'POST':
 			button = request.form['button']
-        		if button == 'logout':
+		if button == 'logout':
 				logged_in = false
-    				return redirect(url_for('login'))
-			else:
+				return redirect(url_for('login'))
+		else:
 				RatedEmail = request.form["user"]
 				if data.getGroupNo(RatedEmail) == data.getGroupNo(UserEmail):
 					data.setratings(UserEmail, RatedEmail,request.form["select1"],request.form["select2"],request.form["select3"],request.form["select4"])
@@ -62,5 +64,5 @@ def home():
 	return render_template("Feedbackeratr.html", error = error,A1=A1,A2=A2,A3=A3,A4=A4,Q1=Q1,Q2=Q2,Q3=Q3,Q4=Q4)			
 
 if __name__ == "__main__":
-    app.debug=True
-    app.run()
+	app.debug=True
+	app.run()

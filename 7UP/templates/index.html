@@ -4,9 +4,150 @@
 	<head>
 		<title> Home </title>
 		<meta http-equiv="Content-Language" content="en-us" />
-		<!--<style type="text/css" media="all">@import "style.css";</style>
-		<style type="text/css" media="screen and (max-width: 760px)">@import "mobile.css";</style>-->
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css')}}">
+		<style type="text/css" media="all">
+
+		  * { margin: 0; padding: 0; font-family: Georgia; }
+
+		  html,body { width: 100%; height: 100%; min-width: 330px; }
+
+		  h3 { padding-bottom: 8px; }
+
+		  header
+		  {
+		  width: 100%;
+		  height: 60px;
+		  background-color: #DDD;
+		  border-bottom: 5px solid #666;
+		  }
+
+		  header ul
+		  {
+		  list-style: none;
+		  }
+
+		  header ul li a
+		  {
+		  color: #666;
+		  display: block;
+		  width: 33.33%;
+		  height: 60px;
+		  text-align: center;
+		  text-transform: uppercase;
+		  font-size: 30px;
+		  line-height: 60px;
+		  float: left;
+		  }
+
+		  header ul li a.selected
+		  {
+		  background-color: #666;
+		  color: #DDD;
+		  }
+
+		  header ul li a:hover, header ul li a:focus, header ul li a:active
+		  {
+		  color: black;
+		  }
+
+		  input[type="password"], input[type="text"]
+		  {
+		  width: 100px;
+		  }
+
+		  input[type="submit"]
+		  {
+		  width: 100px;
+		  text-align: center;
+		  }
+
+		  body>div
+		  {
+		  width: 28%;
+		  float: left;
+		  padding: 20px 2.66%;
+		  }
+
+		  body>div h1
+		  {
+		  text-align: center;
+		  font-size: 20px;
+		  padding-bottom: 15px;
+		  }
+
+		  body>div form, body>div#stats dl, body>div#stats h3
+		  {
+		  text-align: center;
+		  max-width: 260px;
+		  width: 88%;
+		  margin-left:  auto;
+		  margin-right: auto;
+		  }
+
+		  body>div form *
+		  {
+		  text-align: left;
+		  margin-bottom: 10px;
+		  }
+
+		  body>div#login form
+		  {
+		  max-width: 200px;
+		  }
+
+		  #login form p
+		  {
+		  text-align: right;
+		  }
+
+		  dl
+		  {
+		  background-color: #DDD;
+		  border: 1px solid #666;
+		  padding: 10px;
+		  margin-bottom: 10px;
+		  text-transform: uppercase;
+		  }
+
+		  dl dt
+		  {
+		  float: left;
+		  }
+
+		  dl dd
+		  {
+		  float: right;
+		  }
+
+		  body>div.selected
+		  {
+		  background-color: #EAEAAE;
+		  }
+
+		  @media only screen and (max-width : 330px)
+		  {
+		  header
+		  {
+		  width: 330px;
+		  }
+
+		  header ul li a
+		  {
+		  width: 110px;
+		  }
+		  }
+
+		</style>
+
+		<style type="text/css" media="screen and (max-width: 760px)">
+
+		  body>div
+		  {
+		  width: 100%;
+		  padding: 20px 0;
+		  }
+
+		</style>
+
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 	</head>
@@ -39,7 +180,7 @@
 
 		    <form method="POST" action="">
 
-		      <select name='ratees'>
+		      <select name="ratees" >
 			{% for proj in projects %}
 			<optgroup label="Project {{loop.index}}">
 			  {% for person in proj %}
@@ -54,7 +195,7 @@
 			{% set qnum=loop.index %}
 			<li>{{question}}<br />
 			  {% for number in range(10) %}
-			  <input type="radio" name="question{{qnum}}" value="{{number}}"> {{number}}
+			  <input type="radio" name="{{question}}" value="{{number}}"> {{number}}
 			  {% endfor %}
 			</li>
 			{% endfor %}
@@ -93,9 +234,9 @@
 		    <h3>Average per question:</h3>
 
 		    <dl>
-		      {% for avgs in questionavgs %}
+		      {% for question in questionavgs %}
 		      <dt>Question {{loop.index}}:</dt>
-		      <dd>{{avgs}}</dd> <br />
+		      <dd>{{question}}</dd> <br />
 		      {% endfor %}
 		      <div style="clear:both;"></div>
 		    </dl>

@@ -125,7 +125,7 @@ def getPrevRatings(email):
 
 
 
-print getPrevRatings('batya.zamansky@gmail.com')
+#print getPrevRatings('batya.zamansky@gmail.com')
     
 
 #print getGroupMembers('jpengsmail@gmail.com')

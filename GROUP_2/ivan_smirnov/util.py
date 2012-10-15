@@ -10,35 +10,41 @@ def verifylogin(email, idnum):
     return False
 
 def get_group(email):
+    g = open("students.txt", "r").readlines()
     for n in g:
         if (email in n):
-            return str(n)[(len(str(n))-2):]
+            r = str(n)[(len(str(n))-2):]
+            r = r.strip()
+            return r
 
+Grouper = open("p1.txt","r").readlines()
 
 GroupsList = open("students.txt", "r").readlines()
 
-g = []
 
-for n in GroupsList:
-    g.append(n.split(","))
-
-def get_groupMembers(x):    #<--this method returns members from BOTH group x's
-    for n in g:
-        if(x in n[7]):
-            print n[1] + "," + n[2] + ";"
-
-def get_groupMembers(x,period):
-    for n in g:
-        if(x in n[7]):
-            if(period in n[6]):
-                return n[1] + n[2]
+def get_group_members(email):
+   member_emails=[]
+   members=[]
+   for n in Grouper:
+       if email in n:           
+           member_emails = n.split(',')
+           member_emails[-1] = member_emails[-1].strip()
+   tmp = []
+   for i in member_emails[1:]:
+       if i != email:
+           tmp.append(i)
+   member_emails = tmp
+   return member_emails
+   
+   
 def get_period(email):
-     for n in g:
+    g = open("students.txt", "r").readlines() 
+    for n in g:
         if (email in n[0]):
             return n[6]
         
 
 
-
+#get_groupMembers("2","7","ivansmirnov13@gmail.com")
 
 

@@ -3,9 +3,21 @@ import datastorage
 import math
 from flask import session,url_for,redirect,flash
 
+global questions
+#global email
+
+questions = []
+for line in open('question.txt').readlines():
+   questions.append(line)
+
+
+
+
+
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
+<<<<<<< HEAD
 global questions
 global email
 global loggedin
@@ -16,6 +28,13 @@ q = open('question.txt')
 def home():
    if email in session:
       return redirect(url_for('/rate'))
+=======
+
+@app.route("/",methods=['GET','POST'])
+def home():
+   if session.get('username'):
+      return redirect(url_for('rate'))
+>>>>>>> 206562c3275e328c9bdd4725a1dfd34a6a88a7a7
    else:
       return redirect(url_for('/login'))
         
@@ -38,64 +57,102 @@ def logout():
         
 @app.route('/rate', methods=['GET','POST'])
 def rate():
-   if email in session:
-      if request.method=='POST':
-         rater = email
-         rating1 = request.form('question1')
-         rating2 = request.form('question2')
-         rating3 = request.form('question3')
-         ratee = request.form('ratees')
-         datastorage.ratePerson(rater=rater, ratee=ratee,question=questions[1],score=rating1,comments=None)
-         datastorage.ratePerson(rater=rater, ratee=ratee,question=questions[2],score=rating2,comments=None)
+   if session.get('username'):
+      #if request.method == 'POST':
 
-         datastorage.ratePerson(rater=rater, ratee=ratee,question=questions[3],score=rating2,comments=None)
-         info = datastorage.getData(email)
-         projects = []
-         count = 1
-         while(count <= len(info)):
-            projects.append(datastorage.getGroupMembers(email,count))
-            count = count + 1
+      if email == None:
+         return redirect(url_for('login'))
+      info = datastorage.getData(email)
+
+      projects = []
+      count = 1
+      while(count <= len(info)):
+         projects.append(datastorage.getGroupMembers(email,str(count)))
+         count = count + 1
 
 
 
 
-         numratings = 0
-         sumratings = 0
-         scores = []
-         for projs in info:
-            for ratings in info[projs]:
-                numratings = numratings + 1
-                sumratings = sumratings + info[projs][ratings]['score']
-                scores.append(info[projs][ratings]['score'])
-         avgrating = sumratings / numratings
+      numratings = 0
+      sumratings = 0
+      scores = []
+      for projs in info:
+        for ratings in projs:
+            numratings = numratings + 1
+     #       sumratings = sumratings + info[projs][ratings]['score']
+     #       scores.append(info[projs][ratings]['score'])
+      avgrating = datastorage.getAvgOverallIndividualPoints(email)
 
+      stdev = 0
+      if numratings != 0:
          ex = 0
          for score in scores:
-            ex = ex + (scores[score]-avgrating) * (scores[score]-avgrating)
-         stdev = sqrt(ex/numratings)
+            ex = ex + (score-avgrating) * (score-avgrating)
+         stdev = math.sqrt(ex/numratings)
 
-         first = datastorage.getFirst(email)
-         last = datastorage.getLast(email)
-
-         questions=['how smart was your groupmate', 'how much did they help', 'blah,blah, blah']
+      first = datastorage.getFirst(email)
+      last = datastorage.getLast(email)
 
 
 
-         questionavgs=[]
-         for x in range(len(questions)):
-           r=0
-           for i in range(len(info)):
-              r=r+datastorage.getAvgForQuestion(email,i+1,questions[x])
-           questionavgs.append(r/len(info))
+      questionavgs=[]
+      
+      for x in range(len(questions)):
+         r=0
+         for i in range(len(info)):
+            r=r+datastorage.getTotalIndividualAvgForQuestion(email,x)#(email,i+1,questions[x])
+            questionavgs.append(r/len(info))
+      loggedin=True
+         
+
+         
+      if request.method == 'POST':
+         
+         rater = email
+         ratee = request.form('ratees')
+         num = 0
+         for n in questions:
+            datastorage.ratePerson(rater=rater, ratee=ratee,question=n,score=request.form(n),comments=None)
+     # rating1 = request.form('question1')
+     # rating2 = request.form('question2')
+     # rating3 = request.form('question3')
+      
+     # datastorage.ratePerson(rater=rater, ratee=ratee,question=questions[1],score=rating1,comments=None)
+     # datastorage.ratePerson(rater=rater, ratee=ratee,question=questions[2],score=rating2,comments=None)
+
+     # datastorage.ratePerson(rater=rater, ratee=ratee,question=questions[3],score=rating2,comments=None)
+         
+
+      return render_template('index.html',loggedin=True,projects=projects,questions=questions,avgrating=avgrating,stdev=stdev,questionavgs=questionavgs)
+
+      #return render_template('index.html', loggedin=True)
 
 
 
-      return render_template('index.html',loggedin=True,projects=projects,questions=questions,\
-avgrating=avgrating,stdex=stdev,questionavgs=questionavgs)
+
+<<<<<<< HEAD
+=======
+        
+@app.route('/login', methods=['GET','POST'])
+def login():
+   if request.method == 'POST':
+        ermail = request.form["username"]
+        paswrd = request.form["idnum"]
+        if datastorage.isUser(ermail):
+           loggedin = True
+           session["username"]=True
+           global email
+           email = ermail
+        return redirect(url_for('home'))
+   return render_template('index.html',loggedin=False,projects=None,questions=questions,avgrating=None,stdex=None,questionavgs=None)
+
+@app.route('/logout')
+def logout():
+   session.pop('username', None)
+   return redirect(url_for('home'))
 
 
-
-
+>>>>>>> 206562c3275e328c9bdd4725a1dfd34a6a88a7a7
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
-    app.run() # connect to localhost:5000 or http://127.0.0.1:5000
+    app.run(port=7007) # connect to localhost:5000 or http://127.0.0.1:5000

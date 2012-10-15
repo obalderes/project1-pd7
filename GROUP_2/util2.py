@@ -21,20 +21,28 @@ def process():
 
 
 
-def save_rating(email,author,score,group):
+def save_rating(email,author,rate,group):
     s = shelve.open(dbname)
-    x = rating.rating(author,score,group)
+    x = rating.rating(author,rate,group)
 
     if s.has_key(email):
+        count = 0
         tmp = s[email]
-        tmp.append(x)
+        checked = False
+        for i in tmp:
+            if i.author == author:
+                i.replace_score(rate)
+                checked = True
+        if checked == False:
+            tmp.append(x)
         s[email] = tmp
+    
     else:
         print "not saved"
     
     s.close()
 
-#save_rating("ivansmirnov13@gmail.com",[5,5])
+
 
 def get_rating(email):
     A = []
@@ -49,8 +57,6 @@ def get_rating(email):
     s.close()
     return A,S
 
-
-#get_rating("ivansmirnov13@gmail.com")
 
 def authorlist():
     return A

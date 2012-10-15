@@ -49,7 +49,7 @@ def getGroupNumber(email):
     return groupNumber
 
 def retrieveGroupMembers(email):
-    groupNumber = getGroupNumber(email)
+    groupNumber = isInGroupNumber(email)
     groupMembers = membersInGroup(groupNumber)
     return groupMembers
 
@@ -68,10 +68,9 @@ def retrieveGrades(email):
 def setGrades(grades,email):
     gradesDatabase = shelve.open("grades")
     gradesList = gradesDatabase[email]
-    question = 0
-    for question in gradesList:
-        question.append[grades[question]]
-        question = question + 1
+    for questionNum in range(0,4):
+        toAppend = grades[questionNum]
+        gradesList[questionNum].append(toAppend)
     
     gradesDatabase.close()
 
@@ -91,3 +90,12 @@ def hasBeenRatedBy(targetEmail,graderEmail):
         return True
     else:
         return False
+
+
+#### nameToGroupNumber ####
+
+def isInGroupNumber(email):
+    place = shelve.open("nameToGroupNumber")
+    groupNumber = place[email]
+    place.close()
+    return groupNumber

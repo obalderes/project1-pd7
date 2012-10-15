@@ -1,5 +1,9 @@
 Period 7 Group 6
 ================
+Instructions:
+If you have Jinja and Flask installed just go to the terminal and run the app.py file and use the server port link that the terminal gives you and run it in your browser.
+
+Edit History
 Front-end
 ---------
 ### Ellie Abrams
