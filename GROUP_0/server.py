@@ -60,6 +60,8 @@ def post_ratings():
             session['username'] == ""
             return redirect(url_for("home"))
         elif button == "Save":
+#THIS IS THE PROBLEM WITH OUR PROJECT
+#In conjunction with the problem line in database.py, the block below is causing our major post_rating error.
             ratings = {}
             for groupmember in ratees:
                 ratings[groupmember] = []
