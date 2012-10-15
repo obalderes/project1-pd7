@@ -17,6 +17,7 @@ for line in open('question.txt').readlines():
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
+<<<<<<< HEAD
 global questions
 global email
 global loggedin
@@ -27,38 +28,29 @@ q = open('question.txt')
 def home():
    if email in session:
       return redirect(url_for('/rate'))
+=======
+>>>>>>> f329fc9847b6407653d11420b48926b4b0cb2522
 
 @app.route("/",methods=['GET','POST'])
 def home():
    if session.get('username'):
       return redirect(url_for('rate'))
    else:
-      return redirect(url_for('/login'))
+      return redirect(url_for('login'))
         
-@app.route('/login', methods=['GET','POST'])
-def login():
-   if request.method == 'POST':
-        email = request.form["username"]
-        paswrd = request.form["idnum"]
-        if datastorage.isUser(email):
-           loggedin = True
-           session[email]=True
-           return redirect(url_for('home'))
-   return render_template('index.html',loggedin=False,projects=None,questions=q,avgrating=None,stdex=None,questionavgs=None)
-
-@app.route('/logout')
-def logout():
-   session.pop(email, None)
-   return redirect(url_for('home'))        
+        
 
         
 @app.route('/rate', methods=['GET','POST'])
 def rate():
+   
    if session.get('username'):
       #if request.method == 'POST':
+      try:
+         email
+      except NameError:
+         return redirect(url_for('logout'))
 
-      if email == None:
-         return redirect(url_for('login'))
       info = datastorage.getData(email)
 
       projects = []
@@ -125,7 +117,13 @@ def rate():
       #return render_template('index.html', loggedin=True)
 
 
+<<<<<<< HEAD
  
+=======
+
+
+        
+>>>>>>> f329fc9847b6407653d11420b48926b4b0cb2522
 @app.route('/login', methods=['GET','POST'])
 def login():
    if request.method == 'POST':
@@ -144,6 +142,10 @@ def logout():
    session.pop('username', None)
    return redirect(url_for('home'))
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f329fc9847b6407653d11420b48926b4b0cb2522
 if __name__=="__main__":
     app.debug=True # remove this line to turn off debugging
     app.run(port=7007) # connect to localhost:5000 or http://127.0.0.1:5000
