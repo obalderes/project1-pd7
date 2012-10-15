@@ -9,14 +9,31 @@ app.secret_key = 'some_secret'
 global questions
 global email
 global loggedin
+
+q = open('question.txt')
+
 @app.route("/",methods=['GET','POST'])
 def home():
    if email in session:
-      return redirect(url_for('rate'))
+      return redirect(url_for('/rate'))
    else:
-      return redirect(url_for('login'))
+      return redirect(url_for('/login'))
         
-        
+@app.route('/login', methods=['GET','POST'])
+def login():
+   if request.method == 'POST':
+        email = request.form["username"]
+        paswrd = request.form["idnum"]
+        if datastorage.isUser(email):
+           loggedin = True
+           session[email]=True
+           return redirect(url_for('home'))
+   return render_template('index.html',loggedin=False,projects=None,questions=q,avgrating=None,stdex=None,questionavgs=None)
+
+@app.route('/logout')
+def logout():
+   session.pop(email, None)
+   return redirect(url_for('home'))        
 
         
 @app.route('/rate', methods=['GET','POST'])
@@ -77,24 +94,6 @@ def rate():
 avgrating=avgrating,stdex=stdev,questionavgs=questionavgs)
 
 
-
-
-        
-@app.route('/login', methods=['GET','POST'])
-def login():
-   if request.method == 'POST':
-        email = request.form["username"]
-        paswrd = request.form["idnum"]
-        if datastorage.isUser(email):
-           loggedin = True
-           session[email]=True
-        return redirect(url_for('home'))
-   return render_template('index.html',loggedin=False,projects=None,questions=questions,avgrating=None,stdex=None,questionavgs=None)
-
-@app.route('/logout')
-def logout():
-   session.pop(email, None)
-   return redirect(url_for('home'))
 
 
 if __name__=="__main__":

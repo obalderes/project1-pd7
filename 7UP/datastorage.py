@@ -240,15 +240,18 @@ def isUser(emailadd):
             
 
 setupPeople()
-createNewProject('2')
-createNewProject("1")
-addProjectToPerson('iouthwaite1@gmail.com','1')
-addProjectToPerson('Oneman2feet@gmail.com','1')
-ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',5,'it was lovely')
-ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','bladsalfa',5,'it was lovely')
-addProjectToPerson('Oneman2feet@gmail.com','2')
-ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',3,'marrrr')
-ratePerson('Oneman2feet@gmail.com','iouthwaite1@gmail.com','question?',3,'marrrr')
+#createNewProject('2')
+createNewProject("Feebackerator")
+for person in people:
+    addProjectToPerson(people[person][2],'Feedbackerator')
+#print people['iouthwaite1@gmail.com']
+#addProjectToPerson('iouthwaite1@gmail.com','1')
+#addProjectToPerson('Oneman2feet@gmail.com','1')
+#ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',5,'it was lovely')
+#ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','bladsalfa',5,'it was lovely')
+#addProjectToPerson('Oneman2feet@gmail.com','2')
+#ratePerson('iouthwaite1@gmail.com','Oneman2feet@gmail.com','question?',3,'marrrr')
+#ratePerson('Oneman2feet@gmail.com','iouthwaite1@gmail.com','question?',3,'marrrr')
 
 #print getTotalOverallIndividualPoints('Oneman2feet@gmail.com')
 #print getTotalIndividualPointsForQuestion('Oneman2feet@gmail.com','question?')
