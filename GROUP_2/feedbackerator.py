@@ -118,4 +118,4 @@ def view_results(name=None):
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(port=7010)
+    app.run(port=7002)
